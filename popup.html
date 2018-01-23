@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <body>
+        <style>
+            .container {
+                max-height: 600px;
+                min-height: 300px;
+                width: 250px;
+                border: 2px solid rgba(0,0,0,0.3);
+                border-radius: 2px;
+                background: white;
+            }
+            body {
+                font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+                font-size: 100%;
+            }
+            #status {
+                /* avoid an excessively wide status text */
+                white-space: pre;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                max-width: 400px;
+            }
+            .patient-list {
+                max-height: 250px;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                max-width: 100%;
+            }
+        </style>
+        <div class="container">
+            <div class="page-header">
+                <h3>Media Downloader</h3>
+                <p id="status"></p>
+                <div class="form-group">
+                    <label for="checkbox-links">links <input type="checkbox" id="checkbox-links" checked></label>
+                    <!--<label for="checkbox-videos">videos <input type="checkbox" id="checkbox-videos" checked></label>-->
+                    <!--<label for="checkbox-music">music <input type="checkbox" id="checkbox-music" checked></label>-->
+                    <label for="checkbox-images">images <input type="checkbox" id="checkbox-images" checked></label>
+                </div>
+            </div>
+            <div>
+                <section>
+                    images
+                </section>
+                <section>
+                    links
+                </section>
+                <section>
+                    video
+                </section>
+                <section>
+                    audio
+                </section>
+            </div>
+            <div>
+                <button class="btn btn-primary" id="changelinks">Change</button>
+            </div>
+        </div>
+        <script src="/scripts/jquery.min.js" type="text/javascript"></script>
+        <script src="/scripts/extension.js" type="text/javascript"></script>
+    </body>
+</html>
+
