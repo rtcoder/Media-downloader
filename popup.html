@@ -2,59 +2,52 @@
 <html>
     <head>
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <style>
-            .container {
-                max-height: 600px;
-                min-height: 300px;
-                width: 250px;
-                border: 2px solid rgba(0,0,0,0.3);
-                border-radius: 2px;
-                background: white;
-            }
-            body {
-                font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-                font-size: 100%;
-            }
-            #status {
-                /* avoid an excessively wide status text */
-                white-space: pre;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                max-width: 400px;
-            }
-            .patient-list {
-                max-height: 250px;
-                overflow-y: scroll;
-                overflow-x: hidden;
-                max-width: 100%;
-            }
-        </style>
         <div class="container">
             <div class="page-header">
                 <h3>Media Downloader</h3>
                 <p id="status"></p>
                 <div class="form-group">
-                    <label for="checkbox-links">links <input type="checkbox" id="checkbox-links" checked></label>
-                    <!--<label for="checkbox-videos">videos <input type="checkbox" id="checkbox-videos" checked></label>-->
-                    <!--<label for="checkbox-music">music <input type="checkbox" id="checkbox-music" checked></label>-->
-                    <label for="checkbox-images">images <input type="checkbox" id="checkbox-images" checked></label>
+                    <label for="checkbox-links">links <input type="checkbox" id="checkbox-links" class="type-checkbox" data-type="links" checked></label>
+                    <!--<label for="checkbox-videos">videos <input type="checkbox" id="checkbox-videos" class="type-checkbox" data-type="videos" checked></label>-->
+                    <!--<label for="checkbox-music">music <input type="checkbox" id="checkbox-music" class="type-checkbox" data-type="music" checked></label>-->
+                    <label for="checkbox-images">images <input type="checkbox" id="checkbox-images" class="type-checkbox" data-type="images" checked></label>
                 </div>
             </div>
-            <div>
-                <section>
-                    images
+            <div id="media">
+                <section class="images-section">
+                    <div class="header">
+                        <div class="title">
+                            Images
+                            &nbsp;
+                            <span class="count"></span>
+                        </div>
+                        <div class="show-hide"></div>
+                    </div>
+                    <div class="content"></div>
                 </section>
-                <section>
-                    links
+                <section class="links-section">
+                    <div class="header">
+                        <div class="title">
+                            Links
+                            &nbsp;
+                            <span class="count"></span>
+                        </div>
+                        <div class="show-hide"></div>
+                    </div>
+                    <div class="buttons">
+                        <label for="show-empty">show empty links <input type="checkbox" id="show-empty"></label>
+                    </div>
+                    <div class="content"></div>
                 </section>
-                <section>
-                    video
-                </section>
-                <section>
-                    audio
-                </section>
+                <!--<section>
+                        video
+                    </section>
+                    <section>
+                        audio
+                    </section>-->
             </div>
             <div>
                 <button class="btn btn-primary" id="changelinks">Change</button>

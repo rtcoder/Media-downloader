@@ -1,0 +1,84 @@
+.container {
+    max-height: 600px;
+    min-height: 300px;
+    width: 400px;
+    background: white;
+}
+body {
+    font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+    font-size: 100%;
+}
+#status {
+    /* avoid an excessively wide status text */
+    white-space: pre;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 400px;
+}
+#media{
+    width: 100%;
+    height: auto;
+}
+#media section{
+    width: 100%;
+    height: auto;
+    float: left;
+}
+#media section .header{
+    width: 100%;
+    float: left;
+    height: auto;
+    background: #eee;
+    line-height: 25px;
+    padding: 0 10px;
+}
+#media section .header .title{
+    width: 50%;
+    float: left;
+}
+#media section .header .show-hide{
+    float: right;
+    position: relative;
+}
+#media section .header .show-hide::after{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    right: -10px;
+    font-size: 20px;
+}
+#media section.opened .header .show-hide::after{
+    content: '-';
+}
+#media section:not(.opened) .header .show-hide::after{
+    content: '+';
+}
+#media section:not(.opened) .buttons,
+#media section:not(.opened) .content{
+    display: none;
+}
+#media section.opened .buttons,
+#media section.opened .content{
+    display: block;
+}
+#media section.links-section .content a{
+    display: block;
+    width: 100%;
+    float: left;
+}
+#media section.links-section .content a.empty-link{
+    display: none;
+}
+#media section.images-section .content .image{
+    width: 100px;
+    height: 100px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    float: left;
+    margin: 5px;
+}

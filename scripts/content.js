@@ -31,7 +31,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             case 'audio':
                 break;
         }
-        console.log(header.tagName.toLowerCase(), els)
     });
     sendResponse({data: request.data, elements: els, success: true});
 });
