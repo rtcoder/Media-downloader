@@ -1,3 +1,8 @@
+function hashCode(str) {
+    return str.split('').reduce((prevHash, currVal) =>
+        ((prevHash << 5) - prevHash) + currVal.charCodeAt(0), 0);
+}
+
 function search_content() {
     var search_for = [];
     if ($('#checkbox-images').is(":checked")) {
@@ -27,7 +32,16 @@ function search_content() {
             });
             [].forEach.call(response.elements.img, function (img) {
                 let title = img.title ? img.title : "";
-                let image = '<div style="background-image: url(' + img.src + ')" title="' + title + '" class="image"></div>';
+                let arr = img.src.split('/');
+                let text = arr[arr.length - 1];
+                let id = hashCode(img.src);
+                let image = '<div class="image-container">\n\
+                                <label for="' + id + '">\n\
+                                    <input type="checkbox" class="image-checkbox" data-download="' + img.src + '" id="' + id + '">\n\
+                                    <div style="background-image: url(' + img.src + ')" title="' + title + '" class="image"></div>\n\
+                                    <div class="text">' + text + '</div>\n\
+                                </label>\n\
+                            </div>';
                 $('section.images-section .content').append(image);
             });
 

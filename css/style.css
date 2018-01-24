@@ -73,12 +73,48 @@ body {
 #media section.links-section .content a.empty-link{
     display: none;
 }
-#media section.images-section .content .image{
+#media section.images-section .content.thumbs .image-container .image{
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    float: left;
+}
+#media section.images-section .content.thumbs .image-container .image{
     width: 100px;
     height: 100px;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
+    float: left;
+}
+#media section.images-section .content.thumbs .image-container .text{
+    display: none;
+}
+#media section.images-section .content.list .image-container{
+    width: 100%;
+    height: 50px;
+    margin: 5px 0px;
+    float: left;
+}
+#media section.images-section .content.list .image-container .image-checkbox{
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin: 17px;
+}
+#media section.images-section .content.list .image-container .image{
+    width: 50px;
+    height: 50px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    float: left;
+    margin: 0px 5px;
+}
+#media section.images-section .content.list .image-container .text{
+    width: auto;
+    height: 50px;
+    line-height: 50px;
     float: left;
     margin: 5px;
 }
