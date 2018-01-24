@@ -8,9 +8,6 @@ function search_content() {
     if ($('#checkbox-images').is(":checked")) {
         search_for.push('img');
     }
-    if ($('#checkbox-links').is(":checked")) {
-        search_for.push('a');
-    }
     if ($('#checkbox-videos').is(":checked")) {
         search_for.push('video');
     }
@@ -20,16 +17,6 @@ function search_content() {
 
     chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, {search_for: search_for.join(', ')}, function (response) {
-            [].forEach.call(response.elements.a, function (a) {
-                let classmane = '';
-                if ((!a.text && !a.href) || (a.text.trim() === '' && a.href.trim() === '')) {
-                    classmane = 'empty-link';
-                }
-                let title = a.title ? a.title : "";
-                let text = a.text ? a.text : a.href;
-                let link = '<a href="' + a.href + '" data-text="' + text + '" title="' + title + '" class="' + classmane + '">' + text + '</a>';
-                $('section.links-section .content').append(link);
-            });
             [].forEach.call(response.elements.img, function (img) {
                 let title = img.title ? img.title : "";
                 let arr = img.src.split('/');
@@ -45,7 +32,6 @@ function search_content() {
                 $('section.images-section .content').append(image);
             });
 
-            $('section.links-section .title span.count').text('(' + response.elements.a.length + ')');
             $('section.images-section .title span.count').text('(' + response.elements.img.length + ')');
 
 
@@ -64,6 +50,15 @@ document.addEventListener('DOMContentLoaded', function () {
             $('section.' + $(this).data('type') + '-section').hide();
         }
     });
+    $('button.view').click(function () {
+        if ($(this).attr('id') === 'list-view') {
+            $(this).parents('section').find('.content').removeClass('thumbs').addClass('list');
+        } else if ($(this).attr('id') === 'thumbnails-view') {
+            $(this).parents('section').find('.content').removeClass('list').addClass('thumbs');
+
+        }
+    });
+
     search_content();
     var button = document.getElementById('changelinks');
     button.addEventListener('click', search_content);

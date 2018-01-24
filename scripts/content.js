@@ -8,15 +8,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     };
     [].forEach.call(listElements, function (header) {
         switch (header.tagName.toLowerCase()) {
-            case 'a':
-                var a = {
-                    href: header.href,
-                    text: header.innerText || header.textContent,
-                    title: header.getAttribute('title')
-                };
-
-                els.a.push(a);
-                break;
             case 'img':
                 var img = {
                     src: header.src,

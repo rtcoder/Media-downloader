@@ -8,9 +8,9 @@
         <div class="container">
             <div class="page-header">
                 <h3>Media Downloader</h3>
+                <button class="btn btn-primary" id="changelinks">Change</button>
                 <p id="status"></p>
                 <div class="form-group">
-                    <label for="checkbox-links">links <input type="checkbox" id="checkbox-links" class="type-checkbox" data-type="links" checked></label>
                     <!--<label for="checkbox-videos">videos <input type="checkbox" id="checkbox-videos" class="type-checkbox" data-type="videos" checked></label>-->
                     <!--<label for="checkbox-music">music <input type="checkbox" id="checkbox-music" class="type-checkbox" data-type="music" checked></label>-->
                     <label for="checkbox-images">images <input type="checkbox" id="checkbox-images" class="type-checkbox" data-type="images" checked></label>
@@ -26,29 +26,15 @@
                         </div>
                         <div class="show-hide"></div>
                     </div>
-                    <div class="buttons">
+                    <div class="filters">
                         <label for="select-images">select all <input type="checkbox" id="select-images"></label>
                         <button class="btn btn-success">Download selected</button>
                         <div class="button-group pull-right">
-                            <button>List</button>
-                            <button>Thumbnails</button>
+                            <button class="view" id="list-view">List</button>
+                            <button class="view" id="thumbnails-view">Thumbnails</button>
                         </div>
                     </div>
                     <div class="content list"></div>
-                </section>
-                <section class="links-section">
-                    <div class="header">
-                        <div class="title">
-                            Links
-                            &nbsp;
-                            <span class="count"></span>
-                        </div>
-                        <div class="show-hide"></div>
-                    </div>
-                    <div class="buttons">
-                        <label for="show-empty">show empty links <input type="checkbox" id="show-empty"></label>
-                    </div>
-                    <div class="content"></div>
                 </section>
                 <!--<section>
                         video
@@ -56,9 +42,6 @@
                     <section>
                         audio
                     </section>-->
-            </div>
-            <div>
-                <button class="btn btn-primary" id="changelinks">Change</button>
             </div>
         </div>
         <script src="/scripts/jquery.min.js" type="text/javascript"></script>

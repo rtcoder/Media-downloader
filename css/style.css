@@ -64,14 +64,6 @@ body .container #media section:not(.opened) .filters,
 body .container #media section:not(.opened) .content {
   display: none;
 }
-body .container #media section.links-section .content a {
-  display: block;
-  width: 100%;
-  float: left;
-}
-body .container #media section.links-section .content a.empty-link {
-  display: none;
-}
 body .container #media section.images-section .content.thumbs .image-container {
   width: 100px;
   height: 100px;
