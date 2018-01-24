@@ -1,0 +1,141 @@
+body{
+    font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+    font-size: 100%;
+    .container {
+        max-height: 600px;
+        min-height: 300px;
+        width: 400px;
+        background: white;
+        #status {
+            white-space: pre;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 400px;
+        }
+        #media{
+            width: 100%;
+            height: auto;
+            section{
+                width: 100%;
+                height: auto;
+                float: left;
+                .header{
+                    width: 100%;
+                    float: left;
+                    height: auto;
+                    background: #eee;
+                    line-height: 25px;
+                    padding: 0 10px;
+                    .title{
+                        width: 50%;
+                        float: left;
+                    }
+                    .show-hide{
+                        float: right;
+                        position: relative;
+                        &::after{
+                            position: absolute;
+                            width: 30px;
+                            height: 30px;
+                            line-height: 30px;
+                            text-align: center;
+                            cursor: pointer;
+                            font-weight: bold;
+                            right: -10px;
+                            font-size: 20px;
+                        }
+                    }
+                }
+                &.opened{
+                    .header{
+                        .show-hide{
+                            &::after{
+                                content: '-';
+                            }
+                        }
+                    }
+                    .filters, .content{
+                        display: block;
+                    }
+                }
+                &:not(.opened){
+                    .header{
+                        .show-hide{
+                            &::after{
+                                content: '+';
+                            }
+                        }
+                    }
+                    .filters, .content{
+                        display: none;
+                    }
+                }
+                &.links-section{
+                    .content{
+                        a{
+                            display: block;
+                            width: 100%;
+                            float: left;
+                            &.empty-link{
+                                display: none;
+                            }
+                        }
+                    }
+                }
+                &.images-section{
+                    .content{
+                        &.thumbs{
+                            .image-container{
+                                width: 100px;
+                                height: 100px;
+                                margin: 5px;
+                                float: left;
+                                .image{
+                                    width: 100px;
+                                    height: 100px;
+                                    background-position: center center;
+                                    background-repeat: no-repeat;
+                                    background-size: contain;
+                                    float: left;
+                                }
+                                .text{
+                                    display: none;
+                                }
+                            }
+                        }
+                        &.list{
+                            .image-container{
+                                width: 100%;
+                                height: 50px;
+                                margin: 5px 0px;
+                                float: left;
+                                .image-checkbox{
+                                    float: left;
+                                    width: 15px;
+                                    height: 15px;
+                                    margin: 17px;
+                                }
+                                .image{
+                                    width: 50px;
+                                    height: 50px;
+                                    background-position: center center;
+                                    background-repeat: no-repeat;
+                                    background-size: contain;
+                                    float: left;
+                                    margin: 0px 5px;
+                                }
+                                .text{
+                                    width: auto;
+                                    height: 50px;
+                                    line-height: 50px;
+                                    float: left;
+                                    margin: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
