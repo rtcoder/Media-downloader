@@ -98,11 +98,6 @@ function search_content() {
                 $('section.images-section .content table tbody').append(row);
             }
             $('section.images-section .title span.count').text('(' + images.length + ')');
-            $('.download-image-button').click(function () {
-                console.log('d')
-            });
-
-
         });
     });
 }
@@ -130,8 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         downloadAll(urls);
     });
+    $('.refresh').click(search_content);
     search_content();
-    var button = document.getElementById('changelinks');
-    button.addEventListener('click', search_content);
 });
 
