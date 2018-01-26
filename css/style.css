@@ -5,14 +5,14 @@ body {
 body .container {
   max-height: 600px;
   min-height: 300px;
-  width: 400px;
+  width: 500px;
   background: white;
 }
 body .container #status {
   white-space: pre;
   text-overflow: ellipsis;
   overflow: hidden;
-  max-width: 400px;
+  max-width: 500px;
 }
 body .container #media {
   width: 100%;
@@ -57,6 +57,13 @@ body .container #media section.opened .filters,
 body .container #media section.opened .content {
   display: block;
 }
+body .container #media section.opened .filters button.view {
+  border: 1px solid #000;
+  background: #fff;
+}
+body .container #media section.opened .filters button.view.active {
+  border-color: blue;
+}
 body .container #media section:not(.opened) .header .show-hide::after {
   content: '+';
 }
@@ -64,22 +71,56 @@ body .container #media section:not(.opened) .filters,
 body .container #media section:not(.opened) .content {
   display: none;
 }
+body .container #media section.images-section .content .image-container label {
+  float: left;
+  font-weight: normal;
+}
+body .container #media section.images-section .content .image-container .download-button {
+  background-image: url(../img/download.png);
+  background-color: #3b94c7;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
 body .container #media section.images-section .content.thumbs .image-container {
   width: 100px;
   height: 100px;
   margin: 5px;
   float: left;
+  position: relative;
 }
-body .container #media section.images-section .content.thumbs .image-container .image {
+body .container #media section.images-section .content.thumbs .image-container label .image-checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  margin: 0px;
+}
+body .container #media section.images-section .content.thumbs .image-container label .image {
   width: 100px;
   height: 100px;
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: auto;
   float: left;
 }
-body .container #media section.images-section .content.thumbs .image-container .text {
+body .container #media section.images-section .content.thumbs .image-container label .text {
   display: none;
+}
+body .container #media section.images-section .content.thumbs .image-container label .dimensions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+}
+body .container #media section.images-section .content.thumbs .image-container .download-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 body .container #media section.images-section .content.list .image-container {
   width: 100%;
@@ -87,13 +128,17 @@ body .container #media section.images-section .content.list .image-container {
   margin: 5px 0px;
   float: left;
 }
-body .container #media section.images-section .content.list .image-container .image-checkbox {
+body .container #media section.images-section .content.list .image-container label {
+  height: 50px;
+  margin: 0;
+}
+body .container #media section.images-section .content.list .image-container label .image-checkbox {
   float: left;
   width: 15px;
   height: 15px;
   margin: 17px;
 }
-body .container #media section.images-section .content.list .image-container .image {
+body .container #media section.images-section .content.list .image-container label .image {
   width: 50px;
   height: 50px;
   background-position: center center;
@@ -102,11 +147,23 @@ body .container #media section.images-section .content.list .image-container .im
   float: left;
   margin: 0px 5px;
 }
-body .container #media section.images-section .content.list .image-container .text {
+body .container #media section.images-section .content.list .image-container label .text {
   width: auto;
   height: 50px;
   line-height: 50px;
   float: left;
-  margin: 5px;
+  margin: 0px 5px;
+}
+body .container #media section.images-section .content.list .image-container label .dimensions {
+  float: left;
+  line-height: 50px;
+  height: 50px;
+}
+body .container #media section.images-section .content.list .image-container .download-button {
+  float: right;
+  margin: 15px 0px;
+}
+body .container #media section.images-section .content.list .image-container:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
 /*# sourceMappingURL=style.css.map */

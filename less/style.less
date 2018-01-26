@@ -4,13 +4,13 @@ body{
     .container {
         max-height: 600px;
         min-height: 300px;
-        width: 400px;
+        width: 500px;
         background: white;
         #status {
             white-space: pre;
             text-overflow: ellipsis;
             overflow: hidden;
-            max-width: 400px;
+            max-width: 500px;
         }
         #media{
             width: 100%;
@@ -57,6 +57,17 @@ body{
                     .filters, .content{
                         display: block;
                     }
+                    .filters{
+                        button{
+                            &.view{
+                                border: 1px solid #000;
+                                background: #fff;
+                                &.active{
+                                    border-color: blue;
+                                }
+                            }
+                        }
+                    }
                 }
                 &:not(.opened){
                     .header{
@@ -72,22 +83,60 @@ body{
                 }
                 &.images-section{
                     .content{
+                        .image-container{
+                            label{
+                                float: left;
+                                font-weight: normal;
+                            }
+                            .download-button{
+                                background-image: url(../img/download.png);
+                                background-color: #3b94c7;
+                                background-position: center;
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                width: 20px;
+                                height: 20px;
+                                cursor: pointer;
+                            }
+                        }
                         &.thumbs{
                             .image-container{
                                 width: 100px;
                                 height: 100px;
                                 margin: 5px;
                                 float: left;
-                                .image{
-                                    width: 100px;
-                                    height: 100px;
-                                    background-position: center center;
-                                    background-repeat: no-repeat;
-                                    background-size: contain;
-                                    float: left;
+                                position: relative;
+                                label{
+                                    .image-checkbox{
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 15px;
+                                        height: 15px;
+                                        margin: 0px;
+                                    }
+                                    .image{
+                                        width: 100px;
+                                        height: 100px;
+                                        background-position: center center;
+                                        background-repeat: no-repeat;
+                                        background-size: auto;
+                                        float: left;
+                                    }
+                                    .text{
+                                        display: none;
+                                    }
+                                    .dimensions{
+                                        position: absolute;
+                                        bottom: 0;
+                                        left: 0;
+                                        background: #fff;
+                                    }
                                 }
-                                .text{
-                                    display: none;
+                                .download-button{
+                                    position: absolute;
+                                    right: 0;
+                                    bottom: 0;
                                 }
                             }
                         }
@@ -97,27 +146,43 @@ body{
                                 height: 50px;
                                 margin: 5px 0px;
                                 float: left;
-                                .image-checkbox{
-                                    float: left;
-                                    width: 15px;
-                                    height: 15px;
-                                    margin: 17px;
-                                }
-                                .image{
-                                    width: 50px;
+                                label{
                                     height: 50px;
-                                    background-position: center center;
-                                    background-repeat: no-repeat;
-                                    background-size: contain;
-                                    float: left;
-                                    margin: 0px 5px;
+                                    margin: 0;
+                                    .image-checkbox{
+                                        float: left;
+                                        width: 15px;
+                                        height: 15px;
+                                        margin: 17px;
+                                    }
+                                    .image{
+                                        width: 50px;
+                                        height: 50px;
+                                        background-position: center center;
+                                        background-repeat: no-repeat;
+                                        background-size: contain;
+                                        float: left;
+                                        margin: 0px 5px;
+                                    }
+                                    .text{
+                                        width: auto;
+                                        height: 50px;
+                                        line-height: 50px;
+                                        float: left;
+                                        margin: 0px 5px;
+                                    }
+                                    .dimensions{
+                                        float: left;
+                                        line-height: 50px;
+                                        height: 50px;
+                                    }
                                 }
-                                .text{
-                                    width: auto;
-                                    height: 50px;
-                                    line-height: 50px;
-                                    float: left;
-                                    margin: 5px;
+                                .download-button{
+                                    float: right;
+                                    margin: 15px 0px;
+                                }
+                                &:hover{
+                                    background: rgba(0,0,0,0.1);
                                 }
                             }
                         }

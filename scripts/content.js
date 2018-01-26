@@ -6,15 +6,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         video: [],
         audio: []
     };
-    [].forEach.call(listElements, function (header) {
-        switch (header.tagName.toLowerCase()) {
+    [].forEach.call(listElements, function (element) {
+        switch (element.tagName.toLowerCase()) {
             case 'img':
                 var img = {
-                    src: header.src,
-                    alt: header.alt,
-                    title: header.getAttribute('title')
+                    src: element.src,
+                    alt: element.alt,
+                    title: element.getAttribute('title')
                 };
-
                 els.img.push(img);
                 break;
             case 'video':
