@@ -8,6 +8,17 @@ body .container {
   width: 600px;
   background: white;
 }
+body .container h3 img {
+  width: 30px;
+  float: left;
+  margin-right: 10px;
+}
+body .container h3 .refresh {
+  height: 20px;
+  width: 50px;
+  float: right;
+  font-size: 12px;
+}
 body .container #status {
   white-space: pre;
   text-overflow: ellipsis;
