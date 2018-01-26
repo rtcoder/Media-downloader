@@ -8,7 +8,7 @@
         <div class="container">
             <div class="page-header">
                 <h3>Media Downloader</h3>
-                <button class="btn btn-primary" id="changelinks">Change</button>
+                <button class="" id="changelinks">refresh</button>
                 <p id="status"></p>
                 <div class="form-group">
                     <!--<label for="checkbox-videos">videos <input type="checkbox" id="checkbox-videos" class="type-checkbox" data-type="videos" checked></label>-->
@@ -27,14 +27,24 @@
                         <div class="show-hide"></div>
                     </div>
                     <div class="filters">
-                        <label for="select-images">select all <input type="checkbox" id="select-images"></label>
-                        <button class="btn btn-success">Download selected</button>
-                        <div class="button-group pull-right">
-                            <button class="view active" id="list-view">List</button>
-                            <button class="view" id="thumbnails-view">Thumbnails</button>
-                        </div>
+                        <button class="download-selected-images">Download selected</button>
                     </div>
-                    <div class="content list"></div>
+                    <div class="content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <label for="select-images">all <input type="checkbox" id="select-images"></label>
+                                    </th>
+                                    <th>Image</th>
+                                    <th>Dimensions</th>
+                                    <th>Size</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
                 </section>
                 <!--<section>
                         video

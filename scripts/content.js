@@ -1,7 +1,6 @@
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     var listElements = document.querySelectorAll(request.search_for);
     var els = {
-        a: [],
         img: [],
         video: [],
         audio: []
