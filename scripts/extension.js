@@ -24,14 +24,16 @@ function bytesToSize(bytes) {
         return `${bytes} ${sizes[i]}`;
     return `${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`;
 }
-function getImageSizeInBytes(imgURL) {
-    var request = new XMLHttpRequest();
-    request.open("HEAD", imgURL, false);
-    request.send(null);
-    var headerText = request.getAllResponseHeaders();
-    var re = /Content\-Length\s*:\s*(\d+)/i;
-    re.exec(headerText);
-    return parseInt(RegExp.$1);
+function getImageSizeData(imgURL, callback) {
+    $.ajax({
+        method: 'GET',
+        url: imgURL
+    }).success(function (data, textStatus, request) {
+        callback({
+            size: request.getResponseHeader('Content-Length'),
+            status: request.status
+        });
+    });
 }
 function hashCode(str) {
     return str.split('').reduce((prevHash, currVal) =>
@@ -52,6 +54,10 @@ function search_content() {
     chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, {search_for: search_for.join(', ')}, function (response) {
             let images = [];
+
+            if (!response || typeof response === 'undefined') {
+                return;
+            }
             for (let j in response.elements.img) {
                 let found = images.find(function (element) {
                     return element.src === response.elements.img[j].src;
@@ -60,6 +66,7 @@ function search_content() {
                     images.push(response.elements.img[j]);
                 }
             }
+            let errors = 0;
             for (let i in images) {
                 if (images[i].src === "") {
                     continue;
@@ -74,9 +81,16 @@ function search_content() {
                 images[i].image = new Image();
                 images[i].image.src = images[i].src;
                 images[i].image.onload = function () {
-                    $('tr[data-id=' + id + '] .dimensions').html(images[i].image.width + "px &times " + images[i].image.height + "px");
-                    $('tr[data-id=' + id + '] .size').text(bytesToSize(getImageSizeInBytes(images[i].image.src)));
-                    $('tr[data-id=' + id + '] .loader').remove();
+                    getImageSizeData(images[i].image.src, function (data) {
+                        $('tr[data-id=' + id + '] .dimensions').html(images[i].image.width + "px &times " + images[i].image.height + "px");
+                        $('tr[data-id=' + id + '] .size').text(bytesToSize(data.size));
+                        $('tr[data-id=' + id + '] .loader').remove();
+                    });
+                };
+                images[i].image.onerror = function () {
+                    $('tr[data-id=' + id + ']').remove();
+                    errors++;
+                    $('section.images-section .title span.count').text(images.length - errors);
                 };
 
                 let row = '<tr data-id="' + id + '">\n\
@@ -97,7 +111,7 @@ function search_content() {
 
                 $('section.images-section .content table tbody').append(row);
             }
-            $('section.images-section .title span.count').text('(' + images.length + ')');
+            $('section.images-section .title span.count').text(images.length);
         });
     });
 }
