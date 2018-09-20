@@ -8,7 +8,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     [].forEach.call(listElements, function (element) {
         switch (element.tagName.toLowerCase()) {
             case 'img':
-                var img = {
+                let img = {
                     src: element.src,
                     alt: element.alt,
                     title: element.getAttribute('title')
@@ -21,6 +21,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                 break;
         }
     });
-    sendResponse({data: request.data, elements: els, success: true});
+    sendResponse({data: request.data, search: request.search_for, elements: els, success: true});
 });
 

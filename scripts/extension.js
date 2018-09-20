@@ -54,7 +54,6 @@ function search_content() {
     chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, {search_for: search_for.join(', ')}, function (response) {
             let images = [];
-
             if (!response || typeof response === 'undefined') {
                 return;
             }
