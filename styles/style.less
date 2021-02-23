@@ -1,0 +1,189 @@
+body {
+  font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+  font-size: 100%;
+
+  .container {
+    max-height: 600px;
+    min-height: 300px;
+    width: 600px;
+    background: white;
+
+    h3 {
+      img {
+        width: 30px;
+        float: left;
+        margin-right: 10px;
+      }
+
+      .refresh {
+        height: 20px;
+        width: 50px;
+        float: right;
+        font-size: 12px;
+      }
+    }
+
+    #status {
+      white-space: pre;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 500px;
+    }
+
+    #media {
+      width: 100%;
+      height: auto;
+
+      section {
+        width: 100%;
+        height: auto;
+        float: left;
+
+        .header {
+          width: 100%;
+          float: left;
+          height: auto;
+          background: #eee;
+          line-height: 25px;
+          padding: 0 10px;
+
+          .title {
+            width: 50%;
+            float: left;
+          }
+
+          .show-hide {
+            float: right;
+            position: relative;
+
+            &::after {
+              position: absolute;
+              width: 30px;
+              height: 30px;
+              line-height: 30px;
+              text-align: center;
+              cursor: pointer;
+              font-weight: bold;
+              right: -10px;
+              font-size: 20px;
+            }
+          }
+        }
+
+        &.opened {
+          .header {
+            .show-hide {
+              &::after {
+                content: '-';
+              }
+            }
+          }
+
+          .filters, .content {
+            display: block;
+          }
+
+          .filters {
+            button {
+            }
+          }
+        }
+
+        &:not(.opened) {
+          .header {
+            .show-hide {
+              &::after {
+                content: '+';
+              }
+            }
+          }
+
+          .filters, .content {
+            display: none;
+          }
+        }
+
+        &.images-section {
+          .content {
+            tr {
+              td {
+                background: #eee;
+                position: relative;
+
+                &:first-child {
+                  max-width: 50px;
+                }
+
+                .download-image-button {
+                  background-image: url(../img/download.png);
+                  background-color: #3b94c7;
+                  background-position: center;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                  width: 20px;
+                  height: 20px;
+                  cursor: pointer;
+                  float: left;
+                  margin: 15px 0px;
+                }
+
+                padding: 5px;
+
+                label {
+                  width: 100%;
+                  height: 50px;
+                  line-height: 50px;
+                  cursor: pointer;
+                  margin: 0;
+
+                  .image-checkbox {
+                    float: left;
+                    width: 15px;
+                    height: 15px;
+                    margin: 17px;
+                  }
+                }
+
+                .loader {
+                  width: 50px;
+                  height: 50px;
+                  background-image: url(../img/loader.gif);
+                  background-position: center center;
+                  background-repeat: no-repeat;
+                  background-size: contain;
+                  position: absolute;
+                  margin-left: 5px;
+                  z-index: 1;
+                }
+
+                .image {
+                  width: 50px;
+                  height: 50px;
+                  background-position: center center;
+                  background-repeat: no-repeat;
+                  background-size: contain;
+                  position: absolute;
+                  margin: 0px 5px;
+                  z-index: 2;
+                }
+
+                .text {
+                  width: auto;
+                  height: 50px;
+                  line-height: 50px;
+                  float: left;
+                  margin: 0px 5px 0px 60px;
+                }
+
+                &.size,
+                &.dimensions {
+                  line-height: 50px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
