@@ -1,153 +1,136 @@
-let urls = [];
-
-function downloadAll(urls) {
-  const link = document.createElement('a');
-
-  link.setAttribute('download', null);
-  link.style.display = 'none';
-
-  document.body.appendChild(link);
-
-  for (let i = 0; i < urls.length; i++) {
-    link.setAttribute('href', urls[i]);
-    link.click();
-  }
-
-  document.body.removeChild(link);
-}
-
-function bytesToSize(bytes) {
-  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-  if (bytes === 0) {
-    return 'n/a';
-  }
-  const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10);
-  if (i === 0) {
-    return `${bytes} ${sizes[i]}`;
-  }
-  return `${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`;
-}
-
-function getImageSizeData(imgURL, callback) {
-  $.ajax({
-    method: 'GET',
-    url: imgURL
-  }).success((data, textStatus, request) => {
-    callback({
-      size: request.getResponseHeader('Content-Length'),
-      status: request.status
-    });
-  });
-}
-
-function hashCode(str) {
-  return str.split('').reduce((prevHash, currVal) =>
-      ((prevHash << 5) - prevHash) + currVal.charCodeAt(0), 0);
-}
+const getRowTemplate = ({id, imgSource, title, text}) => {
+  return `<tr data-id="${id}">
+            <td>
+                <label>
+                    <input type="checkbox" data-id="${id}" class="image-checkbox" id="${id}">
+                </label>
+            </td>
+            <td>
+                <div class="name">
+                  <img src="${imgSource}" alt="${title}">
+                  <p class="text" title="${imgSource}">${text}</p>
+                </div>
+            </td>
+            <td class="dimensions"></td>
+            <td class="size"></td>
+            <td>
+                <a href="${imgSource}" download="${text}" data-id="${id}" class="download-image-button"></a>
+            </td>
+        </tr>`;
+};
 
 function search_content() {
-  var search_for = [];
-  if ($('#checkbox-images').is(":checked")) {
+  const search_for = [];
+
+  if (q('#checkbox-images:checked') !== null) {
     search_for.push('img');
   }
-  if ($('#checkbox-videos').is(":checked")) {
+  if (q('#checkbox-videos:checked') !== null) {
     search_for.push('video');
   }
-  if ($('#checkbox-music').is(":checked")) {
+  if (q('#checkbox-music:checked') !== null) {
     search_for.push('audio');
   }
-  $('section.images-section .content table tbody').empty();
-  chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {search_for: search_for.join(', ')}, function (response) {
-      let images = [];
-      if (!response || typeof response === 'undefined') {
-        return;
-      }
-      for (let j in response.elements.img) {
-        let found = images.find(function (element) {
-          return element.src === response.elements.img[j].src;
-        });
-        if (typeof found === 'undefined') {
-          images.push(response.elements.img[j]);
-        }
-      }
-      let errors = 0;
-      for (let i in images) {
-        if (images[i].src === "") {
-          continue;
-        }
-        let title = images[i].title ? images[i].title : "";
-        let arr = images[i].src.split('/');
-        let text = arr[arr.length - 1];
-        if (text.length > 20) {
-          text = text.substr(0, 6) + '...' + text.substr(text.length - 6, 6);
-        }
-        let id = hashCode(images[i].src + i);
-        images[i].image = new Image();
-        images[i].image.src = images[i].src;
-        images[i].image.onload = function () {
-          getImageSizeData(images[i].image.src, function (data) {
-            $('tr[data-id=' + id + '] .dimensions').html(images[i].image.width + "px &times " + images[i].image.height + "px");
-            $('tr[data-id=' + id + '] .size').text(bytesToSize(data.size));
-            $('tr[data-id=' + id + '] .loader').remove();
-          });
-        };
-        images[i].image.onerror = function () {
-          $('tr[data-id=' + id + ']').remove();
-          errors++;
-          $('section.images-section .title span.count').text(images.length - errors);
-        };
 
-        const imgSource = images[i].src;
-        let row = `<tr data-id="${id}">
-                    <td>
-                        <label>
-                            <input type="checkbox" class="image-checkbox" id="${id}">
-                        </label>
-                    </td>
-                    <td>
-                        <div class="loader"></div>
-                        <div style="background-image: url(${imgSource})" title="${title}" class="image"></div>
-                        <div class="text" title="${imgSource}">${text}</div>
-                    </td>
-                    <td class="dimensions"></td>
-                    <td class="size"></td>
-                    <td>
-                        <a href="${imgSource}" download="${text}" class="download-image-button"></a>
-                    </td>
-                </tr>`;
+  q('section.images-section .content table tbody').innerHTML = '';
 
-        $('section.images-section .content table tbody').append(row);
-      }
-      $('section.images-section .title span.count').text(images.length);
-    });
-  });
+  chrome.tabs.query({
+        active: true,
+        currentWindow: true
+      },
+      tabs => {
+        chrome.tabs.sendMessage(
+            tabs[0].id,
+            {search_for: search_for.join(', ')},
+            response => {
+              let images = [];
+              if (!response || typeof response === 'undefined') {
+                return;
+              }
+
+              for (const img of response.elements.img) {
+                const found = images.find(element => element.src === img.src);
+                if (typeof found === 'undefined') {
+                  images.push(img);
+                }
+              }
+
+              let errors = 0;
+              for (let i in images) {
+                if (!images.hasOwnProperty(i) || images[i].src === '') {
+                  continue;
+                }
+
+                const {title, src: imgSource} = images[i];
+
+                const arr = images[i].src.split('/');
+                const text = arr[arr.length - 1];
+                const id = hashCode(images[i].src + i);
+
+                images[i].image = new Image();
+                images[i].image.src = imgSource;
+
+                images[i].image.onload = (img) => {
+                  console.log(img);
+                  getImageSizeData(imgSource, data => {
+                    const {width, height} = images[i].image;
+                    q(`tr[data-id="${id}"] .dimensions`).innerHTML = `${width}px &times ${height}px`;
+                    q(`tr[data-id="${id}"] .size`).innerText = bytesToSize(data.size);
+                  });
+                };
+
+                images[i].image.onerror = () => {
+                  q(`tr[data-id="${id}"]`).remove();
+                  errors++;
+
+                  q('section.images-section .title span.count').innerText = (images.length - errors);
+                };
+
+                const row = getRowTemplate({id, imgSource, text, title});
+
+                q('section.images-section .content table tbody').innerHTML += row;
+              }
+
+              q('section.images-section .title span.count').innerText = images.length;
+            });
+      });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  $('.show-hide').click(function () {
-    $(this).parents('section').toggleClass('opened');
-  });
-  $('.type-checkbox').change(function () {
-    if ($(this).is(":checked")) {
-      $('section.' + $(this).data('type') + '-section').show();
-    } else {
-      $('section.' + $(this).data('type') + '-section').hide();
-    }
-  });
-  $('#select-images').change(function () {
-    $('.image-checkbox').prop('checked', $(this).is(':checked'));
+document.addEventListener('DOMContentLoaded', () => {
+  q('.show-hide').addEventListener('click', ({target}) => {
+    const classTarget = target.getAttribute('data-toggle');
+    toggleClass(classTarget, 'opened');
   });
 
-  $('.download-selected-images').click(function () {
-    urls = [];
-    $('.image-checkbox:checked').each(function () {
-      let url = $(this).parents('tr').find('.download-image-button').attr('href');
+  [...qAll('.type-checkbox')].forEach(node =>
+      node.addEventListener('change', ({target}) => {
+        const typeClass = target.getAttribute('data-type') + '-section';
+        if (target.checked) {
+          q(`section.${typeClass}`).style.display = 'block';
+        } else {
+          q(`section.${typeClass}`).style.display = 'none';
+        }
+      })
+  );
+
+  q('#select-images').addEventListener('change', ({target: {checked}}) => {
+    qAll('.image-checkbox').forEach(node => node.checked = checked);
+  });
+
+  q('.download-selected-images').addEventListener('click', () => {
+    const urls = [];
+
+    [...qAll('.image-checkbox:checked')].forEach(node => {
+      const dataId = node.getAttribute('data-id');
+      const url = q(`.download-image-button[data-id="${dataId}"]`).getAttribute('href');
       urls.push(url);
     });
+
     downloadAll(urls);
   });
-  $('.refresh').click(search_content);
+
+  q('.refresh').addEventListener('click', search_content);
+
   search_content();
 });
 
