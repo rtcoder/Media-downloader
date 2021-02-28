@@ -7,13 +7,27 @@
 </head>
 <body>
 <main>
-  <div id="filters_container">
+  <div id="top-container">
+  <div class="download-container">
     <button
         type="button"
         id="download-btn"
         disabled
     >DOWNLOAD
     </button>
+  </div>
+    <div class="row section-buttons">
+      <button data-section="all" class="selected">All</button>
+      <button data-section="images">Images</button>
+      <button data-section="videos">Videos</button>
+      <button data-section="audio">Audio</button>
+    </div>
+<!--    <div class="row">-->
+<!--      <label>-->
+<!--        <input type="checkbox" id="toggle_all_checkbox">-->
+<!--        Select all (${allImages.length})-->
+<!--      </label>-->
+<!--    </div>-->
   </div>
 
   <table id="images_table" class="grid"></table>

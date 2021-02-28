@@ -18,6 +18,7 @@
     "128": "/images/icon128.png"
   },
   "web_accessible_resources": [
+    "/images/audio.png",
     "/images/download.png"
   ],
   "background": {

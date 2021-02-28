@@ -7,7 +7,7 @@
 body {
   font: 13px/1.5em 'Lucida Grande', Arial, sans-serif;
   color: #333;
-  padding: 35px 2px 0 0;
+  padding: 100px 0 0 0;
   min-width: 200px;
   min-height: 150px;
 }
@@ -25,12 +25,12 @@ img {
   width: 200px;
   height: 200px;
   box-sizing: border-box;
-  border: 3px solid #f6f6f6;
+  border: 2px solid #b1b1b1;
   object-fit: scale-down;
 }
 
 img:hover {
-  border-color: #ccc;
+  border-color: #4f7077;
 }
 
 img.checked {
@@ -60,10 +60,6 @@ button:disabled {
   opacity: 0.6;
 }
 
-label {
-  display: inline-flex;
-}
-
 .grid {
   width: 100%;
   border-collapse: collapse;
@@ -76,19 +72,15 @@ label {
   position: relative;
 }
 
-#filters_container {
+#top-container {
   position: fixed;
   top: 0;
   box-sizing: border-box;
   width: 100%;
-  padding: 2px 2px 2px 0; /* compensate for browser defaults */
+  padding: 2px 2px 2px 0;
   background: #fff;
   border-bottom: 1px solid #ccc;
   z-index: 10;
-}
-
-#images_table {
-  margin-top: 2px;
 }
 
 .download_image_button {
@@ -101,4 +93,29 @@ label {
   top: 5px;
   left: 7px;
   background-color: #fff;
+  border-radius: 25px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.section-buttons button {
+  margin: 5px;
+  background: transparent;
+  color: #000000;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.section-buttons button.selected {
+  margin: 5px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+}
+
+[hidden] {
+  display: none;
 }

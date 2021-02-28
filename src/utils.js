@@ -5,22 +5,27 @@ const hasClass = (selector, className) => {
   return document.querySelector(selector)?.classList.contains(className) || false;
 };
 const toggleClass = (selector, className, toggleValue = null) => {
-  const element = document.querySelector(selector);
-  if (!element) {
+  const elements = document.querySelectorAll(selector);
+  if (!elements) {
     return;
   }
   if (toggleValue === null) {
-    if (element.classList.contains(className)) {
-      element.classList.remove(className);
-    } else {
-      element.classList.add(className);
-    }
+    [...elements].forEach(element => {
+      if (element.classList.contains(className)) {
+        element.classList.remove(className);
+      } else {
+        element.classList.add(className);
+      }
+    });
   } else {
     if (toggleValue) {
-      element.classList.add(className);
+      [...elements].forEach(element => element.classList.add(className));
     } else {
-      element.classList.remove(className);
+      [...elements].forEach(element => element.classList.remove(className));
     }
   }
 };
-const getImageSelector = index => `.img-preview[data-image-index="${index}"]`;
+const getImageSelector = index => `.thumbnail[data-item-index="${index}"]`;
+
+const hide = selector => [...document.querySelectorAll(selector)].forEach(node => node.hidden = true);
+const show = selector => [...document.querySelectorAll(selector)].forEach(node => node.hidden = false);
