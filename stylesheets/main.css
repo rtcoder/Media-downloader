@@ -96,7 +96,7 @@ button:disabled {
 
 .download_image_button {
   width: 25px;
-  background-size: 25px;
+  background-size: 22px;
   background-repeat: no-repeat;
   background-position: center center;
   background-image: url(/images/download.png);
@@ -104,7 +104,6 @@ button:disabled {
   top: 5px;
   left: 7px;
   background-color: #fff;
-  border-radius: 25px;
 }
 
 .row {

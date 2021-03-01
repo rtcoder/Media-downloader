@@ -148,14 +148,14 @@ function displayMedia() {
           case 'video':
             cell += `<img class="thumbnail"
                    data-item-index="${index}"
-                   src="/images/video.png"/>
+                   src="/images/film.png"/>
                    <p title="${name}">${name}</p>
           `;
             break;
           case 'audio':
             cell += `<img class="thumbnail"
                    data-item-index="${index}"
-                   src="/images/audio.png"/>
+                   src="/images/music.png"/>
                    <p title="${name}">${name}</p>
           `;
         }

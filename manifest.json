@@ -1,6 +1,6 @@
 {
-  "name": "Image Downloader",
-  "description": "Browse and download images on a web page.",
+  "name": "Media Downloader",
+  "description": "Browse and download images, video and audio on a web page.",
   "version": "1.0.0",
   "author": "Dawid Jeż",
   "minimum_chrome_version": "31",
@@ -19,7 +19,8 @@
     "128": "/images/icon128.png"
   },
   "web_accessible_resources": [
-    "/images/audio.png",
+    "/images/music.png",
+    "/images/film.png",
     "/images/download.png"
   ],
   "background": {
