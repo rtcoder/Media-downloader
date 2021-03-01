@@ -72,6 +72,17 @@ button:disabled {
   position: relative;
 }
 
+.grid td p {
+  position: absolute;
+  padding: 10px 5px;
+  bottom: 0;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+}
+
 #top-container {
   position: fixed;
   top: 0;

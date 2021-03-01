@@ -136,7 +136,7 @@ function displayMedia() {
         cell = `<td style="width: ${columnWidth};"></td>`;
       } else {
         const {src, type} = mediaToDisplay[index];
-
+        const name = getNameFromUrl(src);
         cell = `<td style="width: ${columnWidth};">
                   <button type="button" title="Download" class="download_image_button"
                           data-img-src="${src}"
@@ -149,12 +149,14 @@ function displayMedia() {
             cell += `<img class="thumbnail"
                    data-item-index="${index}"
                    src="/images/video.png"/>
+                   <p title="${name}">${name}</p>
           `;
             break;
           case 'audio':
             cell += `<img class="thumbnail"
                    data-item-index="${index}"
                    src="/images/audio.png"/>
+                   <p title="${name}">${name}</p>
           `;
         }
 
