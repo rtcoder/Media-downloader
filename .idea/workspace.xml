@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stylesheets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheets/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +67,7 @@
       <workItem from="1614179371536" duration="614000" />
       <workItem from="1614242275264" duration="4584000" />
       <workItem from="1614364131853" duration="16474000" />
-      <workItem from="1614584842589" duration="1726000" />
+      <workItem from="1614584842589" duration="1782000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -92,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614587607577</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="audio and video name">
+      <created>1614587949591</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1614587949591</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,7 +119,8 @@
     <MESSAGE value="new extension" />
     <MESSAGE value="download audio and video" />
     <MESSAGE value="change media type" />
-    <option name="LAST_COMMIT_MESSAGE" value="change media type" />
+    <MESSAGE value="audio and video name" />
+    <option name="LAST_COMMIT_MESSAGE" value="audio and video name" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
