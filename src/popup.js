@@ -129,34 +129,37 @@ function displayMedia() {
     let images_row = '<tr>';
     for (let columnIndex = 0; columnIndex < columns; columnIndex++) {
       const index = rowIndex * columns + columnIndex;
-      if (index === mediaToDisplay.length) {
-        break;
-      }
 
-      const {src, type} = mediaToDisplay[index];
+      let cell;
 
-      let cell = `<td style="width: ${columnWidth};">
+      if (index >= mediaToDisplay.length) {
+        cell = `<td style="width: ${columnWidth};"></td>`;
+      } else {
+        const {src, type} = mediaToDisplay[index];
+
+        cell = `<td style="width: ${columnWidth};">
                   <button type="button" title="Download" class="download_image_button"
                           data-img-src="${src}"
                   ></button>`;
-      switch (type) {
-        case 'image':
-          cell += `<img class="thumbnail" data-item-index="${index}" src="${src}"/>`;
-          break;
-        case 'video':
-          cell += `<img class="thumbnail"
+        switch (type) {
+          case 'image':
+            cell += `<img class="thumbnail" data-item-index="${index}" src="${src}"/>`;
+            break;
+          case 'video':
+            cell += `<img class="thumbnail"
                    data-item-index="${index}"
                    src="/images/video.png"/>
           `;
-          break;
-        case 'audio':
-          cell += `<img class="thumbnail"
+            break;
+          case 'audio':
+            cell += `<img class="thumbnail"
                    data-item-index="${index}"
                    src="/images/audio.png"/>
           `;
-      }
+        }
 
-      cell += `</td>`;
+        cell += `</td>`;
+      }
       images_row += cell;
     }
     images_row += '</tr>';
@@ -214,7 +217,7 @@ function onClickItem(e) {
 }
 
 function downloadItem(url) {
-  console.log({url})
+  console.log({url});
   chrome.downloads.download({url});
 }
 
@@ -242,3 +245,9 @@ chrome.windows.getCurrent((currentWindow) => {
 });
 
 document.getElementById('download-btn').addEventListener('click', downloadImages);
+document.querySelectorAll('.section-buttons button').forEach(button =>
+    button.addEventListener('click', e => {
+      selectSection(e.target.getAttribute('data-section'));
+      displayMedia();
+    })
+);

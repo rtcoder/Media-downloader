@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/images/audio.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/video.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/defaults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/defaults.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stylesheets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheets/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/popup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +41,6 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/images" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -74,7 +67,8 @@
       <workItem from="1614160870365" duration="5347000" />
       <workItem from="1614179371536" duration="614000" />
       <workItem from="1614242275264" duration="4584000" />
-      <workItem from="1614364131853" duration="16294000" />
+      <workItem from="1614364131853" duration="16474000" />
+      <workItem from="1614584842589" duration="1323000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -83,7 +77,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614452617804</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="download audio and video">
+      <created>1614523641071</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1614523641071</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,7 +104,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new extension" />
-    <option name="LAST_COMMIT_MESSAGE" value="new extension" />
+    <MESSAGE value="download audio and video" />
+    <option name="LAST_COMMIT_MESSAGE" value="download audio and video" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
