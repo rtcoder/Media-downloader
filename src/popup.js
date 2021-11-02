@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener((result) => {
   if (result.error) {
     /// error
     console.log(result);
-    return;
+    // return;
   }
   result.images.forEach((image) => {
     if (!media.images.includes(image)) {
@@ -78,22 +78,25 @@ function manageVisibleSections() {
 function getAllMediaToDisplay() {
   const mediaToDisplay = [];
   const currentSection = getCurrentSection();
+  console.log({currentSection});
+  console.log({media});
   switch (currentSection) {
     case 'all':
-      media.images.forEach(src => mediaToDisplay.push({src, type: 'image'}));
-      media.videos.forEach(src => mediaToDisplay.push({src, type: 'video'}));
-      media.audios.forEach(src => mediaToDisplay.push({src, type: 'audio'}));
+      media.images.forEach(({src}) => mediaToDisplay.push({src, type: 'image'}));
+      media.videos.forEach(({src, poster}) => mediaToDisplay.push({src, poster, type: 'video'}));
+      media.audios.forEach(({src}) => mediaToDisplay.push({src, type: 'audio'}));
       break;
     case 'images':
-      media.images.forEach(src => mediaToDisplay.push({src, type: 'image'}));
+      media.images.forEach(({src}) => mediaToDisplay.push({src, type: 'image'}));
       break;
     case 'videos':
-      media.videos.forEach(src => mediaToDisplay.push({src, type: 'video'}));
+      media.videos.forEach(({src, poster}) => mediaToDisplay.push({src, poster, type: 'video'}));
       break;
     case 'audio':
-      media.audios.forEach(src => mediaToDisplay.push({src, type: 'audio'}));
+      media.audios.forEach(({src}) => mediaToDisplay.push({src, type: 'audio'}));
       break;
   }
+  console.log({mediaToDisplay});
   return mediaToDisplay;
 }
 
@@ -135,7 +138,7 @@ function displayMedia() {
       if (index >= mediaToDisplay.length) {
         cell = `<td style="width: ${columnWidth};"></td>`;
       } else {
-        const {src, type} = mediaToDisplay[index];
+        const {src, poster, type} = mediaToDisplay[index];
         const name = getNameFromUrl(src);
         cell = `<td style="width: ${columnWidth};">
                   <button type="button" title="Download" class="download_image_button"
@@ -148,7 +151,7 @@ function displayMedia() {
           case 'video':
             cell += `<img class="thumbnail"
                    data-item-index="${index}"
-                   src="/images/film.png"/>
+                   src="${poster}"/>
                    <p title="${name}">${name}</p>
           `;
             break;

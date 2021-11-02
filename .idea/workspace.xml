@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="manifest.json">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/audio.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/download.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/download.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icon128.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/icon128.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icon16.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/icon16.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icon48.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/icon48.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/video.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stylesheets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheets/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/send_media.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/send_media.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/popup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +74,7 @@
       <workItem from="1614584842589" duration="3436000" />
       <workItem from="1614591722025" duration="19000" />
       <workItem from="1614593381455" duration="792000" />
+      <workItem from="1635887282574" duration="3280000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>

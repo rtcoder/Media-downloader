@@ -29,13 +29,13 @@
 
     extractImageFromElement(element) {
       if (element.tagName.toLowerCase() === 'img') {
-        return imageDownloader.getSrcFromElement(element);
+        return {src: imageDownloader.getSrcFromElement(element)};
       }
 
       if (element.tagName.toLowerCase() === 'a') {
         const href = element.href;
         if (imageDownloader.isImageURL(href)) {
-          return href;
+          return {src: href};
         }
       }
 
@@ -43,37 +43,44 @@
       if (backgroundImage) {
         const parsedURL = imageDownloader.extractURLFromStyle(backgroundImage);
         if (imageDownloader.isImageURL(parsedURL)) {
-          return parsedURL;
+          return {src: parsedURL};
         }
       }
 
-      return '';
+      return {src: ''};
     },
     extractVideoFromElement(element) {
       if (element.tagName.toLowerCase() === 'video') {
-        return imageDownloader.getSrcFromElement(element);
+        console.log('video');
+        return {
+          src: imageDownloader.getSrcFromElement(element),
+          poster: imageDownloader.getPosterFromVideoElement(element)
+        };
       }
 
       if (element.tagName.toLowerCase() === 'a') {
         const href = element.href;
         if (imageDownloader.isVideoURL(href)) {
-          return href;
+          return {
+            src: href,
+            poster: null
+          };
         }
       }
-      return '';
+      return {src: '', poster: null};
     },
     extractAudioFromElement(element) {
       if (element.tagName.toLowerCase() === 'audio') {
-        return imageDownloader.getSrcFromElement(element);
+        return {src: imageDownloader.getSrcFromElement(element)};
       }
 
       if (element.tagName.toLowerCase() === 'a') {
         const href = element.href;
         if (imageDownloader.isAudioURL(href)) {
-          return href;
+          return {src: href};
         }
       }
-      return '';
+      return {src: ''};
     },
 
     extractURLFromStyle(url) {
@@ -103,17 +110,22 @@
       return src;
     },
 
-    removeDuplicateOrEmpty(images) {
-      const hash = {};
-      for (let i = 0; i < images.length; i++) {
-        hash[images[i]] = 0;
+    getPosterFromVideoElement(element) {
+      let poster = element.getAttribute('poster');
+      const hashIndex = poster.indexOf('#');
+      if (hashIndex >= 0) {
+        poster = poster.substr(0, hashIndex);
       }
-      const result = [];
-      for (let key in hash) {
-        if (key !== '') {
-          result.push(key);
-        }
-      }
+      return poster;
+    },
+
+    removeDuplicateOrEmpty(data) {
+
+      let result = [...new Map(data.map(item =>
+          [item.src, item])).values()];
+
+      result = result.filter(({src}) => !!src);
+
 
       return result;
     },
@@ -122,19 +134,33 @@
     imageDownloader.images = imageDownloader.removeDuplicateOrEmpty([
           ...imageDownloader.extractImagesFromTags(),
           ...imageDownloader.extractImagesFromStyles()
-        ].map(imageDownloader.relativeUrlToAbsolute)
+        ].map(({src}) => {
+          return {
+            src: imageDownloader.relativeUrlToAbsolute(src)
+          };
+        })
     );
     imageDownloader.videos = imageDownloader.removeDuplicateOrEmpty(
         imageDownloader.extractVideosFromTags()
-            .map(imageDownloader.relativeUrlToAbsolute)
+            .map(({src, poster}) => {
+              return {
+                src: imageDownloader.relativeUrlToAbsolute(src),
+                poster: poster ? imageDownloader.relativeUrlToAbsolute(poster) : null
+              };
+            })
     );
 
     imageDownloader.audios = imageDownloader.removeDuplicateOrEmpty(
         imageDownloader.extractAudiosFromTags()
-            .map(imageDownloader.relativeUrlToAbsolute)
+            .map(({src}) => {
+              return {
+                src: imageDownloader.relativeUrlToAbsolute(src)
+              };
+            })
     );
   } catch (err) {
-    imageDownloader.error = err;
+    console.log({err});
+    imageDownloader.error = {...err};
   }
 
   chrome.runtime.sendMessage({
