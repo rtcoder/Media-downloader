@@ -8,7 +8,7 @@ body {
   font: 13px/1.5em 'Lucida Grande', Arial, sans-serif;
   color: #333;
   padding: 100px 0 0 0;
-  min-width: 200px;
+  width: 630px;
   min-height: 150px;
 }
 
@@ -22,8 +22,8 @@ a {
 }
 
 img {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   box-sizing: border-box;
   border: 2px solid #b1b1b1;
   object-fit: scale-down;
@@ -62,17 +62,19 @@ button:disabled {
 
 .grid {
   width: 100%;
-  border-collapse: collapse;
+  display: grid;
+  grid-template-columns: 150px 150px 150px 150px;
+  grid-template-rows: auto;
+  column-gap:10px;
+  row-gap:10px;
 }
 
-.grid td {
-  padding: 0 2px;
-  vertical-align: top;
-  min-width: 200px;
+.grid .item {
+  justify-self: center;
   position: relative;
 }
 
-.grid td p {
+.grid .item p {
   position: absolute;
   padding: 10px 5px;
   bottom: 0;

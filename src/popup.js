@@ -1,17 +1,15 @@
-const ls = localStorage;
 const media = {
   images: [],
   videos: [],
   audios: []
 };
 let mediaToDisplay = [];
-const columns = 3;
 
 chrome.runtime.onMessage.addListener((result) => {
   if (result.error) {
     /// error
     console.log(result);
-    // return;
+    return;
   }
   result.images.forEach((image) => {
     if (!media.images.includes(image)) {
@@ -104,81 +102,41 @@ function getNameFromUrl(url) {
   return url.split('/').pop();
 }
 
+function getThumbnail(item, index) {
+  const {src, poster, type} = item;
+  const name = getNameFromUrl(src);
+  const getImage = (src) => `<img class="thumbnail" data-item-index="${index}" src="${src}" alt=""/>`;
+
+  return {
+    image: getImage(src),
+    video: `${getImage(poster)} <p title="${name}">${name}</p>`,
+    audio: `${getImage('/images/music.png')} <p title="${name}">${name}</p>`,
+  }[type] || '';
+
+}
+
 function displayMedia() {
   setDisabled('#download-btn', true);
 
   mediaToDisplay = getAllMediaToDisplay();
 
-  const images_table = document.querySelector('#images_table');
-  images_table.innerHTML = '';
+  const dataTable = document.querySelector('.grid');
+  const countAll = document.querySelector('.count-all');
+  dataTable.innerHTML = '';
 
-  const toggle_all_checkbox_row = `
-    <tr>
-      <th colspan="${ls.columns}">
-        <label>
-          <input type="checkbox" id="toggle_all_checkbox">
-            Select all (${mediaToDisplay.length})
-        </label>
-      </th>
-    </tr>
-  `;
-  images_table.innerHTML += toggle_all_checkbox_row;
+  countAll.innerHTML = `(${mediaToDisplay.length})`;
 
-  const columnWidth = `${Math.round((100 * 100) / columns) / 100}%`;
-  const rows = Math.ceil(mediaToDisplay.length / columns);
 
-  for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
-    // Images row
-    let images_row = '<tr>';
-    for (let columnIndex = 0; columnIndex < columns; columnIndex++) {
-      const index = rowIndex * columns + columnIndex;
+  for (const index in mediaToDisplay) {
+    const {src} = mediaToDisplay[index];
 
-      let cell;
-
-      if (index >= mediaToDisplay.length) {
-        cell = `<td style="width: ${columnWidth};"></td>`;
-      } else {
-        const {src, poster, type} = mediaToDisplay[index];
-        const name = getNameFromUrl(src);
-        cell = `<td style="width: ${columnWidth};">
-                  <button type="button" title="Download" class="download_image_button"
-                          data-img-src="${src}"
-                  ></button>`;
-        switch (type) {
-          case 'image':
-            cell += `<img class="thumbnail" data-item-index="${index}" src="${src}"/>`;
-            break;
-          case 'video':
-            cell += `<img class="thumbnail"
-                   data-item-index="${index}"
-                   src="${poster}"/>
-                   <p title="${name}">${name}</p>
-          `;
-            break;
-          case 'audio':
-            cell += `<img class="thumbnail"
-                   data-item-index="${index}"
-                   src="/images/music.png"/>
-                   <p title="${name}">${name}</p>
-          `;
-        }
-
-        cell += `</td>`;
-      }
-      images_row += cell;
-    }
-    images_row += '</tr>';
-    images_table.innerHTML += images_row;
+    const item = document.createElement('div');
+    item.classList.add('item');
+    item.innerHTML = `<button type="button" title="Download" class="download_image_button"
+                          data-src="${src}"></button>
+                  ${getThumbnail(mediaToDisplay[index], index)}`;
+    dataTable.append(item);
   }
-  [...document.querySelectorAll('.download_image_button')].forEach(btn =>
-      btn.addEventListener('click', (e) => {
-        downloadItem(e.target.getAttribute('data-img-src'));
-      })
-  );
-  [...document.querySelectorAll('.thumbnail')].forEach(img =>
-      img.addEventListener('click', onClickItem)
-  );
-  document.querySelector('#toggle_all_checkbox').addEventListener('change', changeToggleAllCheckbox);
 }
 
 function changeToggleAllCheckbox(e) {
@@ -250,9 +208,18 @@ chrome.windows.getCurrent((currentWindow) => {
 });
 
 document.getElementById('download-btn').addEventListener('click', downloadImages);
+document.querySelector('.grid').addEventListener('click', e => {
+  if (e.target.classList.contains('download_image_button')) {
+    downloadItem(e.target.getAttribute('data-src'));
+  }
+  if (e.target.classList.contains('thumbnail')) {
+    onClickItem(e);
+  }
+});
 document.querySelectorAll('.section-buttons button').forEach(button =>
     button.addEventListener('click', e => {
       selectSection(e.target.getAttribute('data-section'));
       displayMedia();
     })
 );
+document.querySelector('#toggle_all_checkbox').addEventListener('change', changeToggleAllCheckbox);

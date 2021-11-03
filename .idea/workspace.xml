@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="manifest.json">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="add posters to videos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/defaults.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/send_media.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/send_media.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stylesheets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheets/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/popup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +75,7 @@
       <workItem from="1614584842589" duration="3436000" />
       <workItem from="1614591722025" duration="19000" />
       <workItem from="1614593381455" duration="792000" />
-      <workItem from="1635887282574" duration="3280000" />
+      <workItem from="1635887282574" duration="11701000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -111,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614588084978</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add posters to videos">
+      <created>1635890599627</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1635890599627</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,7 +143,8 @@
     <MESSAGE value="change media type" />
     <MESSAGE value="audio and video name" />
     <MESSAGE value="manifest.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="manifest.json" />
+    <MESSAGE value="add posters to videos" />
+    <option name="LAST_COMMIT_MESSAGE" value="add posters to videos" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
