@@ -1,177 +1,178 @@
-(() => {
-  const imageDownloader = {
-    imageRegex: /(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*\.(?:bmp|gif|jpe?g|png|svg|webp))(?:\?([^#]*))?(?:#(.*))?/i,
-    videoRegex: /(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*\.(?:mkv|flv|ogg|ogv|gifv|avi|mov|wmv|rm|rmvb|mp4|m4p|m4v|mpg|mpeg|3gp|3g2|webm))(?:\?([^#]*))?(?:#(.*))?/i,
-    audioRegex: /(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*\.(?:mp3|flac|ogg|wma))(?:\?([^#]*))?(?:#(.*))?/i,
+const imageRegex = /(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*\.(?:bmp|gif|jpe?g|png|svg|webp))(?:\?([^#]*))?(?:#(.*))?/i;
+const videoRegex = /(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*\.(?:mkv|flv|ogg|ogv|gifv|avi|mov|wmv|rm|rmvb|mp4|m4p|m4v|mpg|mpeg|3gp|3g2|webm))(?:\?([^#]*))?(?:#(.*))?/i;
+const audioRegex = /(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*\.(?:mp3|flac|ogg|wma))(?:\?([^#]*))?(?:#(.*))?/i;
 
-    extractImagesFromTags() {
-      return [...document.querySelectorAll('img, a, [style]')]
-          .map(imageDownloader.extractImageFromElement);
-    },
-    extractVideosFromTags() {
-      return [...document.querySelectorAll('video, a')]
-          .map(imageDownloader.extractVideoFromElement);
-    },
-    extractAudiosFromTags() {
-      return [...document.querySelectorAll('audio, a')]
-          .map(imageDownloader.extractAudioFromElement);
-    },
 
-    extractImagesFromStyles() {
-      return [...document.styleSheets]
-          .filter(styleSheet => !!styleSheet.hasOwnProperty('cssRules'))
-          .map(({cssRules}) => [...cssRules])
-          .flat()
-          .filter(({style}) => style && style.backgroundImage)
-          .map(({style}) => imageDownloader.extractURLFromStyle(style.backgroundImage))
-          .filter(url => !!imageDownloader.isImageURL(url));
-    },
+function extractImagesFromTags() {
+    console.log(document);
+    return [...document.querySelectorAll('img, a, [style]')]
+        .map(extractImageFromElement);
+}
 
-    extractImageFromElement(element) {
-      if (element.tagName.toLowerCase() === 'img') {
-        return {src: imageDownloader.getSrcFromElement(element)};
-      }
+function extractVideosFromTags() {
+    return [...document.querySelectorAll('video, a')]
+        .map(extractVideoFromElement);
+}
 
-      if (element.tagName.toLowerCase() === 'a') {
+function extractAudiosFromTags() {
+    return [...document.querySelectorAll('audio, a')]
+        .map(extractAudioFromElement);
+}
+
+function extractImagesFromStyles() {
+    return [...document.styleSheets]
+        .filter(styleSheet => !!styleSheet.hasOwnProperty('cssRules'))
+        .map(({cssRules}) => [...cssRules])
+        .flat()
+        .filter(({style}) => style && style.backgroundImage)
+        .map(({style}) => extractURLFromStyle(style.backgroundImage))
+        .filter(url => !!isImageURL(url));
+}
+
+function extractImageFromElement(element) {
+    if (element.tagName.toLowerCase() === 'img') {
+        return {src: getSrcFromElement(element)};
+    }
+
+    if (element.tagName.toLowerCase() === 'a') {
         const href = element.href;
-        if (imageDownloader.isImageURL(href)) {
-          return {src: href};
+        if (isImageURL(href)) {
+            return {src: href};
         }
-      }
+    }
 
-      const backgroundImage = window.getComputedStyle(element).backgroundImage;
-      if (backgroundImage) {
-        const parsedURL = imageDownloader.extractURLFromStyle(backgroundImage);
-        if (imageDownloader.isImageURL(parsedURL)) {
-          return {src: parsedURL};
+    const backgroundImage = window.getComputedStyle(element).backgroundImage;
+    if (backgroundImage) {
+        const parsedURL = extractURLFromStyle(backgroundImage);
+        if (isImageURL(parsedURL)) {
+            return {src: parsedURL};
         }
-      }
+    }
 
-      return {src: ''};
-    },
-    extractVideoFromElement(element) {
-      if (element.tagName.toLowerCase() === 'video') {
+    return {src: ''};
+}
+
+function extractVideoFromElement(element) {
+    if (element.tagName.toLowerCase() === 'video') {
         console.log('video');
         return {
-          src: imageDownloader.getSrcFromElement(element),
-          poster: imageDownloader.getPosterFromVideoElement(element)
+            src: getSrcFromElement(element),
+            poster: getPosterFromVideoElement(element),
         };
-      }
+    }
 
-      if (element.tagName.toLowerCase() === 'a') {
+    if (element.tagName.toLowerCase() === 'a') {
         const href = element.href;
-        if (imageDownloader.isVideoURL(href)) {
-          return {
-            src: href,
-            poster: null
-          };
+        if (isVideoURL(href)) {
+            return {
+                src: href,
+                poster: null,
+            };
         }
-      }
-      return {src: '', poster: null};
-    },
-    extractAudioFromElement(element) {
-      if (element.tagName.toLowerCase() === 'audio') {
-        return {src: imageDownloader.getSrcFromElement(element)};
-      }
+    }
+    return {src: '', poster: null};
+}
 
-      if (element.tagName.toLowerCase() === 'a') {
+function extractAudioFromElement(element) {
+    if (element.tagName.toLowerCase() === 'audio') {
+        return {src: getSrcFromElement(element)};
+    }
+
+    if (element.tagName.toLowerCase() === 'a') {
         const href = element.href;
-        if (imageDownloader.isAudioURL(href)) {
-          return {src: href};
+        if (isAudioURL(href)) {
+            return {src: href};
         }
-      }
-      return {src: ''};
-    },
+    }
+    return {src: ''};
+}
 
-    extractURLFromStyle(url) {
-      return url.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
-    },
+function extractURLFromStyle(url) {
+    return url.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+}
 
-    isImageURL(url) {
-      return url.indexOf('data:image') === 0 || imageDownloader.imageRegex.test(url);
-    },
-    isVideoURL(url) {
-      return url.indexOf('data:video') === 0 || imageDownloader.videoRegex.test(url);
-    },
-    isAudioURL(url) {
-      return url.indexOf('data:audio') === 0 || imageDownloader.audioRegex.test(url);
-    },
+function isImageURL(url) {
+    return url.startsWith('data:image') || imageRegex.test(url);
+}
 
-    relativeUrlToAbsolute(url) {
-      return url.indexOf('/') === 0 ? `${window.location.origin}${url}` : url;
-    },
+function isVideoURL(url) {
+    return url.startsWith('data:video') || videoRegex.test(url);
+}
 
-    getSrcFromElement(element) {
-      let src = element.src;
-      const hashIndex = src.indexOf('#');
-      if (hashIndex >= 0) {
-        src = src.substr(0, hashIndex);
-      }
-      return src;
-    },
+function isAudioURL(url) {
+    return url.startsWith('data:audio') || audioRegex.test(url);
+}
 
-    getPosterFromVideoElement(element) {
-      let poster = element.getAttribute('poster');
-      const hashIndex = poster.indexOf('#');
-      if (hashIndex >= 0) {
-        poster = poster.substr(0, hashIndex);
-      }
-      return poster;
-    },
+function relativeUrlToAbsolute(url) {
+    return url.startsWith('/') ? `${window.location.origin}${url}` : url;
+}
 
-    removeDuplicateOrEmpty(data) {
+function getSrcFromElement(element) {
+    let src = element.src;
+    const hashIndex = src.indexOf('#');
+    if (hashIndex >= 0) {
+        src = src.substring(0, hashIndex + 1);
+    }
+    return src;
+}
 
-      let result = [...new Map(data.map(item =>
-          [item.src, item])).values()];
+function getPosterFromVideoElement(element) {
+    let poster = element.getAttribute('poster');
+    const hashIndex = poster?.indexOf('#');
+    if (hashIndex >= 0) {
+        poster = poster.substring(0, hashIndex + 1);
+    }
+    return poster;
+}
 
-      result = result.filter(({src}) => !!src);
+function removeDuplicateOrEmpty(data) {
 
+    let result = [...new Map(data.map(item => [item.src, item])).values()];
 
-      return result;
-    },
-  };
-  try {
-    imageDownloader.images = imageDownloader.removeDuplicateOrEmpty([
-          ...imageDownloader.extractImagesFromTags(),
-          ...imageDownloader.extractImagesFromStyles()
-        ].map(({src}) => {
-          return {
-            src: imageDownloader.relativeUrlToAbsolute(src)
-          };
-        })
-    );
-    imageDownloader.videos = imageDownloader.removeDuplicateOrEmpty(
-        imageDownloader.extractVideosFromTags()
-            .map(({src, poster}) => {
-              return {
-                src: imageDownloader.relativeUrlToAbsolute(src),
-                poster: poster ? imageDownloader.relativeUrlToAbsolute(poster) : null
-              };
-            })
+    result = result.filter(({src}) => !!src);
+
+    return result;
+}
+
+(() => {
+
+    const result = {
+        error: null,
+        images: null,
+        videos: null,
+        audios: null,
+    };
+
+    // try {
+    result.images = removeDuplicateOrEmpty([
+            ...extractImagesFromTags(),
+            ...extractImagesFromStyles(),
+        ].map(({src}) => ({
+            src: relativeUrlToAbsolute(src),
+        })),
     );
 
-    imageDownloader.audios = imageDownloader.removeDuplicateOrEmpty(
-        imageDownloader.extractAudiosFromTags()
-            .map(({src}) => {
-              return {
-                src: imageDownloader.relativeUrlToAbsolute(src)
-              };
-            })
+    result.videos = removeDuplicateOrEmpty(
+        extractVideosFromTags().map(({src, poster}) => ({
+            src: relativeUrlToAbsolute(src),
+            poster: poster ? relativeUrlToAbsolute(poster) : null,
+        })),
     );
-  } catch (err) {
-    console.log({err});
-    imageDownloader.error = {...err};
-  }
 
-  chrome.runtime.sendMessage({
-    error: imageDownloader.error,
-    images: imageDownloader.images,
-    videos: imageDownloader.videos,
-    audios: imageDownloader.audios,
-  });
+    result.audios = removeDuplicateOrEmpty(
+        extractAudiosFromTags().map(({src}) => ({
+            src: relativeUrlToAbsolute(src),
+        })),
+    );
+    // } catch (err) {
+    //     console.log({err});
+    //     result.error = {...err};
+    // }
 
-  imageDownloader.images = null;
-  imageDownloader.error = null;
-  imageDownloader.videos = null;
-  imageDownloader.audios = null;
+    chrome.runtime.sendMessage({...result});
+
+    result.images = null;
+    result.error = null;
+    result.videos = null;
+    result.audios = null;
 })();
