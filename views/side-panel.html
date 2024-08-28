@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Media Downloader</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <link href="/stylesheets/side-panel/main.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<main>
+  <div class="top">
+    <div id="top-container">
+      <div class="section-buttons">
+        <button data-section="images" class="selected">
+          <img src="/icons/image.svg" alt="images">
+        </button>
+        <button data-section="videos">
+          <img src="/icons/video.svg" alt="videos">
+        </button>
+        <button data-section="audios">
+          <img src="/icons/audio.svg" alt="audio">
+        </button>
+      </div>
+    </div>
+
+    <div class="select-all-container">
+      <label>
+        <input type="checkbox" id="toggle_all_checkbox">
+        Select all <span class="count-all"></span>
+      </label>
+    </div>
+  </div>
+  <div class="accordion"></div>
+
+  <div class="download">
+    <button type="button" id="download-btn" disabled>
+      <img src="/icons/download.svg" alt="download">
+    </button>
+  </div>
+</main>
+
+<script src="/src/utils.js"></script>
+<script src="/src/download-functions.js"></script>
+<script src="/src/dom-functions.js"></script>
+<script src="/src/popup.js"></script>
+</body>
+</html>
+

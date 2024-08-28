@@ -1,0 +1,86 @@
+
+/* Akordeon - kontener */
+.accordion-item {
+    border: 1px solid #ccc;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+/* Nagłówek akordeonu */
+.accordion-header {
+    background-color: #f7f7f7;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Stylizacja przycisku w nagłówku */
+.accordion-header button {
+    background: none;
+    border: none;
+    font-size: 13px;
+    text-align: left;
+    width: 100%;
+    padding: 0;
+    cursor: pointer;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 20px calc(100% - 50px) 20px;
+    height: auto;
+    user-select: none;
+}
+
+.accordion-header button .tab-toggle {
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: relative;
+}
+/* Ikona rozwijania (domyślnie strzałka w dół) */
+.accordion-header button .tab-toggle::after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+    transform: rotate(45deg);
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+    position: absolute;
+}
+
+/* Zmieniona ikona na zwijanie (strzałka w górę) */
+.accordion-item.active button .tab-toggle::after {
+    transform: rotate(-135deg); /* Odwrócenie strzałki */
+}
+
+/* Favicon w nagłówku */
+.accordion-header .favicon {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+}
+
+/* Zawartość akordeonu (ukryta domyślnie) */
+.accordion-collapse {
+    display: none;
+    padding: 15px;
+    background-color: #fff;
+}
+
+/* Pokazanie zawartości akordeonu po kliknięciu */
+.accordion-item.active .accordion-collapse {
+    display: block;
+}
+
+/* Stylizacja elementów wewnątrz zawartości akordeonu */
+.accordion-body .item {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,53 @@
+@import "accordion.css";
+
+.grid img {
+    width: var(--imageSize);
+    height: var(--imageSize);
+    box-sizing: border-box;
+    border: 2px solid #b1b1b1;
+    object-fit: scale-down;
+}
+
+img:hover {
+    border-color: #4f7077;
+}
+
+img.checked {
+    border-color: var(--activeColor);
+}
+
+.grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--imageSize));
+    grid-template-rows: auto;
+    gap: 10px;
+}
+
+.grid .item {
+    justify-self: center;
+    position: relative;
+}
+
+.grid .item p {
+    position: absolute;
+    padding: 10px 5px;
+    bottom: 0;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+}
+
+.download_image_button {
+    width: 25px;
+    background-size: 22px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(/images/download.png);
+    position: absolute;
+    top: 5px;
+    left: 7px;
+    background-color: #fff;
+}

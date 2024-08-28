@@ -1,22 +1,24 @@
 {
   "name": "Media Downloader",
   "description": "Browse and download images, video and audio on a web page.",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "author": "Dawid Jeż",
-  "minimum_chrome_version": "31",
+  "minimum_chrome_version": "88",
   "manifest_version": 3,
   "permissions": [
     "activeTab",
+    "tabs",
+    "sidePanel",
     "downloads",
-    "scripting"
+    "scripting",
+    "contextMenus"
   ],
   "action": {
     "default_icon": {
       "16": "/images/icon16.png",
       "48": "/images/icon48.png",
       "128": "/images/icon128.png"
-    },
-    "default_popup": "/views/popup.html"
+    }
   },
   "icons": {
     "16": "/images/icon16.png",
@@ -26,15 +28,20 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "/images/music.png",
-        "/images/film.png",
-        "/images/download.png"
+        "/icons/*",
+        "/images/*"
       ],
       "matches": [
         "<all_urls>"
       ]
     }
   ],
+  "side_panel": {
+    "default_path": "/views/side-panel.html"
+  },
+  "background": {
+    "service_worker": "/src/background.js"
+  },
   "host_permissions": [
     "https://www.gstatic.com/",
     "<all_urls>"

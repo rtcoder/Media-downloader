@@ -1,0 +1,12 @@
+.section-buttons{
+    display: flex;
+    flex-direction: row;
+}
+.section-buttons button {
+    background: transparent;
+    outline: none;
+}
+
+.section-buttons button.selected {
+    background: var(--activeColor);
+}
