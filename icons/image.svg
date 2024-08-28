@@ -1,0 +1,7 @@
+<svg fill="#000000" height="800px" width="800px" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<g>
+	<path d="M0,2v20h24V2H0z M22,4v11l-5-5l-5,5l-3-3l-7,7V4H22z"/>
+    <circle cx="7" cy="8" r="2"/>
+</g>
+</svg>
