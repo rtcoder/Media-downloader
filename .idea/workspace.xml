@@ -4,15 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="change tables to grid layout">
-      <change afterPath="$PROJECT_DIR$/manifest2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/background.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dom-functions.js" afterDir="false" />
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="manifest V3">
+      <change afterPath="$PROJECT_DIR$/icons/audio.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icons/download.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icons/image.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icons/video.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/download-functions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stylesheets/checkbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stylesheets/side-panel/accordion.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stylesheets/side-panel/grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stylesheets/side-panel/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stylesheets/side-panel/section-buttons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/side-panel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Media-downloader.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Media-downloader.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/film.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/music.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/background.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dom-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/dom-functions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/popup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/send_media.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/send_media.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stylesheets/main.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/popup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +42,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -50,9 +66,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/opt/homebrew/Cellar/php/8.2.7_2/bin/php" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="1otW6F491LYms36WQVXNY5iTmdR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -63,6 +79,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "/Users/dawidjez/projekty/Private/Media-downloader/src",
@@ -71,6 +88,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "JavaScript.Libraries",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -81,6 +99,11 @@
       <recent name="C:\Users\dawid\projects\Media-downloader\images" />
       <recent name="C:\Users\dawid\projects\Media-downloader\icons" />
       <recent name="C:\Users\dawid\projects\Media-downloader\scripts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/stylesheets/side-panel" />
+      <recent name="$PROJECT_DIR$/icons" />
+      <recent name="$PROJECT_DIR$/images" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -107,7 +130,9 @@
       <workItem from="1614591722025" duration="19000" />
       <workItem from="1614593381455" duration="792000" />
       <workItem from="1635887282574" duration="20342000" />
-      <workItem from="1710008446889" duration="15997000" />
+      <workItem from="1710008446889" duration="25514000" />
+      <workItem from="1711219251644" duration="1000" />
+      <workItem from="1724659352615" duration="29397000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -158,7 +183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="manifest V3">
+      <option name="closed" value="true" />
+      <created>1710191094119</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710191094119</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +216,8 @@
     <MESSAGE value="manifest.json" />
     <MESSAGE value="add posters to videos" />
     <MESSAGE value="change tables to grid layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="change tables to grid layout" />
+    <MESSAGE value="manifest V3" />
+    <option name="LAST_COMMIT_MESSAGE" value="manifest V3" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
