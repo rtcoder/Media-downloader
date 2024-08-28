@@ -81,7 +81,6 @@ chrome.runtime.onMessage.addListener(async (result) => {
         });
 
     // try {
-    manageVisibleSections();
     displayMedia();
     // } catch (er) {
     //     console.error(er);
@@ -206,21 +205,6 @@ function getAllMediaToDisplay() {
         const items = getMediaItems(media);
         return {tab, items};
     });
-}
-
-function manageVisibleSections() {
-    let visibleSections = 0;
-
-    mediaTypes
-        // .filter(name => media[name].length)
-        .forEach(name => {
-            selectSection(name);
-            visibleSections++;
-        });
-
-    if (visibleSections > 1) {
-        selectSection('images');
-    }
 }
 
 function displayMedia() {
