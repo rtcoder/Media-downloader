@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Add new download and UI features&#10;&#10;Removed main.css and added new download functionality in download-functions.js. Refactored send_media.js for better filtering of media, added side panel CSS, updated manifest for side panel support, and improved utility functions with JSDoc comments.">
+      <change afterPath="$PROJECT_DIR$/src/chrome-api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/download-functions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/side-panel.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/side-panel.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +118,7 @@
       <workItem from="1635887282574" duration="20342000" />
       <workItem from="1710008446889" duration="25514000" />
       <workItem from="1711219251644" duration="1000" />
-      <workItem from="1724659352615" duration="29683000" />
+      <workItem from="1724659352615" duration="31353000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -229,7 +233,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724875041097</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Add new download and UI features&#10;&#10;Removed main.css and added new download functionality in download-functions.js. Refactored send_media.js for better filtering of media, added side panel CSS, updated manifest for side panel support, and improved utility functions with JSDoc comments.">
+      <option name="closed" value="true" />
+      <created>1724875148429</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1724875148429</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

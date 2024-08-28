@@ -50,6 +50,9 @@ chrome.runtime.onMessage.addListener(async (result) => {
         return;
     }
     const tabInfo = await getCurrentTab();
+    if (!tabInfo) {
+        return;
+    }
     mediaTypes.filter(name => !!result[name])
         .forEach(name => {
             const newMedia = {
@@ -80,11 +83,7 @@ chrome.runtime.onMessage.addListener(async (result) => {
             }
         });
 
-    // try {
     displayMedia();
-    // } catch (er) {
-    //     console.error(er);
-    // }
 });
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
@@ -93,13 +92,11 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     }
 
     if (tab.active && changeInfo.status === 'complete') {
-        executeContentScript();
+        findMedia();
     }
 });
 
-chrome.tabs.onActivated.addListener(() => {
-    executeContentScript();
-});
+chrome.tabs.onActivated.addListener(findMedia);
 
 function changeToggleAllCheckbox(e) {
     const {checked} = e.target;
@@ -274,8 +271,8 @@ function setListeners() {
             return;
         }
 
-        if (target.matches('.section-buttons button')) {
-            selectSection(target.getAttribute('data-section'));
+        if (target.closest('.section-buttons button')) {
+            selectSection(target.closest('.section-buttons button').getAttribute('data-section'));
             displayMedia();
             return;
         }
@@ -299,62 +296,13 @@ function setListeners() {
     document.querySelector('#toggle_all_checkbox').addEventListener('change', changeToggleAllCheckbox);
 }
 
-/**
- * Represents information about a browser tab.
- * @typedef {Object} TabInfo
- * @property {boolean} active - Indicates if the tab is active.
- * @property {boolean} audible - Indicates if the tab is currently producing sound.
- * @property {boolean} autoDiscardable - Indicates if the tab can be automatically discarded.
- * @property {boolean} discarded - Indicates if the tab has been discarded.
- * @property {string} favIconUrl - The URL of the tab's favicon.
- * @property {number} groupId - The ID of the group the tab belongs to.
- * @property {number} height - The height of the tab in pixels.
- * @property {boolean} highlighted - Indicates if the tab is highlighted.
- * @property {number} id - The ID of the tab.
- * @property {boolean} incognito - Indicates if the tab is in incognito mode.
- * @property {number} index - The zero-based index of the tab within its window.
- * @property {number} lastAccessed - The time the tab was last accessed, in milliseconds since the UNIX epoch.
- * @property {Object} mutedInfo - Information about the tab's muted state.
- * @property {boolean} mutedInfo.muted - Indicates if the tab is muted.
- * @property {boolean} pinned - Indicates if the tab is pinned.
- * @property {boolean} selected - Indicates if the tab is selected.
- * @property {string} status - The loading status of the tab (e.g., "complete").
- * @property {string} title - The title of the tab.
- * @property {string} url - The URL of the tab.
- * @property {number} width - The width of the tab in pixels.
- * @property {number} windowId - The ID of the window the tab belongs to.
- */
 
-/**
- * Function that returns information about a browser tab or undefined.
- *
- * @returns {TabInfo|undefined} An object containing tab information, or undefined if the tab does not exist or the data cannot be retrieved.
- */
-async function getCurrentTab() {
-    let queryOptions = {active: true, lastFocusedWindow: true};
-    let [tab] = await chrome.tabs.query(queryOptions);
-    console.log({tab});
-    if (tab.url?.startsWith('chrome://')) {
-        return undefined;
-    }
-
-    return tab;
+function findMedia() {
+    executeContentScript('/src/send_media.js');
 }
 
-async function executeContentScript() {
-    const tab = await getCurrentTab();
-    if (!tab) {
-        return;
-    }
-
-    chrome.scripting.executeScript({
-        target: {tabId: tab.id, allFrames: true},
-        files: ['/src/send_media.js'],
-    });
-}
-
-async function init() {
-    await executeContentScript();
+function init() {
+    findMedia();
     setListeners();
 }
 

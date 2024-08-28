@@ -7,7 +7,7 @@
  */
 function downloadItem(url) {
     console.log({url});
-    chrome.downloads.download({url});
+    downloadUrl(url);
 }
 
 /**
