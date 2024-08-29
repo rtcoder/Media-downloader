@@ -63,8 +63,12 @@
     function extractVideoFromElement(element) {
         if (element.tagName.toLowerCase() === 'video') {
             console.log('video');
+            const sourceElement = element.querySelector('source');
+            const src = sourceElement
+                ? getSrcFromElement(sourceElement)
+                : getSrcFromElement(element);
             return {
-                src: getSrcFromElement(element),
+                src,
                 poster: getPosterFromVideoElement(element),
             };
         }
@@ -136,7 +140,8 @@
     }
 
     function getPosterFromVideoElement(element) {
-        let poster = element.getAttribute('poster');
+        let poster = element.getAttribute('poster')
+            || element.getAttribute('data-poster');
         const hashIndex = poster?.indexOf('#');
         if (hashIndex >= 0) {
             poster = poster.substring(0, hashIndex + 1);
@@ -185,7 +190,7 @@
     //     console.log({err});
     //     result.error = {...err};
     // }
-console.log(result)
+    console.log(result);
     chrome.runtime.sendMessage({...result});
 
     result.images = null;
