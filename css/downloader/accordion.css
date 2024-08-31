@@ -4,8 +4,8 @@ body.light-theme {
 }
 
 body.dark-theme {
-    --accordionItemBorderColor: #ccc;
-    --accordionHeaderBgColor: #f7f7f7;
+    --accordionItemBorderColor: #7f7f7f;
+    --accordionHeaderBgColor: #646464;
 }
 
 /* Akordeon - kontener */
@@ -67,6 +67,9 @@ body.dark-theme {
 /* Zmieniona ikona na zwijanie (strzałka w górę) */
 .accordion-item.active button .tab-toggle::after {
     transform: rotate(-135deg); /* Odwrócenie strzałki */
+}
+.accordion-item  button .tab-title{
+    color: var(--fontColor);
 }
 
 /* Favicon w nagłówku */

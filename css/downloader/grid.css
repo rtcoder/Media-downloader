@@ -1,10 +1,17 @@
 @import "accordion.css";
 
+body.light-theme {
+    --imageBorderColor: #b1b1b1;
+}
+
+body.dark-theme {
+    --imageBorderColor: #b1b1b1;
+
+}
 .grid img {
     width: var(--imageSize);
     height: var(--imageSize);
-    box-sizing: border-box;
-    border: 2px solid #b1b1b1;
+    border: 4px solid var(--imageBorderColor);
     object-fit: scale-down;
     background-position: center center;
     background-image: url(/images/transparent.png);

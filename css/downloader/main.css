@@ -62,7 +62,6 @@ button {
     height: 25px;
     border: none;
     padding: 3px 10px;
-    box-sizing: border-box;
     font-size: 12px;
 }
 

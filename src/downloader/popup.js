@@ -102,16 +102,20 @@ chrome.tabs.onActivated.addListener(findMedia);
 
 function changeToggleAllCheckbox(e) {
     const {checked} = e.target;
-    setDisabled('#download-btn', !checked);
 
     const mediaToDisplay = getAllMediaToDisplay();
+    let selectedCount = 0;
 
     for (let i = 0; i < mediaToDisplay.length; i++) {
         const {tab, items} = mediaToDisplay[i];
         for (let idx = 0; idx < items.length; idx++) {
             toggleClass(getImageSelector(`${tab.id}-${idx}`), 'checked', checked);
+            if (checked) {
+                selectedCount++;
+            }
         }
     }
+    updateSelectedCountText(selectedCount);
 }
 
 function onClickItem(e) {
@@ -125,23 +129,21 @@ function onClickItem(e) {
     let allAreChecked = true;
     let allAreUnchecked = true;
     const mediaToDisplay = getAllMediaToDisplay();
+    let selectedCount = 0;
 
-    mainLoop: for (let i = 0; i < mediaToDisplay.length; i++) {
+    for (let i = 0; i < mediaToDisplay.length; i++) {
         const {tab, items} = mediaToDisplay[i];
         for (let idx = 0; idx < items.length; idx++) {
             if (hasClass(getImageSelector(`${tab.id}-${idx}`), 'checked')) {
                 allAreUnchecked = false;
+                selectedCount++;
             } else {
                 allAreChecked = false;
-            }
-            // Exit the loop early
-            if (!(allAreChecked || allAreUnchecked)) {
-                break mainLoop;
             }
         }
     }
 
-    setDisabled('#download-btn', allAreUnchecked);
+    updateSelectedCountText(selectedCount);
 
     const toggle_all_checkbox = document.querySelector('#toggle_all_checkbox');
     toggle_all_checkbox.indeterminate = !(allAreChecked || allAreUnchecked);
@@ -150,6 +152,14 @@ function onClickItem(e) {
     } else if (allAreUnchecked) {
         toggle_all_checkbox.checked = false;
     }
+}
+
+function updateSelectedCountText(selectedCount) {
+    document.querySelector('#download-btn .selected-count').innerHTML = selectedCount > 0
+        ? `(${selectedCount})`
+        : '';
+
+    setDisabled('#download-btn', !selectedCount);
 }
 
 function selectSection(name) {
@@ -290,8 +300,8 @@ function displayMedia() {
 function setListeners() {
     document.body.addEventListener('click', e => {
         const {target} = e;
-        if (target.matches('#download-btn')) {
-            downloadImages(e);
+        if (target.closest('#download-btn')) {
+            downloadImages(getAllMediaToDisplay());
             return;
         }
 

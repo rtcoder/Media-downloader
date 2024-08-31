@@ -4,33 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Add changelog page and enhance media handling&#10;&#10;Introduced a new changelog page with historical updates and styling. Improved the media extraction logic in send_media.js to handle &lt;source&gt; tags and added data-poster support. Updated permissions in manifest.json and ensured proper version handling in background.js.">
-      <change afterPath="$PROJECT_DIR$/css/common.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/fonts.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/options/options.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/transparent.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/downloader/send_media.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/options/options.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/theme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/options.html" afterDir="false" />
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Remove media handling files and update UI components&#10;&#10;Deleted send_media.js and associated SVG assets to streamline media handling. Introduced options.html with theme selection feature and refactored various files for better organization and maintainability.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/image.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/video.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chrome-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/chrome-api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dom-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/dom-functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/download-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/download-functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/send_media.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stylesheets/changelog/changelog.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/changelog/changelog.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stylesheets/checkbox.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/checkbox.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stylesheets/side-panel/accordion.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stylesheets/side-panel/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stylesheets/side-panel/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stylesheets/side-panel/section-buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/section-buttons.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changelog.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/side-panel.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/downloader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/accordion.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/downloader.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/downloader.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +122,7 @@
       <workItem from="1710008446889" duration="25514000" />
       <workItem from="1711219251644" duration="1000" />
       <workItem from="1724659352615" duration="46099000" />
-      <workItem from="1725103291997" duration="11822000" />
+      <workItem from="1725103291997" duration="13406000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -281,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724960192436</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Remove media handling files and update UI components&#10;&#10;Deleted send_media.js and associated SVG assets to streamline media handling. Introduced options.html with theme selection feature and refactored various files for better organization and maintainability.">
+      <option name="closed" value="true" />
+      <created>1725135042513</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1725135042513</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +314,8 @@
     <MESSAGE value="Add new download and UI features&#10;&#10;Removed main.css and added new download functionality in download-functions.js. Refactored send_media.js for better filtering of media, added side panel CSS, updated manifest for side panel support, and improved utility functions with JSDoc comments." />
     <MESSAGE value="Refactor download flow and add new APIs&#10;&#10;Replaced chrome.downloads.download with downloadUrl function in download-functions.js for better modularity. Introduced chrome-api.js to encapsulate Chrome scripting and tab management APIs. Minor UI and functionality improvements in popup.js, including improved event handling." />
     <MESSAGE value="Add changelog page and enhance media handling&#10;&#10;Introduced a new changelog page with historical updates and styling. Improved the media extraction logic in send_media.js to handle &lt;source&gt; tags and added data-poster support. Updated permissions in manifest.json and ensured proper version handling in background.js." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add changelog page and enhance media handling&#10;&#10;Introduced a new changelog page with historical updates and styling. Improved the media extraction logic in send_media.js to handle &lt;source&gt; tags and added data-poster support. Updated permissions in manifest.json and ensured proper version handling in background.js." />
+    <MESSAGE value="Remove media handling files and update UI components&#10;&#10;Deleted send_media.js and associated SVG assets to streamline media handling. Introduced options.html with theme selection feature and refactored various files for better organization and maintainability." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove media handling files and update UI components&#10;&#10;Deleted send_media.js and associated SVG assets to streamline media handling. Introduced options.html with theme selection feature and refactored various files for better organization and maintainability." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
