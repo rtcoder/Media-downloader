@@ -38,45 +38,6 @@ function uniqueSourceItems(arr) {
 }
 
 /**
- * Generates HTML for a thumbnail based on the media type.
- *
- * This function takes a media item and its index, extracts the relevant information, and returns
- * the appropriate HTML string based on the type of media (`image`, `video`, `audio`).
- *
- * @param {{src: string, poster?: string, type: 'image' | 'video' | 'audio'}} item - The media item containing `src`, `poster`, and `type`.
- * @param {string|number} index - The index of the item in the list.
- * @returns {HTMLImageElement} The generated <img> element for the media thumbnail.
- */
-function getThumbnail(item, index) {
-    const {src, poster, type} = item;
-    const name = getNameFromUrl(src);
-    const getImage = (src) => {
-        const img = document.createElement('img');
-        img.setAttribute('data-src', src);
-        img.alt = name;
-        img.addEventListener('load', () => {
-            const naturalWidth = img.naturalWidth.toString();
-            const naturalHeight = img.naturalHeight.toString();
-            img.parentElement.setAttribute('data-original-width', naturalWidth);
-            img.parentElement.setAttribute('data-original-height', naturalHeight);
-            if (type === 'image') {
-                const sizeDiv = img.parentElement.querySelector('.item-details-dimensions');
-                sizeDiv.innerHTML = `${naturalWidth}x${naturalHeight}`;
-            }
-        });
-        img.classList.add('thumbnail');
-        img.setAttribute('data-item-index', index.toString());
-        return img;
-    };
-
-    return {
-        image: getImage(src),
-        video: getImage(poster),
-        audio: getImage('/icons/audio.svg'),
-    }[type] || null;
-}
-
-/**
  * Calculates the total number of media items across all tabs.
  *
  * @param {MediaToDisplayItem[]} mediaToDisplay - The array of media items to display.

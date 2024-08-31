@@ -120,5 +120,9 @@ function createElement(tagName, props = {}) {
         element.title = props.title;
     }
 
+    if (props.alt) {
+        element.alt = props.alt;
+    }
+
     return element;
 }
