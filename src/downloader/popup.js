@@ -4,6 +4,7 @@ const mediaTypes = ['images', 'audios', 'videos'];
  * Represents a media item within a tab.
  * @typedef {Object} MediaItem
  * @property {string} src - The source URL of the media.
+ * @property {string|null} type - The type of the media.
  */
 
 /**
@@ -11,6 +12,7 @@ const mediaTypes = ['images', 'audios', 'videos'];
  * @typedef {Object} VideoItem
  * @property {string} src - The source URL of the video.
  * @property {string|null} poster - The URL of the video's poster image, or null if none is provided.
+ * @property {string|null} type - The type of the media.
  */
 
 /**
@@ -87,7 +89,7 @@ chrome.runtime.onMessage.addListener(async (result) => {
 });
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    if (tab.url?.startsWith('chrome://')) {
+    if (tab?.url?.startsWith('chrome://')) {
         return;
     }
 
@@ -170,6 +172,7 @@ function getCurrentSection() {
  * @typedef {Object} DisplayMediaItem
  * @property {string} src - The source URL of the media item.
  * @property {string} type - The type of the media item ('image', 'video', or 'audio').
+ * @property {string|null} filetype - The type of the media item ('image', 'video', or 'audio').
  * @property {string|null} [poster] - The URL of the video's poster image (only for videos).
  */
 
@@ -191,9 +194,9 @@ function getAllMediaToDisplay() {
     console.log({currentSection});
     console.log({mediaInTabs});
     const sectionMapping = {
-        images: (media) => media.images.map(({src}) => ({src, type: 'image'})),
-        videos: (media) => media.videos.map(({src, poster}) => ({src, poster, type: 'video'})),
-        audios: (media) => media.audios.map(({src}) => ({src, type: 'audio'})),
+        images: (media) => media.images.map(({type, src}) => ({src, filetype: type, type: 'image'})),
+        videos: (media) => media.videos.map(({type, src, poster}) => ({src, poster, filetype: type, type: 'video'})),
+        audios: (media) => media.audios.map(({type, src}) => ({src, filetype: type, type: 'audio'})),
     };
 
     const getMediaItems = sectionMapping[currentSection] || (() => []);
@@ -213,9 +216,10 @@ function displayMedia() {
     const countAll = document.querySelector('.count-all');
     dataTable.innerHTML = '';
 
-    countAll.innerHTML = `(${countAllMedia(mediaToDisplay)})`;
+    countAll.innerHTML = countAllMedia(mediaToDisplay).toString();
 
     console.log(mediaToDisplay);
+    const thumbnails = [];
 
     mediaToDisplay.forEach((mediaGroup, groupIndex) => {
         const {tab, items} = mediaGroup;
@@ -240,20 +244,39 @@ function displayMedia() {
         `;
 
         // Accordion body (media items)
-        const accordionBody = document.createElement('div');
-        accordionBody.classList.add('accordion-collapse');
+        const accordionBody = createElement('div', {
+            classList: 'accordion-collapse',
+        });
 
-        const accordionContent = document.createElement('div');
-        accordionContent.classList.add('accordion-body', 'grid');
+        const accordionContent = createElement('div', {
+            classList: ['accordion-body', 'grid'],
+        });
 
         items.forEach((mediaItem, itemIndex) => {
-            const mediaElement = document.createElement('div');
-            mediaElement.classList.add('item');
-            mediaElement.innerHTML = `
-                <button type="button" title="Download" class="download_image_button"
-                        data-src="${mediaItem.src}"></button>
-                ${getThumbnail(mediaItem, `${tab.id}-${itemIndex}`)}
-            `;
+            const mediaElement = createElement('div', {classList: 'item'});
+
+            const mediaDwdBtn = createElement('button', {
+                classList: 'download_image_button',
+                type: 'button',
+                title: 'Download',
+                attributes: {'data-src': mediaItem.src},
+            });
+
+            const itemDetails = createElement('div', {classList: 'item-details'});
+            const extension = createElement('div', {
+                classList: 'item-details-ext',
+                innerHtml: (mediaItem.filetype || ''),
+            });
+            const dimensions = createElement('div', {classList: 'item-details-dimensions'});
+            itemDetails.append(extension, dimensions);
+
+            const thumbnail = getThumbnail(mediaItem, `${tab.id}-${itemIndex}`);
+            thumbnails.push(thumbnail);
+            mediaElement.append(
+                mediaDwdBtn,
+                itemDetails,
+                thumbnail,
+            );
             accordionContent.append(mediaElement);
         });
 
@@ -261,6 +284,7 @@ function displayMedia() {
         accordionItem.append(accordionHeader, accordionBody);
         dataTable.append(accordionItem);
     });
+    thumbnails.forEach(img => img.src = img.getAttribute('data-src'));
 }
 
 function setListeners() {
@@ -298,7 +322,7 @@ function setListeners() {
 
 
 function findMedia() {
-    executeContentScript('/src/send_media.js');
+    executeContentScript('/src/downloader/send_media.js');
 }
 
 function init() {

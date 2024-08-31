@@ -8,31 +8,31 @@ function handleUpdate(details) {
             const previousVersion = result.previousVersion;
 
             if (previousVersion && previousVersion !== currentVersion) {
-                chrome.tabs.create({ url: CHANGES_URL });
+                chrome.tabs.create({url: CHANGES_URL});
             }
 
-            chrome.storage.sync.set({ previousVersion: currentVersion });
+            chrome.storage.sync.set({previousVersion: currentVersion});
         });
     }
 }
 
 chrome.action.onClicked.addListener(() => {
-    chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true });
+    chrome.sidePanel.setPanelBehavior({openPanelOnActionClick: true});
 });
 
 chrome.runtime.onInstalled.addListener(details => {
     chrome.contextMenus.create({
-        id: "openSidePanel",
-        title: "Media Downloader",
-        contexts: ["all"]
+        id: 'openSidePanel',
+        title: 'Media Downloader',
+        contexts: ['all'],
     });
     handleUpdate(details);
 });
 
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-    if (info.menuItemId === "openSidePanel") {
-        chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true });
-        chrome.sidePanel.open({ tabId: tab.id });
+    if (info.menuItemId === 'openSidePanel') {
+        chrome.sidePanel.setPanelBehavior({openPanelOnActionClick: true});
+        chrome.sidePanel.open({tabId: tab.id});
     }
 });

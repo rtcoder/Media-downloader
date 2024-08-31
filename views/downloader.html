@@ -3,7 +3,7 @@
 <head>
   <title>Media Downloader</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-  <link href="/stylesheets/side-panel/main.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/downloader/main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <main>
@@ -11,13 +11,13 @@
     <div id="top-container">
       <div class="section-buttons">
         <button data-section="images" class="selected">
-          <img src="/icons/image.svg" alt="images">
+          <span class="material-symbols-outlined">imagesmode</span>
         </button>
         <button data-section="videos">
-          <img src="/icons/video.svg" alt="videos">
+          <span class="material-symbols-outlined">videocam</span>
         </button>
         <button data-section="audios">
-          <img src="/icons/audio.svg" alt="audio">
+          <span class="material-symbols-outlined">music_note</span>
         </button>
       </div>
     </div>
@@ -25,7 +25,7 @@
     <div class="select-all-container">
       <label>
         <input type="checkbox" id="toggle_all_checkbox">
-        Select all <span class="count-all"></span>
+        Select all (<span class="count-all">0</span>)
       </label>
     </div>
   </div>
@@ -33,16 +33,17 @@
 
   <div class="download">
     <button type="button" id="download-btn" disabled>
-      <img src="/icons/download.svg" alt="download">
+      <span class="material-symbols-outlined">download</span>
     </button>
   </div>
 </main>
 
-<script src="/src/utils.js"></script>
-<script src="/src/chrome-api.js"></script>
-<script src="/src/download-functions.js"></script>
-<script src="/src/dom-functions.js"></script>
-<script src="/src/popup.js"></script>
+<script src="/src/theme.js"></script>
+<script src="/src/downloader/utils.js"></script>
+<script src="/src/downloader/chrome-api.js"></script>
+<script src="/src/downloader/download-functions.js"></script>
+<script src="/src/downloader/dom-functions.js"></script>
+<script src="/src/downloader/popup.js"></script>
 </body>
 </html>
 

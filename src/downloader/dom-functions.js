@@ -78,3 +78,47 @@ function hide(selector) {
 function show(selector) {
     [...document.querySelectorAll(selector)].forEach(node => node.hidden = false);
 }
+
+/**
+ * Creates a new DOM element with the specified tag name and properties.
+ *
+ * @param {keyof HTMLElementTagNameMap} tagName - The name of the tag for the element to be created (e.g., 'div', 'span').
+ * @param {Object} [props] - An object containing properties to set on the element.
+ * @param {string|string[]} [props.classList] - A string or an array of strings representing the class(es) to be added to the element.
+ * @param {string} [props.innerHtml] - The HTML content to be set as the innerHTML of the element.
+ * @param {{[key: string]: string}} [props.attributes] - An object representing additional attributes to set on the element (e.g., `{"data-id": "123", "role": "button"}`).
+ * @param {string} [props.type] - The type attribute to be set on the element (useful for elements like `input`).
+ * @param {string} [props.title] - The title attribute to be set on the element.
+ * @returns {HTMLElement} The newly created DOM element.
+ */
+function createElement(tagName, props = {}) {
+    const element = document.createElement(tagName);
+
+    if (props.classList) {
+        if (typeof props.classList === 'string') {
+            element.classList.add(props.classList);
+        } else {
+            element.classList.add(...props.classList);
+        }
+    }
+
+    if (props.innerHtml) {
+        element.innerHTML = props.innerHtml;
+    }
+
+    if (props.attributes) {
+        for (const [attr, value] of Object.entries(props.attributes)) {
+            element.setAttribute(attr, value);
+        }
+    }
+
+    if (props.type) {
+        element.type = props.type;
+    }
+
+    if (props.title) {
+        element.title = props.title;
+    }
+
+    return element;
+}

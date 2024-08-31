@@ -1,7 +1,16 @@
+body.light-theme {
+    --accordionItemBorderColor: #ccc;
+    --accordionHeaderBgColor: #f7f7f7;
+}
+
+body.dark-theme {
+    --accordionItemBorderColor: #ccc;
+    --accordionHeaderBgColor: #f7f7f7;
+}
 
 /* Akordeon - kontener */
 .accordion-item {
-    border: 1px solid #ccc;
+    border: 1px solid var(--accordionItemBorderColor);
     border-left: none;
     border-right: none;
     margin-bottom: 10px;
@@ -10,7 +19,7 @@
 
 /* Nagłówek akordeonu */
 .accordion-header {
-    background-color: #f7f7f7;
+    background-color: var(--accordionHeaderBgColor);
     cursor: pointer;
     padding: 10px;
     display: flex;
@@ -40,14 +49,15 @@
     height: 10px;
     position: relative;
 }
+
 /* Ikona rozwijania (domyślnie strzałka w dół) */
 .accordion-header button .tab-toggle::after {
     content: '';
     display: inline-block;
     width: 8px;
     height: 8px;
-    border-right: 2px solid #000;
-    border-bottom: 2px solid #000;
+    border-right: 2px solid var(--fontColor);
+    border-bottom: 2px solid var(--fontColor);
     transform: rotate(45deg);
     margin-left: 10px;
     transition: transform 0.3s ease;
@@ -70,7 +80,7 @@
 .accordion-collapse {
     display: none;
     padding: 15px;
-    background-color: #fff;
+    background-color: var(--bgColor);
 }
 
 /* Pokazanie zawartości akordeonu po kliknięciu */

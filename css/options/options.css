@@ -1,0 +1,23 @@
+@import "../common.css";
+
+
+body {
+    color: var(--fontColor);
+    background-color: var(--bgColor);
+    line-height: 1.6;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+main {
+    padding: 15px;
+}

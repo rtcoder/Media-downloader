@@ -30,19 +30,18 @@
     {
       "resources": [
         "/icons/*",
-        "/images/*"
+        "/images/*",
+        "/views/changelog.html",
+        "/views/options.html"
       ],
       "matches": [
         "<all_urls>"
       ]
-    },
-    {
-      "resources": ["/views/changelog.html"],
-      "matches": ["<all_urls>"]
     }
   ],
+  "options_page": "/views/options.html",
   "side_panel": {
-    "default_path": "/views/side-panel.html"
+    "default_path": "/views/downloader.html"
   },
   "background": {
     "service_worker": "/src/background.js"

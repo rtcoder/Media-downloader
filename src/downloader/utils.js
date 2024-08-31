@@ -44,19 +44,36 @@ function uniqueSourceItems(arr) {
  * the appropriate HTML string based on the type of media (`image`, `video`, `audio`).
  *
  * @param {{src: string, poster?: string, type: 'image' | 'video' | 'audio'}} item - The media item containing `src`, `poster`, and `type`.
- * @param {number} index - The index of the item in the list.
- * @returns {string} The generated HTML string for the media thumbnail.
+ * @param {string|number} index - The index of the item in the list.
+ * @returns {HTMLImageElement} The generated <img> element for the media thumbnail.
  */
 function getThumbnail(item, index) {
     const {src, poster, type} = item;
     const name = getNameFromUrl(src);
-    const getImage = (src) => `<img class="thumbnail" data-item-index="${index}" src="${src}" alt=""/>`;
+    const getImage = (src) => {
+        const img = document.createElement('img');
+        img.setAttribute('data-src', src);
+        img.alt = name;
+        img.addEventListener('load', () => {
+            const naturalWidth = img.naturalWidth.toString();
+            const naturalHeight = img.naturalHeight.toString();
+            img.parentElement.setAttribute('data-original-width', naturalWidth);
+            img.parentElement.setAttribute('data-original-height', naturalHeight);
+            if (type === 'image') {
+                const sizeDiv = img.parentElement.querySelector('.item-details-dimensions');
+                sizeDiv.innerHTML = `${naturalWidth}x${naturalHeight}`;
+            }
+        });
+        img.classList.add('thumbnail');
+        img.setAttribute('data-item-index', index.toString());
+        return img;
+    };
 
     return {
         image: getImage(src),
-        video: `${getImage(poster)} <p title="${name}">${name}</p>`,
-        audio: `${getImage('/icons/audio.svg')} <p title="${name}">${name}</p>`,
-    }[type] || '';
+        video: getImage(poster),
+        audio: getImage('/icons/audio.svg'),
+    }[type] || null;
 }
 
 /**
@@ -69,4 +86,15 @@ function countAllMedia(mediaToDisplay) {
     return mediaToDisplay.reduce((total, mediaGroup) => {
         return total + mediaGroup.items.length;
     }, 0);
+}
+
+function getVideoDimensions(url) {
+    return new Promise((resolve, reject) => {
+        const video = document.createElement('video');
+        video.onloadedmetadata = () => {
+            resolve({width: video.videoWidth, height: video.videoHeight, duration: video.duration});
+        };
+        video.onerror = reject;
+        video.src = url;
+    });
 }
