@@ -22,8 +22,6 @@
  */
 function getAllMediaToDisplay() {
     const currentSection = getCurrentSection();
-    console.log({currentSection});
-    console.log({mediaInTabs});
     const sectionMapping = {
         images: (media) => media.images.map(({type, src}) => ({src, filetype: type, type: 'image'})),
         videos: (media) => media.videos.map(({type, src, poster}) => ({src, poster, filetype: type, type: 'video'})),
@@ -77,7 +75,10 @@ function displayMedia() {
             ),
         ]),
     ));
-    dataTable.querySelectorAll('[data-src]').forEach(el => el.src = el.getAttribute('data-src'));
+    dataTable.querySelectorAll('.thumbnail[data-src]').forEach(el => {
+        console.log(el)
+        el.src = el.getAttribute('data-src');
+    });
 }
 
 /**

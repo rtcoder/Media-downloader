@@ -109,7 +109,6 @@
 
     async function extractVideoFromElement(element) {
         if (element.tagName.toLowerCase() === 'video') {
-            console.log('video');
             const sourceElement = element.querySelector('source');
             const src = sourceElement
                 ? getSrcFromElement(sourceElement)
@@ -279,7 +278,7 @@
         try {
             const response = await fetch(url, {method: 'HEAD', referrer: window.location.origin});
             const contentType = response.headers.get('Content-Type');
-            console.log({url, contentType});
+
             if (contentType) {
                 const type = contentType.split('/')[1];
                 if (type.startsWith('svg+xml')) {
@@ -337,7 +336,6 @@
             result.error = {...err};
         }
 
-        console.log(result);
         chrome.runtime.sendMessage({...result});
 
         // Reset the result object

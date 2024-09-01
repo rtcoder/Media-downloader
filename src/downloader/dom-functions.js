@@ -78,20 +78,29 @@ function hide(selector) {
 function show(selector) {
     [...document.querySelectorAll(selector)].forEach(node => node.hidden = false);
 }
+/**
+ * @typedef {Object} Props
+ * @property {string|string[]} [class] - A string or an array of strings representing the class(es) to be added to the element.
+ * @property {string} [html] - The HTML content to be set as the innerHTML of the element.
+ * @property {{[key: string]: string}} [attributes] - An object representing additional attributes to set on the element.
+ * @property {{[key: string]: string|number}} [data] - An object representing additional data attributes to set on the element.
+ * @property {string} [type] - The type attribute to be set on the element (useful for elements like `input`).
+ * @property {string} [title] - The title attribute to be set on the element.
+ * @property {string} [alt] - The alt attribute to be set on the element.
+ * @property {string} [src] - The src attribute to be set on the element.
+ */
+
+/**
+ * @typedef {HTMLElement[]|HTMLElement} Children
+ * Children can be a single HTMLElement or an array of HTMLElements.
+ */
 
 /**
  * Creates a new DOM element with the specified tag name and properties.
  *
  * @param {keyof HTMLElementTagNameMap} tagName - The name of the tag for the element to be created (e.g., 'div', 'span').
- * @param {Object} [props] - An object containing properties to set on the element.
- * @param {string|string[]} [props.class] - A string or an array of strings representing the class(es) to be added to the element.
- * @param {string} [props.html] - The HTML content to be set as the innerHTML of the element.
- * @param {{[key: string]: string}} [props.attributes] - An object representing additional attributes to set on the element (e.g., `{"role": "button"}`).
- * @param {{[key: string]: string|number}} [props.data] - An object representing additional data attributes to set on the element (e.g., `{"data-id": "123"}`).
- * @param {string} [props.type] - The type attribute to be set on the element (useful for elements like `input`).
- * @param {string} [props.title] - The title attribute to be set on the element.
- * @param {string} [props.alt] - The alt attribute to be set on the element.
- * @param {HTMLElement[]|HTMLElement} [children] - Children nodes
+ * @param {Props} [props] - An object containing properties to set on the element.
+ * @param {Children} [children] - Children nodes to be appended to the created element.
  * @returns {HTMLElement} The newly created DOM element.
  */
 function createElement(tagName, props = {}, children = []) {
@@ -132,6 +141,10 @@ function createElement(tagName, props = {}, children = []) {
     if (props.alt) {
         element.alt = props.alt;
     }
+
+    if (props.src) {
+        element.src = props.src;
+    }
     if (children) {
         if (!Array.isArray(children) && children instanceof HTMLElement) {
             children = [children];
@@ -145,7 +158,8 @@ function createElement(tagName, props = {}, children = []) {
 /**
  * Creates a new DOM element with the specified tag name and properties.
  *
- * @param {HTMLElement[]|HTMLElement} [children] - Children nodes
+ * @param {Props} [props] - An object containing properties to set on the element.
+ * @param {Children} [children] - Children nodes to be appended to the created element.
  * @returns {HTMLDivElement} The newly created DOM element.
  */
 function createDivElement(props = {}, children = []) {
@@ -155,24 +169,33 @@ function createDivElement(props = {}, children = []) {
 /**
  * Creates a new DOM element with the specified tag name and properties.
  *
- * @param {HTMLElement[]|HTMLElement} [children] - Children nodes
+ * @param {Props} [props] - An object containing properties to set on the element.
+ * @param {Children} [children] - Children nodes to be appended to the created element.
  * @returns {HTMLSpanElement} The newly created DOM element.
  */
 function createSpanElement(props = {}, children = []) {
     return createElement('span', props, children);
 }
 
+/**
+ * Creates a new DOM element with the specified tag name and properties.
+ *
+ * @param {string} iconName - icon name
+ * @param {Props} [props] - An object containing properties to set on the element.
+ * @returns {HTMLSpanElement} The newly created DOM element.
+ */
 function createIconElement(iconName, props = {}) {
     props.html = iconName;
-    props.classList = props.classList || [];
-    props.classList.push('material-symbols-outlined');
+    props.class = props.class || [];
+    props.class.push('material-symbols-outlined');
     return createSpanElement(props);
 }
 
 /**
  * Creates a new DOM element with the specified tag name and properties.
  *
- * @param {HTMLElement[]|HTMLElement} [children] - Children nodes
+ * @param {Props} [props] - An object containing properties to set on the element.
+ * @param {Children} [children] - Children nodes to be appended to the created element.
  * @returns {HTMLButtonElement} The newly created DOM element.
  */
 function createButtonElement(props = {}, children = []) {
@@ -183,6 +206,7 @@ function createButtonElement(props = {}, children = []) {
 /**
  * Creates a new DOM element with the specified tag name and properties.
  *
+ * @param {Props} [props] - An object containing properties to set on the element.
  * @returns {HTMLImageElement} The newly created DOM element.
  */
 function createImgElement(props = {}) {

@@ -6,7 +6,6 @@
  * @param {string} url - The URL of the file to be downloaded.
  */
 function downloadItem(url) {
-    console.log({url});
     downloadUrl(url);
 }
 
