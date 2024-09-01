@@ -49,75 +49,36 @@ function displayMedia() {
 
     countAll.innerHTML = countAllMedia(mediaToDisplay).toString();
 
-    console.log(mediaToDisplay);
-    const thumbnails = [];
-
-    mediaToDisplay.forEach((mediaGroup, groupIndex) => {
-        const {tab, items} = mediaGroup;
-
-        // Create accordion section
-        const accordionItem = document.createElement('div');
-        accordionItem.classList.add('accordion-item');
-        accordionItem.setAttribute('data-tab-id', `${tab.id}`);
-
-        // Accordion header
-        const accordionHeader = document.createElement('div');
-        accordionHeader.classList.add('accordion-header');
-        accordionHeader.innerHTML = `
-            <button class="accordion-button" type="button">
-                <img src="${tab.favIconUrl}" alt="Favicon" class="favicon" /> 
-                <span class="tab-title">
-                  <span class="title">${tab.title}</span>
-                  <span class="tab-media-count">(${items.length})</span>
-                </span>
-                <span class="tab-toggle"></span>
-            </button>
-        `;
-
-        // Accordion body (media items)
-        const accordionBody = createElement('div', {
-            classList: 'accordion-collapse',
-        });
-
-        const accordionContent = createElement('div', {
-            classList: ['accordion-body', 'grid'],
-        });
-
-        items.forEach((mediaItem, itemIndex) => {
-            const mediaElement = createElement('div', {classList: 'item'});
-
-            const mediaDwdBtn = createElement('button', {
-                classList: 'download_image_button',
-                type: 'button',
-                title: 'Download',
-                attributes: {'data-src': mediaItem.src},
-            });
-
-            const itemDetails = createElement('div', {classList: 'item-details'});
-            const extension = createElement('div', {
-                classList: 'item-details-ext',
-                innerHtml: (mediaItem.filetype || ''),
-            });
-            const dimensions = createElement('div', {classList: 'item-details-dimensions'});
-            itemDetails.append(extension, dimensions);
-
-            const thumbnail = getThumbnail(mediaItem, `${tab.id}-${itemIndex}`);
-            thumbnails.push(thumbnail);
-            mediaElement.append(
-                mediaDwdBtn,
-                itemDetails,
-                thumbnail,
-            );
-            accordionContent.append(mediaElement);
-        });
-
-        accordionBody.append(accordionContent);
-        accordionItem.append(accordionHeader, accordionBody);
-        dataTable.append(accordionItem);
-    });
-    thumbnails.forEach(img => img.src = img.getAttribute('data-src'));
+    dataTable.append(...mediaToDisplay.map(mediaGroup =>
+        createDivElement({class: 'accordion-item', data: {'tab-id': mediaGroup.tab.id}}, [
+            createDivElement({class: 'accordion-header'},
+                createButtonElement({class: 'accordion-button'}, [
+                    createImgElement({src: mediaGroup.tab.favIconUrl, alt: 'Favicon', class: 'favicon'}),
+                    createSpanElement({class: 'tab-title'}, [
+                        createSpanElement({class: 'title', html: mediaGroup.tab.title}),
+                        createSpanElement({class: 'tab-media-count', html: `(${mediaGroup.items.length})`}),
+                    ]),
+                    createSpanElement({class: 'tab-toggle'}),
+                ]),
+            ),
+            createDivElement({class: 'accordion-collapse'},
+                createDivElement({class: ['accordion-body', 'grid']},
+                    mediaGroup.items.map((mediaItem, itemIndex) =>
+                        createDivElement({class: 'item'}, [
+                            createButtonElement({class: 'download_image_button', data: {'src': mediaItem.src}}, createIconElement('download')),
+                            createDivElement({class: 'item-details'}, [
+                                createDivElement({class: 'item-details-ext', html: mediaItem.filetype}),
+                                createDivElement({class: 'item-details-dimensions'}),
+                            ]),
+                            getThumbnail(mediaItem, `${mediaGroup.tab.id}-${itemIndex}`),
+                        ]),
+                    ),
+                ),
+            ),
+        ]),
+    ));
+    dataTable.querySelectorAll('[data-src]').forEach(el => el.src = el.getAttribute('data-src'));
 }
-
 
 /**
  * Generates HTML for a thumbnail based on the media type.
@@ -153,12 +114,12 @@ function getThumbnail(item, index) {
  */
 function getTag(tagName, src, name, index) {
     return createElement(tagName, {
-        attributes: {
-            'data-src': src,
-            'data-item-index': index.toString(),
+        data: {
+            'src': src,
+            'item-index': index.toString(),
         },
         alt: name,
-        classList: 'thumbnail',
+        class: 'thumbnail',
     });
 }
 

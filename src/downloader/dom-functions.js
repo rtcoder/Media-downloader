@@ -84,31 +84,40 @@ function show(selector) {
  *
  * @param {keyof HTMLElementTagNameMap} tagName - The name of the tag for the element to be created (e.g., 'div', 'span').
  * @param {Object} [props] - An object containing properties to set on the element.
- * @param {string|string[]} [props.classList] - A string or an array of strings representing the class(es) to be added to the element.
- * @param {string} [props.innerHtml] - The HTML content to be set as the innerHTML of the element.
- * @param {{[key: string]: string}} [props.attributes] - An object representing additional attributes to set on the element (e.g., `{"data-id": "123", "role": "button"}`).
+ * @param {string|string[]} [props.class] - A string or an array of strings representing the class(es) to be added to the element.
+ * @param {string} [props.html] - The HTML content to be set as the innerHTML of the element.
+ * @param {{[key: string]: string}} [props.attributes] - An object representing additional attributes to set on the element (e.g., `{"role": "button"}`).
+ * @param {{[key: string]: string|number}} [props.data] - An object representing additional data attributes to set on the element (e.g., `{"data-id": "123"}`).
  * @param {string} [props.type] - The type attribute to be set on the element (useful for elements like `input`).
  * @param {string} [props.title] - The title attribute to be set on the element.
+ * @param {string} [props.alt] - The alt attribute to be set on the element.
+ * @param {HTMLElement[]|HTMLElement} [children] - Children nodes
  * @returns {HTMLElement} The newly created DOM element.
  */
-function createElement(tagName, props = {}) {
+function createElement(tagName, props = {}, children = []) {
     const element = document.createElement(tagName);
 
-    if (props.classList) {
-        if (typeof props.classList === 'string') {
-            element.classList.add(props.classList);
+    if (props.class) {
+        if (typeof props.class === 'string') {
+            element.classList.add(props.class);
         } else {
-            element.classList.add(...props.classList);
+            element.classList.add(...props.class);
         }
     }
 
-    if (props.innerHtml) {
-        element.innerHTML = props.innerHtml;
+    if (props.html) {
+        element.innerHTML = props.html || '';
     }
 
     if (props.attributes) {
         for (const [attr, value] of Object.entries(props.attributes)) {
             element.setAttribute(attr, value);
+        }
+    }
+
+    if (props.data) {
+        for (const [attr, value] of Object.entries(props.data)) {
+            element.setAttribute(`data-${attr}`, value);
         }
     }
 
@@ -123,6 +132,59 @@ function createElement(tagName, props = {}) {
     if (props.alt) {
         element.alt = props.alt;
     }
+    if (children) {
+        if (!Array.isArray(children) && children instanceof HTMLElement) {
+            children = [children];
+        }
+        element.append(...children);
+    }
 
     return element;
+}
+
+/**
+ * Creates a new DOM element with the specified tag name and properties.
+ *
+ * @param {HTMLElement[]|HTMLElement} [children] - Children nodes
+ * @returns {HTMLDivElement} The newly created DOM element.
+ */
+function createDivElement(props = {}, children = []) {
+    return createElement('div', props, children);
+}
+
+/**
+ * Creates a new DOM element with the specified tag name and properties.
+ *
+ * @param {HTMLElement[]|HTMLElement} [children] - Children nodes
+ * @returns {HTMLSpanElement} The newly created DOM element.
+ */
+function createSpanElement(props = {}, children = []) {
+    return createElement('span', props, children);
+}
+
+function createIconElement(iconName, props = {}) {
+    props.html = iconName;
+    props.classList = props.classList || [];
+    props.classList.push('material-symbols-outlined');
+    return createSpanElement(props);
+}
+
+/**
+ * Creates a new DOM element with the specified tag name and properties.
+ *
+ * @param {HTMLElement[]|HTMLElement} [children] - Children nodes
+ * @returns {HTMLButtonElement} The newly created DOM element.
+ */
+function createButtonElement(props = {}, children = []) {
+    props.type = 'button';
+    return createElement('button', props, children);
+}
+
+/**
+ * Creates a new DOM element with the specified tag name and properties.
+ *
+ * @returns {HTMLImageElement} The newly created DOM element.
+ */
+function createImgElement(props = {}) {
+    return createElement('img', props);
 }

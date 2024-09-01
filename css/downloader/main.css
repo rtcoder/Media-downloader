@@ -24,6 +24,7 @@ main {
     flex-direction: column;
     background-color: var(--bgColor);
     z-index: 2;
+    padding-bottom: 10px;
 }
 
 #top-container {
@@ -34,10 +35,20 @@ main {
 
 .download {
     width: 100%;
-    height: 50px;
     position: fixed;
     bottom: 0;
-    background: #f00;
+
+    & #download-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--activeColor);
+        color: var(--fontColor);
+
+        &:not([disabled]):hover {
+            background-color: var(--activeColorHover);
+        }
+    }
 }
 
 .accent {

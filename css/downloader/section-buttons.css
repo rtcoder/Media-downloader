@@ -1,13 +1,19 @@
 .section-buttons {
     display: flex;
     flex-direction: row;
+    width: 100%;
+    gap: 5px;
 }
 
 .section-buttons button {
     background: transparent;
+    height: 35px;
     outline: none;
+    color: var(--sectionButtonIconColor);
+    cursor: pointer;
 }
 
 .section-buttons button.selected {
     background: var(--activeColor);
+    color: var(--sectionButtonActiveIconColor);
 }

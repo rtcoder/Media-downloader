@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="**Refactor media display logic and cleanup**&#10;&#10;Extracted media display logic from popup.js to new media-display.js for better organization. Removed redundant getThumbnail function from utils.js and improved code readability. Added alt attribute handling in createElement function in dom-functions.js.">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="**Add video support and refactor media display**&#10;&#10;Enhanced media handling by adding video support alongside images. Refactored functions for better modularity and code clarity. Updated styles and improved event handling for media elements.">
+      <change afterPath="$PROJECT_DIR$/css/themes.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/common.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/downloader/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/section-buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/section-buttons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/checkmark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/dom-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/dom-functions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/downloader/media-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/media-display.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/downloader.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/downloader.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +126,7 @@
       <workItem from="1710008446889" duration="25514000" />
       <workItem from="1711219251644" duration="1000" />
       <workItem from="1724659352615" duration="46099000" />
-      <workItem from="1725103291997" duration="17483000" />
+      <workItem from="1725103291997" duration="25584000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -282,7 +289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725138299099</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="**Add video support and refactor media display**&#10;&#10;Enhanced media handling by adding video support alongside images. Refactored functions for better modularity and code clarity. Updated styles and improved event handling for media elements.">
+      <option name="closed" value="true" />
+      <created>1725183115371</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1725183115371</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,7 +345,8 @@
     <MESSAGE value="Remove media handling files and update UI components&#10;&#10;Deleted send_media.js and associated SVG assets to streamline media handling. Introduced options.html with theme selection feature and refactored various files for better organization and maintainability." />
     <MESSAGE value="**Update dark theme colors and improve popup.js**&#10;&#10;Changed dark theme colors in accordion.css to darker shades for better visibility. Enhanced popup.js to reflect the count of selected items and fixed the download button activation logic." />
     <MESSAGE value="**Refactor media display logic and cleanup**&#10;&#10;Extracted media display logic from popup.js to new media-display.js for better organization. Removed redundant getThumbnail function from utils.js and improved code readability. Added alt attribute handling in createElement function in dom-functions.js." />
-    <option name="LAST_COMMIT_MESSAGE" value="**Refactor media display logic and cleanup**&#10;&#10;Extracted media display logic from popup.js to new media-display.js for better organization. Removed redundant getThumbnail function from utils.js and improved code readability. Added alt attribute handling in createElement function in dom-functions.js." />
+    <MESSAGE value="**Add video support and refactor media display**&#10;&#10;Enhanced media handling by adding video support alongside images. Refactored functions for better modularity and code clarity. Updated styles and improved event handling for media elements." />
+    <option name="LAST_COMMIT_MESSAGE" value="**Add video support and refactor media display**&#10;&#10;Enhanced media handling by adding video support alongside images. Refactored functions for better modularity and code clarity. Updated styles and improved event handling for media elements." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

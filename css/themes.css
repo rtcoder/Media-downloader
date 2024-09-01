@@ -1,0 +1,23 @@
+body.light-theme {
+    --activeColor: #3498db;
+    --activeColorHover: #2980b9;
+    --fontColor: #333;
+    --fontColor2: #555;
+    --bgColor: #f9f9f9;
+    --headerColor: #2c3e50;
+    --headerBorderColor: #e74c3c;
+    --sectionButtonActiveIconColor:#f7f7f7;
+    --sectionButtonIconColor: #454545;
+}
+
+body.dark-theme {
+    --activeColor: #1f64b2;
+    --activeColorHover: #2b5c7d;
+    --fontColor: #eee;
+    --fontColor2: #ddd;
+    --bgColor: #333;
+    --headerColor: #06a2d2;
+    --headerBorderColor: #e74c3c;
+    --sectionButtonActiveIconColor:#f7f7f7;
+    --sectionButtonIconColor: #d1d1d1;
+}

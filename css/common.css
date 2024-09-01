@@ -1,3 +1,4 @@
+@import "themes.css";
 @import "fonts.css";
 @import "checkbox.css";
 
@@ -7,34 +8,12 @@
     box-sizing: border-box;
 }
 
-body.light-theme {
-    --activeColor: #3498db;
-    --activeColorHover: #2980b9;
-    --fontColor: #333;
-    --fontColor2: #555;
-    --bgColor: #f9f9f9;
-    --headerColor: #2c3e50;
-    --headerBorderColor: #e74c3c;
-}
-
-body.dark-theme {
-    --activeColor: #1f64b2;
-    --activeColorHover: #2b5c7d;
-    --fontColor: #eee;
-    --fontColor2: #ddd;
-    --bgColor: #333;
-    --headerColor: #06a2d2;
-    --headerBorderColor: #e74c3c;
-
-}
-
 body {
     font: 13px/1.5em 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--fontColor);
     background-color: var(--bgColor);
     width: 100%;
     overflow-x: hidden;
-
 }
 
 [hidden] {
