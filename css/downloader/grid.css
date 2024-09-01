@@ -8,21 +8,23 @@ body.dark-theme {
     --imageBorderColor: #b1b1b1;
 
 }
-.grid img {
+
+.grid img,
+.grid video {
     width: var(--imageSize);
     height: var(--imageSize);
     border: 4px solid var(--imageBorderColor);
     object-fit: scale-down;
     background-position: center center;
     background-image: url(/images/transparent.png);
-}
 
-img:hover {
-    border-color: #4f7077;
-}
+    &:hover {
+        border-color: var(--activeColorHover);
+    }
 
-img.checked {
-    border-color: var(--activeColor);
+    &.checked {
+        border-color: var(--activeColor);
+    }
 }
 
 .grid {

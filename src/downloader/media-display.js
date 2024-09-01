@@ -145,10 +145,14 @@ function getThumbnail(item, index) {
 }
 
 /**
- * @return {HTMLImageElement}
+ * @param {'video'|'img'} tagName
+ * @param {string} src
+ * @param {string} name
+ * @param {string|number} index
+ * @return {HTMLImageElement | HTMLVideoElement}
  */
-function getImgTag(src, name, index) {
-    return createElement('img', {
+function getTag(tagName, src, name, index) {
+    return createElement(tagName, {
         attributes: {
             'data-src': src,
             'data-item-index': index.toString(),
@@ -156,6 +160,31 @@ function getImgTag(src, name, index) {
         alt: name,
         classList: 'thumbnail',
     });
+}
+
+/**
+ * @param {string} src
+ * @param {string} name
+ * @param {string|number} index
+ * @return {HTMLImageElement}
+ */
+function getImgTag(src, name, index) {
+    return getTag('img', src, name, index);
+}
+
+/**
+ * @param {string} src
+ * @param {string|null} poster
+ * @param {string} name
+ * @param {string|number} index
+ * @return {HTMLVideoElement}
+ */
+function getVideoTag(src, poster, name, index) {
+    const video = getTag('video', src, name, index);
+    if (poster) {
+        video.setAttribute('poster', poster);
+    }
+    return video;
 }
 
 function getImage(src, name, index) {
@@ -172,30 +201,18 @@ function getImage(src, name, index) {
 }
 
 function getImageVideo(src, name, poster, index) {
-    const img = getImgTag(src, name, index);
     /**
      * @type {HTMLVideoElement}
      */
-    const videoElement = createElement('video');
+    const videoElement = getVideoTag(src, poster, name, index);
 
     videoElement.addEventListener('loadedmetadata', function () {
         const quality = getQualityLabel(videoElement.videoWidth, videoElement.videoHeight);
-        if (img.parentElement) {
-            img.parentElement.setAttribute('data-video-quality', quality);
-            const sizeDiv = img.parentElement.querySelector('.item-details-dimensions');
-            sizeDiv.innerHTML = quality;
-        } else {
-            img.setAttribute('data-video-quality', quality);
-        }
+        videoElement.parentElement.setAttribute('data-video-quality', quality);
+        const sizeDiv = videoElement.parentElement.querySelector('.item-details-dimensions');
+        sizeDiv.innerHTML = quality;
     });
-    img.addEventListener('load', () => {
-        const sizeDiv = img.parentElement.querySelector('.item-details-dimensions');
-        const quality = img.getAttribute('data-video-quality');
-        if (quality) {
-            sizeDiv.innerHTML = quality;
-        }
-    });
-    return img;
+    return videoElement;
 }
 
 function getImageAudio(src, name, index) {
