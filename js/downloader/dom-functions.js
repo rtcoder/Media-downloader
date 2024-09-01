@@ -58,27 +58,6 @@ function toggleClass(selector, className, toggleValue = null) {
 }
 
 /**
- * Hides elements selected by the provided selector.
- *
- * This function sets the `hidden` attribute to `true` for all elements matching the provided selector.
- *
- * @param {string} selector - The CSS selector string to select the elements.
- */
-function hide(selector) {
-    [...document.querySelectorAll(selector)].forEach(node => node.hidden = true);
-}
-
-/**
- * Shows elements selected by the provided selector.
- *
- * This function sets the `hidden` attribute to `false` for all elements matching the provided selector.
- *
- * @param {string} selector - The CSS selector string to select the elements.
- */
-function show(selector) {
-    [...document.querySelectorAll(selector)].forEach(node => node.hidden = false);
-}
-/**
  * @typedef {Object} Props
  * @property {string|string[]} [class] - A string or an array of strings representing the class(es) to be added to the element.
  * @property {string} [html] - The HTML content to be set as the innerHTML of the element.
@@ -104,6 +83,9 @@ function show(selector) {
  * @returns {HTMLElement} The newly created DOM element.
  */
 function createElement(tagName, props = {}, children = []) {
+    if(tagName==='grid-item'){
+        console.log(props.attributes.type)
+    }
     const element = document.createElement(tagName);
 
     if (props.class) {
@@ -175,20 +157,6 @@ function createDivElement(props = {}, children = []) {
  */
 function createSpanElement(props = {}, children = []) {
     return createElement('span', props, children);
-}
-
-/**
- * Creates a new DOM element with the specified tag name and properties.
- *
- * @param {string} iconName - icon name
- * @param {Props} [props] - An object containing properties to set on the element.
- * @returns {HTMLSpanElement} The newly created DOM element.
- */
-function createIconElement(iconName, props = {}) {
-    props.html = iconName;
-    props.class = props.class || [];
-    props.class.push('material-symbols-outlined');
-    return createSpanElement(props);
 }
 
 /**

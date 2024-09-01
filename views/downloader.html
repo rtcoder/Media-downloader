@@ -11,13 +11,13 @@
     <div id="top-container">
       <div class="section-buttons">
         <button data-section="images" class="selected">
-          <span class="material-symbols-outlined">imagesmode</span>
+          <x-icon>imagesmode</x-icon>
         </button>
         <button data-section="videos">
-          <span class="material-symbols-outlined">videocam</span>
+          <x-icon>videocam</x-icon>
         </button>
         <button data-section="audios">
-          <span class="material-symbols-outlined">music_note</span>
+          <x-icon>music_note</x-icon>
         </button>
       </div>
     </div>
@@ -33,19 +33,25 @@
 
   <div class="download">
     <button type="button" id="download-btn" disabled>
-      <span class="material-symbols-outlined">download</span>
+      <x-icon>download</x-icon>
       Download&nbsp;<span class="selected-count"></span>
     </button>
   </div>
 </main>
 
-<script src="/src/theme.js"></script>
-<script src="/src/downloader/utils.js"></script>
-<script src="/src/downloader/chrome-api.js"></script>
-<script src="/src/downloader/download-functions.js"></script>
-<script src="/src/downloader/dom-functions.js"></script>
-<script src="/src/downloader/media-display.js"></script>
-<script src="/src/downloader/downloader.js"></script>
+<script src="/js/web-components/icon.component.js"></script>
+<script src="/js/web-components/grid-item-image-thumbnail.component.js"></script>
+<script src="/js/web-components/grid-item-video-thumbnail.component.js"></script>
+<script src="/js/web-components/grid-item-audio-thumbnail.component.js"></script>
+<script src="/js/web-components/grid-item.component.js"></script>
+
+<script src="/js/theme.js"></script>
+<script src="/js/downloader/utils.js"></script>
+<script src="/js/downloader/chrome-api.js"></script>
+<script src="/js/downloader/download-functions.js"></script>
+<script src="/js/downloader/dom-functions.js"></script>
+<script src="/js/downloader/media-display.js"></script>
+<script src="/js/downloader/downloader.js"></script>
 </body>
 </html>
 

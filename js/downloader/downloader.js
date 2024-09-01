@@ -119,12 +119,7 @@ function changeToggleAllCheckbox(e) {
 }
 
 function onClickItem(e) {
-    const index = e.target.getAttribute('data-item-index');
-    toggleClass(
-        getImageSelector(index),
-        'checked',
-        !hasClass(getImageSelector(index), 'checked'),
-    );
+    e.target.classList.toggle('checked')
 
     let allAreChecked = true;
     let allAreUnchecked = true;
@@ -207,12 +202,12 @@ function setListeners() {
             accordionItem.classList.toggle('active');
         }
     });
-
+    document.addEventListener('item-clicked', onClickItem);
     document.querySelector('#toggle_all_checkbox').addEventListener('change', changeToggleAllCheckbox);
 }
 
 function findMedia() {
-    executeContentScript('/src/downloader/send_media.js');
+    executeContentScript('/js/downloader/send_media.js');
 }
 
 function init() {

@@ -44,7 +44,7 @@
     "default_path": "/views/downloader.html"
   },
   "background": {
-    "service_worker": "/src/background.js"
+    "service_worker": "/js/background.js"
   },
   "host_permissions": [
     "https://www.gstatic.com/",

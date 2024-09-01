@@ -8,7 +8,7 @@
  * @returns {string} The generated CSS selector string for the image thumbnail.
  */
 function getImageSelector(index) {
-    return `.thumbnail[data-item-index="${index}"]`;
+    return `grid-item[item-index="${index}"]`;
 }
 
 /**

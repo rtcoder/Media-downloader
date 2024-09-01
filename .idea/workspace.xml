@@ -4,13 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="**Simplify media display logic**&#10;&#10;Refactored media-display.js to streamline element creation and improve readability. Introduced helper functions for creating DOM elements in dom-functions.js. Added CSS for themes and improved styling consistency across components.">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="**Add default inspection profile for the project**&#10;&#10;Introduced a new inspection profile file in .idea to set default code inspection rules. This ensures consistency in code quality checks and facilitates better development practices.">
+      <change afterPath="$PROJECT_DIR$/js/web-components/grid-item-audio-thumbnail.component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/web-components/grid-item-image-thumbnail.component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/web-components/grid-item-video-thumbnail.component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/web-components/grid-item.component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/web-components/icon.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/chrome-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/chrome-api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/dom-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/dom-functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/download-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/download-functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/media-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/media-display.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/send_media.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/send_media.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icons/download.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/download.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/background.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/chrome-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/chrome-api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/dom-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/dom-functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/download-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/download-functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/downloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/downloader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/media-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/media-display.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/send_media.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/send_media.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/options/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/options/options.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changelog.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/downloader.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/downloader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/options.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/options.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +87,7 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/dawidjez/projekty/Private/Media-downloader/icons",
+    "last_opened_file_path": "/Users/dawidjez/projekty/Private/Media-downloader/js/web-components",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -81,11 +99,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js/web-components" />
       <recent name="$PROJECT_DIR$/icons" />
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="C:\Users\dawid\projects\Media-downloader\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/downloader" />
@@ -122,7 +140,7 @@
       <workItem from="1710008446889" duration="25514000" />
       <workItem from="1711219251644" duration="1000" />
       <workItem from="1724659352615" duration="46099000" />
-      <workItem from="1725103291997" duration="27658000" />
+      <workItem from="1725103291997" duration="40986000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -301,7 +319,23 @@
       <option name="project" value="LOCAL" />
       <updated>1725197996686</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="**Remove debug logs from various files**&#10;&#10;Eliminated console.log statements from multiple files to clean up the output. This enhances code readability and reduces unnecessary noise in the console for better debugging efficiency.">
+      <option name="closed" value="true" />
+      <created>1725200488496</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1725200488496</updated>
+    </task>
+    <task id="LOCAL-00025" summary="**Add default inspection profile for the project**&#10;&#10;Introduced a new inspection profile file in .idea to set default code inspection rules. This ensures consistency in code quality checks and facilitates better development practices.">
+      <option name="closed" value="true" />
+      <created>1725221244564</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1725221244565</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +385,9 @@
     <MESSAGE value="**Refactor media display logic and cleanup**&#10;&#10;Extracted media display logic from popup.js to new media-display.js for better organization. Removed redundant getThumbnail function from utils.js and improved code readability. Added alt attribute handling in createElement function in dom-functions.js." />
     <MESSAGE value="**Add video support and refactor media display**&#10;&#10;Enhanced media handling by adding video support alongside images. Refactored functions for better modularity and code clarity. Updated styles and improved event handling for media elements." />
     <MESSAGE value="**Simplify media display logic**&#10;&#10;Refactored media-display.js to streamline element creation and improve readability. Introduced helper functions for creating DOM elements in dom-functions.js. Added CSS for themes and improved styling consistency across components." />
-    <option name="LAST_COMMIT_MESSAGE" value="**Simplify media display logic**&#10;&#10;Refactored media-display.js to streamline element creation and improve readability. Introduced helper functions for creating DOM elements in dom-functions.js. Added CSS for themes and improved styling consistency across components." />
+    <MESSAGE value="**Remove debug logs from various files**&#10;&#10;Eliminated console.log statements from multiple files to clean up the output. This enhances code readability and reduces unnecessary noise in the console for better debugging efficiency." />
+    <MESSAGE value="**Add default inspection profile for the project**&#10;&#10;Introduced a new inspection profile file in .idea to set default code inspection rules. This ensures consistency in code quality checks and facilitates better development practices." />
+    <option name="LAST_COMMIT_MESSAGE" value="**Add default inspection profile for the project**&#10;&#10;Introduced a new inspection profile file in .idea to set default code inspection rules. This ensures consistency in code quality checks and facilitates better development practices." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
