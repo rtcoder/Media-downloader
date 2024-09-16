@@ -119,8 +119,6 @@ function changeToggleAllCheckbox(e) {
 }
 
 function onClickItem(e) {
-    e.target.classList.toggle('checked')
-
     let allAreChecked = true;
     let allAreUnchecked = true;
     const mediaToDisplay = getAllMediaToDisplay();

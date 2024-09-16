@@ -61,7 +61,7 @@ function toggleClass(selector, className, toggleValue = null) {
  * @typedef {Object} Props
  * @property {string|string[]} [class] - A string or an array of strings representing the class(es) to be added to the element.
  * @property {string} [html] - The HTML content to be set as the innerHTML of the element.
- * @property {{[key: string]: string}} [attributes] - An object representing additional attributes to set on the element.
+ * @property {{[key: string]: string|number}} [attributes] - An object representing additional attributes to set on the element.
  * @property {{[key: string]: string|number}} [data] - An object representing additional data attributes to set on the element.
  * @property {string} [type] - The type attribute to be set on the element (useful for elements like `input`).
  * @property {string} [title] - The title attribute to be set on the element.

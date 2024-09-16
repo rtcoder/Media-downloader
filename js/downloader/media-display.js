@@ -40,45 +40,15 @@ function displayMedia() {
     setDisabled('#download-btn', true);
 
     const mediaToDisplay = getAllMediaToDisplay();
-
-    const dataTable = document.querySelector('.accordion');
+    /**
+     *
+     * @type {Accordion}
+     */
+    const accordion = document.querySelector('x-accordion');
     const countAll = document.querySelector('.count-all');
-    dataTable.innerHTML = '';
+
+    accordion.dataInTabs = mediaToDisplay;
 
     countAll.innerHTML = countAllMedia(mediaToDisplay).toString();
-
-    dataTable.append(...mediaToDisplay.map(mediaGroup =>
-        createDivElement({class: 'accordion-item', data: {'tab-id': mediaGroup.tab.id}}, [
-            createDivElement({class: 'accordion-header'},
-                createButtonElement({class: 'accordion-button'}, [
-                    createImgElement({src: mediaGroup.tab.favIconUrl, alt: 'Favicon', class: 'favicon'}),
-                    createSpanElement({class: 'tab-title'}, [
-                        createSpanElement({class: 'title', html: mediaGroup.tab.title}),
-                        createSpanElement({class: 'tab-media-count', html: `(${mediaGroup.items.length})`}),
-                    ]),
-                    createSpanElement({class: 'tab-toggle'}),
-                ]),
-            ),
-            createDivElement({class: 'accordion-collapse'},
-                createDivElement({class: ['accordion-body', 'grid']},
-                    mediaGroup.items.map((mediaItem, itemIndex) =>
-                        createElement('grid-item', {
-                            attributes: {
-                                'item-index': `${mediaGroup.tab.id}-${itemIndex}`,
-                                src: mediaItem.src,
-                                poster: mediaItem.poster || '',
-                                ext: mediaItem.filetype,
-                                type: mediaItem.type,
-                            },
-                        }),
-                    ),
-                ),
-            ),
-        ]),
-    ));
-    dataTable.querySelectorAll('.thumbnail[data-src]').forEach(el => {
-        console.log(el);
-        el.src = el.getAttribute('data-src');
-    });
 }
 

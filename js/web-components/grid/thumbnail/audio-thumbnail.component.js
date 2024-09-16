@@ -1,4 +1,4 @@
-class GridItemAudioThumbnailComponent extends HTMLElement {
+class AudioThumbnailComponent extends HTMLElement {
     constructor() {
         super();
 
@@ -35,4 +35,4 @@ class GridItemAudioThumbnailComponent extends HTMLElement {
     }
 }
 
-customElements.define('grid-item-audio-thumbnail', GridItemAudioThumbnailComponent);
+customElements.define('audio-thumbnail', AudioThumbnailComponent);

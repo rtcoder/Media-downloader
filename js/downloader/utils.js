@@ -59,3 +59,17 @@ function getVideoDimensions(url) {
         video.src = url;
     });
 }
+
+function kebabToCamel(kebabCaseString) {
+    return kebabCaseString.toLowerCase().replace(/-([a-z])/g, (match, letter) => {
+        return letter.toUpperCase();
+    });
+}
+
+function dispatchEvent(el, name, detail, bubbles = true, composed = true) {
+    el.dispatchEvent(new CustomEvent(name, {detail, bubbles, composed}));
+}
+
+function mapToString(array, callback, separator = '') {
+    return array.map(callback).join(separator);
+}

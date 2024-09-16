@@ -5,30 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="**Add default inspection profile for the project**&#10;&#10;Introduced a new inspection profile file in .idea to set default code inspection rules. This ensures consistency in code quality checks and facilitates better development practices.">
-      <change afterPath="$PROJECT_DIR$/js/web-components/grid-item-audio-thumbnail.component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/web-components/grid-item-image-thumbnail.component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/web-components/grid-item-video-thumbnail.component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/web-components/grid-item.component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/web-components/icon.component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/web-components/accordion/accordion-body.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/web-components/accordion/accordion-header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/web-components/accordion/accordion-item.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/web-components/accordion/accordion.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/download.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/download.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/background.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/chrome-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/chrome-api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/dom-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/dom-functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/download-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/download-functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/downloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/downloader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/media-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/media-display.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/send_media.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/send_media.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/options/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/options/options.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/theme.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changelog.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/downloader/dom-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/dom-functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/downloader/downloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/downloader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/downloader/media-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/media-display.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/downloader/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/grid-item-audio-thumbnail.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/web-components/grid/thumbnail/audio-thumbnail.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/grid-item-image-thumbnail.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/web-components/grid/thumbnail/image-thumbnail.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/grid-item-video-thumbnail.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/web-components/grid/thumbnail/video-thumbnail.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/grid-item.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/web-components/grid/grid-item.component.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/downloader.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/downloader.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/options.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/options.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +85,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "JavaScript.Libraries",
+    "ts.external.directory.path": "/Users/dawidjez/Library/Application Support/JetBrains/Toolbox/apps/PhpStorm/ch-0/233.14015.96/PhpStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>

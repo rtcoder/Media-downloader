@@ -1,4 +1,4 @@
-class GridItemImageThumbnailComponent extends HTMLElement {
+class ImageThumbnailComponent extends HTMLElement {
     constructor() {
         super();
 
@@ -14,9 +14,11 @@ class GridItemImageThumbnailComponent extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style>
             img {
-                width: var(--imageSize);
-                height: var(--imageSize);
+                width: 100%;
+                height: 100%;
                 object-fit: scale-down;
+                pointer-events: none;
+                user-select: none;
                 background-position: center center;
                 background-image: url(/images/transparent.png);
             }
@@ -57,4 +59,4 @@ class GridItemImageThumbnailComponent extends HTMLElement {
     }
 }
 
-customElements.define('grid-item-image-thumbnail', GridItemImageThumbnailComponent);
+customElements.define('image-thumbnail', ImageThumbnailComponent);

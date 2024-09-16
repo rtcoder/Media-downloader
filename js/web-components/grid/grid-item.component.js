@@ -16,9 +16,12 @@ class GridItemComponent extends HTMLElement {
             'class',
         ];
         GridItemComponent.allAttributes.forEach(name => {
-            const camelCaseName = this.kebabToCamel(name);
+            const camelCaseName = kebabToCamel(name);
             this.data[camelCaseName] = this.getAttribute(name);
         });
+        this.addEventListener('thumbnail-clicked',()=>{
+            this.classList.toggle('checked');
+        })
     }
 
     render() {
@@ -39,9 +42,14 @@ class GridItemComponent extends HTMLElement {
                 position: relative;
             }
             .item {
+                width: var(--imageSize);
+                height: var(--imageSize);
                 justify-self: center;
                 position: relative;
                 border: 4px solid var(--imageBorderColor);
+                margin-bottom: 10px;
+                display: flex;
+                align-items: center;
             
                 &:hover {
                     border-color: var(--activeColorHover);
@@ -76,6 +84,10 @@ class GridItemComponent extends HTMLElement {
                 padding: 3px;
                 border-radius: 4px;
             }
+            .thumbnail {
+                width: 100%;
+                height: 100%;
+            }
             </style>
             
             <div class="item ${this.data.class || ''}">
@@ -95,13 +107,7 @@ class GridItemComponent extends HTMLElement {
 
     setListeners() {
         this.shadowRoot.querySelector('.thumbnail').addEventListener('click', () => {
-            this.emitCustomEvent();
-        });
-    }
-
-    kebabToCamel(kebabCaseString) {
-        return kebabCaseString.toLowerCase().replace(/-([a-z])/g, (match, letter) => {
-            return letter.toUpperCase();
+            dispatchEvent(this, 'thumbnail-clicked', {itemIndex: this.data.itemIndex});
         });
     }
 
@@ -122,24 +128,15 @@ class GridItemComponent extends HTMLElement {
     getThumbnail() {
         const {src, poster} = this.data;
         if (this.data.type === 'image') {
-            return `<grid-item-image-thumbnail class="thumbnail" src="${src}"></grid-item-image-thumbnail>`;
+            return `<image-thumbnail class="thumbnail" src="${src}"></image-thumbnail>`;
         }
         if (this.data.type === 'video') {
-            return `<grid-item-video-thumbnail class="thumbnail" poster="${poster || ''}" src="${src}"></grid-item-video-thumbnail>`;
+            return `<video-thumbnail class="thumbnail" poster="${poster || ''}" src="${src}"></video-thumbnail>`;
         }
         if (this.data.type === 'audio') {
-            return `<grid-item-audio-thumbnail class="thumbnail" src="${src}"></grid-item-audio-thumbnail>`;
+            return `<audio-thumbnail class="thumbnail" src="${src}"></audio-thumbnail>`;
         }
         return '';
-    }
-
-    emitCustomEvent() {
-        const event = new CustomEvent('item-clicked', {
-            detail: {itemIndex: this.data.itemIndex},
-            bubbles: true,
-            composed: true,
-        });
-        this.dispatchEvent(event);
     }
 
     connectedCallback() {
@@ -163,7 +160,7 @@ class GridItemComponent extends HTMLElement {
         if (oldValue === newValue) {
             return;
         }
-        const camelcaseName = this.kebabToCamel(name);
+        const camelcaseName = kebabToCamel(name);
         if (camelcaseName in this.data) {
             this.data[camelcaseName] = newValue;
         }

@@ -1,4 +1,4 @@
-class GridItemVideoThumbnailComponent extends HTMLElement {
+class VideoThumbnailComponent extends HTMLElement {
     constructor() {
         super();
 
@@ -15,8 +15,11 @@ class GridItemVideoThumbnailComponent extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style>
             video {
-                width: var(--imageSize);
-                height: var(--imageSize);
+                width: 100%;
+                height: 100%;
+                object-fit: scale-down;
+                pointer-events: none;
+                user-select: none;
             }
             </style>
             
@@ -56,4 +59,4 @@ class GridItemVideoThumbnailComponent extends HTMLElement {
     }
 }
 
-customElements.define('grid-item-video-thumbnail', GridItemVideoThumbnailComponent);
+customElements.define('video-thumbnail', VideoThumbnailComponent);
