@@ -14,6 +14,7 @@ class GridItemComponent extends HTMLElement {
             'original-width',
             'original-height',
             'video-quality',
+            'duration',
             'class',
         ];
         GridItemComponent.allAttributes.forEach(name => {
@@ -121,7 +122,7 @@ class GridItemComponent extends HTMLElement {
     }
 
     getDimensions() {
-        const {type, originalWidth, originalHeight, videoQuality} = this.data;
+        const {type, originalWidth, originalHeight, videoQuality, duration} = this.data;
 
         if (type === 'image' && originalWidth && originalHeight) {
             return originalWidth + 'x' + originalHeight;
@@ -129,6 +130,10 @@ class GridItemComponent extends HTMLElement {
 
         if (type === 'video' && videoQuality) {
             return videoQuality;
+        }
+
+        if (type === 'audio' && duration) {
+            return duration;
         }
 
         return '';
@@ -162,6 +167,7 @@ class GridItemComponent extends HTMLElement {
             'original-width',
             'original-height',
             'video-quality',
+            'duration',
         ];
     }
 

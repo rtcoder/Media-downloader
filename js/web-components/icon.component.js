@@ -7,6 +7,8 @@ class IconComponent extends HTMLElement {
     }
 
     render() {
+        const fzAttribute = this.getAttribute('size') || 24;
+        const fontSize = this.makeValidFontSize(fzAttribute);
         this.shadowRoot.innerHTML = `
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
@@ -19,7 +21,11 @@ class IconComponent extends HTMLElement {
                     line-height: 1;
                     letter-spacing: normal;
                     text-transform: none;
-                    display: inline-block;
+                    pointer-events: none;
+                    user-select: none;
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
                     white-space: nowrap;
                     word-wrap: normal;
                     direction: ltr;
@@ -31,8 +37,35 @@ class IconComponent extends HTMLElement {
                     'opsz' 48
                 }
             </style>
-            <span class="material-symbols-outlined"><slot></slot></span>
+            <span class="material-symbols-outlined" style="font-size: ${fontSize};"><slot></slot></span>
         `;
+    }
+
+    /**
+     *
+     * @param {string|number} value
+     * @return {string}
+     */
+    makeValidFontSize(value) {
+        value = value.toString();
+
+        const containsOnlyDigits = str => {
+            return /^\d+$/.test(str);
+        };
+
+        if (containsOnlyDigits(value)) {
+            value = `${value}px`;
+        }
+
+        return value;
+    }
+
+    static get observedAttributes() {
+        return ['size'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        this.shadowRoot.querySelector('.material-symbols-outlined').style.fontsize = this.makeValidFontSize(newValue);
     }
 }
 

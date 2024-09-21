@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="**Introduce accordion web components**&#10;&#10;Added new accordion web components (`accordion`, `accordion-item`, `accordion-header`, `accordion-body`) and replaced old DOM manipulation code with these components for better modularity and readability. Refactored `grid-item` component handling and updated script imports in `downloader.html` accordingly.">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="**Add alt attribute and filename support**&#10;&#10;Enhanced media elements to include `alt` attributes and updated download logic to utilize `filename`. Improved event handlers and streamlined related components for better maintainability.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/downloader/chrome-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/chrome-api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/downloader/download-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/download-functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/downloader/downloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/downloader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/downloader/media-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/media-display.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/downloader/send_media.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/send_media.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/web-components/accordion/accordion-body.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/web-components/accordion/accordion-body.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/web-components/accordion/accordion-item.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/web-components/accordion/accordion-item.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/web-components/grid/grid-item.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/web-components/grid/grid-item.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/grid/thumbnail/audio-thumbnail.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/web-components/grid/thumbnail/audio-thumbnail.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/icon.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/web-components/icon.component.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +123,7 @@
       <workItem from="1711219251644" duration="1000" />
       <workItem from="1724659352615" duration="46099000" />
       <workItem from="1725103291997" duration="40986000" />
-      <workItem from="1726726906800" duration="4178000" />
+      <workItem from="1726726906800" duration="6444000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -332,7 +326,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726481452076</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="**Add alt attribute and filename support**&#10;&#10;Enhanced media elements to include `alt` attributes and updated download logic to utilize `filename`. Improved event handlers and streamlined related components for better maintainability.">
+      <option name="closed" value="true" />
+      <created>1726941605272</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1726941605272</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,7 +363,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="new extension" />
     <MESSAGE value="download audio and video" />
     <MESSAGE value="change media type" />
     <MESSAGE value="audio and video name" />
@@ -386,7 +387,8 @@
     <MESSAGE value="**Add default inspection profile for the project**&#10;&#10;Introduced a new inspection profile file in .idea to set default code inspection rules. This ensures consistency in code quality checks and facilitates better development practices." />
     <MESSAGE value="**Refactor and streamline codebase structure**&#10;&#10;Deleted unused `download.svg` icon and moved various JavaScript and HTML files from the `src` directory to a more organized `js` directory. Introduced custom web components for grid items and refactored scripts to improve modularity and maintainability." />
     <MESSAGE value="**Introduce accordion web components**&#10;&#10;Added new accordion web components (`accordion`, `accordion-item`, `accordion-header`, `accordion-body`) and replaced old DOM manipulation code with these components for better modularity and readability. Refactored `grid-item` component handling and updated script imports in `downloader.html` accordingly." />
-    <option name="LAST_COMMIT_MESSAGE" value="**Introduce accordion web components**&#10;&#10;Added new accordion web components (`accordion`, `accordion-item`, `accordion-header`, `accordion-body`) and replaced old DOM manipulation code with these components for better modularity and readability. Refactored `grid-item` component handling and updated script imports in `downloader.html` accordingly." />
+    <MESSAGE value="**Add alt attribute and filename support**&#10;&#10;Enhanced media elements to include `alt` attributes and updated download logic to utilize `filename`. Improved event handlers and streamlined related components for better maintainability." />
+    <option name="LAST_COMMIT_MESSAGE" value="**Add alt attribute and filename support**&#10;&#10;Enhanced media elements to include `alt` attributes and updated download logic to utilize `filename`. Improved event handlers and streamlined related components for better maintainability." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
