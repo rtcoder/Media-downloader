@@ -48,7 +48,8 @@
     "service_worker": "/js/background.js"
   },
   "host_permissions": [
-    "https://www.gstatic.com/"
+    "https://www.gstatic.com/",
+    "<all_urls>"
   ],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'",
