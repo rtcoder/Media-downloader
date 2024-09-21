@@ -25,6 +25,13 @@ class GridItemComponent extends HTMLElement {
             this.classList.toggle('checked');
             this.shadowRoot.querySelector('.item').classList.toggle('checked');
         });
+        document.addEventListener('select-all', e => {
+            dispatchEvent(this, 'thumbnail-clicked', {
+                itemIndex: this.data.itemIndex,
+                value: e.detail.value,
+                type: this.data.type,
+            });
+        });
     }
 
     render() {
@@ -113,11 +120,11 @@ class GridItemComponent extends HTMLElement {
 
     setListeners() {
         this.shadowRoot.querySelector('.thumbnail').addEventListener('click', () => {
-            const checked=this.classList.contains('checked');
+            const checked = this.classList.contains('checked');
             dispatchEvent(this, 'thumbnail-clicked', {
                 itemIndex: this.data.itemIndex,
                 value: !checked,
-                type: this.data.type
+                type: this.data.type,
             });
         });
         this.shadowRoot.querySelector('.download_image_button').addEventListener('click', () => {

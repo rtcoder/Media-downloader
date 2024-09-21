@@ -118,20 +118,9 @@ chrome.tabs.onActivated.addListener(findMedia);
 
 function changeToggleAllCheckbox(e) {
     const {checked} = e.target;
-
-    const mediaToDisplay = getAllMediaToDisplay();
-    let selectedCount = 0;
-
-    for (let i = 0; i < mediaToDisplay.length; i++) {
-        const {tab, items} = mediaToDisplay[i];
-        for (let idx = 0; idx < items.length; idx++) {
-            toggleClass(getImageSelector(`${tab.id}-${idx}`), 'checked', checked);
-            if (checked) {
-                selectedCount++;
-            }
-        }
-    }
-    updateSelectedCountText(selectedCount);
+    dispatchEvent(document, 'select-all', {
+        value: checked,
+    });
 }
 
 function onClickItem(e) {
