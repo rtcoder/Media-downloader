@@ -79,6 +79,7 @@
             const src = getSrcFromElement(element);
             return {
                 src,
+                alt: getAltFromElement(element),
                 type: await getFileType(src),
             };
         }
@@ -88,6 +89,7 @@
             if (isImageURL(href)) {
                 return {
                     src: href,
+                    alt: getAltFromElement(element),
                     type: await getFileType(href),
                 };
             }
@@ -99,12 +101,13 @@
             if (isImageURL(parsedURL)) {
                 return {
                     src: parsedURL,
+                    alt: null,
                     type: await getFileType(parsedURL),
                 };
             }
         }
 
-        return {src: '', type: null};
+        return {src: '', type: null, alt: null};
     }
 
     async function extractVideoFromElement(element) {
@@ -117,6 +120,7 @@
                 src,
                 poster: getPosterFromVideoElement(element),
                 type: await getFileType(src),
+                alt: getAltFromElement(element),
             };
         }
 
@@ -127,10 +131,11 @@
                     src: href,
                     poster: null,
                     type: await getFileType(href),
+                    alt: getAltFromElement(element),
                 };
             }
         }
-        return {src: '', poster: null, type: null};
+        return {src: '', poster: null, type: null, alt: null};
     }
 
     async function extractAudioFromElement(element) {
@@ -142,6 +147,7 @@
             return {
                 src,
                 type: await getFileType(src),
+                alt: getAltFromElement(element),
             };
         }
 
@@ -151,10 +157,11 @@
                 return {
                     src: href,
                     type: await getFileType(href),
+                    alt: getAltFromElement(element),
                 };
             }
         }
-        return {src: '', type: null};
+        return {src: '', type: null, alt: null};
     }
 
     function extractURLFromStyle(url) {
@@ -198,6 +205,17 @@
             src = src.substring(0, hashIndex + 1);
         }
         return src;
+    }
+
+    function getAltFromElement(element) {
+        const alt = element.getAttribute('alt');
+        if (alt === null) {
+            return null;
+        }
+        if (alt.length === 0) {
+            return null;
+        }
+        return alt;
     }
 
     function getPosterFromVideoElement(element) {

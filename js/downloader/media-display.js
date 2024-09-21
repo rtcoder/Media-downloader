@@ -4,6 +4,7 @@
  * @property {string} src - The source URL of the media item.
  * @property {string} type - The type of the media item ('image', 'video', or 'audio').
  * @property {string|null} filetype - The type of the media item ('image', 'video', or 'audio').
+ * @property {string|null} alt - The alt of the media item
  * @property {string|null} [poster] - The URL of the video's poster image (only for videos).
  */
 
@@ -40,6 +41,7 @@ function displayMedia() {
     setDisabled('#download-btn', true);
 
     const mediaToDisplay = getAllMediaToDisplay();
+    console.log(mediaToDisplay)
     /**
      *
      * @type {Accordion}

@@ -52,9 +52,10 @@ class AccordionBody extends HTMLElement {
 
     getItemsHtml() {
         return this.items.map((mediaItem, itemIndex) => {
-            const {src, type, poster, filetype} = mediaItem;
+            const {src, type, poster, filetype, alt} = mediaItem;
             return `<grid-item
               src="${src}"
+              filename="${alt || ''}"
               poster="${poster || ''}"
               type="${type}"
               ext="${filetype}"

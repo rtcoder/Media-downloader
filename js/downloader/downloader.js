@@ -5,6 +5,7 @@ const mediaTypes = ['images', 'audios', 'videos'];
  * @typedef {Object} MediaItem
  * @property {string} src - The source URL of the media.
  * @property {string|null} type - The type of the media.
+ * @property {string|null} alt - The alt of the media item
  */
 
 /**
@@ -13,6 +14,7 @@ const mediaTypes = ['images', 'audios', 'videos'];
  * @property {string} src - The source URL of the video.
  * @property {string|null} poster - The URL of the video's poster image, or null if none is provided.
  * @property {string|null} type - The type of the media.
+ * @property {string|null} alt - The alt of the media item
  */
 
 /**
@@ -185,11 +187,6 @@ function setListeners() {
             return;
         }
 
-        if (target.matches('.download_image_button')) {
-            downloadItem(target.getAttribute('data-src'));
-            return;
-        }
-
         if (target.matches('.thumbnail')) {
             onClickItem(e);
             return;
@@ -200,7 +197,7 @@ function setListeners() {
             accordionItem.classList.toggle('active');
         }
     });
-    document.addEventListener('item-clicked', onClickItem);
+    document.addEventListener('thumbnail-clicked', onClickItem);
     document.querySelector('#toggle_all_checkbox').addEventListener('change', changeToggleAllCheckbox);
 }
 

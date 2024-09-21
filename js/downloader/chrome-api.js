@@ -12,6 +12,9 @@ async function executeContentScript(scriptUrl) {
     if (!tab) {
         return;
     }
+    if (tab.id <= 0) {
+        return;
+    }
 
     chrome.scripting.executeScript({
         target: {tabId: tab.id, allFrames: true},
@@ -67,8 +70,13 @@ async function getCurrentTab() {
  * This function triggers a download for the specified URL using `chrome.downloads.download`.
  *
  * @param {string} url - The URL of the file to be downloaded.
+ * @param {string|null} filename - The URL of the file to be downloaded.
  */
-function downloadUrl(url) {
-    chrome.downloads.download({url});
+function downloadUrl(url, filename = null) {
+    const downloadOptions = {url};
+    if (filename) {
+        downloadOptions.filename = filename;
+    }
+    chrome.downloads.download(downloadOptions);
 }
 

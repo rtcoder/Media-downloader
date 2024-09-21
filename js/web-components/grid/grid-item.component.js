@@ -6,6 +6,7 @@ class GridItemComponent extends HTMLElement {
         this.data = {};
         GridItemComponent.allAttributes = [
             'src',
+            'filename',
             'poster',
             'item-index',
             'type',
@@ -19,9 +20,10 @@ class GridItemComponent extends HTMLElement {
             const camelCaseName = kebabToCamel(name);
             this.data[camelCaseName] = this.getAttribute(name);
         });
-        this.addEventListener('thumbnail-clicked',()=>{
+        this.addEventListener('thumbnail-clicked', () => {
             this.classList.toggle('checked');
-        })
+            this.shadowRoot.querySelector('.item').classList.toggle('checked');
+        });
     }
 
     render() {
@@ -90,7 +92,7 @@ class GridItemComponent extends HTMLElement {
             }
             </style>
             
-            <div class="item ${this.data.class || ''}">
+            <div class="item">
                 <button class="download_image_button" type="button">
                     <x-icon>download</x-icon>
                 </button>
@@ -108,6 +110,13 @@ class GridItemComponent extends HTMLElement {
     setListeners() {
         this.shadowRoot.querySelector('.thumbnail').addEventListener('click', () => {
             dispatchEvent(this, 'thumbnail-clicked', {itemIndex: this.data.itemIndex});
+        });
+        this.shadowRoot.querySelector('.download_image_button').addEventListener('click', () => {
+            const filename = this.getAttribute('filename');
+            downloadItem({
+                url: this.getAttribute('src'),
+                filename: filename?.length ? filename : null,
+            });
         });
     }
 
@@ -146,13 +155,13 @@ class GridItemComponent extends HTMLElement {
     static get observedAttributes() {
         return [
             'src',
+            'filename',
             'item-index',
             'type',
             'ext',
             'original-width',
             'original-height',
             'video-quality',
-            'class',
         ];
     }
 

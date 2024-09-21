@@ -70,7 +70,7 @@ class AccordionItem extends HTMLElement {
             </style>
             
             <x-accordion-header name="${tab.title}" favicon="${tab.favIconUrl}" all-count="${items.length}"></x-accordion-header>
-            <x-accordion-body></x-accordion-body>
+            <x-accordion-body tab-id="${tab.id}"></x-accordion-body>
         `;
         const bodyAccordion = this.shadowRoot.querySelector('x-accordion-body');
         bodyAccordion.items = this.dataInTab.items;
