@@ -80,6 +80,8 @@ class GridItemComponent extends HTMLElement {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
+                pointer-events: none;
+                user-select: none;
             }
             
             .item-details-ext, .item-details-dimensions {
@@ -110,7 +112,12 @@ class GridItemComponent extends HTMLElement {
 
     setListeners() {
         this.shadowRoot.querySelector('.thumbnail').addEventListener('click', () => {
-            dispatchEvent(this, 'thumbnail-clicked', {itemIndex: this.data.itemIndex});
+            const checked=this.classList.contains('checked');
+            dispatchEvent(this, 'thumbnail-clicked', {
+                itemIndex: this.data.itemIndex,
+                value: !checked,
+                type: this.data.type
+            });
         });
         this.shadowRoot.querySelector('.download_image_button').addEventListener('click', () => {
             const filename = this.getAttribute('filename');

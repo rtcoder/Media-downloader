@@ -325,28 +325,34 @@
             const imagesFromTags = await extractImagesFromTags();
             const imagesFromStyles = extractImagesFromStyles(); // Assuming this is synchronous
             result.images = removeDuplicateOrEmpty(
-                [...imagesFromTags, ...imagesFromStyles].map(({src, type}) => ({
+                [...imagesFromTags, ...imagesFromStyles].map(({src, type, alt}) => ({
                     src: relativeUrlToAbsolute(src),
                     type,
+                    alt,
+                    selected: false,
                 })),
             );
 
             // Gather videos
             const videosFromTags = await extractVideosFromTags();
             result.videos = removeDuplicateOrEmpty(
-                videosFromTags.map(({src, type, poster}) => ({
+                videosFromTags.map(({src, type, alt, poster}) => ({
                     src: relativeUrlToAbsolute(src),
                     poster: poster ? relativeUrlToAbsolute(poster) : null,
                     type,
+                    alt,
+                    selected: false,
                 })),
             );
 
             // Gather audios
             const audiosFromTags = await extractAudiosFromTags();
             result.audios = removeDuplicateOrEmpty(
-                audiosFromTags.map(({src, type}) => ({
+                audiosFromTags.map(({src, type, alt}) => ({
                     src: relativeUrlToAbsolute(src),
                     type,
+                    alt,
+                    selected: false,
                 })),
             );
         } catch (err) {

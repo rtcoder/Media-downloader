@@ -6,6 +6,7 @@
  * @property {string|null} filetype - The type of the media item ('image', 'video', or 'audio').
  * @property {string|null} alt - The alt of the media item
  * @property {string|null} [poster] - The URL of the video's poster image (only for videos).
+ * @property {boolean} selected - is media selected to download
  */
 
 /**
@@ -23,10 +24,17 @@
  */
 function getAllMediaToDisplay() {
     const currentSection = getCurrentSection();
+    const mapFn = (itemType) => ({type, selected, src, poster}) => ({
+        src,
+        poster,
+        filetype: type,
+        selected,
+        type: itemType,
+    });
     const sectionMapping = {
-        images: (media) => media.images.map(({type, src}) => ({src, filetype: type, type: 'image'})),
-        videos: (media) => media.videos.map(({type, src, poster}) => ({src, poster, filetype: type, type: 'video'})),
-        audios: (media) => media.audios.map(({type, src}) => ({src, filetype: type, type: 'audio'})),
+        images: (media) => media.images.map(mapFn('image')),
+        videos: (media) => media.videos.map(mapFn('video')),
+        audios: (media) => media.audios.map(mapFn('audio')),
     };
 
     const getMediaItems = sectionMapping[currentSection] || (() => []);
@@ -41,7 +49,7 @@ function displayMedia() {
     setDisabled('#download-btn', true);
 
     const mediaToDisplay = getAllMediaToDisplay();
-    console.log(mediaToDisplay)
+    console.log(mediaToDisplay);
     /**
      *
      * @type {Accordion}
@@ -52,5 +60,13 @@ function displayMedia() {
     accordion.dataInTabs = mediaToDisplay;
 
     countAll.innerHTML = countAllMedia(mediaToDisplay).toString();
+}
+
+function setTabExpanded(tabId, value) {
+    tabExpanded[tabId] = value;
+}
+
+function isTabExpanded(tabId, value) {
+    return !!tabExpanded[tabId];
 }
 

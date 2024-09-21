@@ -92,6 +92,9 @@ class AccordionHeader extends HTMLElement {
             .accordion-header button .tab-title{
                 color: var(--fontColor);
             }
+            .accordion-header button .tab-media-count:empty{
+                display:none;
+            }
             </style>
             
             <div class="accordion-header ${this.active ? 'active' : ''}">
@@ -99,7 +102,7 @@ class AccordionHeader extends HTMLElement {
                     <img src="${this.data.favicon}" alt="Favicon" class="favicon">
                     <span class="tab-title">
                         <span class="title">${this.data.name}</span>
-                        <span class="tab-media-count">${this.data.allCount}</span>
+                        <span class="tab-media-count">(${this.data.allCount})</span>
                     </span>
                     <span class="tab-toggle"></span>
                 </button>

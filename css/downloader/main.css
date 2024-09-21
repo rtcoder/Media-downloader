@@ -44,6 +44,7 @@ main {
         justify-content: center;
         background: var(--activeColor);
         color: var(--fontColor);
+        gap: 5px;
 
         &:not([disabled]):hover {
             background-color: var(--activeColorHover);

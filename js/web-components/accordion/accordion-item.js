@@ -5,7 +5,7 @@ class AccordionItem extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.tabId = null;
         this._dataInTab = null;
-        this.expanded = false;
+        this.expanded = isTabExpanded(this.tabId);
 
         this.addEventListener('accordion-header-clicked', (event) => {
             /**
@@ -18,6 +18,7 @@ class AccordionItem extends HTMLElement {
                 this.expanded = !this.expanded;
                 body.hidden = !this.expanded;
                 header.active = this.expanded;
+                setTabExpanded(this.tabId, this.expanded);
             }
         });
     }
@@ -90,6 +91,7 @@ class AccordionItem extends HTMLElement {
             return;
         }
         this.tabId = newValue;
+        this.expanded = isTabExpanded(this.tabId);
         this.render();
     }
 }

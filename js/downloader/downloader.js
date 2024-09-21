@@ -6,6 +6,7 @@ const mediaTypes = ['images', 'audios', 'videos'];
  * @property {string} src - The source URL of the media.
  * @property {string|null} type - The type of the media.
  * @property {string|null} alt - The alt of the media item
+ * @property {boolean} selected - is media selected to download
  */
 
 /**
@@ -15,6 +16,7 @@ const mediaTypes = ['images', 'audios', 'videos'];
  * @property {string|null} poster - The URL of the video's poster image, or null if none is provided.
  * @property {string|null} type - The type of the media.
  * @property {string|null} alt - The alt of the media item
+ * @property {boolean} selected - is media selected to download
  */
 
 /**
@@ -42,10 +44,21 @@ const mediaTypes = ['images', 'audios', 'videos'];
  */
 
 /**
+ * Represents the information about tab whether is expanded or not
+ * @typedef {Object} TabExpanded
+ * @property {boolean} [key] - The basic information about the tab expanded - key is tabId
+ */
+
+/**
  * An array that stores information about media content found in various browser tabs.
  * @type {MediaInTab[]}
  */
 const mediaInTabs = [];
+/**
+ *
+ * @type {TabExpanded}
+ */
+const tabExpanded = {};
 
 chrome.runtime.onMessage.addListener(async (result) => {
     if (result.error && Object.keys(result.error).length > 0) {
@@ -83,6 +96,7 @@ chrome.runtime.onMessage.addListener(async (result) => {
                         ...media[type],
                         ...newMedia[type],
                     ]);
+                    mediaInTabs[existingIndex].tab = {id, favIconUrl, url, title};
                 });
             }
         });
@@ -121,15 +135,24 @@ function changeToggleAllCheckbox(e) {
 }
 
 function onClickItem(e) {
+    const {itemIndex, value, type} = e.detail;
+    const [tabId, itemIdx] = itemIndex.split('-').map(item => +item);
+    const currentSection = mapMediaTypeToSectionName(type);
+    const tabIndexInSection = mediaInTabs.findIndex(({tab}) => tab.id === tabId);
+    if (tabIndexInSection === -1) {
+        return;
+    }
+    mediaInTabs[tabIndexInSection].media[currentSection][itemIdx].selected = value;
+
     let allAreChecked = true;
     let allAreUnchecked = true;
     const mediaToDisplay = getAllMediaToDisplay();
     let selectedCount = 0;
-
+    console.log(itemIndex, value);
     for (let i = 0; i < mediaToDisplay.length; i++) {
-        const {tab, items} = mediaToDisplay[i];
+        const {items} = mediaToDisplay[i];
         for (let idx = 0; idx < items.length; idx++) {
-            if (hasClass(getImageSelector(`${tab.id}-${idx}`), 'checked')) {
+            if (items[idx].selected) {
                 allAreUnchecked = false;
                 selectedCount++;
             } else {

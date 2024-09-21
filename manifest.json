@@ -29,6 +29,7 @@
   "web_accessible_resources": [
     {
       "resources": [
+        "/css/*",
         "/icons/*",
         "/images/*",
         "/views/changelog.html",

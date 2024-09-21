@@ -73,3 +73,16 @@ function dispatchEvent(el, name, detail, bubbles = true, composed = true) {
 function mapToString(array, callback, separator = '') {
     return array.map(callback).join(separator);
 }
+
+function mapMediaTypeToSectionName(type) {
+    if (type === 'image') {
+        return 'images';
+    }
+    if (type === 'video') {
+        return 'videos';
+    }
+    if (type === 'audio') {
+        return 'audios';
+    }
+    return '';
+}
