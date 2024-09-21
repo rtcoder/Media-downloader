@@ -52,13 +52,14 @@ class AccordionBody extends HTMLElement {
 
     getItemsHtml() {
         return this.items.map((mediaItem, itemIndex) => {
-            const {src, type, poster, filetype, alt} = mediaItem;
+            const {src, type, poster, filetype, selected, alt} = mediaItem;
             return `<grid-item
               src="${src}"
               filename="${alt || ''}"
               poster="${poster || ''}"
               type="${type}"
               ext="${filetype}"
+              class="${selected ? 'checked' : ''}"
               item-index="${this.data.tabId}-${itemIndex}"
             ></grid-item>`;
         }).join('');

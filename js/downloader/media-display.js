@@ -46,8 +46,6 @@ function getAllMediaToDisplay() {
 }
 
 function displayMedia() {
-    setDisabled('#download-btn', true);
-
     const mediaToDisplay = getAllMediaToDisplay();
     console.log(mediaToDisplay);
     /**

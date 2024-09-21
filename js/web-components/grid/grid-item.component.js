@@ -31,6 +31,7 @@ class GridItemComponent extends HTMLElement {
         if (!this.data.type) {
             return;
         }
+        const className = this.data.class;
         this.shadowRoot.innerHTML = `
             <style>
             * {
@@ -95,7 +96,7 @@ class GridItemComponent extends HTMLElement {
             }
             </style>
             
-            <div class="item">
+            <div class="item ${className}">
                 <button class="download_image_button" type="button">
                     <x-icon>download</x-icon>
                 </button>
