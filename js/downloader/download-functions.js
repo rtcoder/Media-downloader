@@ -4,11 +4,11 @@
  * This function logs the URL to the console and then triggers a download using the `chrome.downloads.download` method.
  *
  * @param {Object} itemInfo
- * @param {string} itemInfo.src - The URL of the file to be downloaded.
+ * @param {string} itemInfo.url - The URL of the file to be downloaded.
  * @param {string|null} itemInfo.alt - The URL of the file to be downloaded.
  */
 function downloadItem(itemInfo) {
-    downloadUrl(itemInfo.src, itemInfo.alt);
+    downloadUrl(itemInfo.url, itemInfo.alt);
 }
 
 /**
@@ -29,7 +29,7 @@ function downloadImages(mediaToDisplay) {
         for (let idx = 0; idx < items.length; idx++) {
             if (items[idx].selected) {
                 checkedImages.push({
-                    src: items[idx].src,
+                    url: items[idx].src,
                     alt: items[idx].alt,
                 });
             }

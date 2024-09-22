@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Enhance grid item class handling and clean workspace tasks&#10;&#10;Added dynamic class handling in the grid-item component based on item selection. Simplified media display initialization and updated workspace.xml to remove redundant entries and reflect recent changes.">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Expand permissions in manifest.json&#10;&#10;Added &quot;&lt;all_urls&gt;&quot; to the host_permissions array in manifest.json. This change allows the extension to access all URLs, thereby broadening its operability. Adjusted the file to match updated security requirements and enhance functionality.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/downloader/download-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/download-functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/grid/grid-item.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/web-components/grid/grid-item.component.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changelog.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +124,7 @@
       <workItem from="1711219251644" duration="1000" />
       <workItem from="1724659352615" duration="46099000" />
       <workItem from="1725103291997" duration="40986000" />
-      <workItem from="1726726906800" duration="13832000" />
+      <workItem from="1726726906800" duration="15580000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -380,7 +383,31 @@
       <option name="project" value="LOCAL" />
       <updated>1726950415617</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Remove all_urls permission and clean workspace tasks&#10;&#10;Removed the unnecessary &quot;&lt;all_urls&gt;&quot; permission from manifest.json to enhance security. Updated workspace.xml by cleaning up redundant entries and adjusting task metadata for better clarity.">
+      <option name="closed" value="true" />
+      <created>1726951271098</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1726951271098</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Remove trailing space in manifest.json&#10;&#10;Fixed an issue with a trailing space in the host_permissions entry of manifest.json. This ensures the file adheres to proper formatting standards and avoids potential permission parsing errors.">
+      <option name="closed" value="true" />
+      <created>1726951307984</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1726951307984</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Expand permissions in manifest.json&#10;&#10;Added &quot;&lt;all_urls&gt;&quot; to the host_permissions array in manifest.json. This change allows the extension to access all URLs, thereby broadening its operability. Adjusted the file to match updated security requirements and enhance functionality.">
+      <option name="closed" value="true" />
+      <created>1726951380055</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1726951380055</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,9 +436,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="manifest V3" />
-    <MESSAGE value="Add IDE configuration files&#10;&#10;Include code style configuration and JavaScript library mappings. This ensures consistent code formatting and proper library setup across all development environments." />
-    <MESSAGE value="Remove LESS rules from .editorconfig&#10;&#10;Deleted specific LESS formatting rules from .editorconfig to streamline the configuration. This simplifies the file and reduces unnecessary complexity for LESS files." />
     <MESSAGE value="Add @types/chrome library to project settings&#10;&#10;Included the @types/chrome library in the project's .idea/Media-downloader.iml to enhance TypeScript support for Chrome extensions. Updated the .idea/workspace.xml file with various changes and corrections, including recent templates and file paths." />
     <MESSAGE value="Add new SVG icons&#10;&#10;Included audio, download, video, and image SVG files in the icons directory. These additions will enhance the project's graphical assets and support various media-related features." />
     <MESSAGE value="Add JSDoc comments to DOM utility functions&#10;&#10;Enhanced the documentation by adding JSDoc comments for the functions `setDisabled`, `hasClass`, `toggleClass`, `hide`, and `show`. This improves code readability and provides detailed usage information for these functions." />
@@ -434,7 +458,10 @@
     <MESSAGE value="Update workspace tasks and remove redundant changes&#10;&#10;Clean up outdated file change records in workspace.xml for better clarity. Incremented local task counter and added task metadata to maintain correctness in task management." />
     <MESSAGE value="Enhance grid item class handling and clean workspace tasks&#10;&#10;Added dynamic class handling in grid-item component based on item selection. Simplified media display initialization and updated workspace.xml to remove redundant entries and reflect recent changes." />
     <MESSAGE value="Enhance grid item class handling and clean workspace tasks&#10;&#10;Added dynamic class handling in the grid-item component based on item selection. Simplified media display initialization and updated workspace.xml to remove redundant entries and reflect recent changes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance grid item class handling and clean workspace tasks&#10;&#10;Added dynamic class handling in the grid-item component based on item selection. Simplified media display initialization and updated workspace.xml to remove redundant entries and reflect recent changes." />
+    <MESSAGE value="Remove all_urls permission and clean workspace tasks&#10;&#10;Removed the unnecessary &quot;&lt;all_urls&gt;&quot; permission from manifest.json to enhance security. Updated workspace.xml by cleaning up redundant entries and adjusting task metadata for better clarity." />
+    <MESSAGE value="Remove trailing space in manifest.json&#10;&#10;Fixed an issue with a trailing space in the host_permissions entry of manifest.json. This ensures the file adheres to proper formatting standards and avoids potential permission parsing errors." />
+    <MESSAGE value="Expand permissions in manifest.json&#10;&#10;Added &quot;&lt;all_urls&gt;&quot; to the host_permissions array in manifest.json. This change allows the extension to access all URLs, thereby broadening its operability. Adjusted the file to match updated security requirements and enhance functionality." />
+    <option name="LAST_COMMIT_MESSAGE" value="Expand permissions in manifest.json&#10;&#10;Added &quot;&lt;all_urls&gt;&quot; to the host_permissions array in manifest.json. This change allows the extension to access all URLs, thereby broadening its operability. Adjusted the file to match updated security requirements and enhance functionality." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

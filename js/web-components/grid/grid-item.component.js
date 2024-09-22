@@ -128,9 +128,9 @@ class GridItemComponent extends HTMLElement {
             });
         });
         this.shadowRoot.querySelector('.download_image_button').addEventListener('click', () => {
-            const filename = this.getAttribute('filename');
+            const filename = this.data.filename;
             downloadItem({
-                url: this.getAttribute('src'),
+                url: this.data.src,
                 filename: filename?.length ? filename : null,
             });
         });
