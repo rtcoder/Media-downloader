@@ -16,13 +16,31 @@ function handleUpdate(details) {
     }
 }
 
-chrome.action.onClicked.addListener(() => {
-    chrome.sidePanel.setPanelBehavior({openPanelOnActionClick: true});
+function openDownloader(tab) {
+    const downloaderPath = '/views/downloader.html';
+
+    chrome.storage.sync.get('defaultAction', ({defaultAction}) => {
+
+        switch (defaultAction) {
+            case 'popup':
+                chrome.action.setPopup({popup: downloaderPath});
+                chrome.action.openPopup();
+                break;
+            case 'side-panel':
+                chrome.sidePanel.setOptions({path: downloaderPath});
+                chrome.sidePanel.open({windowId: tab.windowId});
+                break;
+        }
+    });
+}
+
+chrome.action.onClicked.addListener((tab) => {
+    openDownloader(tab);
 });
 
 chrome.runtime.onInstalled.addListener(details => {
     chrome.contextMenus.create({
-        id: 'openSidePanel',
+        id: 'openMediaDownloader',
         title: 'Media Downloader',
         contexts: ['all'],
     });
@@ -31,8 +49,7 @@ chrome.runtime.onInstalled.addListener(details => {
 
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-    if (info.menuItemId === 'openSidePanel') {
-        chrome.sidePanel.setPanelBehavior({openPanelOnActionClick: true});
-        chrome.sidePanel.open({tabId: tab.id});
+    if (info.menuItemId === 'openMediaDownloader') {
+        openDownloader(tab);
     }
 });

@@ -1,6 +1,7 @@
 @import "themes.css";
 @import "fonts.css";
 @import "checkbox.css";
+@import "radio.css";
 
 * {
     margin: 0;

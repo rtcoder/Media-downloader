@@ -1,23 +1,86 @@
-// Load the saved theme when the options page is opened
-document.addEventListener('DOMContentLoaded', () => {
-    const themeForm = document.getElementById('theme-form');
+const defaultSettings = {
+    theme: 'system',
+    defaultAction: 'popup',
+};
 
-    // Load saved theme from storage
-    chrome.storage.sync.get('theme', ({theme}) => {
-        if (theme) {
-            const themeOption = themeForm.querySelector(`input[value="${theme}"]`);
-            if (themeOption) {
-                themeOption.checked = true;
-            }
-        }
+function getValue(id) {
+    const elements = document.getElementsByName(id);
+    if (!elements.length) {
+        return;
+    }
+    const element = elements.item(0);
+    if (!element) {
+        return;
+    }
+    if (!element) {
+        return null;
+    }
+    if (element.getAttribute('type') === 'radio') {
+        const radioElement = document.querySelector(`input[name="${id}"]:checked`);
+        return radioElement.value;
+    }
+    if (element.getAttribute('type') === 'checkbox') {
+        return element.checked;
+    }
+    return element.value;
+}
+
+function setValue(id, value) {
+    const elements = document.getElementsByName(id);
+    if (!elements.length) {
+        return;
+    }
+    const element = elements.item(0);
+    if (!element) {
+        return;
+    }
+    if (element.getAttribute('type') === 'radio') {
+        const radioElement = document.querySelector(`input[name="${id}"][value="${value}"]`);
+        radioElement.checked = true;
+        return;
+    }
+    if (element.getAttribute('type') === 'checkbox') {
+        element.checked = value;
+        return;
+    }
+    element.value = value;
+}
+
+function composeDataToSave() {
+    const dataToSave = {};
+    Object.keys(defaultSettings).forEach(key => {
+        dataToSave[key] = getValue(key);
     });
 
-    // Save the selected theme when form is submitted
-    themeForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const selectedTheme = themeForm.elements['theme'].value;
-        chrome.storage.sync.set({theme: selectedTheme}, () => {
-            alert('Theme saved!');
-        });
+    return dataToSave;
+}
+
+function fillFormWithData(data) {
+    Object.keys(data).forEach(key => {
+        const value = data[key] === null
+            ? defaultSettings[key]
+            : data[key];
+        setValue(key, value);
     });
+}
+
+function saveOptions() {
+    chrome.storage.sync.set(composeDataToSave(), () => {
+        const status = document.getElementById('status');
+        status.style.display = 'block';
+        setTimeout(() => {
+            status.style.removeProperty('display');
+        }, 2000);
+    });
+}
+
+function restoreOptions() {
+    chrome.storage.sync.get(defaultSettings, fillFormWithData);
+}
+
+document.getElementById('optionsForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    saveOptions();
 });
+
+document.addEventListener('DOMContentLoaded', restoreOptions);

@@ -12,18 +12,36 @@
 </header>
 <main>
 
-  <h2>Choose Theme</h2>
-  <form id="theme-form">
-    <label>
-      <input type="radio" name="theme" value="light"> Light
-    </label><br>
-    <label>
-      <input type="radio" name="theme" value="dark"> Dark
-    </label><br>
-    <label>
-      <input type="radio" name="theme" value="system"> System
-    </label><br>
+  <form id="optionsForm">
+    <div class="theme">
+      <h2>Choose Theme</h2>
+      <div class="content">
+        <label>
+          <input type="radio" name="theme" value="light"> Light
+        </label>
+        <label>
+          <input type="radio" name="theme" value="dark"> Dark
+        </label>
+        <label>
+          <input type="radio" name="theme" value="system"> System
+        </label>
+      </div>
+    </div>
+
+    <div class="defaultAction">
+      <h2>Choose Default action</h2>
+      <div class="content">
+        <label>
+          <input type="radio" name="defaultAction" value="popup"> Open popup
+        </label>
+        <label>
+          <input type="radio" name="defaultAction" value="side-panel"> Open side panel
+        </label>
+      </div>
+    </div>
     <button type="submit">Save</button>
+
+    <p id="status">Settings saved!</p>
   </form>
 
 </main>

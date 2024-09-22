@@ -8,8 +8,11 @@ body {
 }
 
 label {
-    display: block;
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
 }
 
 button {
@@ -20,4 +23,24 @@ button {
 
 main {
     padding: 15px;
+}
+h2{
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+#status {
+    display: none;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
