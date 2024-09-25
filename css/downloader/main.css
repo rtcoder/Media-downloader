@@ -82,5 +82,8 @@ button img {
     height: 100%;
 }
 
-
-
+.yt-info {
+    padding: 20px;
+    font-size: 30px;
+    line-height: 35px;
+}
