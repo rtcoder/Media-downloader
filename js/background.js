@@ -20,7 +20,6 @@ function openDownloader(tab) {
     const downloaderPath = '/views/downloader.html';
 
     chrome.storage.sync.get('defaultAction', ({defaultAction}) => {
-
         switch (defaultAction) {
             case 'popup':
                 chrome.action.setPopup({popup: downloaderPath});
@@ -34,11 +33,45 @@ function openDownloader(tab) {
     });
 }
 
+function updateSidePanelBehavior() {
+    chrome.storage.sync.get('defaultAction', ({defaultAction}) => {
+        chrome.sidePanel.setPanelBehavior({
+            openPanelOnActionClick: defaultAction === 'side-panel',
+        }).catch((error) => console.log(error));
+    });
+}
+
+chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+    updateSidePanelBehavior();
+
+    chrome.runtime.sendMessage({event: 'tabUpdated', data: {tabId, changeInfo, tab}});
+});
+
+chrome.tabs.onActivated.addListener(async (tabId, changeInfo, tab) => {
+    updateSidePanelBehavior();
+
+    chrome.runtime.sendMessage({event: 'tabActivated', data: {tabId, changeInfo, tab}});
+});
+
+chrome.tabs.onReplaced.addListener(async (tabId, changeInfo, tab) => {
+    updateSidePanelBehavior();
+
+    chrome.runtime.sendMessage({event: 'tabReplaced', data: {tabId, changeInfo, tab}});
+});
+
+chrome.tabs.onCreated.addListener(async (tabId, changeInfo, tab) => {
+    updateSidePanelBehavior();
+
+    chrome.runtime.sendMessage({event: 'tabCreated', data: {tabId, changeInfo, tab}});
+});
+
 chrome.action.onClicked.addListener((tab) => {
     openDownloader(tab);
 });
 
 chrome.runtime.onInstalled.addListener(details => {
+    updateSidePanelBehavior();
+
     chrome.contextMenus.create({
         id: 'openMediaDownloader',
         title: 'Media Downloader',
@@ -46,7 +79,6 @@ chrome.runtime.onInstalled.addListener(details => {
     });
     handleUpdate(details);
 });
-
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === 'openMediaDownloader') {

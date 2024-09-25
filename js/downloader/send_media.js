@@ -360,7 +360,7 @@
             result.error = {...err};
         }
 
-        chrome.runtime.sendMessage({...result});
+        chrome.runtime.sendMessage({event: 'sendMedia', data: {...result}});
 
         // Reset the result object
         result.images = null;

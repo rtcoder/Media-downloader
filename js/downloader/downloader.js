@@ -67,10 +67,37 @@ function isRestrictedUrl(url) {
     return restrictedUrls.some(restrictedUrl => url.includes(restrictedUrl));
 }
 
-chrome.runtime.onMessage.addListener(async (result) => {
-    if (result.error && Object.keys(result.error).length > 0) {
+chrome.runtime.onMessage.addListener(result => {
+    const {event, data} = result;
+
+    switch (event) {
+        case 'tabActivated':
+        case 'tabUpdated':
+        case 'tabCreated':
+        case 'tabReplaced':
+            const {tabId, changeInfo, tab} = data;
+            onTabUpdated(tabId, changeInfo, tab);
+            break;
+        case 'sendMedia':
+            onSendMedia(data);
+            break;
+    }
+});
+
+function onTabUpdated(tabId, changeInfo, tab) {
+    if (tab?.url?.startsWith('chrome://')) {
+        return;
+    }
+
+    if (tab.active && changeInfo.status === 'complete') {
+        findMedia();
+    }
+}
+
+async function onSendMedia(data) {
+    if (data.error && Object.keys(data.error).length > 0) {
         /// error
-        console.log(result);
+        console.log(data);
         return;
     }
     const tabInfo = await getCurrentTab();
@@ -84,7 +111,7 @@ chrome.runtime.onMessage.addListener(async (result) => {
         return;
     }
     mediaTypes
-        .filter(name => !!result[name])
+        .filter(name => !!data[name])
         .forEach(name => {
             const newMedia = {
                 images: [],
@@ -92,7 +119,7 @@ chrome.runtime.onMessage.addListener(async (result) => {
                 audios: [],
             };
 
-            result[name]
+            data[name]
                 .filter(item => !newMedia[name].includes(item))
                 .forEach(item => newMedia[name].push(item));
 
@@ -113,22 +140,12 @@ chrome.runtime.onMessage.addListener(async (result) => {
                     mediaInTabs[existingIndex].tab = {id, favIconUrl, url, title};
                 });
             }
+            mediaInTabs.forEach(info => setTabExpanded(info.tab.id, false));
+            setTabExpanded(id, true);
         });
 
     displayMedia();
-});
-
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    if (tab?.url?.startsWith('chrome://')) {
-        return;
-    }
-
-    if (tab.active && changeInfo.status === 'complete') {
-        findMedia();
-    }
-});
-
-chrome.tabs.onActivated.addListener(findMedia);
+}
 
 function changeToggleAllCheckbox(e) {
     const {checked} = e.target;
