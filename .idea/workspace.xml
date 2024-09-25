@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Fix download errors in grid item component&#10;&#10;Updated `filename` and `src` attributes to use `data` properties for the grid-item component. Adjusted `downloadItem` function to correctly reference URL and filename. Incremented version to 2.0.1 and updated the changelog accordingly.">
-      <change afterPath="$PROJECT_DIR$/css/radio.css" afterDir="false" />
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Add default action toggle and refactor settings page.&#10;&#10;Implemented ability to switch between opening a popup or side panel as the default action. Refactored the options page to include separate sections for theme and default action settings. Enhanced radio button styling and updated background script to handle new default action settings.">
+      <change afterPath="$PROJECT_DIR$/js/popup-dimensions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/common.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/options/options.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/options/options.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/background.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/options/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/options/options.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/downloader/dom-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/dom-functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/downloader/downloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/downloader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changelog.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/options.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/options.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/downloader.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/downloader.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +72,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.laravel-idea.search-composer-json": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/dawidjez/projekty/Private/Media-downloader/css",
+    "last_opened_file_path": "/Users/dawidjez/projekty/Private/Media-downloader/js",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -86,11 +85,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$/css" />
       <recent name="$PROJECT_DIR$/js/web-components" />
       <recent name="$PROJECT_DIR$/icons" />
       <recent name="$PROJECT_DIR$/images" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/downloader" />
@@ -128,7 +127,7 @@
       <workItem from="1711219251644" duration="1000" />
       <workItem from="1724659352615" duration="46099000" />
       <workItem from="1725103291997" duration="40986000" />
-      <workItem from="1726726906800" duration="22578000" />
+      <workItem from="1726726906800" duration="31020000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -419,7 +418,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727013965635</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Add default action toggle and refactor settings page.&#10;&#10;Implemented ability to switch between opening a popup or side panel as the default action. Refactored the options page to include separate sections for theme and default action settings. Enhanced radio button styling and updated background script to handle new default action settings.">
+      <option name="closed" value="true" />
+      <created>1727032499977</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1727032499977</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,7 +455,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add new SVG icons&#10;&#10;Included audio, download, video, and image SVG files in the icons directory. These additions will enhance the project's graphical assets and support various media-related features." />
     <MESSAGE value="Add JSDoc comments to DOM utility functions&#10;&#10;Enhanced the documentation by adding JSDoc comments for the functions `setDisabled`, `hasClass`, `toggleClass`, `hide`, and `show`. This improves code readability and provides detailed usage information for these functions." />
     <MESSAGE value="Add new download and UI features&#10;&#10;Removed main.css and added new download functionality in download-functions.js. Refactored send_media.js for better filtering of media, added side panel CSS, updated manifest for side panel support, and improved utility functions with JSDoc comments." />
     <MESSAGE value="Refactor download flow and add new APIs&#10;&#10;Replaced chrome.downloads.download with downloadUrl function in download-functions.js for better modularity. Introduced chrome-api.js to encapsulate Chrome scripting and tab management APIs. Minor UI and functionality improvements in popup.js, including improved event handling." />
@@ -473,7 +479,8 @@
     <MESSAGE value="Remove trailing space in manifest.json&#10;&#10;Fixed an issue with a trailing space in the host_permissions entry of manifest.json. This ensures the file adheres to proper formatting standards and avoids potential permission parsing errors." />
     <MESSAGE value="Expand permissions in manifest.json&#10;&#10;Added &quot;&lt;all_urls&gt;&quot; to the host_permissions array in manifest.json. This change allows the extension to access all URLs, thereby broadening its operability. Adjusted the file to match updated security requirements and enhance functionality." />
     <MESSAGE value="Fix download errors in grid item component&#10;&#10;Updated `filename` and `src` attributes to use `data` properties for the grid-item component. Adjusted `downloadItem` function to correctly reference URL and filename. Incremented version to 2.0.1 and updated the changelog accordingly." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix download errors in grid item component&#10;&#10;Updated `filename` and `src` attributes to use `data` properties for the grid-item component. Adjusted `downloadItem` function to correctly reference URL and filename. Incremented version to 2.0.1 and updated the changelog accordingly." />
+    <MESSAGE value="Add default action toggle and refactor settings page.&#10;&#10;Implemented ability to switch between opening a popup or side panel as the default action. Refactored the options page to include separate sections for theme and default action settings. Enhanced radio button styling and updated background script to handle new default action settings." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add default action toggle and refactor settings page.&#10;&#10;Implemented ability to switch between opening a popup or side panel as the default action. Refactored the options page to include separate sections for theme and default action settings. Enhanced radio button styling and updated background script to handle new default action settings." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
