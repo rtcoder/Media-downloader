@@ -44,7 +44,7 @@ class AccordionItem extends HTMLElement {
             return;
         }
 
-        const {tab, items} = this.dataInTab;
+        const {tab, items, showHeader} = this.dataInTab;
 
         this.shadowRoot.innerHTML = `
             <style>
@@ -58,19 +58,19 @@ class AccordionItem extends HTMLElement {
                 display: flex;
                 flex-direction: column;
                 position: relative;
-                border: 1px solid var(--accordionItemBorderColor);
+                ${showHeader ? 'border: 1px solid var(--accordionItemBorderColor);' : ''}
                 border-left: none;
                 border-right: none;
                 margin-bottom: 10px;
                 overflow: hidden;
             }
-            x-accordion-body[hidden] {
+            [hidden] {
                 display: none !important;
             }
 
             </style>
             
-            <x-accordion-header name="${tab.title}" favicon="${tab.favIconUrl}" all-count="${items.length}"></x-accordion-header>
+            <x-accordion-header ${showHeader ? '' : 'hidden'} name="${tab.title}" favicon="${tab.favIconUrl}" all-count="${items.length}"></x-accordion-header>
             <x-accordion-body tab-id="${tab.id}"></x-accordion-body>
         `;
         const bodyAccordion = this.shadowRoot.querySelector('x-accordion-body');

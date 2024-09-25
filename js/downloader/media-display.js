@@ -12,6 +12,7 @@
 /**
  * Represents a media item to display within a specific tab.
  * @typedef {Object} MediaToDisplayItem
+ * @property {boolean} showHeader - show accordion item header
  * @property {TabData} tab - The basic information about the tab.
  * @property {DisplayMediaItem[]} items - An array of media items to display.
  */
@@ -38,11 +39,19 @@ function getAllMediaToDisplay() {
     };
 
     const getMediaItems = sectionMapping[currentSection] || (() => []);
-
-    return mediaInTabs.map(({media, tab}) => {
+    /**
+     *
+     * @type {MediaToDisplayItem[]}
+     */
+    const data = mediaInTabs.map(({media, tab}) => {
         const items = getMediaItems(media);
-        return {tab, items};
+        return {tab, items, showHeader: true};
     });
+    if (data.length === 1) {
+        data[0].showHeader = false;
+    }
+
+    return data;
 }
 
 function displayMedia() {
