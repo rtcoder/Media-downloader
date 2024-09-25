@@ -1,5 +1,8 @@
 const mediaTypes = ['images', 'audios', 'videos'];
-
+const restrictedUrls = [
+    'https://youtube.com',
+    'https://www.youtube.com',
+];
 /**
  * Represents a media item within a tab.
  * @typedef {Object} MediaItem
@@ -60,6 +63,10 @@ const mediaInTabs = [];
  */
 const tabExpanded = {};
 
+function isRestrictedUrl(url) {
+    return restrictedUrls.some(restrictedUrl => url.includes(restrictedUrl));
+}
+
 chrome.runtime.onMessage.addListener(async (result) => {
     if (result.error && Object.keys(result.error).length > 0) {
         /// error
@@ -70,7 +77,14 @@ chrome.runtime.onMessage.addListener(async (result) => {
     if (!tabInfo) {
         return;
     }
-    mediaTypes.filter(name => !!result[name])
+
+    hide('.yt-info');
+    if (isRestrictedUrl(tabInfo.url)) {
+        show('.yt-info');
+        return;
+    }
+    mediaTypes
+        .filter(name => !!result[name])
         .forEach(name => {
             const newMedia = {
                 images: [],
@@ -207,6 +221,11 @@ function setListeners() {
         if (target.matches('.accordion-header') || target.closest('.accordion-button')) {
             const accordionItem = target.closest('.accordion-item');
             accordionItem.classList.toggle('active');
+            return;
+        }
+
+        if (target.matches('.yt-info a')) {
+            window.open('https://developer.chrome.com/docs/webstore/troubleshooting/#prohibited-products');
         }
     });
     document.addEventListener('thumbnail-clicked', onClickItem);

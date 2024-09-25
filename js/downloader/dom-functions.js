@@ -83,8 +83,8 @@ function toggleClass(selector, className, toggleValue = null) {
  * @returns {HTMLElement} The newly created DOM element.
  */
 function createElement(tagName, props = {}, children = []) {
-    if(tagName==='grid-item'){
-        console.log(props.attributes.type)
+    if (tagName === 'grid-item') {
+        console.log(props.attributes.type);
     }
     const element = document.createElement(tagName);
 
@@ -179,4 +179,18 @@ function createButtonElement(props = {}, children = []) {
  */
 function createImgElement(props = {}) {
     return createElement('img', props);
+}
+
+function show(selector) {
+    const el = document.querySelector(selector);
+    if (el) {
+        el.hidden = false;
+    }
+}
+
+function hide(selector) {
+    const el = document.querySelector(selector);
+    if (el) {
+        el.hidden = true;
+    }
 }
