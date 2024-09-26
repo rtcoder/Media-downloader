@@ -21,10 +21,12 @@ function isRestrictedUrl(url) {
 
 chrome.runtime.onMessage.addListener(result => {
     const {event, data} = result;
-
+    console.log(event, data);
     switch (event) {
-        case 'tabActivated':
         case 'tabUpdated':
+            onTabUpdated(data.tabId, data.changeInfo, data.tab);
+            break;
+        case 'tabActivated':
         case 'tabCreated':
         case 'tabReplaced':
             const {tabId, changeInfo, tab} = data;
