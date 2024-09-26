@@ -1,6 +1,9 @@
 const CHANGES_URL = 'views/changelog.html'; // Link do strony z changelogiem
 
-// Funkcja do sprawdzania wersji i otwierania changeloga
+/**
+ *
+ * @param {InstalledDetails} details
+ */
 function handleUpdate(details) {
     if (details.reason === 'update') {
         const currentVersion = chrome.runtime.getManifest().version;
@@ -16,6 +19,10 @@ function handleUpdate(details) {
     }
 }
 
+/**
+ *
+ * @param {Tab} tab
+ */
 function openDownloader(tab) {
     const downloaderPath = '/views/downloader.html';
 

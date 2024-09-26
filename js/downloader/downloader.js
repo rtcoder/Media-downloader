@@ -3,54 +3,6 @@ const restrictedUrls = [
     'https://youtube.com',
     'https://www.youtube.com',
 ];
-/**
- * Represents a media item within a tab.
- * @typedef {Object} MediaItem
- * @property {string} src - The source URL of the media.
- * @property {string|null} type - The type of the media.
- * @property {string|null} alt - The alt of the media item
- * @property {boolean} selected - is media selected to download
- */
-
-/**
- * Represents a video media item within a tab.
- * @typedef {Object} VideoItem
- * @property {string} src - The source URL of the video.
- * @property {string|null} poster - The URL of the video's poster image, or null if none is provided.
- * @property {string|null} type - The type of the media.
- * @property {string|null} alt - The alt of the media item
- * @property {boolean} selected - is media selected to download
- */
-
-/**
- * Represents media information for a tab.
- * @typedef {Object} MediaInfo
- * @property {MediaItem[]} images - An array of image objects found in the tab.
- * @property {MediaItem[]} audios - An array of audio objects found in the tab.
- * @property {VideoItem[]} videos - An array of video objects found in the tab.
- */
-
-/**
- * Represents basic tab information.
- * @typedef {Object} TabData
- * @property {number} id - The ID of the tab.
- * @property {string} favIconUrl - The URL of the tab's favicon.
- * @property {string} url - The URL of the tab.
- * @property {string} title - The title of the tab.
- */
-
-/**
- * Represents the data structure holding information about media in a specific tab.
- * @typedef {Object} MediaInTab
- * @property {TabData} tab - The basic information about the tab.
- * @property {MediaInfo} media - The media information found in the tab.
- */
-
-/**
- * Represents the information about tab whether is expanded or not
- * @typedef {Object} TabExpanded
- * @property {boolean} [key] - The basic information about the tab expanded - key is tabId
- */
 
 /**
  * An array that stores information about media content found in various browser tabs.

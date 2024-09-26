@@ -1,23 +1,4 @@
 /**
- * Represents a media item to display, including its type.
- * @typedef {Object} DisplayMediaItem
- * @property {string} src - The source URL of the media item.
- * @property {string} type - The type of the media item ('image', 'video', or 'audio').
- * @property {string|null} filetype - The type of the media item ('image', 'video', or 'audio').
- * @property {string|null} alt - The alt of the media item
- * @property {string|null} [poster] - The URL of the video's poster image (only for videos).
- * @property {boolean} selected - is media selected to download
- */
-
-/**
- * Represents a media item to display within a specific tab.
- * @typedef {Object} MediaToDisplayItem
- * @property {boolean} showHeader - show accordion item header
- * @property {TabData} tab - The basic information about the tab.
- * @property {DisplayMediaItem[]} items - An array of media items to display.
- */
-
-/**
  * Returns an array of media items to display based on the current section (images, videos, or audios).
  * The function processes the media content from all tabs and filters it according to the current section.
  *
