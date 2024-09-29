@@ -3,40 +3,46 @@ import {getStorageDefaultActionValue, getStoragePreviousVersionValue} from '../s
 import {MessageEventNameEnum} from '../types/message-event-name.enum';
 import {
   contextMenuClicked,
+  createContextMenu,
   createTab,
+  onActivateTab,
+  onClickExtensionIcon,
+  onCreateTab,
+  onInstalled,
+  onReplaceTab,
+  onUpdateTab,
+  openPopup,
+  openSidePanel,
   sendMessage,
   setPopupOptions,
   setSidePanelBehavior,
   setSidePanelOptions,
+  setStorageValue,
 } from '../utils/chrome-api';
 
-const CHANGES_URL = 'views/changelog.html'; // Link do strony z changelogiem
-
-/**
- *
- * @param {InstalledDetails} details
- */
 function handleUpdate(details: chrome.runtime.InstalledDetails) {
-  if (details.reason === 'update') {
-    const currentVersion = chrome.runtime.getManifest().version;
-    getStoragePreviousVersionValue((previousVersion) => {
-      if (previousVersion !== currentVersion) {
-        createTab({url: CHANGES_URL});
-      }
-
-      chrome.storage.sync.set({previousVersion: currentVersion});
-    });
+  if (details.reason !== 'update') {
+    return;
   }
+  const currentVersion = chrome.runtime.getManifest().version;
+  getStoragePreviousVersionValue((previousVersion) => {
+    if (previousVersion !== currentVersion) {
+      const CHANGES_URL = 'views/changelog.html';
+      createTab({url: CHANGES_URL});
+    }
+
+    setStorageValue({previousVersion: currentVersion});
+  });
 }
 
 function openDownloader(tab: chrome.tabs.Tab) {
   getStorageDefaultActionValue((defaultAction) => {
     switch (defaultAction) {
       case DefaultActionType.POPUP:
-        chrome.action.openPopup();
+        openPopup();
         break;
       case DefaultActionType.SIDE_PANEL:
-        chrome.sidePanel.open({windowId: tab.windowId});
+        openSidePanel({windowId: tab.windowId});
         break;
     }
   });
@@ -62,39 +68,39 @@ function updateSidePanelAndPopupBehavior() {
   });
 }
 
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+onUpdateTab((tabId, changeInfo, tab) => {
   updateSidePanelAndPopupBehavior();
 
   sendMessage(MessageEventNameEnum.TAB_UPDATED, {tabId, changeInfo, tab});
 });
 
-chrome.tabs.onActivated.addListener((activeInfo) => {
+onActivateTab((activeInfo) => {
   updateSidePanelAndPopupBehavior();
 
   sendMessage(MessageEventNameEnum.TAB_ACTIVATED, {tabId: activeInfo.tabId});
 });
 
-chrome.tabs.onReplaced.addListener((addedTabId) => {
+onReplaceTab((addedTabId) => {
   updateSidePanelAndPopupBehavior();
 
   sendMessage(MessageEventNameEnum.TAB_REPLACED, {tabId: addedTabId});
 });
 
-chrome.tabs.onCreated.addListener((tabId) => {
+onCreateTab((tab) => {
   updateSidePanelAndPopupBehavior();
 
-  sendMessage(MessageEventNameEnum.TAB_CREATED, {tabId});
+  sendMessage(MessageEventNameEnum.TAB_CREATED, {tab});
 });
 
-chrome.action.onClicked.addListener((tab) => {
+onClickExtensionIcon((tab) => {
   updateSidePanelAndPopupBehavior();
   openDownloader(tab);
 });
 
-chrome.runtime.onInstalled.addListener(details => {
+onInstalled(details => {
   updateSidePanelAndPopupBehavior();
 
-  chrome.contextMenus.create({
+  createContextMenu({
     id: 'openMediaDownloader',
     title: 'Media Downloader',
     contexts: ['all'],

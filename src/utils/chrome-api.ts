@@ -1,16 +1,6 @@
 import {StorageDef} from '../storage/storage-def';
 import {EventMsg, MessageEventNameEnum} from '../types/message-event-name.enum';
 
-
-/**
- * Executes a content script on the current active tab in all frames.
- *
- * This function retrieves the current active tab and, if the tab is available,
- * executes the specified content script file across all frames in that tab using the Chrome Scripting API.
- *
- * @param {string} scriptUrl - The URL or file path of the content script to execute.
- * @returns {Promise<void>} A promise that resolves once the script has been executed or exits early if no tab is found.
- */
 export async function executeContentScript(scriptUrl: string) {
   const tab = await getCurrentTab();
   if (!tab || !tab.id) {
@@ -26,11 +16,6 @@ export async function executeContentScript(scriptUrl: string) {
   } as any);
 }
 
-/**
- * Function that returns information about a browser tab or undefined.
- *
- * @returns {chrome.tabs.QueryInfo|null} An object containing tab information, or null if the tab does not exist or the data cannot be retrieved.
- */
 export async function getCurrentTab() {
   let queryOptions = {active: true, lastFocusedWindow: true};
   let [tab] = await chrome.tabs.query(queryOptions);
@@ -42,14 +27,6 @@ export async function getCurrentTab() {
   return tab;
 }
 
-/**
- * Initiates the download of a file from the provided URL using the Chrome downloads API.
- *
- * This function triggers a download for the specified URL using `chrome.downloads.download`.
- *
- * @param {string} url - The URL of the file to be downloaded.
- * @param {string|null} filename - The URL of the file to be downloaded.
- */
 export function downloadUrl(url: string, filename: string | null = null) {
   const downloadOptions: chrome.downloads.DownloadOptions = {url};
   if (filename) {
@@ -60,6 +37,14 @@ export function downloadUrl(url: string, filename: string | null = null) {
 
 export function getStorageValue(obj: Partial<StorageDef>, callback: (result: Partial<StorageDef>) => void) {
   chrome.storage.sync.get(obj, callback);
+}
+
+export function setStorageValue(obj: Partial<StorageDef>, callback?: () => void) {
+  if (callback) {
+    chrome.storage.sync.set(obj, callback);
+  } else {
+    chrome.storage.sync.set(obj);
+  }
 }
 
 export function sendMessage(eventName: MessageEventNameEnum, data: any) {
@@ -98,4 +83,40 @@ export function contextMenuClicked(callback: (clickData: chrome.contextMenus.OnC
     }
     callback(info, tab);
   });
+}
+
+export function onInstalled(callback: (details: chrome.runtime.InstalledDetails) => void) {
+  chrome.runtime.onInstalled.addListener(callback);
+}
+
+export function createContextMenu(properties: chrome.contextMenus.CreateProperties) {
+  chrome.contextMenus.create(properties);
+}
+
+export function onCreateTab(callback: (tab: chrome.tabs.Tab) => void) {
+  chrome.tabs.onCreated.addListener(callback);
+}
+
+export function onReplaceTab(callback: (addedTabId: number, removedTabId: number) => void) {
+  chrome.tabs.onReplaced.addListener(callback);
+}
+
+export function onActivateTab(callback: (activeInfo: chrome.tabs.TabActiveInfo) => void) {
+  chrome.tabs.onActivated.addListener(callback);
+}
+
+export function onUpdateTab(callback: (tabId: number, changeInfo: chrome.tabs.TabChangeInfo, tab: chrome.tabs.Tab) => void) {
+  chrome.tabs.onUpdated.addListener(callback);
+}
+
+export function onClickExtensionIcon(callback: (tab: chrome.tabs.Tab) => void) {
+  chrome.action.onClicked.addListener(callback);
+}
+
+export function openPopup(options?: chrome.action.OpenPopupOptions) {
+  chrome.action.openPopup(options);
+}
+
+export function openSidePanel(options: chrome.sidePanel.OpenOptions) {
+  chrome.sidePanel.open(options);
 }
