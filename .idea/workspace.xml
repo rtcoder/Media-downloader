@@ -7,65 +7,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Update popup and side-panel behavior functions&#10;&#10;Extended updateSidePanelBehavior to cover popup behavior based on user default action. Standardized event listeners to use the combined function, enhancing consistent handling of side-panel and popup settings.">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion-body.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion-header.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/background/background.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/content-script/extractors-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/content-script/file-type-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/content-script/filters-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/content-script/mappers-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/content-script/regex-pattern.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/content-script/send_media.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/downloader/accordion.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/downloader/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/media-display.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/media-in-tabs.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/storage/storage-def.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/storage/storage-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tab-expanded.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/media-display.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/message-event-name.enum.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/mixed-object.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/chrome-api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/crc32.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/utils.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Add background and content script bundles&#10;&#10;This commit includes the addition of the compiled background and content script bundles to the dist directory. The background script handles various browser events and updates, while the content script contains functions for extracting and processing media elements from web pages.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/accordion.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/downloader/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/fonts.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/fonts.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/background.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/downloader/chrome-api.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/downloader/dom-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dom-functions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/downloader/download-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/download-functions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/downloader/downloader.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/downloader/media-display.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/downloader/send_media.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/downloader/utils.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/options/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/popup-dimensions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/popup-dimensions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/web-components/accordion/accordion-body.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/web-components/accordion/accordion-header.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/web-components/accordion/accordion-item.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/web-components/accordion/accordion.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/web-components/grid/grid-item.component.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/web-components/grid/thumbnail/audio-thumbnail.component.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/web-components/grid/thumbnail/image-thumbnail.component.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/web-components/grid/thumbnail/video-thumbnail.component.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/web-components/icon.component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/chrome-api-types/chrome-index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/chrome-api-types/chrome-index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/extension-types/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/accordion.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/accordion.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/dom-functions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dom-functions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/changelog.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/downloader.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/downloader.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/options.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/options.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,8 +132,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -216,7 +167,7 @@
       <workItem from="1725103291997" duration="40986000" />
       <workItem from="1726726906800" duration="48446000" />
       <workItem from="1727376275897" duration="407000" />
-      <workItem from="1727376693272" duration="41050000" />
+      <workItem from="1727376693272" duration="49349000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -587,7 +538,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727348582611</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="typescript">
+      <option name="closed" value="true" />
+      <created>1727609631554</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1727609631554</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Add background and content script bundles&#10;&#10;This commit includes the addition of the compiled background and content script bundles to the dist directory. The background script handles various browser events and updates, while the content script contains functions for extracting and processing media elements from web pages.">
+      <option name="closed" value="true" />
+      <created>1727609689763</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1727609689763</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,9 +583,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="**Refactor and streamline codebase structure**&#10;&#10;Deleted unused `download.svg` icon and moved various JavaScript and HTML files from the `src` directory to a more organized `js` directory. Introduced custom web components for grid items and refactored scripts to improve modularity and maintainability." />
-    <MESSAGE value="**Introduce accordion web components**&#10;&#10;Added new accordion web components (`accordion`, `accordion-item`, `accordion-header`, `accordion-body`) and replaced old DOM manipulation code with these components for better modularity and readability. Refactored `grid-item` component handling and updated script imports in `downloader.html` accordingly." />
-    <MESSAGE value="**Add alt attribute and filename support**&#10;&#10;Enhanced media elements to include `alt` attributes and updated download logic to utilize `filename`. Improved event handlers and streamlined related components for better maintainability." />
     <MESSAGE value="**Remove redundant workspace change records**&#10;&#10;Cleaned up unnecessary change logs from workspace.xml to reflect only relevant file modifications. Added a whitespace at the end of media-display.js for consistency." />
     <MESSAGE value="**Add duration support for audio files**&#10;&#10;Added duration attribute to grid items and updated audio-thumbnail component to display formatted duration. Improved icon component with dynamic font-size handling for better flexibility." />
     <MESSAGE value="fix batch download" />
@@ -641,7 +605,10 @@
     <MESSAGE value="Add media and tab types declarations.&#10;&#10;Introduced explicit type definitions for media items, tabs, and media-in-tab structures to enhance type safety and code clarity. This includes interfaces for various media types and their associated tab data. Also, reorganized and renamed existing type definition files for better project structure." />
     <MESSAGE value="Update popup and side-panel behavior functions&#10;&#10;Extended the updateSidePanelBehavior function to also handle popup behaviors, ensuring both are set based on the user's default action. Adjusted event listeners to utilize this combined function, improving consistency in side-panel and popup handling.&#10;" />
     <MESSAGE value="Update popup and side-panel behavior functions&#10;&#10;Extended updateSidePanelBehavior to cover popup behavior based on user default action. Standardized event listeners to use the combined function, enhancing consistent handling of side-panel and popup settings." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update popup and side-panel behavior functions&#10;&#10;Extended updateSidePanelBehavior to cover popup behavior based on user default action. Standardized event listeners to use the combined function, enhancing consistent handling of side-panel and popup settings." />
+    <MESSAGE value="Remove unused Chrome API and downloader scripts&#10;&#10;Deleted unnecessary files related to the Chrome API and downloader from the project. This cleanup improves maintainability by eliminating redundant code that is no longer relevant to the application." />
+    <MESSAGE value="typescript" />
+    <MESSAGE value="Add background and content script bundles&#10;&#10;This commit includes the addition of the compiled background and content script bundles to the dist directory. The background script handles various browser events and updates, while the content script contains functions for extracting and processing media elements from web pages." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add background and content script bundles&#10;&#10;This commit includes the addition of the compiled background and content script bundles to the dist directory. The background script handles various browser events and updates, while the content script contains functions for extracting and processing media elements from web pages." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

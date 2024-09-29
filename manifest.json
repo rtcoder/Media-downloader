@@ -1,7 +1,7 @@
 {
   "name": "Media Downloader",
   "description": "Browse and download images, video and audio on a web page.",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "author": "Dawid Jeż",
   "minimum_chrome_version": "116",
   "manifest_version": 3,

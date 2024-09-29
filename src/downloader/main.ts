@@ -4,7 +4,7 @@ import {MediaInfo, MediaItem, VideoItem} from '../types/media-display.type';
 import {MessageEventNameEnum} from '../types/message-event-name.enum';
 import {executeContentScript, getCurrentTab, onMessage} from '../utils/chrome-api';
 import {hide, q, setDisabled, show, toggleClass} from '../utils/dom-functions';
-import {downloadImages} from '../utils/download-functions';
+import {downloadImages, downloadItem} from '../utils/download-functions';
 import {_dispatchEvent, mapMediaTypeToSectionName, uniqueSourceItems} from '../utils/utils';
 
 const mediaTypes: (keyof MediaInfo)[] = ['images', 'audios', 'videos'];
@@ -108,26 +108,59 @@ async function onSendMedia(data: any) {
 
 function changeToggleAllCheckbox(e: any) {
   const {checked} = e.target;
-  _dispatchEvent(document, 'select-all', {
-    value: checked,
-  });
+
+  let allAreChecked = true;
+  let allAreUnchecked = true;
+  const mediaToDisplay = getAllMediaToDisplay();
+  let selectedCount = 0;
+
+  toggleClass('.grid-item','checked', checked);
+
+  for (let i = 0; i < mediaToDisplay.length; i++) {
+    const {items} = mediaToDisplay[i];
+    for (let idx = 0; idx < items.length; idx++) {
+      items[idx].selected = checked;
+      if (items[idx].selected) {
+        allAreUnchecked = false;
+        selectedCount++;
+      } else {
+        allAreChecked = false;
+      }
+    }
+  }
+
+  updateSelectedCountText(selectedCount);
+
+  const toggle_all_checkbox = q('#toggle_all_checkbox') as HTMLInputElement;
+  toggle_all_checkbox.indeterminate = !(allAreChecked || allAreUnchecked);
+  if (allAreChecked) {
+    toggle_all_checkbox.checked = true;
+  } else if (allAreUnchecked) {
+    toggle_all_checkbox.checked = false;
+  }
 }
 
-function onClickItem(e: any) {
-  const {itemIndex, value, type} = e.detail;
+function onClickItem(target: any) {
+  const gridItem = target.closest('.grid-item');
+  const itemIndex = gridItem.getAttribute('data-item-idx');
+  const type = gridItem.getAttribute('data-type');
+  const isChecked = gridItem.classList.contains('checked');
+  const newValue = !isChecked;
+  toggleClass(gridItem, 'checked');
+
   const [tabId, itemIdx] = itemIndex.split('-').map((item: string) => +item);
   const currentSection = mapMediaTypeToSectionName(type);
   const tabIndexInSection = mediaInTabs.findIndex(({tab}) => tab.id === tabId);
   if (tabIndexInSection === -1) {
     return;
   }
-  mediaInTabs[tabIndexInSection].media[currentSection][itemIdx].selected = value;
+  mediaInTabs[tabIndexInSection].media[currentSection][itemIdx].selected = newValue;
 
   let allAreChecked = true;
   let allAreUnchecked = true;
   const mediaToDisplay = getAllMediaToDisplay();
   let selectedCount = 0;
-  console.log(itemIndex, value);
+  console.log(itemIndex, newValue);
   for (let i = 0; i < mediaToDisplay.length; i++) {
     const {items} = mediaToDisplay[i];
     for (let idx = 0; idx < items.length; idx++) {
@@ -188,7 +221,7 @@ function setListeners() {
     }
 
     if (target.matches('.thumbnail')) {
-      onClickItem(e);
+      onClickItem(target);
       return;
     }
 
@@ -200,14 +233,25 @@ function setListeners() {
 
     if (target.matches('.yt-info a')) {
       window.open('https://developer.chrome.com/docs/webstore/troubleshooting/#prohibited-products');
+      return;
+    }
+
+    if (target.matches('.download_image_button')) {
+      const gridItem = target.closest('.grid-item');
+      const url = gridItem.getAttribute('data-src-dw');
+      const alt = gridItem.getAttribute('data-filename');
+      downloadItem({
+        url,
+        alt: alt?.length ? alt : null,
+      });
     }
   });
-  document.addEventListener('thumbnail-clicked', onClickItem);
+
   q('#toggle_all_checkbox')!.addEventListener('change', changeToggleAllCheckbox);
 }
 
 function findMedia() {
-  executeContentScript('/dist/content-script/send_media.bundles.js');
+  executeContentScript('/dist/content-script/send_media.bundle.js');
 }
 
 function init() {

@@ -2,46 +2,24 @@ import {MixedObject} from '../types/mixed-object.type';
 
 type Children = HTMLElement | HTMLElement[];
 
-/**
- * Sets the disabled property of an HTML element selected by the provided selector.
- *
- * This function uses `document.querySelector` to select the element and sets its `disabled` attribute
- * to the provided value.
- *
- * @param {string} selector - The CSS selector string to select the element.
- * @param {boolean} value - The value to set for the `disabled` attribute.
- */
 export function setDisabled(selector: string, value: boolean) {
   (q(selector) as HTMLButtonElement).disabled = value;
 }
 
-/**
- * Checks if the element selected by the provided selector has the specified class.
- *
- * This function returns `true` if the element has the specified class, and `false` otherwise.
- *
- * @param {string} selector - The CSS selector string to select the element.
- * @param {string} className - The class name to check for.
- * @returns {boolean} `true` if the element has the class, otherwise `false`.
- */
 export function hasClass(selector: string, className: string) {
   return q(selector)?.classList.contains(className) || false;
 }
 
-/**
- * Toggles a class for elements selected by the provided selector.
- *
- * This function either toggles the class on or off based on its current state, or explicitly adds/removes
- * the class based on the value of `toggleValue`.
- *
- * @param {string} selector - The CSS selector string to select the elements.
- * @param {string} className - The class name to toggle.
- * @param {boolean|null} [toggleValue=null] - If `true`, the class is added; if `false`, the class is removed;
- *                                            if `null`, the class is toggled based on its current state.
- */
-export function toggleClass(selector: string, className: string, toggleValue: boolean | null = null) {
-  const elements = qAll(selector);
-  if (!elements) {
+export function toggleClass(selector: Element | Element[] | string, className: string, toggleValue: boolean | null = null) {
+  let elements = [];
+  if (typeof selector === 'string') {
+    elements = qAll(selector);
+  } else if (Array.isArray(selector)) {
+    elements = [...selector];
+  } else {
+    elements = [selector];
+  }
+  if (!elements.length) {
     return;
   }
   if (toggleValue === null) {

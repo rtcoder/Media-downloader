@@ -8,8 +8,7 @@ import {
   createSpanElement,
   q,
 } from '../utils/dom-functions';
-import {downloadItem} from '../utils/download-functions';
-import {_dispatchEvent, formatTime, getQualityLabel} from '../utils/utils';
+import {formatTime, getQualityLabel} from '../utils/utils';
 
 function getThumbnailContainer() {
   return createDivElement({
@@ -50,17 +49,17 @@ function getImageThumbnail(src: string) {
 
 function getVideoThumbnail(src: string, poster?: string | null) {
   const thumbnailDiv = getThumbnailContainer();
-  /**
-   *
-   * @type {HTMLVideoElement}
-   */
+  const icon = createIconElement('videocam', 50);
+  const imagePoster = createImgElement({src: poster});
   const videoElement = createElement('video', {src, poster}) as HTMLVideoElement;
   videoElement.addEventListener('loadedmetadata', () => {
     const quality = getQualityLabel(videoElement.videoWidth);
     const gridItem = videoElement.closest('grid-item');
     gridItem?.setAttribute('video-quality', quality);
+    videoElement.remove();
   });
 
+  thumbnailDiv.appendChild(poster ? imagePoster : icon);
   thumbnailDiv.appendChild(videoElement);
   return thumbnailDiv;
 }
@@ -69,24 +68,24 @@ function getGridItem(item: DisplayMediaItem, itemIndex: string) {
   const {src, alt, poster, type, selected} = item;
   const gridItem = createDivElement({
     class: ['grid-item', ...(selected ? ['checked'] : [])],
+    attributes: {
+      'data-src-dw': src,
+      'data-filename': alt?.length ? alt : '',
+      'data-item-idx': itemIndex,
+      'data-type': type,
+    },
   });
-  gridItem.setAttribute('item-idx', itemIndex);
 
   const btn = createButtonElement(
     {class: 'download_image_button'},
     createIconElement('download'),
   );
-  btn.addEventListener('click', () => {
-    downloadItem({
-      url: src,
-      alt: alt?.length ? alt : null,
-    });
-  });
 
   const details = createSpanElement({class: 'item-details'}, [
     createSpanElement({class: 'item-details-ext'}),
     createSpanElement({class: 'item-details-dimensions'}),
   ]);
+
   let thumbnail = null;
   if (type === 'audio') {
     thumbnail = getAudioThumbnail(src);
@@ -100,14 +99,6 @@ function getGridItem(item: DisplayMediaItem, itemIndex: string) {
   gridItem.appendChild(details);
 
   if (thumbnail) {
-    thumbnail.addEventListener('click', () => {
-      const checked = gridItem.classList.contains('checked');
-      _dispatchEvent(document, 'thumbnail-clicked', {
-        itemIndex,
-        value: !checked,
-        type,
-      });
-    });
     gridItem.appendChild(thumbnail);
   }
 
@@ -213,7 +204,7 @@ function findAccordionItem(accordion: Element, tabId: number) {
 }
 
 function findAccordionGridItem(accordionItem: Element, itemIndex: string) {
-  return accordionItem.querySelector(`.grid-item[item-idx="${itemIndex}"]`);
+  return accordionItem.querySelector(`.grid-item[data-item-idx="${itemIndex}"]`);
 }
 
 export function updateAccordionData(data: MediaToDisplayItem[]) {

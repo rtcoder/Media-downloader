@@ -7,19 +7,6 @@ body.dark-theme {
 
 }
 
-.grid img,
-.grid video {
-    border: 4px solid var(--imageBorderColor);
-
-    &:hover {
-        border-color: var(--activeColorHover);
-    }
-
-    &.checked {
-        border-color: var(--activeColor);
-    }
-}
-
 .grid {
     width: 100%;
     display: grid;
@@ -91,7 +78,7 @@ body.dark-theme {
     align-items: center;
 }
 
-.thumbnail audio {
+.thumbnail :is(audio, video) {
     visibility: hidden;
     opacity: 0;
     position: absolute;
@@ -109,12 +96,4 @@ body.dark-theme {
     user-select: none;
     background-position: center center;
     background-image: url(/images/transparent.png);
-}
-
-.thumbnail video {
-    width: 100%;
-    height: 100%;
-    object-fit: scale-down;
-    pointer-events: none;
-    user-select: none;
 }
