@@ -5,7 +5,7 @@ import {MessageEventNameEnum} from '../types/message-event-name.enum';
 import {executeContentScript, getCurrentTab, onMessage} from '../utils/chrome-api';
 import {hide, q, setDisabled, show, toggleClass} from '../utils/dom-functions';
 import {downloadImages, downloadItem} from '../utils/download-functions';
-import {_dispatchEvent, mapMediaTypeToSectionName, uniqueSourceItems} from '../utils/utils';
+import {mapMediaTypeToSectionName, uniqueSourceItems} from '../utils/utils';
 
 const mediaTypes: (keyof MediaInfo)[] = ['images', 'audios', 'videos'];
 const restrictedUrls = [
@@ -114,7 +114,7 @@ function changeToggleAllCheckbox(e: any) {
   const mediaToDisplay = getAllMediaToDisplay();
   let selectedCount = 0;
 
-  toggleClass('.grid-item','checked', checked);
+  toggleClass('.grid-item', 'checked', checked);
 
   for (let i = 0; i < mediaToDisplay.length; i++) {
     const {items} = mediaToDisplay[i];

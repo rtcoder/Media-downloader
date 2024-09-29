@@ -6,10 +6,6 @@ export function setDisabled(selector: string, value: boolean) {
   (q(selector) as HTMLButtonElement).disabled = value;
 }
 
-export function hasClass(selector: string, className: string) {
-  return q(selector)?.classList.contains(className) || false;
-}
-
 export function toggleClass(selector: Element | Element[] | string, className: string, toggleValue: boolean | null = null) {
   let elements = [];
   if (typeof selector === 'string') {

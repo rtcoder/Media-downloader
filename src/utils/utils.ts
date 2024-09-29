@@ -20,10 +20,6 @@ export function countAllMedia(mediaToDisplay: MediaToDisplayItem[]) {
   }, 0);
 }
 
-export function _dispatchEvent(el: any, name: string, detail: MixedObject, bubbles = true, composed = true) {
-  el.dispatchEvent(new CustomEvent(name, {detail, bubbles, composed}));
-}
-
 export function mapMediaTypeToSectionName(type: string): keyof MediaInfo {
   if (type === 'image') {
     return 'images';
