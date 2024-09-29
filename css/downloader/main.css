@@ -1,6 +1,7 @@
 @import "grid.css";
 @import "accordion/accordion.css";
 @import "section-buttons.css";
+@import "yt-info.css";
 @import "../common.css";
 
 body {
@@ -83,8 +84,3 @@ button img {
     height: 100%;
 }
 
-.yt-info {
-    padding: 20px;
-    font-size: 30px;
-    line-height: 35px;
-}

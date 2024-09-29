@@ -20,6 +20,7 @@ export interface TabData {
   favIconUrl: string;
   url: string;
   title: string;
+  isRestricted: boolean;
 }
 
 export interface MediaInTab {

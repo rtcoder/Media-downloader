@@ -41,7 +41,7 @@ body.dark-theme {
     left: 7px;
 }
 
-.grid-item.item-details {
+.grid-item .item-details {
     position: absolute;
     bottom: 5px;
     left: 0;

@@ -1,21 +1,14 @@
 import {displayMedia, getAllMediaToDisplay, setTabExpanded} from '../media-display';
 import {mediaInTabs} from '../media-in-tabs';
-import {MediaInfo, MediaItem, VideoItem} from '../types/media-display.type';
+import {MediaInfo, MediaItem, TabData, VideoItem} from '../types/media-display.type';
 import {MessageEventNameEnum} from '../types/message-event-name.enum';
 import {executeContentScript, getCurrentTab, onMessage} from '../utils/chrome-api';
-import {hide, q, setDisabled, show, toggleClass} from '../utils/dom-functions';
+import {hide, q, setDisabled, toggleClass} from '../utils/dom-functions';
 import {downloadImages, downloadItem} from '../utils/download-functions';
 import {mapMediaTypeToSectionName, uniqueSourceItems} from '../utils/utils';
+import {isRestrictedUrl} from '../utils/yt-restriction';
 
 const mediaTypes: (keyof MediaInfo)[] = ['images', 'audios', 'videos'];
-const restrictedUrls = [
-  'https://youtube.com',
-  'https://www.youtube.com',
-];
-
-function isRestrictedUrl(url: string) {
-  return restrictedUrls.some(restrictedUrl => url.includes(restrictedUrl));
-}
 
 onMessage((message, sender, sendResponse) => {
   const {eventName, data} = message;
@@ -64,10 +57,6 @@ async function onSendMedia(data: any) {
   }
 
   hide('.yt-info');
-  if (isRestrictedUrl(tabInfo.url!)) {
-    show('.yt-info');
-    return;
-  }
   mediaTypes
     .filter(name => !!data[name])
     .forEach(name => {
@@ -77,13 +66,20 @@ async function onSendMedia(data: any) {
         audios: [],
       } as MediaInfo;
 
-      data[name]
-        .filter((item: MediaItem & VideoItem) => !newMedia[name].includes(item))
-        .forEach((item: MediaItem & VideoItem) => newMedia[name].push(item));
-
       const {id, favIconUrl, url, title} = tabInfo;
       const existingIndex = mediaInTabs.findIndex(({tab}) => tab.id === id);
-      const tabObj = {id: id!, favIconUrl: favIconUrl!, url: url!, title: title!};
+      const tabObj: TabData = {id: id!, favIconUrl: favIconUrl!, url: url!, title: title!, isRestricted: false};
+
+      data[name]
+        .filter((item: MediaItem & VideoItem) => !newMedia[name].includes(item));
+
+      const restricted = isRestrictedUrl(tabInfo.url!);
+      if (!restricted) {
+        data[name].forEach((item: MediaItem & VideoItem) => newMedia[name].push(item));
+      } else {
+        tabObj.isRestricted = true;
+      }
+
       if (existingIndex === -1) {
         mediaInTabs.push({
           media: newMedia,

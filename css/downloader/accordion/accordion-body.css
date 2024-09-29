@@ -9,6 +9,10 @@
     background-color: var(--bgColor);
 }
 
+.accordion-body.restricted {
+    grid-template-columns: 100%;
+}
+
 .accordion-body .grid-item {
     margin-bottom: 10px;
     display: flex;

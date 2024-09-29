@@ -1,0 +1,11 @@
+.yt-info {
+    padding: 20px;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+.yt-info a {
+    cursor: pointer;
+}

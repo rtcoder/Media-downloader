@@ -176,13 +176,30 @@ function getAccordionHeader(expanded: boolean, favicon: string, name: string, al
   );
 }
 
-function getAccordionBody(items: DisplayMediaItem[], tabId: number, expanded: boolean) {
-  return createDivElement(
-    {class: 'accordion-body', hidden: !expanded},
-    items.map((item, idx: number) => {
-      return getGridItem(item, `${tabId}-${idx}`);
+function getYtRestrictionInfo() {
+  return createDivElement({class: 'yt-info'}, [
+    createSpanElement({
+      html: 'Note: Chrome Web Store does not allow extensions that download videos from YouTube any longer.',
     }),
-  );
+    createElement('a', {
+      href: 'https://developer.chrome.com/docs/webstore/troubleshooting/#prohibited-products',
+      html: 'Chrome policy',
+    }),
+  ]);
+}
+
+function getAccordionBody(items: DisplayMediaItem[], tabId: number, expanded: boolean, restricted: boolean) {
+  const body = createDivElement({class: 'accordion-body', hidden: !expanded});
+  if (!restricted) {
+    body.append(...items.map((item, idx: number) => {
+      return getGridItem(item, `${tabId}-${idx}`);
+    }));
+  } else {
+    body.appendChild(getYtRestrictionInfo());
+    body.classList.add('restricted')
+  }
+
+  return body;
 }
 
 function getAccordionItem(mediaToDisplayItem: MediaToDisplayItem, expanded = false) {
@@ -190,7 +207,7 @@ function getAccordionItem(mediaToDisplayItem: MediaToDisplayItem, expanded = fal
   const item = createDivElement({class: 'accordion-item'});
   item.setAttribute('tab-id', id);
   const header = getAccordionHeader(true, favIconUrl, title, mediaToDisplayItem.items.length);
-  const body = getAccordionBody(mediaToDisplayItem.items, id, expanded);
+  const body = getAccordionBody(mediaToDisplayItem.items, id, expanded, mediaToDisplayItem.tab.isRestricted);
   if (!mediaToDisplayItem.showHeader) {
     header.hidden = true;
   }
@@ -199,7 +216,7 @@ function getAccordionItem(mediaToDisplayItem: MediaToDisplayItem, expanded = fal
   return item;
 }
 
-function findAccordionItem(accordion: Element, tabId: number) {
+function findAccordionItem(accordion: Element, tabId: number): Element | null {
   return accordion.querySelector(`.accordion-item[tab-id="${tabId}"]`);
 }
 
@@ -209,22 +226,23 @@ function findAccordionGridItem(accordionItem: Element, itemIndex: string) {
 
 export function updateAccordionData(data: MediaToDisplayItem[]) {
   const accordion = q('.accordion');
-
+  accordion.innerHTML = '';
   data.forEach((mediaToDisplayItem: MediaToDisplayItem) => {
     const tabId = mediaToDisplayItem.tab.id;
-    const accordionItem = findAccordionItem(accordion, tabId);
-    if (!accordionItem) {
-      accordion.appendChild(getAccordionItem(mediaToDisplayItem));
-      return;
-    }
+    let accordionItem = findAccordionItem(accordion, tabId);
+    // if (!accordionItem) {
+    accordion.appendChild(getAccordionItem(mediaToDisplayItem));
+    // }
+    // accordionItem = findAccordionItem(accordion, tabId) as Element;
+    // accordionItem.innerHTML = '';
 
-    mediaToDisplayItem.items.forEach((displayMediaItem: DisplayMediaItem, idx: number) => {
-      const itemIdx = `${tabId}-${idx}`;
-      const gridItem = findAccordionGridItem(accordionItem, itemIdx);
-      if (!gridItem) {
-        accordionItem.querySelector('.accordion-body')!
-          .appendChild(getGridItem(displayMediaItem, itemIdx));
-      }
-    });
+    // mediaToDisplayItem.items.forEach((displayMediaItem: DisplayMediaItem, idx: number) => {
+    //   const itemIdx = `${tabId}-${idx}`;
+    //   const gridItem = findAccordionGridItem(accordionItem!, itemIdx);
+    //   if (!gridItem) {
+    //     (accordionItem as HTMLElement).querySelector('.accordion-body')!
+    //       .appendChild(getGridItem(displayMediaItem, itemIdx));
+    //   }
+    // });
   });
 }
