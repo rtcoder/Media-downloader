@@ -1,0 +1,16 @@
+@import "accordion-item.css";
+
+body.light-theme {
+    --accordionItemBorderColor: #ccc;
+    --accordionHeaderBgColor: #f7f7f7;
+}
+
+body.dark-theme {
+    --accordionItemBorderColor: #7f7f7f;
+    --accordionHeaderBgColor: #646464;
+}
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+}

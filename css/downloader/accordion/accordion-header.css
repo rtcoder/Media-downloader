@@ -1,0 +1,64 @@
+.accordion-header {
+    width: 100%;
+    background-color: var(--accordionHeaderBgColor);
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.accordion-header button {
+    background: none;
+    border: none;
+    font-size: 13px;
+    text-align: left;
+    width: 100%;
+    padding: 0;
+    cursor: pointer;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 20px calc(100% - 50px) 20px;
+    height: auto;
+    user-select: none;
+}
+
+.accordion-header button .tab-toggle {
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: relative;
+}
+
+.accordion-header button .tab-toggle::after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--fontColor);
+    border-bottom: 2px solid var(--fontColor);
+    transform: rotate(45deg);
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+    position: absolute;
+}
+
+.accordion-header .favicon {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.accordion-header.active button .tab-toggle::after {
+    transform: rotate(-135deg);
+}
+
+.accordion-header button .tab-title {
+    color: var(--fontColor);
+}
+
+.accordion-header button .tab-media-count:empty {
+    display: none;
+}

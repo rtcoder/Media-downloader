@@ -11,13 +11,13 @@
     <div id="top-container">
       <div class="section-buttons">
         <button data-section="images" class="selected">
-          <x-icon>imagesmode</x-icon>
+          <span class="x-icon">imagesmode</span>
         </button>
         <button data-section="videos">
-          <x-icon>videocam</x-icon>
+          <span class="x-icon">videocam</span>
         </button>
         <button data-section="audios">
-          <x-icon>music_note</x-icon>
+          <span class="x-icon">music_note</span>
         </button>
       </div>
     </div>
@@ -29,7 +29,7 @@
       </label>
     </div>
   </div>
-  <x-accordion></x-accordion>
+  <div class="accordion"></div>
   <div class="yt-info" hidden>
     Note: Chrome Web Store does not allow extensions that download videos from YouTube any longer.
     <a href="https://developer.chrome.com/docs/webstore/troubleshooting/#prohibited-products">Chrome policy</a>
@@ -37,31 +37,16 @@
 
   <div class="download">
     <button type="button" id="download-btn" disabled>
-      <x-icon>download</x-icon>
+      <span class="x-icon">download</span>
       <span>Download&nbsp;<span class="selected-count"></span></span>
     </button>
   </div>
 </main>
 
-<script src="/js/popup-dimensions.js"></script>
-<script src="/js/theme.js"></script>
-<script src="/js/downloader/utils.js"></script>
-<script src="/js/downloader/chrome-api.js"></script>
-<script src="/js/downloader/download-functions.js"></script>
-<script src="/js/downloader/dom-functions.js"></script>
-<script src="/js/downloader/media-display.js"></script>
-<script src="/js/downloader/downloader.js"></script>
+<script src="/dist/popup-dimensions.bundle.js"></script>
+<script src="/dist/theme.bundle.js"></script>
+<script src="/dist/downloader/main.bundle.js"></script>
 
-<script src="/js/web-components/icon.component.js"></script>
-<script src="/js/web-components/grid/thumbnail/image-thumbnail.component.js"></script>
-<script src="/js/web-components/grid/thumbnail/video-thumbnail.component.js"></script>
-<script src="/js/web-components/grid/thumbnail/audio-thumbnail.component.js"></script>
-<script src="/js/web-components/grid/grid-item.component.js"></script>
-
-<script src="/js/web-components/accordion/accordion.js"></script>
-<script src="/js/web-components/accordion/accordion-item.js"></script>
-<script src="/js/web-components/accordion/accordion-header.js"></script>
-<script src="/js/web-components/accordion/accordion-body.js"></script>
 </body>
 </html>
 

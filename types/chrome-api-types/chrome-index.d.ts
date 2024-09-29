@@ -8190,7 +8190,7 @@ declare namespace chrome.scripting {
             injectImmediately?: boolean;
         }
         & (
-            | {
+            | { nh
                 /* The path of the JS files to inject, relative to the extension's root directory. NOTE: Currently a maximum of one file is supported. Exactly one of files and function must be specified. */
                 files: string[];
             }

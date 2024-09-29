@@ -7,17 +7,65 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Add tab event listeners and media handling enhancements.&#10;&#10;Implemented event listeners for tab updates, activations, creations, and replacements to dynamically manage side panel behaviors and update media handling. Refactored message handling to better differentiate between events, adding targeted functions for improved extension responsiveness. Updated the workspace configuration to reflect these changes.">
-      <change afterPath="$PROJECT_DIR$/types/extension-types/index.d.ts" afterDir="false" />
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Update popup and side-panel behavior functions&#10;&#10;Extended updateSidePanelBehavior to cover popup behavior based on user default action. Standardized event listeners to use the combined function, enhancing consistent handling of side-panel and popup settings.">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion-body.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion-header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/background/background.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content-script/extractors-fn.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content-script/file-type-fn.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content-script/filters-fn.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content-script/mappers-fn.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content-script/regex-pattern.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content-script/send_media.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/downloader/accordion.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/downloader/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/media-display.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/media-in-tabs.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/storage/storage-def.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/storage/storage-fn.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tab-expanded.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/media-display.type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/message-event-name.enum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/mixed-object.type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/chrome-api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/crc32.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/utils.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chrome-api-types/chrome-cast-index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/chrome-api-types/chrome-cast-index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chrome-api-types/chrome-index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/chrome-api-types/chrome-index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chrome-api-types/filesystem-index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/chrome-api-types/filesystem-index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chrome-api-types/filewriter-index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/chrome-api-types/filewriter-index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chrome-api-types/har-format-index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/chrome-api-types/har-format-index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/background.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/downloader/downloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/downloader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/downloader/media-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/downloader/media-display.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/accordion.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/fonts.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/fonts.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/background.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/downloader/chrome-api.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/downloader/dom-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dom-functions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/downloader/download-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/download-functions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/downloader/downloader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/downloader/media-display.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/downloader/send_media.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/downloader/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/options/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/popup-dimensions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/popup-dimensions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/accordion/accordion-body.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/accordion/accordion-header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/accordion/accordion-item.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/accordion/accordion.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/grid/grid-item.component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/grid/thumbnail/audio-thumbnail.component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/grid/thumbnail/image-thumbnail.component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/grid/thumbnail/video-thumbnail.component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/web-components/icon.component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/chrome-api-types/chrome-index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/chrome-api-types/chrome-index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/extension-types/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changelog.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/downloader.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/downloader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/options.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/options.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +85,7 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="tsconfig.json" />
       </list>
     </option>
   </component>
@@ -80,32 +129,62 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.laravel-idea.search-composer-json": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/dawidjez/projekty/Private/Media-downloader/js",
+    "last_opened_file_path": "/Users/dawidjez/projekty/Private/Media-downloader/src/storage",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "JavaScript.Libraries",
-    "ts.external.directory.path": "/Users/dawidjez/Library/Application Support/JetBrains/Toolbox/apps/PhpStorm/ch-0/233.14015.96/PhpStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "npm.build.executor": "Run",
+    "npm.start.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Users/dawidjez/projekty/Private/Media-downloader/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/storage" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/css/downloader/accordion" />
+      <recent name="$PROJECT_DIR$/js/downloader" />
       <recent name="$PROJECT_DIR$/js" />
-      <recent name="$PROJECT_DIR$/css" />
-      <recent name="$PROJECT_DIR$/js/web-components" />
-      <recent name="$PROJECT_DIR$/icons" />
-      <recent name="$PROJECT_DIR$/images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/types" />
-      <recent name="$PROJECT_DIR$/chrome-api-types" />
+      <recent name="$PROJECT_DIR$/src/content-script" />
+      <recent name="$PROJECT_DIR$/src/background" />
+      <recent name="$PROJECT_DIR$/src/utils" />
       <recent name="$PROJECT_DIR$/src/downloader" />
-      <recent name="$PROJECT_DIR$/src/options" />
-      <recent name="$PROJECT_DIR$/stylesheets/side-panel" />
+      <recent name="$PROJECT_DIR$/css/downloader/accordion" />
     </key>
+  </component>
+  <component name="RunManager" selected="npm.build">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -135,7 +214,9 @@
       <workItem from="1711219251644" duration="1000" />
       <workItem from="1724659352615" duration="46099000" />
       <workItem from="1725103291997" duration="40986000" />
-      <workItem from="1726726906800" duration="42998000" />
+      <workItem from="1726726906800" duration="48446000" />
+      <workItem from="1727376275897" duration="407000" />
+      <workItem from="1727376693272" duration="41050000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -490,7 +571,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727347289506</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Add media and tab types declarations.&#10;&#10;Introduced explicit type definitions for media items, tabs, and media-in-tab structures to enhance type safety and code clarity. This includes interfaces for various media types and their associated tab data. Also, reorganized and renamed existing type definition files for better project structure.">
+      <option name="closed" value="true" />
+      <created>1727348548957</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1727348548957</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Update popup and side-panel behavior functions&#10;&#10;Extended updateSidePanelBehavior to cover popup behavior based on user default action. Standardized event listeners to use the combined function, enhancing consistent handling of side-panel and popup settings.">
+      <option name="closed" value="true" />
+      <created>1727348582611</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1727348582611</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,10 +616,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="**Add video support and refactor media display**&#10;&#10;Enhanced media handling by adding video support alongside images. Refactored functions for better modularity and code clarity. Updated styles and improved event handling for media elements." />
-    <MESSAGE value="**Simplify media display logic**&#10;&#10;Refactored media-display.js to streamline element creation and improve readability. Introduced helper functions for creating DOM elements in dom-functions.js. Added CSS for themes and improved styling consistency across components." />
-    <MESSAGE value="**Remove debug logs from various files**&#10;&#10;Eliminated console.log statements from multiple files to clean up the output. This enhances code readability and reduces unnecessary noise in the console for better debugging efficiency." />
-    <MESSAGE value="**Add default inspection profile for the project**&#10;&#10;Introduced a new inspection profile file in .idea to set default code inspection rules. This ensures consistency in code quality checks and facilitates better development practices." />
     <MESSAGE value="**Refactor and streamline codebase structure**&#10;&#10;Deleted unused `download.svg` icon and moved various JavaScript and HTML files from the `src` directory to a more organized `js` directory. Introduced custom web components for grid items and refactored scripts to improve modularity and maintainability." />
     <MESSAGE value="**Introduce accordion web components**&#10;&#10;Added new accordion web components (`accordion`, `accordion-item`, `accordion-header`, `accordion-body`) and replaced old DOM manipulation code with these components for better modularity and readability. Refactored `grid-item` component handling and updated script imports in `downloader.html` accordingly." />
     <MESSAGE value="**Add alt attribute and filename support**&#10;&#10;Enhanced media elements to include `alt` attributes and updated download logic to utilize `filename`. Improved event handlers and streamlined related components for better maintainability." />
@@ -544,7 +637,11 @@
     <MESSAGE value="    Add tab event listeners and support conditional media handling.&#10;&#10;Implemented event listeners for tab updates, activations, creations, and replacements to dynamically handle side panel behaviors and media updates. Refactored message handling to distinguish between different events and added relevant functions for each case, enhancing the extension's responsiveness to tab state changes." />
     <MESSAGE value="Add chrome API TypeScript definitions.&#10;&#10;Introduced TypeScript definitions for various Chrome APIs including accessibility features, actions, alarms, browser interaction, and bookmarks management. This will improve developer experience by providing proper type-checking, autocomplete, and better documentation when working with these APIs." />
     <MESSAGE value="Add tab event listeners and media handling enhancements.&#10;&#10;Implemented event listeners for tab updates, activations, creations, and replacements to dynamically manage side panel behaviors and update media handling. Refactored message handling to better differentiate between events, adding targeted functions for improved extension responsiveness. Updated the workspace configuration to reflect these changes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add tab event listeners and media handling enhancements.&#10;&#10;Implemented event listeners for tab updates, activations, creations, and replacements to dynamically manage side panel behaviors and update media handling. Refactored message handling to better differentiate between events, adding targeted functions for improved extension responsiveness. Updated the workspace configuration to reflect these changes." />
+    <MESSAGE value="Add media and tab types declarations.&#10;&#10;Introduced explicit type definitions for media items, tabs, and media-in-tab structures to enhance type safety and code clarity. This includes interfaces for different media types and their associated tab data. Also, reorganized and renamed existing type definition files for better project structure." />
+    <MESSAGE value="Add media and tab types declarations.&#10;&#10;Introduced explicit type definitions for media items, tabs, and media-in-tab structures to enhance type safety and code clarity. This includes interfaces for various media types and their associated tab data. Also, reorganized and renamed existing type definition files for better project structure." />
+    <MESSAGE value="Update popup and side-panel behavior functions&#10;&#10;Extended the updateSidePanelBehavior function to also handle popup behaviors, ensuring both are set based on the user's default action. Adjusted event listeners to utilize this combined function, improving consistency in side-panel and popup handling.&#10;" />
+    <MESSAGE value="Update popup and side-panel behavior functions&#10;&#10;Extended updateSidePanelBehavior to cover popup behavior based on user default action. Standardized event listeners to use the combined function, enhancing consistent handling of side-panel and popup settings." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update popup and side-panel behavior functions&#10;&#10;Extended updateSidePanelBehavior to cover popup behavior based on user default action. Standardized event listeners to use the combined function, enhancing consistent handling of side-panel and popup settings." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "es6",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "chrome"
+    ],
+    // Dodaj tutaj chrome
+    "lib": [
+      "decorators",
+      "dom",
+      "es2019",
+      "scripthost"
+    ]
+  },
+  "include": [
+    "src/**/*",
+    "types/chrome-api-types/chrome-index.d.ts"
+  ]
+}

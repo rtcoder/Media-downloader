@@ -42,7 +42,7 @@
   ],
   "options_page": "/views/options.html",
   "background": {
-    "service_worker": "/js/background.js"
+    "service_worker": "/dist/background/background.bundle.js"
   },
   "host_permissions": [
     "https://www.gstatic.com/",
