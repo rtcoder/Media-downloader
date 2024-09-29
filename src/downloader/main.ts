@@ -3,7 +3,7 @@ import {mediaInTabs} from '../media-in-tabs';
 import {MediaInfo, MediaItem, TabData, VideoItem} from '../types/media-display.type';
 import {MessageEventNameEnum} from '../types/message-event-name.enum';
 import {executeContentScript, getCurrentTab, onMessage} from '../utils/chrome-api';
-import {hide, q, setDisabled, toggleClass} from '../utils/dom-functions';
+import {hasClass, q, setDisabled, toggleClass} from '../utils/dom-functions';
 import {downloadImages, downloadItem} from '../utils/download-functions';
 import {mapMediaTypeToSectionName, uniqueSourceItems} from '../utils/utils';
 import {isRestrictedUrl} from '../utils/yt-restriction';
@@ -56,7 +56,6 @@ async function onSendMedia(data: any) {
     return;
   }
 
-  hide('.yt-info');
   mediaTypes
     .filter(name => !!data[name])
     .forEach(name => {
@@ -66,19 +65,17 @@ async function onSendMedia(data: any) {
         audios: [],
       } as MediaInfo;
 
-      const {id, favIconUrl, url, title} = tabInfo;
-      const existingIndex = mediaInTabs.findIndex(({tab}) => tab.id === id);
-      const tabObj: TabData = {id: id!, favIconUrl: favIconUrl!, url: url!, title: title!, isRestricted: false};
-
       data[name]
         .filter((item: MediaItem & VideoItem) => !newMedia[name].includes(item));
 
       const restricted = isRestrictedUrl(tabInfo.url!);
       if (!restricted) {
         data[name].forEach((item: MediaItem & VideoItem) => newMedia[name].push(item));
-      } else {
-        tabObj.isRestricted = true;
       }
+
+      const {id, favIconUrl, url, title} = tabInfo;
+      const existingIndex = mediaInTabs.findIndex(({tab}) => tab.id === id);
+      const tabObj: TabData = {id: id!, favIconUrl: favIconUrl!, url: url!, title: title!, isRestricted: restricted};
 
       if (existingIndex === -1) {
         mediaInTabs.push({
@@ -221,12 +218,6 @@ function setListeners() {
       return;
     }
 
-    if (target.matches('.accordion-header') || target.closest('.accordion-button')) {
-      const accordionItem = target.closest('.accordion-item');
-      accordionItem.classList.toggle('active');
-      return;
-    }
-
     if (target.matches('.yt-info a')) {
       window.open('https://developer.chrome.com/docs/webstore/troubleshooting/#prohibited-products');
       return;
@@ -240,6 +231,12 @@ function setListeners() {
         url,
         alt: alt?.length ? alt : null,
       });
+      return;
+    }
+
+    if (target.closest('.accordion-header')) {
+      const header = target.closest('.accordion-header');
+      toggleClass(header.closest('.accordion-item'), 'active');
     }
   });
 

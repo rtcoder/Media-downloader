@@ -35,6 +35,19 @@ export function toggleClass(selector: Element | Element[] | string, className: s
   }
 }
 
+export function hasClass(selector: Element | string, className: string): boolean {
+  let element: Element | null;
+  if (typeof selector === 'string') {
+    element = q(selector);
+  } else {
+    element = selector;
+  }
+  if (!element) {
+    return false;
+  }
+  return element.classList.contains(className);
+}
+
 /**
  * @typedef {Object} Props
  * @property {string|string[]} [class] - A string or an array of strings representing the class(es) to be added to the element.

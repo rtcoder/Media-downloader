@@ -1,12 +1,16 @@
 .accordion-body {
     width: 100%;
-    display: grid;
     grid-template-columns: repeat(auto-fill, var(--imageSize));
     grid-template-rows: auto;
     gap: 15px;
     position: relative;
     padding: 15px;
     background-color: var(--bgColor);
+    display: none;
+}
+
+.accordion-item.active .accordion-body {
+    display: grid;
 }
 
 .accordion-body.restricted {

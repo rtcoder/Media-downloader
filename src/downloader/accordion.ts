@@ -159,12 +159,9 @@ function updateDetails(gridItem: Element, type: string, observer: MutationObserv
   }
 }
 
-function getAccordionHeader(expanded: boolean, favicon: string, name: string, allCount: number) {
-  // header.addEventListener('click', () => {
-  //    _dispatchEvent(document, 'accordion-header-clicked', {itemIndex});
-  // });
+function getAccordionHeader(favicon: string, name: string, allCount: number) {
   return createDivElement(
-    {class: ['accordion-header', ...(expanded ? ['active'] : [])]},
+    {class: 'accordion-header'},
     createButtonElement({class: 'accordion-button'}, [
       createImgElement({src: favicon, class: 'favicon', alt: 'Favicon'}),
       createSpanElement({class: 'tab-title'}, [
@@ -188,8 +185,8 @@ function getYtRestrictionInfo() {
   ]);
 }
 
-function getAccordionBody(items: DisplayMediaItem[], tabId: number, expanded: boolean, restricted: boolean) {
-  const body = createDivElement({class: 'accordion-body', hidden: !expanded});
+function getAccordionBody(items: DisplayMediaItem[], tabId: number,  restricted: boolean) {
+  const body = createDivElement({class: 'accordion-body'});
   if (!restricted) {
     body.append(...items.map((item, idx: number) => {
       return getGridItem(item, `${tabId}-${idx}`);
@@ -204,10 +201,12 @@ function getAccordionBody(items: DisplayMediaItem[], tabId: number, expanded: bo
 
 function getAccordionItem(mediaToDisplayItem: MediaToDisplayItem, expanded = false) {
   const {favIconUrl, title, id} = mediaToDisplayItem.tab;
-  const item = createDivElement({class: 'accordion-item'});
+  const item = createDivElement({
+    class:['accordion-item', ...(expanded ? ['active'] : [])]
+  });
   item.setAttribute('tab-id', id);
-  const header = getAccordionHeader(true, favIconUrl, title, mediaToDisplayItem.items.length);
-  const body = getAccordionBody(mediaToDisplayItem.items, id, expanded, mediaToDisplayItem.tab.isRestricted);
+  const header = getAccordionHeader(favIconUrl, title, mediaToDisplayItem.items.length);
+  const body = getAccordionBody(mediaToDisplayItem.items, id,  mediaToDisplayItem.tab.isRestricted);
   if (!mediaToDisplayItem.showHeader) {
     header.hidden = true;
   }

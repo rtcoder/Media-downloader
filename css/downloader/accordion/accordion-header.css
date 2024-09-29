@@ -51,7 +51,7 @@
     user-select: none;
 }
 
-.accordion-header.active button .tab-toggle::after {
+.accordion-item.active .accordion-header button .tab-toggle::after {
     transform: rotate(-135deg);
 }
 
