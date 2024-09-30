@@ -7,14 +7,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Add YouTube download restriction handling&#10;&#10;Introduced `isRestrictedUrl` utility function and updated logic to handle YouTube download restrictions. Added relevant CSS and HTML updates to display a notification when such restrictions are detected.">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Refactor accordion and media download functionality&#10;&#10;Simplified accordion-toggling logic and improved CSS for accordion-item activation. Refactored media download handling by removing redundant code and enhancing header-body structure alignment.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/accordion-body.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion-body.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/accordion-header.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion-header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/content-script/send_media.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/send_media.bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content-script/mappers-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/mappers-fn.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content-script/send_media.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/send_media.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/downloader/accordion.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/accordion.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/downloader/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/dom-functions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dom-functions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media-display.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/media-display.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/media-display.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/media-display.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/download-functions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/download-functions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/downloader.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/downloader.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +170,7 @@
       <workItem from="1725103291997" duration="40986000" />
       <workItem from="1726726906800" duration="48446000" />
       <workItem from="1727376275897" duration="407000" />
-      <workItem from="1727376693272" duration="53523000" />
+      <workItem from="1727376693272" duration="63905000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -215,14 +220,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Add new SVG icons&#10;&#10;Included audio, download, video, and image SVG files in the icons directory. These additions will enhance the project's graphical assets and support various media-related features.">
-      <option name="closed" value="true" />
-      <created>1724874933734</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1724874933734</updated>
     </task>
     <task id="LOCAL-00013" summary="Add JSDoc comments to DOM utility functions&#10;&#10;Enhanced the documentation by adding JSDoc comments for the functions `setDisabled`, `hasClass`, `toggleClass`, `hide`, and `show`. This improves code readability and provides detailed usage information for these functions.">
       <option name="closed" value="true" />
@@ -552,7 +549,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727640022670</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Refactor accordion and media download functionality&#10;&#10;Simplified accordion-toggling logic and improved CSS for accordion-item activation. Refactored media download handling by removing redundant code and enhancing header-body structure alignment.">
+      <option name="closed" value="true" />
+      <created>1727640894304</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1727640894304</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,7 +586,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Enhance grid item class handling and clean workspace tasks&#10;&#10;Added dynamic class handling in grid-item component based on item selection. Simplified media display initialization and updated workspace.xml to remove redundant entries and reflect recent changes." />
     <MESSAGE value="Enhance grid item class handling and clean workspace tasks&#10;&#10;Added dynamic class handling in the grid-item component based on item selection. Simplified media display initialization and updated workspace.xml to remove redundant entries and reflect recent changes." />
     <MESSAGE value="Remove all_urls permission and clean workspace tasks&#10;&#10;Removed the unnecessary &quot;&lt;all_urls&gt;&quot; permission from manifest.json to enhance security. Updated workspace.xml by cleaning up redundant entries and adjusting task metadata for better clarity." />
     <MESSAGE value="Remove trailing space in manifest.json&#10;&#10;Fixed an issue with a trailing space in the host_permissions entry of manifest.json. This ensures the file adheres to proper formatting standards and avoids potential permission parsing errors." />
@@ -606,7 +610,8 @@
     <MESSAGE value="Remove unused functions and fix code formatting&#10;&#10;Deleted unused utility functions `_dispatchEvent` and `hasClass` from `utils.ts` and `dom-functions.ts`. Corrected a formatting issue in `main.ts` for better code readability and maintainability." />
     <MESSAGE value="Refactor event listeners and use utility functions&#10;&#10;Replaced direct Chrome API calls with utility functions for various browser events, improving code organization and readability. Simplified logic for handling tab updates, activations, and installations by using consistent callback methods from `chrome-api.ts`." />
     <MESSAGE value="Add YouTube download restriction handling&#10;&#10;Introduced `isRestrictedUrl` utility function and updated logic to handle YouTube download restrictions. Added relevant CSS and HTML updates to display a notification when such restrictions are detected." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add YouTube download restriction handling&#10;&#10;Introduced `isRestrictedUrl` utility function and updated logic to handle YouTube download restrictions. Added relevant CSS and HTML updates to display a notification when such restrictions are detected." />
+    <MESSAGE value="Refactor accordion and media download functionality&#10;&#10;Simplified accordion-toggling logic and improved CSS for accordion-item activation. Refactored media download handling by removing redundant code and enhancing header-body structure alignment." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor accordion and media download functionality&#10;&#10;Simplified accordion-toggling logic and improved CSS for accordion-item activation. Refactored media download handling by removing redundant code and enhancing header-body structure alignment." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

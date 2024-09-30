@@ -1,4 +1,5 @@
-import {DisplayMediaItem, MediaToDisplayItem} from '../types/media-display.type';
+import {isTabExpanded} from '../media-display';
+import {DisplayMediaItem, MediaToDisplay, MediaToDisplayItem} from '../types/media-display.type';
 import {
   createButtonElement,
   createDivElement,
@@ -185,63 +186,54 @@ function getYtRestrictionInfo() {
   ]);
 }
 
-function getAccordionBody(items: DisplayMediaItem[], tabId: number,  restricted: boolean) {
+function getAccordionBody(items: DisplayMediaItem[], tabId: number, tabUuid: string, restricted: boolean) {
   const body = createDivElement({class: 'accordion-body'});
   if (!restricted) {
     body.append(...items.map((item, idx: number) => {
-      return getGridItem(item, `${tabId}-${idx}`);
+      return getGridItem(item, `${tabId}-${tabUuid}-${idx}`);
     }));
   } else {
     body.appendChild(getYtRestrictionInfo());
-    body.classList.add('restricted')
+    body.classList.add('restricted');
   }
 
   return body;
 }
 
-function getAccordionItem(mediaToDisplayItem: MediaToDisplayItem, expanded = false) {
-  const {favIconUrl, title, id} = mediaToDisplayItem.tab;
+function getAccordionItem(mediaToDisplayItem: MediaToDisplayItem) {
+  const {favIconUrl, title, uuid, id} = mediaToDisplayItem.tab;
+  const expanded = isTabExpanded(uuid);
   const item = createDivElement({
-    class:['accordion-item', ...(expanded ? ['active'] : [])]
+    class: ['accordion-item', ...(expanded ? ['active'] : [])],
   });
-  item.setAttribute('tab-id', id);
+  item.setAttribute('tab-uuid', uuid);
   const header = getAccordionHeader(favIconUrl, title, mediaToDisplayItem.items.length);
-  const body = getAccordionBody(mediaToDisplayItem.items, id,  mediaToDisplayItem.tab.isRestricted);
-  if (!mediaToDisplayItem.showHeader) {
-    header.hidden = true;
-  }
+  const body = getAccordionBody(mediaToDisplayItem.items, id, uuid, mediaToDisplayItem.tab.isRestricted);
   item.appendChild(header);
   item.appendChild(body);
   return item;
 }
 
-function findAccordionItem(accordion: Element, tabId: number): Element | null {
-  return accordion.querySelector(`.accordion-item[tab-id="${tabId}"]`);
+function findAccordionItem(accordion: Element, tabUuid: string): Element | null {
+  return accordion.querySelector(`.accordion-item[tab-uuid="${tabUuid}"]`);
 }
 
 function findAccordionGridItem(accordionItem: Element, itemIndex: string) {
   return accordionItem.querySelector(`.grid-item[data-item-idx="${itemIndex}"]`);
 }
 
-export function updateAccordionData(data: MediaToDisplayItem[]) {
+export function updateAccordionData(mediaToDisplay: MediaToDisplay[]) {
   const accordion = q('.accordion');
   accordion.innerHTML = '';
-  data.forEach((mediaToDisplayItem: MediaToDisplayItem) => {
-    const tabId = mediaToDisplayItem.tab.id;
-    let accordionItem = findAccordionItem(accordion, tabId);
-    // if (!accordionItem) {
-    accordion.appendChild(getAccordionItem(mediaToDisplayItem));
-    // }
-    // accordionItem = findAccordionItem(accordion, tabId) as Element;
-    // accordionItem.innerHTML = '';
-
-    // mediaToDisplayItem.items.forEach((displayMediaItem: DisplayMediaItem, idx: number) => {
-    //   const itemIdx = `${tabId}-${idx}`;
-    //   const gridItem = findAccordionGridItem(accordionItem!, itemIdx);
-    //   if (!gridItem) {
-    //     (accordionItem as HTMLElement).querySelector('.accordion-body')!
-    //       .appendChild(getGridItem(displayMediaItem, itemIdx));
-    //   }
-    // });
+  mediaToDisplay.forEach((group: MediaToDisplay) => {
+    const groupDiv = createDivElement({
+      attributes: {
+        'data-tab-subgroup': group.tabId,
+      },
+    });
+    group.data.forEach((mediaToDisplayItem: MediaToDisplayItem) => {
+      groupDiv.appendChild(getAccordionItem(mediaToDisplayItem));
+    });
+    accordion.appendChild(groupDiv);
   });
 }

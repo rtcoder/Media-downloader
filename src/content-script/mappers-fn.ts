@@ -1,4 +1,4 @@
-import {MediaItem, VideoItem} from '../types/media-display.type';
+import {MediaItem} from '../types/media-display.type';
 import {MixedObject} from '../types/mixed-object.type';
 import {getAltFromElement} from './extractors-fn';
 import {getFileType} from './file-type-fn';
@@ -37,21 +37,23 @@ export async function mapToFullInfo(
   return info;
 }
 
-export function mapToFinalResultArray(data: any[]): (MediaItem | VideoItem)[] {
+export function mapToFinalResultArray(data: any[]): MediaItem[] {
   return removeDuplicateOrEmpty(data.map(mapToFinalResultItem));
 }
 
-function mapToFinalResultItem(item: MixedObject): MediaItem | VideoItem {
-  const data: MediaItem | VideoItem = {
+function mapToFinalResultItem(item: MixedObject): MediaItem {
+  const data: MediaItem = {
     src: relativeUrlToAbsolute(item.src) || '',
     type: item.type,
     alt: item.alt,
     selected: false,
+    poster: null,
+    uuid: item.uuid,
   };
   if (item.poster === undefined) {
-    return data as MediaItem;
+    return data;
   }
-  (data as VideoItem).poster = item.poster ? relativeUrlToAbsolute(item.poster) : null;
+  data.poster = item.poster ? relativeUrlToAbsolute(item.poster) : null;
 
-  return data as VideoItem;
+  return data;
 }

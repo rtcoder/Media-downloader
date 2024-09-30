@@ -1,5 +1,5 @@
-import {MediaInfo, MediaToDisplayItem} from '../types/media-display.type';
-import {MixedObject} from '../types/mixed-object.type';
+import {MediaInfo, MediaToDisplay, MediaToDisplayItem} from '../types/media-display.type';
+import {getCrc32Hash} from './crc32';
 import {q} from './dom-functions';
 
 function getGridItemSelector(index: string): string {
@@ -14,20 +14,22 @@ export function uniqueSourceItems(arr: any[]) {
   return [...new Map(arr.map(item => [item.src, item])).values()];
 }
 
-export function countAllMedia(mediaToDisplay: MediaToDisplayItem[]) {
+export function countAllMedia(mediaToDisplay: MediaToDisplay[]) {
   return mediaToDisplay.reduce((total, mediaGroup) => {
-    return total + mediaGroup.items.length;
+    return total + mediaGroup.data.reduce((_total, media) => {
+      return _total + media.items.length;
+    }, 0);
   }, 0);
 }
 
 export function mapMediaTypeToSectionName(type: string): keyof MediaInfo {
   if (type === 'image') {
-    return 'images';
+    return 'image';
   }
   if (type === 'video') {
-    return 'videos';
+    return 'video';
   }
-  return 'audios';
+  return 'audio';
 }
 
 export function formatTime(seconds: number): string {
@@ -55,11 +57,11 @@ export function getQualityLabel(width: number) {
   return 'SD';
 }
 
-export function getTabUuid(tab: chrome.tabs.Tab) {
-// return getCrc32Hash();
+export function getUuid(val: string | number) {
+  return getCrc32Hash(val.toString());
 }
 
 export function getCurrentSection() {
   return q(`.section-buttons button.selected`)!
-    .getAttribute('data-section') || 'images';
+    .getAttribute('data-section') || 'image';
 }

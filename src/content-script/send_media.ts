@@ -1,4 +1,4 @@
-import {MediaItem, VideoItem} from '../types/media-display.type';
+import {MediaItem} from '../types/media-display.type';
 import {MessageEventNameEnum} from '../types/message-event-name.enum';
 import {sendMessage} from '../utils/chrome-api';
 import {
@@ -13,7 +13,7 @@ import {mapToFinalResultArray} from './mappers-fn';
   async function gatherMedia() {
     let error = null;
     let images: MediaItem[] = [];
-    let videos: VideoItem[] = [];
+    let videos: MediaItem[] = [];
     let audios: MediaItem[] = [];
 
     try {
@@ -22,7 +22,7 @@ import {mapToFinalResultArray} from './mappers-fn';
       images = mapToFinalResultArray([...imagesFromTags, ...imagesFromStyles]);
 
       const videosFromTags = await extractVideosFromTags();
-      videos = mapToFinalResultArray(videosFromTags) as VideoItem[];
+      videos = mapToFinalResultArray(videosFromTags);
 
       const audiosFromTags = await extractAudiosFromTags();
       audios = mapToFinalResultArray(audiosFromTags);
@@ -33,9 +33,9 @@ import {mapToFinalResultArray} from './mappers-fn';
 
     sendMessage(MessageEventNameEnum.SEND_MEDIA, {
       error,
-      images,
-      audios,
-      videos,
+      image:images,
+      audio:audios,
+      video:videos,
     });
   }
 

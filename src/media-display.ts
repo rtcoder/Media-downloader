@@ -1,11 +1,12 @@
 import {updateAccordionData} from './downloader/accordion';
 import {mediaInTabs} from './media-in-tabs';
 import {tabExpanded} from './tab-expanded';
-import {MediaInfo, MediaToDisplayItem} from './types/media-display.type';
+import {MediaInfo, MediaToDisplay, MediaToDisplayItem} from './types/media-display.type';
 import {q} from './utils/dom-functions';
 import {countAllMedia, getCurrentSection} from './utils/utils';
 
-export function getAllMediaToDisplay(): MediaToDisplayItem[] {
+
+export function getAllMediaToDisplay(): MediaToDisplay[] {
   const currentSection = getCurrentSection();
   const mapFn = (itemType: string) => ({type, selected, src, poster}: any) => ({
     src,
@@ -15,15 +16,21 @@ export function getAllMediaToDisplay(): MediaToDisplayItem[] {
     type: itemType,
   });
   const sectionMapping: any = {
-    images: (media: MediaInfo) => media.images.map(mapFn('image')),
-    videos: (media: MediaInfo) => media.videos.map(mapFn('video')),
-    audios: (media: MediaInfo) => media.audios.map(mapFn('audio')),
+    image: (media: MediaInfo) => media.image.map(mapFn('image')),
+    video: (media: MediaInfo) => media.video.map(mapFn('video')),
+    audio: (media: MediaInfo) => media.audio.map(mapFn('audio')),
   };
 
   const getMediaItems = sectionMapping[currentSection] || (() => []);
-  return mediaInTabs.map(({media, tab}) => {
-    const items = getMediaItems(media);
-    return {tab, items, showHeader: true};
+  return mediaInTabs.map(group => {
+    const data = group.elements.map(({media, tab}) => {
+      const items = getMediaItems(media);
+      return {tab, items};
+    });
+    return {
+      tabId: group.tabId,
+      data,
+    };
   });
 }
 
@@ -35,11 +42,11 @@ export function displayMedia() {
   countAll.innerHTML = countAllMedia(mediaToDisplay).toString();
 }
 
-export function setTabExpanded(tabId: string | number, value: boolean) {
-  tabExpanded[tabId] = value;
+export function setTabExpanded(tabUuid: string, value: boolean) {
+  tabExpanded[tabUuid] = value;
 }
 
-export function isTabExpanded(tabId: string | number): boolean {
-  return tabExpanded[tabId];
+export function isTabExpanded(tabUuid: string): boolean {
+  return tabExpanded[tabUuid];
 }
 

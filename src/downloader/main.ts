@@ -1,16 +1,16 @@
 import {displayMedia, getAllMediaToDisplay, setTabExpanded} from '../media-display';
 import {mediaInTabs} from '../media-in-tabs';
-import {MediaInfo, MediaItem, TabData, VideoItem} from '../types/media-display.type';
+import {MediaInfo, MediaItem, TabData} from '../types/media-display.type';
 import {MessageEventNameEnum} from '../types/message-event-name.enum';
 import {executeContentScript, getCurrentTab, onMessage} from '../utils/chrome-api';
-import {hasClass, q, setDisabled, toggleClass} from '../utils/dom-functions';
+import {q, setDisabled, toggleClass} from '../utils/dom-functions';
 import {downloadImages, downloadItem} from '../utils/download-functions';
-import {mapMediaTypeToSectionName, uniqueSourceItems} from '../utils/utils';
+import {getUuid, mapMediaTypeToSectionName, uniqueSourceItems} from '../utils/utils';
 import {isRestrictedUrl} from '../utils/yt-restriction';
 
-const mediaTypes: (keyof MediaInfo)[] = ['images', 'audios', 'videos'];
+const mediaTypes: (keyof MediaInfo)[] = ['image', 'audio', 'video'];
 
-onMessage((message, sender, sendResponse) => {
+onMessage((message) => {
   const {eventName, data} = message;
   console.log(eventName, data);
   switch (eventName) {
@@ -60,40 +60,57 @@ async function onSendMedia(data: any) {
     .filter(name => !!data[name])
     .forEach(name => {
       const newMedia = {
-        images: [],
-        videos: [],
-        audios: [],
+        image: [],
+        video: [],
+        audio: [],
       } as MediaInfo;
 
       data[name]
-        .filter((item: MediaItem & VideoItem) => !newMedia[name].includes(item));
+        .filter((item: MediaItem) => !newMedia[name].includes(item));
 
       const restricted = isRestrictedUrl(tabInfo.url!);
       if (!restricted) {
-        data[name].forEach((item: MediaItem & VideoItem) => newMedia[name].push(item));
+        data[name].forEach((item: MediaItem) => newMedia[name].push(item));
       }
 
-      const {id, favIconUrl, url, title} = tabInfo;
-      const existingIndex = mediaInTabs.findIndex(({tab}) => tab.id === id);
-      const tabObj: TabData = {id: id!, favIconUrl: favIconUrl!, url: url!, title: title!, isRestricted: restricted};
+      const tabUuid = getUuid(`${tabInfo.id!}-${tabInfo.url!}`);
+      let existingIndexTabGroup = mediaInTabs.findIndex(({tabId}) => tabId === tabInfo.id!);
+      if (existingIndexTabGroup === -1) {
+        mediaInTabs.push({
+          tabId: tabInfo.id!,
+          elements: [],
+        });
+        existingIndexTabGroup = mediaInTabs.length - 1;
+      }
+      const existingIndex = mediaInTabs[existingIndexTabGroup].elements.findIndex(({tab}) => tab.uuid === tabUuid);
+      const tabObj: TabData = {
+        id: tabInfo.id!,
+        favIconUrl: tabInfo.favIconUrl!,
+        url: tabInfo.url!,
+        title: tabInfo.title!,
+        isRestricted: restricted,
+        uuid: tabUuid,
+      };
 
       if (existingIndex === -1) {
-        mediaInTabs.push({
+        mediaInTabs[existingIndexTabGroup].elements.push({
           media: newMedia,
           tab: tabObj,
         });
       } else {
-        const {media} = mediaInTabs[existingIndex];
+        const {media} = mediaInTabs[existingIndexTabGroup].elements[existingIndex];
         mediaTypes.forEach((type: keyof MediaInfo) => {
-          mediaInTabs[existingIndex].media[type] = uniqueSourceItems([
+          mediaInTabs[existingIndexTabGroup].elements[existingIndex].media[type] = uniqueSourceItems([
             ...media[type],
             ...newMedia[type],
           ]);
-          mediaInTabs[existingIndex].tab = tabObj;
+          mediaInTabs[existingIndexTabGroup].elements[existingIndex].tab = tabObj;
         });
       }
-      mediaInTabs.forEach(info => setTabExpanded(info.tab.id, false));
-      setTabExpanded(id!, true);
+      mediaInTabs.forEach(group => {
+        group.elements.forEach(info => setTabExpanded(info.tab.uuid, false));
+      });
+      setTabExpanded(tabUuid, true);
     });
 
   displayMedia();
@@ -110,14 +127,17 @@ function changeToggleAllCheckbox(e: any) {
   toggleClass('.grid-item', 'checked', checked);
 
   for (let i = 0; i < mediaToDisplay.length; i++) {
-    const {items} = mediaToDisplay[i];
-    for (let idx = 0; idx < items.length; idx++) {
-      items[idx].selected = checked;
-      if (items[idx].selected) {
+    const {data} = mediaToDisplay[i];
+    for (let idx = 0; idx < data.length; idx++) {
+    const {items} = data[idx];
+    for (let _idx = 0; _idx < items.length; _idx++) {
+      items[_idx].selected = checked;
+      if (items[_idx].selected) {
         allAreUnchecked = false;
         selectedCount++;
       } else {
         allAreChecked = false;
+      }
       }
     }
   }
@@ -141,13 +161,14 @@ function onClickItem(target: any) {
   const newValue = !isChecked;
   toggleClass(gridItem, 'checked');
 
-  const [tabId, itemIdx] = itemIndex.split('-').map((item: string) => +item);
+  const [tab_id, tabUuid, itemIdx] = itemIndex.split('-');
   const currentSection = mapMediaTypeToSectionName(type);
-  const tabIndexInSection = mediaInTabs.findIndex(({tab}) => tab.id === tabId);
+  const groupIndexInSection = mediaInTabs.findIndex(({tabId}) => tabId === +tab_id);
+  const tabIndexInSection = mediaInTabs[groupIndexInSection].elements.findIndex(({tab}) => tab.uuid === tabUuid);
   if (tabIndexInSection === -1) {
     return;
   }
-  mediaInTabs[tabIndexInSection].media[currentSection][itemIdx].selected = newValue;
+  mediaInTabs[groupIndexInSection].elements[tabIndexInSection].media[currentSection][+itemIdx].selected = newValue;
 
   let allAreChecked = true;
   let allAreUnchecked = true;
@@ -155,13 +176,16 @@ function onClickItem(target: any) {
   let selectedCount = 0;
   console.log(itemIndex, newValue);
   for (let i = 0; i < mediaToDisplay.length; i++) {
-    const {items} = mediaToDisplay[i];
-    for (let idx = 0; idx < items.length; idx++) {
-      if (items[idx].selected) {
-        allAreUnchecked = false;
-        selectedCount++;
-      } else {
-        allAreChecked = false;
+    const {data} = mediaToDisplay[i];
+    for (let idx = 0; idx < data.length; idx++) {
+      const {items} = data[idx];
+      for (let _idx = 0; _idx < items.length; _idx++) {
+        if (items[_idx].selected) {
+          allAreUnchecked = false;
+          selectedCount++;
+        } else {
+          allAreChecked = false;
+        }
       }
     }
   }
@@ -186,7 +210,7 @@ function updateSelectedCountText(selectedCount: number) {
 }
 
 function selectSection(name: keyof MediaInfo) {
-  name = mediaTypes.includes(name) ? name : 'images';
+  name = mediaTypes.includes(name) ? name : 'image';
   toggleClass('.section-buttons button', 'selected', false);
   toggleClass(
     `.section-buttons button[data-section="${name}"]`,
