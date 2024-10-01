@@ -4,7 +4,7 @@ import {MessageEventNameEnum} from '../types/message-event-name.enum';
 import {
   contextMenuClicked,
   createContextMenu,
-  createTab,
+  createTab, getVersion,
   onActivateTab,
   onClickExtensionIcon,
   onCreateTab,
@@ -24,7 +24,7 @@ function handleUpdate(details: chrome.runtime.InstalledDetails) {
   if (details.reason !== 'update') {
     return;
   }
-  const currentVersion = chrome.runtime.getManifest().version;
+  const currentVersion = getVersion();
   getStoragePreviousVersionValue((previousVersion) => {
     if (previousVersion !== currentVersion) {
       const CHANGES_URL = 'views/changelog.html';

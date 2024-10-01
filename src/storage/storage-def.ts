@@ -23,3 +23,4 @@ export const DEFAULT_SETTINGS: StorageDef = {
   defaultAction: DefaultActionType.POPUP,
   previousVersion: null,
 };
+export const DEFAULT_SETTINGS_KEYS: StorageKey[] = Object.keys(DEFAULT_SETTINGS) as StorageKey[];

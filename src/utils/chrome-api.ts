@@ -120,3 +120,7 @@ export function openPopup(options?: chrome.action.OpenPopupOptions) {
 export function openSidePanel(options: chrome.sidePanel.OpenOptions) {
   chrome.sidePanel.open(options);
 }
+
+export function getVersion(): string {
+  return chrome.runtime.getManifest().version;
+}

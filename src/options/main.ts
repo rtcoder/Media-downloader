@@ -1,15 +1,15 @@
-import {DEFAULT_SETTINGS, StorageDef, StorageKey} from '../storage/storage-def';
-import {getStorageValue} from '../utils/chrome-api';
+import {DEFAULT_SETTINGS, DEFAULT_SETTINGS_KEYS, StorageDef, StorageKey} from '../storage/storage-def';
+import {getStorageValue, setStorageValue} from '../utils/chrome-api';
 import {getInputValue, q, setInputValue} from '../utils/dom-functions';
 
 
-function composeDataToSave() {
-  const dataToSave: any = {};
-  Object.keys(DEFAULT_SETTINGS).forEach(key => {
-    dataToSave[key] = getInputValue(key);
+function composeDataToSave(): StorageDef {
+  const dataToSave: Partial<StorageDef> = {};
+  DEFAULT_SETTINGS_KEYS.forEach(key => {
+    dataToSave[key] = getInputValue(key) as any;
   });
 
-  return dataToSave;
+  return dataToSave as StorageDef;
 }
 
 function fillFormWithData(data: Partial<StorageDef>) {
@@ -21,7 +21,7 @@ function fillFormWithData(data: Partial<StorageDef>) {
 }
 
 function saveOptions() {
-  chrome.storage.sync.set(composeDataToSave(), () => {
+  setStorageValue(composeDataToSave(), () => {
     const status = q('#status');
     status.style.display = 'block';
     setTimeout(() => {

@@ -7,14 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Refactor media handling and messaging&#10;&#10;Removed redundant MediaItem type and replaced it with MediaItem. Updated naming conventions for media types and integrated UUID for elements. Enhanced media messaging structure to streamline data handling and avoid errors.">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Remove chrome casting definitions&#10;&#10;Deleted `chrome-cast-index.d.ts` which contained type definitions for Google Cast API. This file was redundant and potentially causing conflicts with other type declarations, simplifying type management across the project.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/chrome-api-types/chrome-cast-index.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/chrome-api-types/chrome-index.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/chrome-api-types/filesystem-index.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/chrome-api-types/filewriter-index.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/chrome-api-types/har-format-index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/options/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/options/main.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/background/background.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/background/background.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/options/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storage/storage-def.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/storage-def.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/chrome-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/chrome-api.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +164,7 @@
       <workItem from="1725103291997" duration="40986000" />
       <workItem from="1726726906800" duration="48446000" />
       <workItem from="1727376275897" duration="407000" />
-      <workItem from="1727376693272" duration="66450000" />
+      <workItem from="1727376693272" duration="67176000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -215,14 +214,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Add new download and UI features&#10;&#10;Removed main.css and added new download functionality in download-functions.js. Refactored send_media.js for better filtering of media, added side panel CSS, updated manifest for side panel support, and improved utility functions with JSDoc comments.">
-      <option name="closed" value="true" />
-      <created>1724875041097</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1724875041097</updated>
     </task>
     <task id="LOCAL-00016" summary="Add new download and UI features&#10;&#10;Removed main.css and added new download functionality in download-functions.js. Refactored send_media.js for better filtering of media, added side panel CSS, updated manifest for side panel support, and improved utility functions with JSDoc comments.">
       <option name="closed" value="true" />
@@ -552,7 +543,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727805505844</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Remove chrome casting definitions&#10;&#10;Deleted `chrome-cast-index.d.ts` which contained type definitions for Google Cast API. This file was redundant and potentially causing conflicts with other type declarations, simplifying type management across the project.">
+      <option name="closed" value="true" />
+      <created>1727805833086</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1727805833086</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,7 +580,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Remove trailing space in manifest.json&#10;&#10;Fixed an issue with a trailing space in the host_permissions entry of manifest.json. This ensures the file adheres to proper formatting standards and avoids potential permission parsing errors." />
     <MESSAGE value="Expand permissions in manifest.json&#10;&#10;Added &quot;&lt;all_urls&gt;&quot; to the host_permissions array in manifest.json. This change allows the extension to access all URLs, thereby broadening its operability. Adjusted the file to match updated security requirements and enhance functionality." />
     <MESSAGE value="Fix download errors in grid item component&#10;&#10;Updated `filename` and `src` attributes to use `data` properties for the grid-item component. Adjusted `downloadItem` function to correctly reference URL and filename. Incremented version to 2.0.1 and updated the changelog accordingly." />
     <MESSAGE value="Add default action toggle and refactor settings page.&#10;&#10;Implemented ability to switch between opening a popup or side panel as the default action. Refactored the options page to include separate sections for theme and default action settings. Enhanced radio button styling and updated background script to handle new default action settings." />
@@ -606,7 +604,8 @@
     <MESSAGE value="Refactor accordion and media download functionality&#10;&#10;Simplified accordion-toggling logic and improved CSS for accordion-item activation. Refactored media download handling by removing redundant code and enhancing header-body structure alignment." />
     <MESSAGE value="Refactor media handling and messaging&#10;&#10;Removed redundant VideoItem type and replaced with MediaItem. Updated naming conventions for media types and integrated UUID for elements. Enhanced media messaging structure to streamline data handling and avoid errors." />
     <MESSAGE value="Refactor media handling and messaging&#10;&#10;Removed redundant MediaItem type and replaced it with MediaItem. Updated naming conventions for media types and integrated UUID for elements. Enhanced media messaging structure to streamline data handling and avoid errors." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor media handling and messaging&#10;&#10;Removed redundant MediaItem type and replaced it with MediaItem. Updated naming conventions for media types and integrated UUID for elements. Enhanced media messaging structure to streamline data handling and avoid errors." />
+    <MESSAGE value="Remove chrome casting definitions&#10;&#10;Deleted `chrome-cast-index.d.ts` which contained type definitions for Google Cast API. This file was redundant and potentially causing conflicts with other type declarations, simplifying type management across the project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove chrome casting definitions&#10;&#10;Deleted `chrome-cast-index.d.ts` which contained type definitions for Google Cast API. This file was redundant and potentially causing conflicts with other type declarations, simplifying type management across the project." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
