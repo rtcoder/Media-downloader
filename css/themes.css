@@ -6,7 +6,7 @@ body.light-theme {
     --bgColor: #f9f9f9;
     --headerColor: #2c3e50;
     --headerBorderColor: #e74c3c;
-    --sectionButtonActiveIconColor:#f7f7f7;
+    --sectionButtonActiveIconColor: #f7f7f7;
     --sectionButtonIconColor: #454545;
 }
 
@@ -18,6 +18,6 @@ body.dark-theme {
     --bgColor: #333;
     --headerColor: #06a2d2;
     --headerBorderColor: #e74c3c;
-    --sectionButtonActiveIconColor:#f7f7f7;
+    --sectionButtonActiveIconColor: #f7f7f7;
     --sectionButtonIconColor: #d1d1d1;
 }

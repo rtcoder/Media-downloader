@@ -78,6 +78,7 @@ async function onSendMedia(data: any) {
       if (existingIndexTabGroup === -1) {
         mediaInTabs.push({
           tabId: tabInfo.id!,
+          tabFavicon: tabInfo.favIconUrl!,
           elements: [],
         });
         existingIndexTabGroup = mediaInTabs.length - 1;
@@ -129,15 +130,15 @@ function changeToggleAllCheckbox(e: any) {
   for (let i = 0; i < mediaToDisplay.length; i++) {
     const {data} = mediaToDisplay[i];
     for (let idx = 0; idx < data.length; idx++) {
-    const {items} = data[idx];
-    for (let _idx = 0; _idx < items.length; _idx++) {
-      items[_idx].selected = checked;
-      if (items[_idx].selected) {
-        allAreUnchecked = false;
-        selectedCount++;
-      } else {
-        allAreChecked = false;
-      }
+      const {items} = data[idx];
+      for (let _idx = 0; _idx < items.length; _idx++) {
+        items[_idx].selected = checked;
+        if (items[_idx].selected) {
+          allAreUnchecked = false;
+          selectedCount++;
+        } else {
+          allAreChecked = false;
+        }
       }
     }
   }

@@ -1,4 +1,4 @@
-import {MediaInfo, MediaToDisplay, MediaToDisplayItem} from '../types/media-display.type';
+import {MediaInfo, MediaToDisplay} from '../types/media-display.type';
 import {getCrc32Hash} from './crc32';
 import {q} from './dom-functions';
 

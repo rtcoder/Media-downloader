@@ -33,9 +33,9 @@ import {mapToFinalResultArray} from './mappers-fn';
 
     sendMessage(MessageEventNameEnum.SEND_MEDIA, {
       error,
-      image:images,
-      audio:audios,
-      video:videos,
+      image: images,
+      audio: audios,
+      video: videos,
     });
   }
 

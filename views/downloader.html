@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <title>Media Downloader</title>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta content="text/html;charset=UTF-8" http-equiv="Content-Type">
   <link href="/css/downloader/main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -10,7 +10,7 @@
   <div class="top">
     <div id="top-container">
       <div class="section-buttons">
-        <button data-section="image" class="selected">
+        <button class="selected" data-section="image">
           <span class="x-icon">imagesmode</span>
         </button>
         <button data-section="video">
@@ -24,7 +24,7 @@
 
     <div class="select-all-container">
       <label>
-        <input type="checkbox" id="toggle_all_checkbox">
+        <input id="toggle_all_checkbox" type="checkbox">
         Select all (<span class="count-all">0</span>)
       </label>
     </div>
@@ -32,7 +32,7 @@
   <div class="accordion"></div>
 
   <div class="download">
-    <button type="button" id="download-btn" disabled>
+    <button disabled id="download-btn" type="button">
       <span class="x-icon">download</span>
       <span>Download&nbsp;<span class="selected-count"></span></span>
     </button>

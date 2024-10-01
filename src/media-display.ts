@@ -1,7 +1,7 @@
 import {updateAccordionData} from './downloader/accordion';
 import {mediaInTabs} from './media-in-tabs';
 import {tabExpanded} from './tab-expanded';
-import {MediaInfo, MediaToDisplay, MediaToDisplayItem} from './types/media-display.type';
+import {MediaInfo, MediaToDisplay} from './types/media-display.type';
 import {q} from './utils/dom-functions';
 import {countAllMedia, getCurrentSection} from './utils/utils';
 
@@ -29,6 +29,7 @@ export function getAllMediaToDisplay(): MediaToDisplay[] {
     });
     return {
       tabId: group.tabId,
+      tabFavicon: group.tabFavicon,
       data,
     };
   });

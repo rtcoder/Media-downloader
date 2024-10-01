@@ -200,8 +200,8 @@ function getAccordionBody(items: DisplayMediaItem[], tabId: number, tabUuid: str
   return body;
 }
 
-function getAccordionItem(mediaToDisplayItem: MediaToDisplayItem) {
-  const {favIconUrl, title, uuid, id} = mediaToDisplayItem.tab;
+function getAccordionItem(mediaToDisplayItem: MediaToDisplayItem, favIconUrl: string) {
+  const {title, uuid, id} = mediaToDisplayItem.tab;
   const expanded = isTabExpanded(uuid);
   const item = createDivElement({
     class: ['accordion-item', ...(expanded ? ['active'] : [])],
@@ -214,26 +214,23 @@ function getAccordionItem(mediaToDisplayItem: MediaToDisplayItem) {
   return item;
 }
 
-function findAccordionItem(accordion: Element, tabUuid: string): Element | null {
-  return accordion.querySelector(`.accordion-item[tab-uuid="${tabUuid}"]`);
-}
-
-function findAccordionGridItem(accordionItem: Element, itemIndex: string) {
-  return accordionItem.querySelector(`.grid-item[data-item-idx="${itemIndex}"]`);
+function getAccordionGroup(group: MediaToDisplay) {
+  const groupDiv = createDivElement({
+    class: 'accordion-group',
+    attributes: {
+      'data-tab-subgroup': group.tabId,
+    },
+  });
+  group.data.forEach((mediaToDisplayItem: MediaToDisplayItem) => {
+    groupDiv.appendChild(getAccordionItem(mediaToDisplayItem, group.tabFavicon));
+  });
+  return groupDiv;
 }
 
 export function updateAccordionData(mediaToDisplay: MediaToDisplay[]) {
   const accordion = q('.accordion');
   accordion.innerHTML = '';
   mediaToDisplay.forEach((group: MediaToDisplay) => {
-    const groupDiv = createDivElement({
-      attributes: {
-        'data-tab-subgroup': group.tabId,
-      },
-    });
-    group.data.forEach((mediaToDisplayItem: MediaToDisplayItem) => {
-      groupDiv.appendChild(getAccordionItem(mediaToDisplayItem));
-    });
-    accordion.appendChild(groupDiv);
+    accordion.appendChild(getAccordionGroup(group));
   });
 }
