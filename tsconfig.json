@@ -18,7 +18,6 @@
     ]
   },
   "include": [
-    "src/**/*",
-    "types/chrome-api-types/chrome-index.d.ts"
+    "src/**/*"
   ]
 }
