@@ -33,7 +33,6 @@ export interface MediaInTabElements {
 
 export interface MediaInTab {
   tabId: number;
-  tabFavicon: string;
   elements: MediaInTabElements[];
 }
 
@@ -57,6 +56,5 @@ export interface MediaToDisplayItem {
 
 export interface MediaToDisplay {
   tabId: number;
-  tabFavicon: string;
   data: MediaToDisplayItem[];
 }

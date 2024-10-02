@@ -200,8 +200,8 @@ function getAccordionBody(items: DisplayMediaItem[], tabId: number, tabUuid: str
   return body;
 }
 
-function getAccordionItem(mediaToDisplayItem: MediaToDisplayItem, favIconUrl: string) {
-  const {title, uuid, id} = mediaToDisplayItem.tab;
+function getAccordionItem(mediaToDisplayItem: MediaToDisplayItem) {
+  const {title, uuid, id, favIconUrl} = mediaToDisplayItem.tab;
   const expanded = isTabExpanded(uuid);
   const item = createDivElement({
     class: ['accordion-item', ...(expanded ? ['active'] : [])],
@@ -222,7 +222,7 @@ function getAccordionGroup(group: MediaToDisplay) {
     },
   });
   group.data.forEach((mediaToDisplayItem: MediaToDisplayItem) => {
-    groupDiv.appendChild(getAccordionItem(mediaToDisplayItem, group.tabFavicon));
+    groupDiv.appendChild(getAccordionItem(mediaToDisplayItem));
   });
   return groupDiv;
 }

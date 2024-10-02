@@ -7,12 +7,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Remove chrome casting definitions&#10;&#10;Deleted `chrome-cast-index.d.ts` which contained type definitions for Google Cast API. This file was redundant and potentially causing conflicts with other type declarations, simplifying type management across the project.">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Refactor storage and update version handling&#10;&#10;Updated storage handling functions and added a utility for retrieving the extension version. Refactored form submission logic to improve code organization and maintainability.">
+      <change afterPath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/downloader/find-media.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/downloader/media-types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/downloader/message-listeners.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/options/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/options/main.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/background/background.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/background/background.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/options/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/storage/storage-def.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/storage-def.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/background/background.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/background/background.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/theme.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/theme.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/accordion.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/accordion.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media-display.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/media-display.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/media-display.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/media-display.type.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/chrome-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/chrome-api.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +172,7 @@
       <workItem from="1725103291997" duration="40986000" />
       <workItem from="1726726906800" duration="48446000" />
       <workItem from="1727376275897" duration="407000" />
-      <workItem from="1727376693272" duration="67176000" />
+      <workItem from="1727376693272" duration="73332000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -214,14 +222,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Add new download and UI features&#10;&#10;Removed main.css and added new download functionality in download-functions.js. Refactored send_media.js for better filtering of media, added side panel CSS, updated manifest for side panel support, and improved utility functions with JSDoc comments.">
-      <option name="closed" value="true" />
-      <created>1724875148429</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1724875148429</updated>
     </task>
     <task id="LOCAL-00017" summary="Refactor download flow and add new APIs&#10;&#10;Replaced chrome.downloads.download with downloadUrl function in download-functions.js for better modularity. Introduced chrome-api.js to encapsulate Chrome scripting and tab management APIs. Minor UI and functionality improvements in popup.js, including improved event handling.">
       <option name="closed" value="true" />
@@ -551,7 +551,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727805833086</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Refactor storage and update version handling&#10;&#10;Updated storage handling functions and added a utility for retrieving the extension version. Refactored form submission logic to improve code organization and maintainability.">
+      <option name="closed" value="true" />
+      <created>1727806567026</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1727806567026</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,7 +588,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Expand permissions in manifest.json&#10;&#10;Added &quot;&lt;all_urls&gt;&quot; to the host_permissions array in manifest.json. This change allows the extension to access all URLs, thereby broadening its operability. Adjusted the file to match updated security requirements and enhance functionality." />
     <MESSAGE value="Fix download errors in grid item component&#10;&#10;Updated `filename` and `src` attributes to use `data` properties for the grid-item component. Adjusted `downloadItem` function to correctly reference URL and filename. Incremented version to 2.0.1 and updated the changelog accordingly." />
     <MESSAGE value="Add default action toggle and refactor settings page.&#10;&#10;Implemented ability to switch between opening a popup or side panel as the default action. Refactored the options page to include separate sections for theme and default action settings. Enhanced radio button styling and updated background script to handle new default action settings." />
     <MESSAGE value="Prevent YouTube downloads and update Chrome version.&#10;&#10;Added a warning message in the UI about the Chrome policy against YouTube downloads and updated the extension functionality to hide the download button on YouTube pages. Included new functions to show and hide elements. Also updated the minimum Chrome version to 116 in manifest.json." />
@@ -605,7 +612,8 @@
     <MESSAGE value="Refactor media handling and messaging&#10;&#10;Removed redundant VideoItem type and replaced with MediaItem. Updated naming conventions for media types and integrated UUID for elements. Enhanced media messaging structure to streamline data handling and avoid errors." />
     <MESSAGE value="Refactor media handling and messaging&#10;&#10;Removed redundant MediaItem type and replaced it with MediaItem. Updated naming conventions for media types and integrated UUID for elements. Enhanced media messaging structure to streamline data handling and avoid errors." />
     <MESSAGE value="Remove chrome casting definitions&#10;&#10;Deleted `chrome-cast-index.d.ts` which contained type definitions for Google Cast API. This file was redundant and potentially causing conflicts with other type declarations, simplifying type management across the project." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove chrome casting definitions&#10;&#10;Deleted `chrome-cast-index.d.ts` which contained type definitions for Google Cast API. This file was redundant and potentially causing conflicts with other type declarations, simplifying type management across the project." />
+    <MESSAGE value="Refactor storage and update version handling&#10;&#10;Updated storage handling functions and added a utility for retrieving the extension version. Refactored form submission logic to improve code organization and maintainability." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor storage and update version handling&#10;&#10;Updated storage handling functions and added a utility for retrieving the extension version. Refactored form submission logic to improve code organization and maintainability." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -27,6 +27,15 @@ export async function getCurrentTab() {
   return tab;
 }
 
+export async function getTab(tabId: number): Promise<chrome.tabs.Tab | null> {
+  const tab = await chrome.tabs.get(tabId);
+  if (chrome.runtime.lastError) {
+    console.error('Error get tab by ID:', chrome.runtime.lastError);
+    return null;
+  }
+  return tab;
+}
+
 export function downloadUrl(url: string, filename: string | null = null) {
   const downloadOptions: chrome.downloads.DownloadOptions = {url};
   if (filename) {

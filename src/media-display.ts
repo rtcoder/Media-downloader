@@ -29,7 +29,6 @@ export function getAllMediaToDisplay(): MediaToDisplay[] {
     });
     return {
       tabId: group.tabId,
-      tabFavicon: group.tabFavicon,
       data,
     };
   });
