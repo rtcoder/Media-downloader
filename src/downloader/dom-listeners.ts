@@ -1,8 +1,9 @@
 import {displayMedia, getAllMediaToDisplay} from '../media-display';
 import {mediaInTabs} from '../media-in-tabs';
 import {MediaInfo} from '../types/media-display.type';
-import {q, setDisabled, toggleClass} from '../utils/dom-functions';
-import {downloadImages, downloadItem} from '../utils/download-functions';
+import {createTab, setStorageValue} from '../utils/chrome-api';
+import {hide, q, setDisabled, toggleClass} from '../utils/dom-functions';
+import {downloadImages} from '../utils/download-functions';
 import {mapMediaTypeToSectionName} from '../utils/utils';
 import {mediaTypes} from './media-types';
 
@@ -116,6 +117,7 @@ export function setDomListeners() {
     if (!target) {
       return;
     }
+
     if (target.closest('#download-btn')) {
       downloadImages(getAllMediaToDisplay());
       return;
@@ -137,14 +139,10 @@ export function setDomListeners() {
       return;
     }
 
-    if (target.matches('.download_image_button')) {
-      const gridItem = target.closest('.grid-item');
-      const url = gridItem.getAttribute('data-src-dw');
-      const alt = gridItem.getAttribute('data-filename');
-      downloadItem({
-        url,
-        alt: alt?.length ? alt : null,
-      });
+    if (target.matches('.changelog-link')) {
+      setStorageValue({showChangelogLink: false});
+      createTab({url: 'views/changelog.html'});
+      hide(target);
       return;
     }
 

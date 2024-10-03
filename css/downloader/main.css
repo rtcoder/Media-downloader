@@ -2,6 +2,8 @@
 @import "accordion/accordion.css";
 @import "section-buttons.css";
 @import "yt-info.css";
+@import "changelog-link.css";
+@import "download-button.css";
 @import "../common.css";
 
 body {
@@ -35,25 +37,6 @@ main {
     display: flex;
 }
 
-.download {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-
-    & #download-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--activeColor);
-        color: var(--fontColor);
-        gap: 5px;
-
-        &:not([disabled]):hover {
-            background-color: var(--activeColorHover);
-        }
-    }
-}
-
 .accent {
     color: var(--activeColor);
 }
@@ -83,4 +66,3 @@ button img {
     width: 100%;
     height: 100%;
 }
-

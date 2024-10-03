@@ -1,0 +1,15 @@
+.changelog-link {
+    text-align: center;
+    padding: 5px;
+    border-bottom: 2px solid;
+    user-select: none;
+    text-transform: capitalize;
+    font-variant: small-caps;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.changelog-link:hover {
+    background: var(--activeColor);
+    color: var(--sectionButtonActiveIconColor);
+}

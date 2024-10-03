@@ -1,0 +1,18 @@
+.download {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+
+    & #download-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--activeColor);
+        color: var(--fontColor);
+        gap: 5px;
+
+        &:not([disabled]):hover {
+            background-color: var(--activeColorHover);
+        }
+    }
+}

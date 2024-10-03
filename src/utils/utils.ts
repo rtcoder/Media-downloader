@@ -1,14 +1,6 @@
-import {MediaInfo, MediaToDisplay} from '../types/media-display.type';
+import {DisplayMediaItem, MediaInfo, MediaItem, MediaToDisplay} from '../types/media-display.type';
 import {getCrc32Hash} from './crc32';
 import {q} from './dom-functions';
-
-function getGridItemSelector(index: string): string {
-  return `.grid-item[data-item-idx="${index}"]`;
-}
-
-export function getNameFromUrl(url: string): string {
-  return url.split('/').pop() || '';
-}
 
 export function uniqueSourceItems(arr: any[]) {
   return [...new Map(arr.map(item => [item.src, item])).values()];
@@ -20,6 +12,19 @@ export function countAllMedia(mediaToDisplay: MediaToDisplay[]) {
       return _total + media.items.length;
     }, 0);
   }, 0);
+}
+
+export function mapMediaItemToDisplayMediaItem(item: MediaItem, itemType: keyof MediaInfo): DisplayMediaItem {
+  const {src, uuid, poster, type, selected, alt} = item;
+  return {
+    src,
+    uuid,
+    poster,
+    filetype: type,
+    selected,
+    type: itemType,
+    alt,
+  };
 }
 
 export function mapMediaTypeToSectionName(type: string): keyof MediaInfo {

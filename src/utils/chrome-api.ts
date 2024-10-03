@@ -17,23 +17,36 @@ export async function executeContentScript(scriptUrl: string) {
 }
 
 export async function getCurrentTab() {
-  let queryOptions = {active: true, lastFocusedWindow: true};
-  let [tab] = await chrome.tabs.query(queryOptions);
+  try {
+    let queryOptions = {active: true, lastFocusedWindow: true};
+    let [tab] = await chrome.tabs.query(queryOptions);
 
-  if (tab?.url?.startsWith('chrome://')) {
+    console.log('current tabUrl: ', tab?.url, tab);
+    if (!tab?.url || tab?.url?.startsWith('chrome://') || tab?.url?.startsWith('https://chromewebstore.google.com')) {
+      return null;
+    }
+
+    return tab;
+  } catch {
     return null;
   }
-
-  return tab;
 }
 
 export async function getTab(tabId: number): Promise<chrome.tabs.Tab | null> {
-  const tab = await chrome.tabs.get(tabId);
-  if (chrome.runtime.lastError) {
-    console.error('Error get tab by ID:', chrome.runtime.lastError);
+  try {
+    const tab = await chrome.tabs.get(tabId);
+    if (chrome.runtime.lastError) {
+      console.error('Error get tab by ID:', chrome.runtime.lastError);
+      return null;
+    }
+    console.log('tabUrl: ', tab?.url);
+    if (!tab?.url || tab?.url?.startsWith('chrome://') || tab?.url?.startsWith('https://chromewebstore.google.com')) {
+      return null;
+    }
+    return tab;
+  } catch {
     return null;
   }
-  return tab;
 }
 
 export function downloadUrl(url: string, filename: string | null = null) {

@@ -59,6 +59,10 @@
     color: var(--fontColor);
 }
 
+.accordion-header button .tab-title .tab-media-count {
+    margin-left: 5px;
+}
+
 .accordion-header button .tab-media-count:empty {
     display: none;
 }

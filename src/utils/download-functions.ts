@@ -10,8 +10,10 @@ export function downloadImages(mediaToDisplay: MediaToDisplay[]) {
 
   for (let i = 0; i < mediaToDisplay.length; i++) {
     const {data} = mediaToDisplay[i];
+
     for (let idx = 0; idx < data.length; idx++) {
       const {items} = data[idx];
+
       for (let _idx = 0; _idx < items.length; _idx++) {
         if (items[_idx].selected) {
           checkedImages.push({

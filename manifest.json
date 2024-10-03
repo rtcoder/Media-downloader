@@ -7,7 +7,6 @@
   "manifest_version": 3,
   "permissions": [
     "activeTab",
-    "tabs",
     "sidePanel",
     "downloads",
     "scripting",
@@ -40,6 +39,9 @@
       ]
     }
   ],
+  "side_panel": {
+    "default_path": "/views/downloader.html"
+  },
   "options_page": "/views/options.html",
   "background": {
     "service_worker": "/dist/background/background.bundle.js"

@@ -174,15 +174,19 @@ export function createIconElement(name: string, size = 24): HTMLElement {
   });
 }
 
-export function show(selector: string) {
-  const el = q(selector) as HTMLElement;
+export function show(selector: string | HTMLElement) {
+  const el = typeof selector === 'string'
+    ? q(selector) as HTMLElement
+    : selector;
   if (el) {
     el.hidden = false;
   }
 }
 
-export function hide(selector: string) {
-  const el = q(selector) as HTMLElement;
+export function hide(selector: string | HTMLElement) {
+  const el = typeof selector === 'string'
+    ? q(selector) as HTMLElement
+    : selector;
   if (el) {
     el.hidden = true;
   }

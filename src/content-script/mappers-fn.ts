@@ -1,5 +1,6 @@
 import {MediaItem} from '../types/media-display.type';
 import {MixedObject} from '../types/mixed-object.type';
+import {getUuid} from '../utils/utils';
 import {getAltFromElement} from './extractors-fn';
 import {getFileType} from './file-type-fn';
 import {removeDuplicateOrEmpty} from './filters-fn';
@@ -48,7 +49,7 @@ function mapToFinalResultItem(item: MixedObject): MediaItem {
     alt: item.alt,
     selected: false,
     poster: null,
-    uuid: item.uuid,
+    uuid: item.uuid || getUuid(item.src),
   };
   if (item.poster === undefined) {
     return data;

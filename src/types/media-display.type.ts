@@ -7,10 +7,6 @@ export interface MediaItem {
   poster: string | null;
 }
 
-export interface VideoItem extends MediaItem {
-  poster: string | null;
-}
-
 export interface MediaInfo {
   image: MediaItem[];
   audio: MediaItem[];
@@ -41,6 +37,7 @@ export interface TabExpanded {
 }
 
 export interface DisplayMediaItem {
+  uuid: string;
   src: string;
   type: 'image' | 'video' | 'audio';
   filetype: string | null;

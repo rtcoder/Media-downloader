@@ -81,6 +81,9 @@ function getGridItem(item: DisplayMediaItem, itemIndex: string) {
     {class: 'download_image_button'},
     createIconElement('download'),
   );
+  const anchor = createElement('a', {
+    attributes: {href: item.src, download: item.alt || ''},
+  }, btn);
 
   const details = createSpanElement({class: 'item-details'}, [
     createSpanElement({class: 'item-details-ext'}),
@@ -96,7 +99,7 @@ function getGridItem(item: DisplayMediaItem, itemIndex: string) {
     thumbnail = getVideoThumbnail(src, poster);
   }
 
-  gridItem.appendChild(btn);
+  gridItem.appendChild(anchor);
   gridItem.appendChild(details);
 
   if (thumbnail) {
@@ -167,7 +170,7 @@ function getAccordionHeader(favicon: string, name: string, allCount: number) {
       createImgElement({src: favicon, class: 'favicon', alt: 'Favicon'}),
       createSpanElement({class: 'tab-title'}, [
         createSpanElement({class: 'title', html: name}),
-        createSpanElement({class: 'tab-media-count', html: allCount}),
+        createSpanElement({class: 'tab-media-count', html: `(${allCount})`}),
       ]),
       createSpanElement({class: 'tab-toggle'}),
     ]),
@@ -189,8 +192,8 @@ function getYtRestrictionInfo() {
 function getAccordionBody(items: DisplayMediaItem[], tabId: number, tabUuid: string, restricted: boolean) {
   const body = createDivElement({class: 'accordion-body'});
   if (!restricted) {
-    body.append(...items.map((item, idx: number) => {
-      return getGridItem(item, `${tabId}-${tabUuid}-${idx}`);
+    body.append(...items.map(item => {
+      return getGridItem(item, `${tabId}-${tabUuid}-${item.uuid}`);
     }));
   } else {
     body.appendChild(getYtRestrictionInfo());

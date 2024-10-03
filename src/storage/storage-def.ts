@@ -13,7 +13,8 @@ export type PreviousVersionType = string | null;
 export type StorageDef = {
   theme: ThemeType;
   defaultAction: DefaultActionType;
-  previousVersion: PreviousVersionType
+  previousVersion: PreviousVersionType;
+  showChangelogLink: boolean;
 }
 
 export type StorageKey = keyof StorageDef;
@@ -22,5 +23,6 @@ export const DEFAULT_SETTINGS: StorageDef = {
   theme: ThemeType.SYSTEM,
   defaultAction: DefaultActionType.POPUP,
   previousVersion: null,
+  showChangelogLink: false,
 };
 export const DEFAULT_SETTINGS_KEYS: StorageKey[] = Object.keys(DEFAULT_SETTINGS) as StorageKey[];

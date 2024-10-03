@@ -27,8 +27,7 @@ function handleUpdate(details: chrome.runtime.InstalledDetails) {
   const currentVersion = getVersion();
   getStoragePreviousVersionValue((previousVersion) => {
     if (previousVersion !== currentVersion) {
-      const CHANGES_URL = 'views/changelog.html';
-      createTab({url: CHANGES_URL});
+      setStorageValue({showChangelogLink: true});
     }
 
     setStorageValue({previousVersion: currentVersion});
@@ -102,8 +101,8 @@ onInstalled(details => {
 
   createContextMenu({
     id: 'openMediaDownloader',
-    title: 'Media Downloader',
-    contexts: ['all'],
+    title: 'Open Media Downloader',
+    contexts: ['page'],
   });
   handleUpdate(details);
 });
