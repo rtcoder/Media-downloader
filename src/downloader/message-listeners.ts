@@ -10,13 +10,13 @@ import {mediaTypes} from './media-types';
 
 function tabCreatedListener(tab: chrome.tabs.Tab) {
   if (tab.active) {
-    findMedia();
+    findMedia(tab.id);
   }
 }
 
 function tabUpdatedListener(tabId: number, changeInfo: any, tab: chrome.tabs.Tab) {
   if (tab.active && changeInfo.status === 'complete') {
-    findMedia();
+    findMedia(tab.id);
   }
 }
 
@@ -27,7 +27,7 @@ async function tabReplacedListener(tabId: number) {
   }
 
   if (tab.active) {
-    findMedia();
+    findMedia(tabId);
   }
 }
 
@@ -38,7 +38,7 @@ async function tabActivatedListener(tabId: number) {
   }
 
   if (tab.active) {
-    findMedia();
+    findMedia(tabId);
   }
 }
 

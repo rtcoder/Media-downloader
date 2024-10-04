@@ -1,19 +1,22 @@
 import {StorageDef} from '../storage/storage-def';
 import {EventMsg, MessageEventNameEnum} from '../types/message-event-name.enum';
 
-export async function executeContentScript(scriptUrl: string) {
-  const tab = await getCurrentTab();
-  if (!tab || !tab.id) {
-    return;
-  }
-  if (tab.id <= 0) {
-    return;
+export async function executeContentScript(scriptUrl: string, tabId: number | null = null) {
+  if (!tabId) {
+    const tab = await getCurrentTab();
+    if (!tab || !tab.id) {
+      return;
+    }
+    if (tab.id <= 0) {
+      return;
+    }
+    tabId = tab.id;
   }
 
   await chrome.scripting.executeScript({
-    target: {tabId: tab.id, allFrames: true},
+    target: {tabId, allFrames: true},
     files: [scriptUrl],
-  } as any);
+  });
 }
 
 export async function getCurrentTab() {
