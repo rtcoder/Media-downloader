@@ -1,6 +1,6 @@
 import {displayMedia, getAllMediaToDisplay} from '../media-display';
 import {mediaInTabs} from '../media-in-tabs';
-import {MediaInfo} from '../types/media-display.type';
+import {MediaInfo} from '../types/media-in-tabs.type';
 import {createTab, setStorageValue} from '../utils/chrome-api';
 import {hide, q, setDisabled, toggleClass} from '../utils/dom-functions';
 import {downloadImages} from '../utils/download-functions';
@@ -56,7 +56,7 @@ function onClickItem(target: any) {
   const [tab_id, tabUuid, itemIdx] = itemIndex.split('-');
   const currentSection = mapMediaTypeToSectionName(type);
   const groupIndexInSection = mediaInTabs.findIndex(({tabId}) => tabId === +tab_id);
-  const tabIndexInSection = mediaInTabs[groupIndexInSection].elements.findIndex(({tab}) => tab.uuid === tabUuid);
+  const tabIndexInSection = mediaInTabs[groupIndexInSection].elements.findIndex(obj => obj.tabUuid === tabUuid);
   if (tabIndexInSection === -1) {
     return;
   }

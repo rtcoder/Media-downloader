@@ -1,11 +1,12 @@
-import {MediaItem} from '../types/media-display.type';
+import {NullableString} from '../types/common.type';
+import {MediaItem} from '../types/media-in-tabs.type';
 import {MixedObject} from '../types/mixed-object.type';
 import {getUuid} from '../utils/utils';
 import {getAltFromElement} from './extractors-fn';
 import {getFileType} from './file-type-fn';
 import {removeDuplicateOrEmpty} from './filters-fn';
 
-export function relativeUrlToAbsolute(url: string | null): string | null {
+export function relativeUrlToAbsolute(url: NullableString): NullableString {
   if (url === null) {
     return null;
   }
@@ -14,15 +15,15 @@ export function relativeUrlToAbsolute(url: string | null): string | null {
 
 export async function mapToFullInfo(
   src: string = '',
-  altOrElement: Element | string | null = null,
-  poster: string | null | undefined = undefined,
+  altOrElement: Element | NullableString = null,
+  poster: NullableString | undefined = undefined,
 ) {
-  let type: string | null = null;
+  let type: NullableString = null;
   if (src.length) {
     type = await getFileType(src);
   }
 
-  let alt: string | null = null;
+  let alt: NullableString = null;
   if (altOrElement !== null) {
     if (typeof altOrElement !== 'string') {
       alt = getAltFromElement(altOrElement);

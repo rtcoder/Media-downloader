@@ -1,3 +1,4 @@
+import {NullableString} from '../types/common.type';
 import {qAll} from '../utils/dom-functions';
 import {isAudioURL, isImageURL, isNotEmpty, isNotYouTubeLink, isVideoURL} from './filters-fn';
 import {mapToFullInfo} from './mappers-fn';
@@ -125,7 +126,7 @@ export function extractImagesFromStyles() {
     .flat()
     .filter((cssRule: any) => cssRule.style && cssRule.style.backgroundImage)
     .map((cssRule: any) => extractURLFromStyle(cssRule.style.backgroundImage))
-    .filter((url: string | null) => !!url)
+    .filter((url: NullableString) => !!url)
     .filter((url: string) => isImageURL(url))
     .map((url: string) => mapToFullInfo(url));
 }

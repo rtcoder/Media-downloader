@@ -27,3 +27,9 @@ export function getStoragePreviousVersionValue(callback: (value: PreviousVersion
     callback(previousVersion);
   });
 }
+
+export function getShowChangeLogLinkValue(callback: (value: boolean) => void) {
+  getStorageValue({showChangelogLink: false}, ({showChangelogLink}) => {
+    callback(!!showChangelogLink);
+  });
+}

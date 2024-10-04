@@ -1,3 +1,5 @@
+import {NullableString} from '../types/common.type';
+
 export enum ThemeType {
   LIGHT = 'light',
   DARK = 'dark',
@@ -9,7 +11,8 @@ export enum DefaultActionType {
   SIDE_PANEL = 'side-panel'
 }
 
-export type PreviousVersionType = string | null;
+export type PreviousVersionType = NullableString;
+
 export type StorageDef = {
   theme: ThemeType;
   defaultAction: DefaultActionType;
@@ -19,10 +22,12 @@ export type StorageDef = {
 
 export type StorageKey = keyof StorageDef;
 
+export type StorageKeys = StorageKey[];
+
 export const DEFAULT_SETTINGS: StorageDef = {
   theme: ThemeType.SYSTEM,
   defaultAction: DefaultActionType.POPUP,
   previousVersion: null,
   showChangelogLink: false,
 };
-export const DEFAULT_SETTINGS_KEYS: StorageKey[] = Object.keys(DEFAULT_SETTINGS) as StorageKey[];
+export const DEFAULT_SETTINGS_KEYS: StorageKeys = Object.keys(DEFAULT_SETTINGS) as StorageKeys;

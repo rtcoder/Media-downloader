@@ -1,6 +1,8 @@
 import {displayMedia, setTabExpanded} from '../media-display';
-import {mediaInTabs} from '../media-in-tabs';
-import {MediaInfo, MediaItem, TabData} from '../types/media-display.type';
+import {mediaInTabs, tabsInfo} from '../media-in-tabs';
+import {ChromeTab} from '../types/chrome.type';
+import {FoundMedia} from '../types/found-media.type';
+import {MediaInfo, MediaItem} from '../types/media-in-tabs.type';
 import {MessageEventNameEnum} from '../types/message-event-name.enum';
 import {getCurrentTab, getTab, onMessage} from '../utils/chrome-api';
 import {getUuid, uniqueSourceItems} from '../utils/utils';
@@ -8,13 +10,25 @@ import {isRestrictedUrl} from '../utils/yt-restriction';
 import {findMedia} from './find-media';
 import {mediaTypes} from './media-types';
 
-function tabCreatedListener(tab: chrome.tabs.Tab) {
+function updateTabInfo(info: ChromeTab) {
+  const tabUuid = getUuid(`${info.id!}-${info.url!}`);
+  tabsInfo[tabUuid] = {
+    id: info.id!,
+    favIconUrl: info.favIconUrl!,
+    url: info.url!,
+    title: info.title!,
+    isRestricted: isRestrictedUrl(info.url!),
+    uuid: tabUuid,
+  };
+}
+
+function tabCreatedListener(tab: ChromeTab) {
   if (tab.active) {
     findMedia(tab.id);
   }
 }
 
-function tabUpdatedListener(tabId: number, changeInfo: any, tab: chrome.tabs.Tab) {
+function tabUpdatedListener(tabId: number, changeInfo: any, tab: ChromeTab) {
   if (tab.active && changeInfo.status === 'complete') {
     findMedia(tab.id);
   }
@@ -42,19 +56,25 @@ async function tabActivatedListener(tabId: number) {
   }
 }
 
-async function sendMediaListener(data: any) {
+async function sendMediaListener(data: FoundMedia) {
   if (data.error && Object.keys(data.error).length > 0) {
     /// error
     console.log(data);
     return;
   }
-  const tabInfo = await getCurrentTab();
-  if (!tabInfo) {
+  const currentTab = data.tabInfo || await getCurrentTab();
+  if (!currentTab) {
     return;
   }
 
+  const returnedMedia: MediaInfo = {
+    image: data.image,
+    audio: data.audio,
+    video: data.video,
+  };
+
   mediaTypes
-    .filter(name => !!data[name])
+    .filter(name => !!returnedMedia[name])
     .forEach(name => {
       const newMedia = {
         image: [],
@@ -62,37 +82,30 @@ async function sendMediaListener(data: any) {
         audio: [],
       } as MediaInfo;
 
-      data[name]
-        .filter((item: MediaItem) => !newMedia[name].includes(item));
-
-      const restricted = isRestrictedUrl(tabInfo.url!);
+      const restricted = isRestrictedUrl(currentTab.url!);
       if (!restricted) {
-        data[name].forEach((item: MediaItem) => newMedia[name].push(item));
+        returnedMedia[name]
+          .filter((item: MediaItem) => !newMedia[name].includes(item))
+          .forEach((item: MediaItem) => newMedia[name].push(item));
       }
 
-      const tabUuid = getUuid(`${tabInfo.id!}-${tabInfo.url!}`);
-      let existingIndexTabGroup = mediaInTabs.findIndex(({tabId}) => tabId === tabInfo.id!);
+      const tabUuid = getUuid(`${currentTab.id!}-${currentTab.url!}`);
+      let existingIndexTabGroup = mediaInTabs.findIndex(({tabId}) => tabId === currentTab.id!);
       if (existingIndexTabGroup === -1) {
         mediaInTabs.push({
-          tabId: tabInfo.id!,
+          tabId: currentTab.id!,
           elements: [],
         });
         existingIndexTabGroup = mediaInTabs.length - 1;
       }
-      const existingIndex = mediaInTabs[existingIndexTabGroup].elements.findIndex(({tab}) => tab.uuid === tabUuid);
-      const tabObj: TabData = {
-        id: tabInfo.id!,
-        favIconUrl: tabInfo.favIconUrl!,
-        url: tabInfo.url!,
-        title: tabInfo.title!,
-        isRestricted: restricted,
-        uuid: tabUuid,
-      };
+      const existingIndex = mediaInTabs[existingIndexTabGroup].elements.findIndex(obj => obj.tabUuid === tabUuid);
+
+      updateTabInfo(currentTab);
 
       if (existingIndex === -1) {
         mediaInTabs[existingIndexTabGroup].elements.push({
           media: newMedia,
-          tab: tabObj,
+          tabUuid,
         });
       } else {
         const {media} = mediaInTabs[existingIndexTabGroup].elements[existingIndex];
@@ -101,11 +114,10 @@ async function sendMediaListener(data: any) {
             ...media[type],
             ...newMedia[type],
           ]);
-          mediaInTabs[existingIndexTabGroup].elements[existingIndex].tab = tabObj;
         });
       }
       mediaInTabs.forEach(group => {
-        group.elements.forEach(info => setTabExpanded(info.tab.uuid, false));
+        group.elements.forEach(info => setTabExpanded(info.tabUuid, false));
       });
       setTabExpanded(tabUuid, true);
     });

@@ -1,53 +1,18 @@
-export interface MediaItem {
-  uuid: string;
-  src: string;
-  type: string | null;
-  alt: string | null;
-  selected: boolean;
-  poster: string | null;
-}
-
-export interface MediaInfo {
-  image: MediaItem[];
-  audio: MediaItem[];
-  video: MediaItem[];
-}
-
-export interface TabData {
-  uuid: string;
-  id: number;
-  favIconUrl: string;
-  url: string;
-  title: string;
-  isRestricted: boolean;
-}
-
-export interface MediaInTabElements {
-  tab: TabData;
-  media: MediaInfo;
-}
-
-export interface MediaInTab {
-  tabId: number;
-  elements: MediaInTabElements[];
-}
-
-export interface TabExpanded {
-  [key: string]: boolean; // Where the key is the tabUuid
-}
+import {NullableString} from './common.type';
+import {MediaInfoKey} from './media-in-tabs.type';
 
 export interface DisplayMediaItem {
   uuid: string;
   src: string;
-  type: 'image' | 'video' | 'audio';
-  filetype: string | null;
-  alt: string | null;
-  poster?: string | null; // Optional, for videos
+  type: MediaInfoKey;
+  filetype: NullableString;
+  alt: NullableString;
+  poster?: NullableString; // Optional, for videos
   selected: boolean;
 }
 
 export interface MediaToDisplayItem {
-  tab: TabData;
+  tabUuid: string;
   items: DisplayMediaItem[];
 }
 
@@ -55,3 +20,4 @@ export interface MediaToDisplay {
   tabId: number;
   data: MediaToDisplayItem[];
 }
+

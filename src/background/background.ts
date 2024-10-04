@@ -1,14 +1,17 @@
 import {DefaultActionType} from '../storage/storage-def';
 import {getStorageDefaultActionValue, getStoragePreviousVersionValue} from '../storage/storage-fn';
+import {ChromeTab} from '../types/chrome.type';
 import {MessageEventNameEnum} from '../types/message-event-name.enum';
 import {
   contextMenuClicked,
   createContextMenu,
-  createTab, getVersion,
+  getTab,
+  getVersion,
   onActivateTab,
   onClickExtensionIcon,
   onCreateTab,
   onInstalled,
+  onMessage,
   onReplaceTab,
   onUpdateTab,
   openPopup,
@@ -34,7 +37,7 @@ function handleUpdate(details: chrome.runtime.InstalledDetails) {
   });
 }
 
-function openDownloader(tab: chrome.tabs.Tab) {
+function openDownloader(tab: ChromeTab) {
   getStorageDefaultActionValue((defaultAction) => {
     switch (defaultAction) {
       case DefaultActionType.POPUP:
@@ -110,5 +113,17 @@ onInstalled(details => {
 contextMenuClicked((info, tab) => {
   if (info.menuItemId === 'openMediaDownloader') {
     openDownloader(tab);
+  }
+});
+onMessage(async (message, sender, sendResponse) => {
+  if (!sender.tab?.id) {
+    sendResponse(null);
+    return true;
+  }
+  if (message.eventName === MessageEventNameEnum.GET_TAB_INFO) {
+    const tab = await getTab(sender.tab.id);
+    sendResponse(tab);
+
+    return true;
   }
 });

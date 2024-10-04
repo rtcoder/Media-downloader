@@ -1,3 +1,3 @@
-import {MediaInfo} from '../types/media-display.type';
+import {MediaInfoKeys} from '../types/media-in-tabs.type';
 
-export const mediaTypes: (keyof MediaInfo)[] = ['image', 'audio', 'video'];
+export const mediaTypes: MediaInfoKeys = ['image', 'audio', 'video'];

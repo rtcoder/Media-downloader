@@ -1,7 +1,8 @@
+import {NullableString} from '../types/common.type';
 import {MediaToDisplay} from '../types/media-display.type';
 import {downloadUrl} from './chrome-api';
 
-export function downloadItem(itemInfo: { url: string; alt: string | null }) {
+export function downloadItem(itemInfo: { url: string; alt: NullableString }) {
   downloadUrl(itemInfo.url, itemInfo.alt);
 }
 

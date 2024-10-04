@@ -1,6 +1,8 @@
-import {MediaInTab} from './types/media-display.type';
+import {MediaInTabs} from './types/media-in-tabs.type';
+import {TabExpanded, TabInfo} from './types/tab-data.type';
 
-/**
- * An array that stores information about media content found in various browser tabs.
- */
-export const mediaInTabs: MediaInTab[] = [];
+export const mediaInTabs: MediaInTabs = [];
+
+export const tabExpanded: TabExpanded = {};
+
+export const tabsInfo: TabInfo = {};

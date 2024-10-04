@@ -1,5 +1,8 @@
 import {isTabExpanded} from '../media-display';
-import {DisplayMediaItem, MediaToDisplay, MediaToDisplayItem} from '../types/media-display.type';
+import {tabsInfo} from '../media-in-tabs';
+import {NullableString} from '../types/common.type';
+import {DisplayMediaItem,  MediaToDisplay, MediaToDisplayItem} from '../types/media-display.type';
+import {MediaInfoKey} from '../types/media-in-tabs.type';
 import {
   createButtonElement,
   createDivElement,
@@ -11,6 +14,48 @@ import {
 } from '../utils/dom-functions';
 import {formatTime, getQualityLabel} from '../utils/utils';
 
+function imageLoad(imgEl: HTMLImageElement) {
+  imgEl.addEventListener('load', () => {
+    const naturalWidth = imgEl.naturalWidth.toString();
+    const naturalHeight = imgEl.naturalHeight.toString();
+    const gridItem = imgEl.closest('.grid-item');
+    gridItem?.setAttribute('original-width', naturalWidth);
+    gridItem?.setAttribute('original-height', naturalHeight);
+  });
+}
+
+function videoLoad(videoEl: HTMLVideoElement) {
+  videoEl.addEventListener('loadedmetadata', () => {
+    const quality = getQualityLabel(videoEl.videoWidth);
+    const gridItem = videoEl.closest('.grid-item');
+    gridItem?.setAttribute('video-quality', quality);
+    videoEl.remove();
+  });
+}
+
+function audioLoad(audioEl: HTMLAudioElement) {
+  audioEl.addEventListener('loadedmetadata', () => {
+    const duration = formatTime(audioEl.duration);
+    const gridItem = audioEl.closest('.grid-item');
+    gridItem?.setAttribute('audio-duration', duration);
+    audioEl.remove();
+  });
+}
+
+function loadThumbnail(thumbnail: HTMLDivElement, type: MediaInfoKey) {
+  switch (type) {
+    case 'image':
+      imageLoad(thumbnail.querySelector('img')!);
+      break;
+    case 'audio':
+      audioLoad(thumbnail.querySelector('audio')!);
+      break;
+    case 'video':
+      videoLoad(thumbnail.querySelector('video')!);
+      break;
+  }
+}
+
 function getThumbnailContainer() {
   return createDivElement({
     class: 'thumbnail',
@@ -21,12 +66,6 @@ function getAudioThumbnail(src: string) {
   const thumbnailDiv = getThumbnailContainer();
   const icon = createIconElement('music_note', 50);
   const audio = createElement('audio', {src}) as HTMLAudioElement;
-  audio.addEventListener('loadedmetadata', () => {
-    const duration = formatTime(audio.duration);
-    const gridItem = audio.closest('.grid-item');
-    gridItem?.setAttribute('duration', duration);
-    audio.remove();
-  });
 
   thumbnailDiv.appendChild(icon);
   thumbnailDiv.appendChild(audio);
@@ -36,29 +75,15 @@ function getAudioThumbnail(src: string) {
 function getImageThumbnail(src: string) {
   const thumbnailDiv = getThumbnailContainer();
   const imgElement = createImgElement({src});
-  imgElement.addEventListener('load', () => {
-    const naturalWidth = imgElement.naturalWidth.toString();
-    const naturalHeight = imgElement.naturalHeight.toString();
-    const gridItem = imgElement.closest('grid-item');
-    gridItem?.setAttribute('original-width', naturalWidth);
-    gridItem?.setAttribute('original-height', naturalHeight);
-  });
-
   thumbnailDiv.appendChild(imgElement);
   return thumbnailDiv;
 }
 
-function getVideoThumbnail(src: string, poster?: string | null) {
+function getVideoThumbnail(src: string, poster?: NullableString) {
   const thumbnailDiv = getThumbnailContainer();
   const icon = createIconElement('videocam', 50);
   const imagePoster = createImgElement({src: poster});
   const videoElement = createElement('video', {src, poster}) as HTMLVideoElement;
-  videoElement.addEventListener('loadedmetadata', () => {
-    const quality = getQualityLabel(videoElement.videoWidth);
-    const gridItem = videoElement.closest('grid-item');
-    gridItem?.setAttribute('video-quality', quality);
-    videoElement.remove();
-  });
 
   thumbnailDiv.appendChild(poster ? imagePoster : icon);
   thumbnailDiv.appendChild(videoElement);
@@ -66,7 +91,7 @@ function getVideoThumbnail(src: string, poster?: string | null) {
 }
 
 function getGridItem(item: DisplayMediaItem, itemIndex: string) {
-  const {src, alt, poster, type, selected} = item;
+  const {src, alt, poster, type, selected, filetype} = item;
   const gridItem = createDivElement({
     class: ['grid-item', ...(selected ? ['checked'] : [])],
     attributes: {
@@ -86,17 +111,21 @@ function getGridItem(item: DisplayMediaItem, itemIndex: string) {
   }, btn);
 
   const details = createSpanElement({class: 'item-details'}, [
-    createSpanElement({class: 'item-details-ext'}),
+    createSpanElement({class: 'item-details-ext', html: filetype}),
     createSpanElement({class: 'item-details-dimensions'}),
   ]);
 
   let thumbnail = null;
-  if (type === 'audio') {
-    thumbnail = getAudioThumbnail(src);
-  } else if (type === 'image') {
-    thumbnail = getImageThumbnail(src);
-  } else if (type === 'video') {
-    thumbnail = getVideoThumbnail(src, poster);
+  switch (type) {
+    case 'image':
+      thumbnail = getImageThumbnail(src);
+      break;
+    case 'audio':
+      thumbnail = getAudioThumbnail(src);
+      break;
+    case 'video':
+      thumbnail = getVideoThumbnail(src, poster);
+      break;
   }
 
   gridItem.appendChild(anchor);
@@ -104,6 +133,7 @@ function getGridItem(item: DisplayMediaItem, itemIndex: string) {
 
   if (thumbnail) {
     gridItem.appendChild(thumbnail);
+    loadThumbnail(thumbnail, type);
   }
 
   // Dodanie obserwatora zmian atrybutów do gridItem
@@ -122,7 +152,7 @@ function getGridItem(item: DisplayMediaItem, itemIndex: string) {
   // Obserwowanie zmian atrybutów duration, quality, extension, width, height w gridItem
   observer.observe(gridItem, {
     attributes: true,
-    attributeFilter: ['duration', 'quality', 'extension', 'width', 'height'],
+    attributeFilter: ['audio-duration', 'video-quality', 'original-width', 'original-height'],
   });
   return gridItem;
 }
@@ -131,32 +161,29 @@ function updateDetails(gridItem: Element, type: string, observer: MutationObserv
   const details = gridItem.querySelector('.item-details')!;
 
   const dimensionsDiv = details.querySelector('.item-details-dimensions')!;
-  const extension = gridItem.getAttribute('extension');
-  const duration = gridItem.getAttribute('duration');
-  const width = gridItem.getAttribute('width');
-  const height = gridItem.getAttribute('height');
-  const quality = gridItem.getAttribute('quality');
+  const duration = gridItem.getAttribute('audio-duration');
+  const width = gridItem.getAttribute('original-width');
+  const height = gridItem.getAttribute('original-height');
+  const quality = gridItem.getAttribute('video-quality');
 
-  if (extension) {
-    details.querySelector('.item-details-ext')!.textContent = extension;
-  }
+  console.log({duration, width, height, quality});
 
   switch (type) {
     case 'audio':
       dimensionsDiv.textContent = duration;
-      if (extension && duration) {
+      if (duration) {
         observer.disconnect();
       }
       break;
     case 'image':
       dimensionsDiv.textContent = `${width} x ${height}`;
-      if (extension && width && height) {
+      if (width && height) {
         observer.disconnect();
       }
       break;
     case 'video':
       dimensionsDiv.textContent = quality;
-      if (extension && quality) {
+      if (quality) {
         observer.disconnect();
       }
       break;
@@ -204,14 +231,14 @@ function getAccordionBody(items: DisplayMediaItem[], tabId: number, tabUuid: str
 }
 
 function getAccordionItem(mediaToDisplayItem: MediaToDisplayItem) {
-  const {title, uuid, id, favIconUrl} = mediaToDisplayItem.tab;
+  const {title, uuid, id, favIconUrl, isRestricted} = tabsInfo[mediaToDisplayItem.tabUuid];
   const expanded = isTabExpanded(uuid);
   const item = createDivElement({
     class: ['accordion-item', ...(expanded ? ['active'] : [])],
   });
   item.setAttribute('tab-uuid', uuid);
   const header = getAccordionHeader(favIconUrl, title, mediaToDisplayItem.items.length);
-  const body = getAccordionBody(mediaToDisplayItem.items, id, uuid, mediaToDisplayItem.tab.isRestricted);
+  const body = getAccordionBody(mediaToDisplayItem.items, id, uuid, isRestricted);
   item.appendChild(header);
   item.appendChild(body);
   return item;

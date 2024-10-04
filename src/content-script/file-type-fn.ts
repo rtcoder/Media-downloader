@@ -1,3 +1,5 @@
+import {NullableString} from '../types/common.type';
+
 function getFileTypeFromBase64(base64String: string) {
   const match = base64String.match(/^data:(.+);base64,/);
   const ext = match ? match[1].split('/')[1] : null;
@@ -36,12 +38,12 @@ async function getFileTypeFromUrlHeaders(url: string) {
   return null;
 }
 
-export async function getFileType(urlOrBase64: string | null) {
+export async function getFileType(urlOrBase64: NullableString) {
   if (urlOrBase64 === null) {
     return null;
   }
   const base64Pattern = /^data:(.+);base64,/;
-  let filetype: string | null = '';
+  let filetype: NullableString;
 
   if (base64Pattern.test(urlOrBase64)) {
     filetype = getFileTypeFromBase64(urlOrBase64);

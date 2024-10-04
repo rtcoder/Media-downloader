@@ -1,4 +1,5 @@
-import {DisplayMediaItem, MediaInfo, MediaItem, MediaToDisplay} from '../types/media-display.type';
+import {DisplayMediaItem,  MediaToDisplay} from '../types/media-display.type';
+import {MediaInfo, MediaInfoKey, MediaItem} from '../types/media-in-tabs.type';
 import {getCrc32Hash} from './crc32';
 import {q} from './dom-functions';
 
@@ -14,7 +15,7 @@ export function countAllMedia(mediaToDisplay: MediaToDisplay[]) {
   }, 0);
 }
 
-export function mapMediaItemToDisplayMediaItem(item: MediaItem, itemType: keyof MediaInfo): DisplayMediaItem {
+export function mapMediaItemToDisplayMediaItem(item: MediaItem, itemType: MediaInfoKey): DisplayMediaItem {
   const {src, uuid, poster, type, selected, alt} = item;
   return {
     src,

@@ -1,13 +1,13 @@
 import {updateAccordionData} from './downloader/accordion';
-import {mediaInTabs} from './media-in-tabs';
-import {tabExpanded} from './tab-expanded';
-import {MediaInfo, MediaItem, MediaToDisplay} from './types/media-display.type';
+import {mediaInTabs, tabExpanded} from './media-in-tabs';
+import {MediaToDisplay} from './types/media-display.type';
+import {MediaInfo, MediaInfoKey, MediaItem} from './types/media-in-tabs.type';
 import {q} from './utils/dom-functions';
 import {countAllMedia, getCurrentSection, mapMediaItemToDisplayMediaItem} from './utils/utils';
 
 
 export function getAllMediaToDisplay(): MediaToDisplay[] {
-  const currentSection = getCurrentSection() as keyof MediaInfo;
+  const currentSection = getCurrentSection() as MediaInfoKey;
 
   const mapFn = (media: MediaInfo) => {
     return media[currentSection].map((item: MediaItem) => {
@@ -16,9 +16,9 @@ export function getAllMediaToDisplay(): MediaToDisplay[] {
   };
 
   return mediaInTabs.map(group => {
-    const data = group.elements.map(({media, tab}) => {
+    const data = group.elements.map(({media, tabUuid}) => {
       const items = mapFn(media);
-      return {tab, items};
+      return {tabUuid, items};
     });
     return {
       tabId: group.tabId,

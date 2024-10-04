@@ -1,4 +1,4 @@
-import {DEFAULT_SETTINGS, DEFAULT_SETTINGS_KEYS, StorageDef, StorageKey} from '../storage/storage-def';
+import {DEFAULT_SETTINGS, DEFAULT_SETTINGS_KEYS, StorageDef, StorageKey, StorageKeys} from '../storage/storage-def';
 import {getStorageValue, setStorageValue} from '../utils/chrome-api';
 import {getInputValue, q, setInputValue} from '../utils/dom-functions';
 
@@ -13,7 +13,7 @@ function composeDataToSave(): StorageDef {
 }
 
 function fillFormWithData(data: Partial<StorageDef>) {
-  (Object.keys(data) as StorageKey[])
+  (Object.keys(data) as StorageKeys)
     .forEach((key: StorageKey) => {
       const value = data[key] || DEFAULT_SETTINGS[key];
       setInputValue(key, value);
