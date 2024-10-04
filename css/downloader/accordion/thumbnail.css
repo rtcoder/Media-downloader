@@ -1,0 +1,36 @@
+.grid-item .thumbnail {
+    width: 100%;
+    height: 100%;
+}
+
+.thumbnail .x-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+    pointer-events: none;
+    user-select: none;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thumbnail :is(audio, video) {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+    width: 1px;
+    height: 1px;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+    pointer-events: none;
+    user-select: none;
+    background-position: center center;
+    background-image: url(/images/transparent.png);
+}

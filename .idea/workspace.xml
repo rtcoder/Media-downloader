@@ -7,11 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Add top-container CSS for sticky headers&#10;&#10;Extracted top-container styles from main.css to a new file top-container.css for better modularity. Updated main.css to import the new top-container.css for maintaining code organization and readability.">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Import grid.css in accordion-body.css&#10;&#10;Moved grid.css import from main.css to accordion-body.css to ensure proper styling. This helps in maintaining modularity and ensuring each component imports only its necessary styles.">
+      <change afterPath="$PROJECT_DIR$/css/downloader/accordion/thumbnail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/accordion-body.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion-body.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/grid.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +161,7 @@
       <workItem from="1725103291997" duration="40986000" />
       <workItem from="1726726906800" duration="48446000" />
       <workItem from="1727376275897" duration="407000" />
-      <workItem from="1727376693272" duration="99608000" />
+      <workItem from="1727376693272" duration="99698000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -212,14 +211,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00024" summary="**Remove debug logs from various files**&#10;&#10;Eliminated console.log statements from multiple files to clean up the output. This enhances code readability and reduces unnecessary noise in the console for better debugging efficiency.">
-      <option name="closed" value="true" />
-      <created>1725200488496</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1725200488496</updated>
     </task>
     <task id="LOCAL-00025" summary="**Add default inspection profile for the project**&#10;&#10;Introduced a new inspection profile file in .idea to set default code inspection rules. This ensures consistency in code quality checks and facilitates better development practices.">
       <option name="closed" value="true" />
@@ -549,7 +540,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728063596286</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Import grid.css in accordion-body.css&#10;&#10;Moved grid.css import from main.css to accordion-body.css to ensure proper styling. This helps in maintaining modularity and ensuring each component imports only its necessary styles.">
+      <option name="closed" value="true" />
+      <created>1728063688023</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1728063688023</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -578,7 +577,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add CSS styling for .yt-info class.&#10;&#10;Added padding, font-size, and line-height properties for the .yt-info class to enhance its appearance and readability. These changes ensure consistent and improved UI for elements using this class." />
     <MESSAGE value="Add conditional header display for accordion items.&#10;&#10;Introduced `showHeader` property to conditionally render accordion item headers. Updated associated CSS and HTML to reflect this change, ensuring headers can be hidden when needed to improve UI flexibility and cleanliness." />
     <MESSAGE value="    Add tab event listeners and support conditional media handling.&#10;&#10;Implemented event listeners for tab updates, activations, creations, and replacements to dynamically handle side panel behaviors and media updates. Refactored message handling to distinguish between different events and added relevant functions for each case, enhancing the extension's responsiveness to tab state changes." />
     <MESSAGE value="Add chrome API TypeScript definitions.&#10;&#10;Introduced TypeScript definitions for various Chrome APIs including accessibility features, actions, alarms, browser interaction, and bookmarks management. This will improve developer experience by providing proper type-checking, autocomplete, and better documentation when working with these APIs." />
@@ -603,7 +601,8 @@
     <MESSAGE value="Update version to 2.0.4 and changelog&#10;&#10;Incremented version to 2.0.4 in manifest.json. Updated changelog.html to reflect fixed minor bugs in the new release. Adjusted workspace.xml to include relevant changes and tasks." />
     <MESSAGE value="Update downloader and media scripts for compatibility&#10;&#10;Fixed issues with media downloading functions and enhanced compatibility with updated Chrome security policies. Added more robust error handling within downloader scripts to ensure smoother operation." />
     <MESSAGE value="Add top-container CSS for sticky headers&#10;&#10;Extracted top-container styles from main.css to a new file top-container.css for better modularity. Updated main.css to import the new top-container.css for maintaining code organization and readability." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add top-container CSS for sticky headers&#10;&#10;Extracted top-container styles from main.css to a new file top-container.css for better modularity. Updated main.css to import the new top-container.css for maintaining code organization and readability." />
+    <MESSAGE value="Import grid.css in accordion-body.css&#10;&#10;Moved grid.css import from main.css to accordion-body.css to ensure proper styling. This helps in maintaining modularity and ensuring each component imports only its necessary styles." />
+    <option name="LAST_COMMIT_MESSAGE" value="Import grid.css in accordion-body.css&#10;&#10;Moved grid.css import from main.css to accordion-body.css to ensure proper styling. This helps in maintaining modularity and ensuring each component imports only its necessary styles." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
