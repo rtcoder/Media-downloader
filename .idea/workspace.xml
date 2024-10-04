@@ -8,37 +8,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Update downloader and media scripts for compatibility&#10;&#10;Fixed issues with media downloading functions and enhanced compatibility with updated Chrome security policies. Added more robust error handling within downloader scripts to ensure smoother operation.">
-      <change afterPath="$PROJECT_DIR$/src/types/chrome.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/common.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/found-media.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/media-in-tabs.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/tab-data.type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/downloader/send-media-listener.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/section-buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/section-buttons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/background/background.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/background/background.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/background/background.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/background/background.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/content-script/send_media.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/send_media.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/content-script/send_media.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/send_media.bundle.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/background/background.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/background/background.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/extractors-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/extractors-fn.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/options/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/options/main.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/options/main.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/options/main.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/theme.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/theme.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/theme.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/theme.bundle.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/content-script/file-type-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/file-type-fn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/filters-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/filters-fn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/mappers-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/mappers-fn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/send_media.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/send_media.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/accordion.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/accordion.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/find-media.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/find-media.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/downloader/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/downloader/media-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/media-types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/downloader/message-listeners.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/message-listeners.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/media-display.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/media-display.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/media-in-tabs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/media-in-tabs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/options/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/storage/storage-def.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/storage-def.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/storage/storage-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/storage-fn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tab-expanded.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/media-display.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/media-display.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/message-event-name.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/message-event-name.enum.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/chrome-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/chrome-api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/download-functions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/download-functions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/media-in-tabs.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/media-in-tabs.type.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/downloader.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/downloader.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +96,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.laravel-idea.search-composer-json": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/dawidjez/projekty/Private/Media-downloader/src/types",
+    "last_opened_file_path": "/Users/dawidjez/projekty/Private/Media-downloader/src/downloader",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -117,11 +111,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/downloader" />
       <recent name="$PROJECT_DIR$/src/types" />
       <recent name="$PROJECT_DIR$/css/downloader" />
       <recent name="$PROJECT_DIR$/src/storage" />
       <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/css/downloader/accordion" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/content-script" />
@@ -189,7 +183,7 @@
       <workItem from="1725103291997" duration="40986000" />
       <workItem from="1726726906800" duration="48446000" />
       <workItem from="1727376275897" duration="407000" />
-      <workItem from="1727376693272" duration="93548000" />
+      <workItem from="1727376693272" duration="98842000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -239,14 +233,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00021" summary="**Refactor media display logic and cleanup**&#10;&#10;Extracted media display logic from popup.js to new media-display.js for better organization. Removed redundant getThumbnail function from utils.js and improved code readability. Added alt attribute handling in createElement function in dom-functions.js.">
-      <option name="closed" value="true" />
-      <created>1725138299099</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1725138299099</updated>
     </task>
     <task id="LOCAL-00022" summary="**Add video support and refactor media display**&#10;&#10;Enhanced media handling by adding video support alongside images. Refactored functions for better modularity and code clarity. Updated styles and improved event handling for media elements.">
       <option name="closed" value="true" />
@@ -576,7 +562,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728033049148</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Update downloader and media scripts for compatibility&#10;&#10;Fixed issues with media downloading functions and enhanced compatibility with updated Chrome security policies. Added more robust error handling within downloader scripts to ensure smoother operation.">
+      <option name="closed" value="true" />
+      <created>1728055772037</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1728055772037</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

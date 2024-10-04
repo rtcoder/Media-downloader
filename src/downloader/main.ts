@@ -1,6 +1,6 @@
-import {getShowChangeLogLinkValue} from '../storage/storage-fn';
+import {getLastOpenSectionValue, getShowChangeLogLinkValue} from '../storage/storage-fn';
 import {show} from '../utils/dom-functions';
-import {setDomListeners} from './dom-listeners';
+import {selectSection, setDomListeners} from './dom-listeners';
 import {findMedia} from './find-media';
 import {setMessageListeners} from './message-listeners';
 
@@ -13,6 +13,9 @@ function init() {
     if (showChangelogLink) {
       show('.changelog-link');
     }
+  });
+  getLastOpenSectionValue(lastOpenSection => {
+    selectSection(lastOpenSection)
   });
 }
 

@@ -1,10 +1,11 @@
+import {MediaInfoKeyEnum} from '../types/media-in-tabs.type';
 import {getStorageValue} from '../utils/chrome-api';
-import {DefaultActionType, PreviousVersionType, ThemeType} from './storage-def';
+import {DEFAULT_SETTINGS, DefaultActionType, PreviousVersionType, ThemeType} from './storage-def';
 
 export function getStorageDefaultActionValue(callback: (value: DefaultActionType) => void) {
   getStorageValue({defaultAction: DefaultActionType.POPUP}, ({defaultAction}) => {
     if (!defaultAction) {
-      defaultAction = DefaultActionType.POPUP;
+      defaultAction = DEFAULT_SETTINGS.defaultAction;
     }
     callback(defaultAction);
   });
@@ -13,7 +14,7 @@ export function getStorageDefaultActionValue(callback: (value: DefaultActionType
 export function getStorageThemeValue(callback: (value: ThemeType) => void) {
   getStorageValue({theme: ThemeType.SYSTEM}, ({theme}) => {
     if (!theme) {
-      theme = ThemeType.SYSTEM;
+      theme = DEFAULT_SETTINGS.theme;
     }
     callback(theme);
   });
@@ -22,7 +23,7 @@ export function getStorageThemeValue(callback: (value: ThemeType) => void) {
 export function getStoragePreviousVersionValue(callback: (value: PreviousVersionType) => void) {
   getStorageValue({previousVersion: null}, ({previousVersion}) => {
     if (!previousVersion) {
-      previousVersion = null;
+      previousVersion = DEFAULT_SETTINGS.previousVersion;
     }
     callback(previousVersion);
   });
@@ -31,5 +32,14 @@ export function getStoragePreviousVersionValue(callback: (value: PreviousVersion
 export function getShowChangeLogLinkValue(callback: (value: boolean) => void) {
   getStorageValue({showChangelogLink: false}, ({showChangelogLink}) => {
     callback(!!showChangelogLink);
+  });
+}
+
+export function getLastOpenSectionValue(callback: (value: MediaInfoKeyEnum) => void) {
+  getStorageValue({lastOpenSection: MediaInfoKeyEnum.IMAGE}, ({lastOpenSection}) => {
+    if (!lastOpenSection) {
+      lastOpenSection = DEFAULT_SETTINGS.lastOpenSection;
+    }
+    callback(lastOpenSection);
   });
 }

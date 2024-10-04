@@ -15,9 +15,15 @@ export type MediaInfo = {
   video: MediaItem[];
 }
 
-export type MediaInfoKey = keyof MediaInfo;
+export enum MediaInfoKeyEnum {
+  IMAGE = 'image',
+  AUDIO = 'audio',
+  VIDEO = 'video',
+}
 
-export type MediaInfoKeys = (keyof MediaInfo)[];
+export type MediaInfoKey = MediaInfoKeyEnum;
+
+export type MediaInfoKeys = MediaInfoKey[];
 
 export type MediaInTabElements = {
   tabUuid: string;

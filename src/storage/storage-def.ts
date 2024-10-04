@@ -1,4 +1,5 @@
 import {NullableString} from '../types/common.type';
+import {MediaInfoKey, MediaInfoKeyEnum} from '../types/media-in-tabs.type';
 
 export enum ThemeType {
   LIGHT = 'light',
@@ -18,6 +19,7 @@ export type StorageDef = {
   defaultAction: DefaultActionType;
   previousVersion: PreviousVersionType;
   showChangelogLink: boolean;
+  lastOpenSection: MediaInfoKey;
 }
 
 export type StorageKey = keyof StorageDef;
@@ -29,5 +31,6 @@ export const DEFAULT_SETTINGS: StorageDef = {
   defaultAction: DefaultActionType.POPUP,
   previousVersion: null,
   showChangelogLink: false,
+  lastOpenSection: MediaInfoKeyEnum.IMAGE,
 };
 export const DEFAULT_SETTINGS_KEYS: StorageKeys = Object.keys(DEFAULT_SETTINGS) as StorageKeys;

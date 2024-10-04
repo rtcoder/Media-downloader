@@ -10,10 +10,11 @@ function getFileTypeFromBase64(base64String: string) {
 }
 
 function getFileTypeFromUrl(url: string) {
-  const lastUrlSegment = url.split('/').pop();
+  let lastUrlSegment = url.split('/').pop();
   if (!lastUrlSegment || !lastUrlSegment.includes('.')) {
     return null;
   }
+  lastUrlSegment = lastUrlSegment.split('?')[0];
   const lastAfterDot = lastUrlSegment.split('.').pop();
   if (!lastAfterDot) {
     return null;

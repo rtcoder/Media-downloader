@@ -11,6 +11,16 @@
     outline: none;
     color: var(--sectionButtonIconColor);
     cursor: pointer;
+    position: relative;
+}
+
+.section-buttons button .items-count {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: calc(50% + 24px);
+    user-select: none;
+    pointer-events: none;
 }
 
 .section-buttons button.selected {

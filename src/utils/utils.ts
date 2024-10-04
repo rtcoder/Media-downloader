@@ -1,5 +1,5 @@
-import {DisplayMediaItem,  MediaToDisplay} from '../types/media-display.type';
-import {MediaInfo, MediaInfoKey, MediaItem} from '../types/media-in-tabs.type';
+import {DisplayMediaItem, MediaToDisplay} from '../types/media-display.type';
+import {MediaInfoKey, MediaItem} from '../types/media-in-tabs.type';
 import {getCrc32Hash} from './crc32';
 import {q} from './dom-functions';
 
@@ -26,16 +26,6 @@ export function mapMediaItemToDisplayMediaItem(item: MediaItem, itemType: MediaI
     type: itemType,
     alt,
   };
-}
-
-export function mapMediaTypeToSectionName(type: string): keyof MediaInfo {
-  if (type === 'image') {
-    return 'image';
-  }
-  if (type === 'video') {
-    return 'video';
-  }
-  return 'audio';
 }
 
 export function formatTime(seconds: number): string {

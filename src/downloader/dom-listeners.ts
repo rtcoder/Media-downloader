@@ -1,10 +1,9 @@
 import {displayMedia, getAllMediaToDisplay} from '../media-display';
 import {mediaInTabs} from '../media-in-tabs';
-import {MediaInfo} from '../types/media-in-tabs.type';
+import {MediaInfoKey, MediaInfoKeyEnum} from '../types/media-in-tabs.type';
 import {createTab, setStorageValue} from '../utils/chrome-api';
 import {hide, q, setDisabled, toggleClass} from '../utils/dom-functions';
 import {downloadImages} from '../utils/download-functions';
-import {mapMediaTypeToSectionName} from '../utils/utils';
 import {mediaTypes} from './media-types';
 
 
@@ -48,19 +47,18 @@ function changeToggleAllCheckbox(e: any) {
 function onClickItem(target: any) {
   const gridItem = target.closest('.grid-item');
   const itemIndex = gridItem.getAttribute('data-item-idx');
-  const type = gridItem.getAttribute('data-type');
+  const type = gridItem.getAttribute('data-type') as MediaInfoKey;
   const isChecked = gridItem.classList.contains('checked');
   const newValue = !isChecked;
   toggleClass(gridItem, 'checked');
 
   const [tab_id, tabUuid, itemIdx] = itemIndex.split('-');
-  const currentSection = mapMediaTypeToSectionName(type);
   const groupIndexInSection = mediaInTabs.findIndex(({tabId}) => tabId === +tab_id);
   const tabIndexInSection = mediaInTabs[groupIndexInSection].elements.findIndex(obj => obj.tabUuid === tabUuid);
   if (tabIndexInSection === -1) {
     return;
   }
-  mediaInTabs[groupIndexInSection].elements[tabIndexInSection].media[currentSection][+itemIdx].selected = newValue;
+  mediaInTabs[groupIndexInSection].elements[tabIndexInSection].media[type][+itemIdx].selected = newValue;
 
   let allAreChecked = true;
   let allAreUnchecked = true;
@@ -101,8 +99,9 @@ function updateSelectedCountText(selectedCount: number) {
   setDisabled('#download-btn', !selectedCount);
 }
 
-function selectSection(name: keyof MediaInfo) {
-  name = mediaTypes.includes(name) ? name : 'image';
+export function selectSection(name: MediaInfoKey) {
+  name = mediaTypes.includes(name) ? name : MediaInfoKeyEnum.IMAGE;
+  setStorageValue({lastOpenSection: name});
   toggleClass('.section-buttons button', 'selected', false);
   toggleClass(
     `.section-buttons button[data-section="${name}"]`,
