@@ -3,6 +3,7 @@
 @import "yt-info.css";
 @import "changelog-link.css";
 @import "download-button.css";
+@import "filters.css";
 @import "../common.css";
 
 body {

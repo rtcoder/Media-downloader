@@ -1,0 +1,22 @@
+.filters {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.label-group .group {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.group input {
+    width: 100px;
+}

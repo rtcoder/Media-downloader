@@ -1,5 +1,13 @@
 import {NullableString} from './common.type';
 
+export type MediaItemProperties = {
+  width: number;
+  height: number;
+  quality: string;
+  duration: number;
+  durationStr: string;
+}
+
 export type MediaItem = {
   uuid: string;
   src: string;
@@ -7,6 +15,7 @@ export type MediaItem = {
   alt: NullableString;
   selected: boolean;
   poster: NullableString;
+  properties: MediaItemProperties;
 }
 
 export type MediaInfo = {

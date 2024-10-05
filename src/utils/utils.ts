@@ -1,5 +1,5 @@
 import {DisplayMediaItem, MediaToDisplay} from '../types/media-display.type';
-import {MediaInfoKey, MediaItem} from '../types/media-in-tabs.type';
+import {MediaInfoKey, MediaInfoKeyEnum, MediaItem} from '../types/media-in-tabs.type';
 import {getCrc32Hash} from './crc32';
 import {q} from './dom-functions';
 
@@ -16,8 +16,9 @@ export function countAllMedia(mediaToDisplay: MediaToDisplay[]) {
 }
 
 export function mapMediaItemToDisplayMediaItem(item: MediaItem, itemType: MediaInfoKey): DisplayMediaItem {
-  const {src, uuid, poster, type, selected, alt} = item;
+  const {properties, src, uuid, poster, type, selected, alt} = item;
   return {
+    properties,
     src,
     uuid,
     poster,
@@ -59,5 +60,5 @@ export function getUuid(val: string | number) {
 
 export function getCurrentSection() {
   return q(`.section-buttons button.selected`)!
-    .getAttribute('data-section') || 'image';
+    .getAttribute('data-section') || MediaInfoKeyEnum.IMAGE;
 }

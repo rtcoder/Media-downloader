@@ -1,8 +1,8 @@
 import {isTabExpanded} from '../media-display';
 import {tabsInfo} from '../media-in-tabs';
 import {NullableString} from '../types/common.type';
-import {DisplayMediaItem,  MediaToDisplay, MediaToDisplayItem} from '../types/media-display.type';
-import {MediaInfoKey} from '../types/media-in-tabs.type';
+import {DisplayMediaItem, MediaToDisplay, MediaToDisplayItem} from '../types/media-display.type';
+import {MediaInfoKeyEnum} from '../types/media-in-tabs.type';
 import {
   createButtonElement,
   createDivElement,
@@ -12,49 +12,6 @@ import {
   createSpanElement,
   q,
 } from '../utils/dom-functions';
-import {formatTime, getQualityLabel} from '../utils/utils';
-
-function imageLoad(imgEl: HTMLImageElement) {
-  imgEl.addEventListener('load', () => {
-    const naturalWidth = imgEl.naturalWidth.toString();
-    const naturalHeight = imgEl.naturalHeight.toString();
-    const gridItem = imgEl.closest('.grid-item');
-    gridItem?.setAttribute('original-width', naturalWidth);
-    gridItem?.setAttribute('original-height', naturalHeight);
-  });
-}
-
-function videoLoad(videoEl: HTMLVideoElement) {
-  videoEl.addEventListener('loadedmetadata', () => {
-    const quality = getQualityLabel(videoEl.videoWidth);
-    const gridItem = videoEl.closest('.grid-item');
-    gridItem?.setAttribute('video-quality', quality);
-    videoEl.remove();
-  });
-}
-
-function audioLoad(audioEl: HTMLAudioElement) {
-  audioEl.addEventListener('loadedmetadata', () => {
-    const duration = formatTime(audioEl.duration);
-    const gridItem = audioEl.closest('.grid-item');
-    gridItem?.setAttribute('audio-duration', duration);
-    audioEl.remove();
-  });
-}
-
-function loadThumbnail(thumbnail: HTMLDivElement, type: MediaInfoKey) {
-  switch (type) {
-    case 'image':
-      imageLoad(thumbnail.querySelector('img')!);
-      break;
-    case 'audio':
-      audioLoad(thumbnail.querySelector('audio')!);
-      break;
-    case 'video':
-      videoLoad(thumbnail.querySelector('video')!);
-      break;
-  }
-}
 
 function getThumbnailContainer() {
   return createDivElement({
@@ -62,13 +19,11 @@ function getThumbnailContainer() {
   });
 }
 
-function getAudioThumbnail(src: string) {
+function getAudioThumbnail() {
   const thumbnailDiv = getThumbnailContainer();
   const icon = createIconElement('music_note', 50);
-  const audio = createElement('audio', {src}) as HTMLAudioElement;
 
   thumbnailDiv.appendChild(icon);
-  thumbnailDiv.appendChild(audio);
   return thumbnailDiv;
 }
 
@@ -79,14 +34,12 @@ function getImageThumbnail(src: string) {
   return thumbnailDiv;
 }
 
-function getVideoThumbnail(src: string, poster?: NullableString) {
+function getVideoThumbnail(poster: NullableString) {
   const thumbnailDiv = getThumbnailContainer();
   const icon = createIconElement('videocam', 50);
   const imagePoster = createImgElement({src: poster});
-  const videoElement = createElement('video', {src, poster}) as HTMLVideoElement;
 
   thumbnailDiv.appendChild(poster ? imagePoster : icon);
-  thumbnailDiv.appendChild(videoElement);
   return thumbnailDiv;
 }
 
@@ -110,21 +63,25 @@ function getGridItem(item: DisplayMediaItem, itemIndex: string) {
     attributes: {href: item.src, download: item.alt || ''},
   }, btn);
 
+  const dimensionsDiv = createSpanElement({class: 'item-details-dimensions'});
   const details = createSpanElement({class: 'item-details'}, [
     createSpanElement({class: 'item-details-ext', html: filetype}),
-    createSpanElement({class: 'item-details-dimensions'}),
+    dimensionsDiv,
   ]);
 
   let thumbnail = null;
   switch (type) {
-    case 'image':
+    case MediaInfoKeyEnum.IMAGE:
+      dimensionsDiv.textContent = `${item.properties.width} x ${item.properties.height}`;
       thumbnail = getImageThumbnail(src);
       break;
-    case 'audio':
-      thumbnail = getAudioThumbnail(src);
+    case MediaInfoKeyEnum.AUDIO:
+      dimensionsDiv.textContent = item.properties.duration;
+      thumbnail = getAudioThumbnail();
       break;
-    case 'video':
-      thumbnail = getVideoThumbnail(src, poster);
+    case MediaInfoKeyEnum.VIDEO:
+      dimensionsDiv.textContent = item.properties.duration;
+      thumbnail = getVideoThumbnail(poster);
       break;
   }
 
@@ -133,61 +90,9 @@ function getGridItem(item: DisplayMediaItem, itemIndex: string) {
 
   if (thumbnail) {
     gridItem.appendChild(thumbnail);
-    loadThumbnail(thumbnail, type);
   }
 
-  // Dodanie obserwatora zmian atrybutów do gridItem
-  const observer = new MutationObserver((mutationsList) => {
-    mutationsList.forEach((mutation) => {
-      if (mutation.type === 'attributes') {
-        updateDetails(
-          gridItem,
-          type,
-          observer,
-        );
-      }
-    });
-  });
-
-  // Obserwowanie zmian atrybutów duration, quality, extension, width, height w gridItem
-  observer.observe(gridItem, {
-    attributes: true,
-    attributeFilter: ['audio-duration', 'video-quality', 'original-width', 'original-height'],
-  });
   return gridItem;
-}
-
-function updateDetails(gridItem: Element, type: string, observer: MutationObserver) {
-  const details = gridItem.querySelector('.item-details')!;
-
-  const dimensionsDiv = details.querySelector('.item-details-dimensions')!;
-  const duration = gridItem.getAttribute('audio-duration');
-  const width = gridItem.getAttribute('original-width');
-  const height = gridItem.getAttribute('original-height');
-  const quality = gridItem.getAttribute('video-quality');
-
-  console.log({duration, width, height, quality});
-
-  switch (type) {
-    case 'audio':
-      dimensionsDiv.textContent = duration;
-      if (duration) {
-        observer.disconnect();
-      }
-      break;
-    case 'image':
-      dimensionsDiv.textContent = `${width} x ${height}`;
-      if (width && height) {
-        observer.disconnect();
-      }
-      break;
-    case 'video':
-      dimensionsDiv.textContent = quality;
-      if (quality) {
-        observer.disconnect();
-      }
-      break;
-  }
 }
 
 function getAccordionHeader(favicon: string, name: string, allCount: number) {

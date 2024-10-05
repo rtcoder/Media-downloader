@@ -51,6 +51,13 @@ function mapToFinalResultItem(item: MixedObject): MediaItem {
     selected: false,
     poster: null,
     uuid: item.uuid || getUuid(item.src),
+    properties: {
+      width: 0,
+      height: 0,
+      duration: 0,
+      durationStr: '',
+      quality: 'SD',
+    },
   };
   if (item.poster === undefined) {
     return data;

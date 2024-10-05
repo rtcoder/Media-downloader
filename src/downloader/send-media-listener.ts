@@ -107,7 +107,6 @@ export async function sendMediaListener(data: FoundMedia) {
     .filter(type => !!returnedMedia[type])
     .forEach(type => {
       returnedMedia[type]
-        .filter((item: MediaItem) => !newMedia[type].includes(item))
         .forEach((item: MediaItem) => newMedia[type].push(item));
       mediaInTabs[existingIndexTabGroup].elements[existingIndex].media[type] = uniqueSourceItems([
         ...media[type],
@@ -115,8 +114,9 @@ export async function sendMediaListener(data: FoundMedia) {
       ]);
     });
 
-  setTabExpanded(tabUuid, true);
+  console.log({mediaInTabs})
   updateMediaCount();
+  setTabExpanded(tabUuid, true);
   displayMedia();
 }
 

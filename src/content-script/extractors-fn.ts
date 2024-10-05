@@ -120,7 +120,7 @@ export async function extractAudiosFromTags() {
 }
 
 export function extractImagesFromStyles() {
-  return (Array.from(document.styleSheets) as CSSStyleSheet[])
+  return Promise.all((Array.from(document.styleSheets) as CSSStyleSheet[])
     .filter(styleSheet => styleSheet.hasOwnProperty('cssRules'))
     .map(({cssRules}) => Array.from(cssRules))
     .flat()
@@ -128,5 +128,5 @@ export function extractImagesFromStyles() {
     .map((cssRule: any) => extractURLFromStyle(cssRule.style.backgroundImage))
     .filter((url: NullableString) => !!url)
     .filter((url: string) => isImageURL(url))
-    .map((url: string) => mapToFullInfo(url));
+    .map((url: string) => mapToFullInfo(url)));
 }

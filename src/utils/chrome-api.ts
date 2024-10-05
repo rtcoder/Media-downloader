@@ -29,9 +29,8 @@ export async function executeContentScript(scriptUrl: string, tabId: NullableNum
     if (tab.id <= 0) {
       return;
     }
-    tabId = tab.id;
+    tabId = tab.id!;
   }
-
   await chrome.scripting.executeScript({
     target: {tabId, allFrames: true},
     files: [scriptUrl],

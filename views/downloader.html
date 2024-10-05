@@ -27,6 +27,85 @@
       </div>
     </div>
 
+    <div class="filters">
+      <div class="label-group">
+        <div class="title">Width</div>
+        <div class="group">
+          <label>
+            from:
+            <input type="number" id="minWidth">
+          </label>
+          <label>
+            to:
+            <input type="number" id="maxWidth">
+          </label>
+        </div>
+      </div>
+
+      <div class="label-group">
+        <div class="title">Height</div>
+        <div class="group">
+          <label>
+            from:
+            <input type="number" id="minHeight">
+          </label>
+          <label>
+            to:
+            <input type="number" id="maxHeight">
+          </label>
+        </div>
+      </div>
+      <div class="label-group">
+        <label for="imageType" class="title">Image type</label>
+        <div class="group">
+          <select id="imageType">
+            <option value="webp">WebP</option>
+            <option value="bmp">BMP</option>
+            <option value="png">PNG</option>
+            <option value="jpg,jpeg">JPG</option>
+            <option value="gif">GIF</option>
+            <option value="svg">SVG</option>
+          </select>
+        </div>
+      </div>
+      <div class="label-group">
+        <label for="videoType" class="title">Video type</label>
+        <div class="group">
+          <select id="videoType">
+            <option value="mkv">mkv</option>
+            <option value="flv">flv</option>
+            <option value="ogg">ogg</option>
+            <option value="ogv">ogv</option>
+            <option value="gifv">gifv</option>
+            <option value="avi">avi</option>
+            <option value="mov">mov</option>
+            <option value="wmv">wmv</option>
+            <option value="rm">rm</option>
+            <option value="rmvb">rmvb</option>
+            <option value="mp4">mp4</option>
+            <option value="m4p">m4p</option>
+            <option value="m4v">m4v</option>
+            <option value="mpg">mpg</option>
+            <option value="mpeg">mpeg</option>
+            <option value="3gp">3gp</option>
+            <option value="3g2">3g2</option>
+            <option value="webm">WebM</option>
+          </select>
+        </div>
+      </div>
+      <div class="label-group">
+        <label for="audioType" class="title">Audio type</label>
+        <div class="group">
+          <select id="audioType">
+            <option value="mp3">mp3</option>
+            <option value="flac">flac</option>
+            <option value="ogg">ogg</option>
+            <option value="wma">wma</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
     <div class="select-all-container">
       <label>
         <input id="toggle_all_checkbox" type="checkbox">
@@ -44,6 +123,7 @@
   </div>
 </main>
 
+<script src="/src/web-components/dual-range-slider.component.js"></script>
 <script src="/dist/popup-dimensions.bundle.js"></script>
 <script src="/dist/theme.bundle.js"></script>
 <script src="/dist/downloader/main.bundle.js"></script>

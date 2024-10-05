@@ -1,5 +1,5 @@
 import {NullableString} from './common.type';
-import {MediaInfoKey} from './media-in-tabs.type';
+import {MediaInfoKey, MediaItemProperties} from './media-in-tabs.type';
 
 export interface DisplayMediaItem {
   uuid: string;
@@ -7,8 +7,9 @@ export interface DisplayMediaItem {
   type: MediaInfoKey;
   filetype: NullableString;
   alt: NullableString;
-  poster?: NullableString; // Optional, for videos
+  poster: NullableString; // Optional, for videos
   selected: boolean;
+  properties: MediaItemProperties;
 }
 
 export interface MediaToDisplayItem {
