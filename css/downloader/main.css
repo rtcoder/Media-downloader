@@ -3,7 +3,7 @@
 @import "yt-info.css";
 @import "changelog-link.css";
 @import "download-button.css";
-@import "filters.css";
+@import "filters/filters.css";
 @import "../common.css";
 
 body {
@@ -33,6 +33,7 @@ input[type='checkbox'] {
 label {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 3px;
 }
 

@@ -1,0 +1,16 @@
+.filters :is(.image-filters, .audio-filters, .video-filters) {
+    display: none;
+    flex-direction: column;
+}
+
+.filters.image .image-filters {
+    display: flex;
+}
+
+.filters.audio .audio-filters {
+    display: flex;
+}
+
+.filters.video .video-filters {
+    display: flex;
+}

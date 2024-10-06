@@ -1,0 +1,61 @@
+@import "filter-form-elements.css";
+@import "filters-chips.css";
+@import "filters-sections.css";
+
+body.light-theme {
+    --chipBg: rgba(42, 109, 253, 0.3);
+    --chipIconHover: rgb(213, 0, 0);
+}
+
+body.dark-theme {
+    --chipBg: rgba(2, 85, 218, 0.3);
+    --chipIconHover: rgb(213, 0, 0);
+}
+
+.filters {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.filters > .x-icon.open-filters {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.filters .filters-content:not([hidden]) + .open-filters {
+    display: none;
+}
+
+.filters .filters-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filters .close-filters {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    background: var(--activeColor);
+    cursor: pointer;
+    user-select: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.label-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.label-group .group {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

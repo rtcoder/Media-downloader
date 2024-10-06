@@ -1,0 +1,19 @@
+.filters .group input {
+    width: 100px;
+}
+
+.filters .group input::-webkit-inner-spin-button {
+    display: none;
+}
+
+.filters .group :is(input, select) {
+    background: none;
+    color: var(--fontColor);
+    padding: 5px;
+    border-radius: 30px;
+    border: 1px solid var(--fontColor2);
+}
+
+.filters .group select {
+    user-select: none;
+}

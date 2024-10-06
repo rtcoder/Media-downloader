@@ -1,0 +1,31 @@
+.filters .label-group .chips {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.chips .chip {
+    padding: 5px 10px;
+    background-color: var(--chipBg);
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+    font-size: 12px;
+    user-select: none;
+    border: 1px solid #0078cc;
+}
+
+.chip .x-icon {
+    pointer-events: all;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.chip .x-icon:hover {
+    color: var(--chipIconHover);
+}
