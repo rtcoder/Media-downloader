@@ -1,33 +1,6 @@
-import {DisplayMediaItem, MediaToDisplay} from '../types/media-display.type';
-import {MediaInfoKey, MediaInfoKeyEnum, MediaItem} from '../types/media-in-tabs.type';
+import {ItemTypeEnum} from '../types/media-in-tabs.type';
 import {getCrc32Hash} from './crc32';
 import {q} from './dom-functions';
-
-export function uniqueSourceItems(arr: any[]) {
-  return [...new Map(arr.map(item => [item.src, item])).values()];
-}
-
-export function countAllMedia(mediaToDisplay: MediaToDisplay[]) {
-  return mediaToDisplay.reduce((total, mediaGroup) => {
-    return total + mediaGroup.data.reduce((_total, media) => {
-      return _total + media.items.length;
-    }, 0);
-  }, 0);
-}
-
-export function mapMediaItemToDisplayMediaItem(item: MediaItem, itemType: MediaInfoKey): DisplayMediaItem {
-  const {properties, src, uuid, poster, type, selected, alt} = item;
-  return {
-    properties,
-    src,
-    uuid,
-    poster,
-    filetype: type,
-    selected,
-    type: itemType,
-    alt,
-  };
-}
 
 export function formatTime(seconds: number): string {
   const sec = Math.floor(seconds % 60); // Sekundy
@@ -58,7 +31,7 @@ export function getUuid(val: string | number) {
   return getCrc32Hash(val.toString());
 }
 
-export function getCurrentSection(): MediaInfoKey {
-  const key = q(`.section-buttons button.selected`)!.getAttribute('data-section') as MediaInfoKey;
-  return key || MediaInfoKeyEnum.IMAGE;
+export function getCurrentSection(): ItemTypeEnum {
+  const key = q(`.section-buttons button.selected`)!.getAttribute('data-section') as ItemTypeEnum;
+  return key || ItemTypeEnum.IMAGE;
 }

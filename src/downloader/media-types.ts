@@ -1,7 +1,7 @@
-import {MediaInfoKeyEnum, MediaInfoKeys} from '../types/media-in-tabs.type';
+import {ItemTypeEnum} from '../types/media-in-tabs.type';
 
-export const mediaTypes: MediaInfoKeys = [
-  MediaInfoKeyEnum.IMAGE,
-  MediaInfoKeyEnum.AUDIO,
-  MediaInfoKeyEnum.VIDEO
+export const mediaTypes: ItemTypeEnum[] = [
+  ItemTypeEnum.IMAGE,
+  ItemTypeEnum.AUDIO,
+  ItemTypeEnum.VIDEO,
 ];

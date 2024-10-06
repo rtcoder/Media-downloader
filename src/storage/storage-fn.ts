@@ -1,4 +1,4 @@
-import {MediaInfoKeyEnum} from '../types/media-in-tabs.type';
+import {ItemTypeEnum} from '../types/media-in-tabs.type';
 import {MixedObject} from '../types/mixed-object.type';
 import {getStorageValue} from '../utils/chrome-api';
 import {DEFAULT_SETTINGS, DefaultActionType, PreviousVersionType, ThemeType} from './storage-def';
@@ -36,8 +36,8 @@ export function getShowChangeLogLinkValue(callback: (value: boolean) => void) {
   });
 }
 
-export function getLastOpenSectionValue(callback: (value: MediaInfoKeyEnum) => void) {
-  getStorageValue({lastOpenSection: MediaInfoKeyEnum.IMAGE}, ({lastOpenSection}) => {
+export function getLastOpenSectionValue(callback: (value: ItemTypeEnum) => void) {
+  getStorageValue({lastOpenSection: ItemTypeEnum.IMAGE}, ({lastOpenSection}) => {
     if (!lastOpenSection) {
       lastOpenSection = DEFAULT_SETTINGS.lastOpenSection;
     }

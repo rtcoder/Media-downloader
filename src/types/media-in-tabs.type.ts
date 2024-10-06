@@ -9,39 +9,21 @@ export type MediaItemProperties = {
 }
 
 export type MediaItem = {
+  tabId: number;
+  tabUuid: string;
+  itemIndex: string;
   uuid: string;
   src: string;
-  type: NullableString;
+  extension: NullableString;
+  type: ItemTypeEnum;
   alt: NullableString;
   selected: boolean;
   poster: NullableString;
   properties: MediaItemProperties;
 }
 
-export type MediaInfo = {
-  image: MediaItem[];
-  audio: MediaItem[];
-  video: MediaItem[];
-}
-
-export enum MediaInfoKeyEnum {
+export enum ItemTypeEnum {
   IMAGE = 'image',
   AUDIO = 'audio',
   VIDEO = 'video',
 }
-
-export type MediaInfoKey = MediaInfoKeyEnum;
-
-export type MediaInfoKeys = MediaInfoKey[];
-
-export type MediaInTabElements = {
-  tabUuid: string;
-  media: MediaInfo;
-}
-
-type MediaInTab = {
-  tabId: number;
-  elements: MediaInTabElements[];
-}
-
-export type MediaInTabs = MediaInTab[];

@@ -5,11 +5,13 @@
 body.light-theme {
     --chipBg: rgba(42, 109, 253, 0.3);
     --chipIconHover: rgb(213, 0, 0);
+    --closeFiltersColor: #eee;
 }
 
 body.dark-theme {
     --chipBg: rgba(2, 85, 218, 0.3);
     --chipIconHover: rgb(213, 0, 0);
+    --closeFiltersColor: #eee;
 }
 
 .filters {
@@ -42,6 +44,7 @@ body.dark-theme {
     flex-direction: row;
     gap: 5px;
     background: var(--activeColor);
+    color: var(--closeFiltersColor);
     cursor: pointer;
     user-select: none;
     justify-content: center;

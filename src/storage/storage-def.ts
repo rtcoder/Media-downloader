@@ -1,5 +1,5 @@
 import {NullableString} from '../types/common.type';
-import {MediaInfoKey, MediaInfoKeyEnum} from '../types/media-in-tabs.type';
+import {ItemTypeEnum} from '../types/media-in-tabs.type';
 import {MixedObject} from '../types/mixed-object.type';
 
 export enum ThemeType {
@@ -20,7 +20,7 @@ export type StorageDef = {
   defaultAction: DefaultActionType;
   previousVersion: PreviousVersionType;
   showChangelogLink: boolean;
-  lastOpenSection: MediaInfoKey;
+  lastOpenSection: ItemTypeEnum;
   filters: MixedObject;
   filtersOpen: boolean;
 }
@@ -34,7 +34,7 @@ export const DEFAULT_SETTINGS: StorageDef = {
   defaultAction: DefaultActionType.POPUP,
   previousVersion: null,
   showChangelogLink: false,
-  lastOpenSection: MediaInfoKeyEnum.IMAGE,
+  lastOpenSection: ItemTypeEnum.IMAGE,
   filters: {},
   filtersOpen: false,
 };

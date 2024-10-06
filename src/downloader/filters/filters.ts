@@ -1,6 +1,6 @@
 import {displayMedia} from '../../media-display';
 import {getFiltersOpenValue, getFiltersValue} from '../../storage/storage-fn';
-import {MediaInfoKey, MediaInfoKeyEnum} from '../../types/media-in-tabs.type';
+import {ItemTypeEnum} from '../../types/media-in-tabs.type';
 import {setStorageValue} from '../../utils/chrome-api';
 import {createDivElement, createIconElement, createSpanElement, hide, q, show} from '../../utils/dom-functions';
 
@@ -35,11 +35,11 @@ function collectFilterValues() {
   });
 }
 
-export function isFiltered(type: MediaInfoKey) {
+export function isFiltered(type: ItemTypeEnum) {
   const keysByType = {
-    [MediaInfoKeyEnum.IMAGE]: ['minWidth', 'maxWidth', 'minHeight', 'maxHeight', 'imageType'],
-    [MediaInfoKeyEnum.VIDEO]: ['videoType', 'videoQuality'],
-    [MediaInfoKeyEnum.AUDIO]: ['audioType'],
+    [ItemTypeEnum.IMAGE]: ['minWidth', 'maxWidth', 'minHeight', 'maxHeight', 'imageType'],
+    [ItemTypeEnum.VIDEO]: ['videoType', 'videoQuality'],
+    [ItemTypeEnum.AUDIO]: ['audioType'],
   };
 
   return Object.keys(FILTERS)

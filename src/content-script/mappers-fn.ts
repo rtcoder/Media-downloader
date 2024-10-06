@@ -1,5 +1,5 @@
 import {NullableString} from '../types/common.type';
-import {MediaItem} from '../types/media-in-tabs.type';
+import {ItemTypeEnum, MediaItem} from '../types/media-in-tabs.type';
 import {MixedObject} from '../types/mixed-object.type';
 import {getUuid} from '../utils/utils';
 import {getAltFromElement} from './extractors-fn';
@@ -18,9 +18,9 @@ export async function mapToFullInfo(
   altOrElement: Element | NullableString = null,
   poster: NullableString | undefined = undefined,
 ) {
-  let type: NullableString = null;
+  let extension: NullableString = null;
   if (src.length) {
-    type = await getFileType(src);
+    extension = await getFileType(src);
   }
 
   let alt: NullableString = null;
@@ -30,7 +30,7 @@ export async function mapToFullInfo(
     }
   }
 
-  const info: any = {src, alt, type};
+  const info: any = {src, alt, extension};
 
   if (poster !== undefined) {
     info.poster = poster;
@@ -39,17 +39,21 @@ export async function mapToFullInfo(
   return info;
 }
 
-export function mapToFinalResultArray(data: any[]): MediaItem[] {
-  return removeDuplicateOrEmpty(data.map(mapToFinalResultItem));
+export function mapToFinalResultArray(data: any[], type: ItemTypeEnum): MediaItem[] {
+  return removeDuplicateOrEmpty(data.map(item => mapToFinalResultItem(item, type)));
 }
 
-function mapToFinalResultItem(item: MixedObject): MediaItem {
-  const data: MediaItem = {
+function mapToFinalResultItem(item: MixedObject, type: ItemTypeEnum): MediaItem {
+  return {
+    tabUuid: '',
+    tabId: -1,
+    itemIndex: '',
     src: relativeUrlToAbsolute(item.src) || '',
-    type: item.type,
+    extension: item.extension,
+    type,
     alt: item.alt,
     selected: false,
-    poster: null,
+    poster: item.poster ? relativeUrlToAbsolute(item.poster) : null,
     uuid: item.uuid || getUuid(item.src),
     properties: {
       width: 0,
@@ -59,10 +63,4 @@ function mapToFinalResultItem(item: MixedObject): MediaItem {
       quality: 'SD',
     },
   };
-  if (item.poster === undefined) {
-    return data;
-  }
-  data.poster = item.poster ? relativeUrlToAbsolute(item.poster) : null;
-
-  return data;
 }

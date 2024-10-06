@@ -1,6 +1,6 @@
 import {NullableChromeTab} from '../types/chrome.type';
 import {FoundMedia} from '../types/found-media.type';
-import {MediaItem} from '../types/media-in-tabs.type';
+import {ItemTypeEnum, MediaItem} from '../types/media-in-tabs.type';
 import {MessageEventNameEnum} from '../types/message-event-name.enum';
 import {sendMessage} from '../utils/chrome-api';
 import {createElement, createImgElement} from '../utils/dom-functions';
@@ -40,13 +40,13 @@ import {mapToFinalResultArray} from './mappers-fn';
     try {
       const imagesFromTags = await extractImagesFromTags();
       const imagesFromStyles = await extractImagesFromStyles();
-      images = mapToFinalResultArray([...imagesFromTags, ...imagesFromStyles]);
+      images = mapToFinalResultArray([...imagesFromTags, ...imagesFromStyles], ItemTypeEnum.IMAGE);
 
       const videosFromTags = await extractVideosFromTags();
-      videos = mapToFinalResultArray(videosFromTags);
+      videos = mapToFinalResultArray(videosFromTags, ItemTypeEnum.VIDEO);
 
       const audiosFromTags = await extractAudiosFromTags();
-      audios = mapToFinalResultArray(audiosFromTags);
+      audios = mapToFinalResultArray(audiosFromTags, ItemTypeEnum.AUDIO);
     } catch (err: any) {
       console.log({err});
       error = {...err};

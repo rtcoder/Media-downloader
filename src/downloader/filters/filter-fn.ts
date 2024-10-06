@@ -1,31 +1,20 @@
-import {DisplayMediaItem, MediaToDisplay} from '../../types/media-display.type';
-import {MediaInfoKey, MediaInfoKeyEnum} from '../../types/media-in-tabs.type';
+import {ItemTypeEnum, MediaItem} from '../../types/media-in-tabs.type';
 import {getFilters} from './filters';
 
-export function applyFilters(type: MediaInfoKey, mediaToDisplay: MediaToDisplay[]) {
-  if (type === MediaInfoKeyEnum.IMAGE) {
-    return filterMediaToDisplay(mediaToDisplay, filterImages);
+export function applyFilters(type: ItemTypeEnum, mediaToDisplay: MediaItem[]) {
+  if (type === ItemTypeEnum.IMAGE) {
+    return filterImages(mediaToDisplay);
   }
-  if (type === MediaInfoKeyEnum.AUDIO) {
-    return filterMediaToDisplay(mediaToDisplay, filterAudios);
+  if (type === ItemTypeEnum.AUDIO) {
+    return filterAudios(mediaToDisplay);
   }
-  if (type === MediaInfoKeyEnum.VIDEO) {
-    return filterMediaToDisplay(mediaToDisplay, filterVideos);
+  if (type === ItemTypeEnum.VIDEO) {
+    return filterVideos(mediaToDisplay);
   }
   return mediaToDisplay;
 }
 
-function filterMediaToDisplay(mediaToDisplay: MediaToDisplay[], filterFn: (items: DisplayMediaItem[]) => DisplayMediaItem[]) {
-  return mediaToDisplay.map(value => {
-    value.data = value.data.map(val => {
-      val.items = filterFn(val.items);
-      return val;
-    });
-    return value;
-  });
-}
-
-function filterImages(items: DisplayMediaItem[]): DisplayMediaItem[] {
+function filterImages(items: MediaItem[]): MediaItem[] {
   const filters = getFilters();
   return items.filter(item => {
     const {width, height} = item.properties;
@@ -41,26 +30,26 @@ function filterImages(items: DisplayMediaItem[]): DisplayMediaItem[] {
     if (filters.maxHeight && height > filters.maxHeight) {
       return false;
     }
-    return !(!!filters.imageType?.length && !filters.imageType.includes(item.filetype));
+    return !(!!filters.imageType?.length && !filters.imageType.includes(item.extension));
   });
 }
 
-function filterAudios(items: DisplayMediaItem[]) {
+function filterAudios(items: MediaItem[]) {
   const filters = getFilters();
   return items.filter(item => {
     if (!!filters.videoQuality?.length && !filters.videoQuality.includes(item.properties.quality)) {
       return false;
     }
-    return !(!!filters.audioType?.length && !filters.audioType.includes(item.type));
+    return !(!!filters.audioType?.length && !filters.audioType.includes(item.extension));
   });
 }
 
-function filterVideos(items: DisplayMediaItem[]) {
+function filterVideos(items: MediaItem[]) {
   const filters = getFilters();
   return items.filter(item => {
     if (!!filters.videoQuality?.length && !filters.videoQuality.includes(item.properties.quality)) {
       return false;
     }
-    return !(!!filters.videoType?.length && !filters.videoType.includes(item.type));
+    return !(!!filters.videoType?.length && !filters.videoType.includes(item.extension));
   });
 }

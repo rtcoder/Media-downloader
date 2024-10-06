@@ -1,8 +1,8 @@
-import {isTabExpanded} from '../media-display';
-import {tabsInfo} from '../media-in-tabs';
+import {getAllMediaToDisplay, isTabExpanded} from '../media-display';
+import {getTabsFromCollection, tabCollections} from '../media-in-tabs';
 import {NullableString} from '../types/common.type';
-import {DisplayMediaItem, MediaToDisplay, MediaToDisplayItem} from '../types/media-display.type';
-import {MediaInfoKeyEnum} from '../types/media-in-tabs.type';
+import {ItemTypeEnum, MediaItem} from '../types/media-in-tabs.type';
+import {TabData} from '../types/tab-data.type';
 import {
   createButtonElement,
   createDivElement,
@@ -12,6 +12,8 @@ import {
   createSpanElement,
   q,
 } from '../utils/dom-functions';
+import {getCurrentSection} from '../utils/utils';
+import {applyFilters} from './filters/filter-fn';
 
 function getThumbnailContainer() {
   return createDivElement({
@@ -43,16 +45,10 @@ function getVideoThumbnail(poster: NullableString) {
   return thumbnailDiv;
 }
 
-function getGridItem(item: DisplayMediaItem, itemIndex: string) {
-  const {src, alt, poster, type, selected, filetype} = item;
+function getGridItem(item: MediaItem) {
   const gridItem = createDivElement({
-    class: ['grid-item', ...(selected ? ['checked'] : [])],
-    attributes: {
-      'data-src-dw': src,
-      'data-filename': alt?.length ? alt : '',
-      'data-item-idx': itemIndex,
-      'data-type': type,
-    },
+    class: ['grid-item', ...(item.selected ? ['checked'] : [])],
+    attributes: {'data-item-idx': item.itemIndex},
   });
 
   const btn = createButtonElement(
@@ -65,23 +61,23 @@ function getGridItem(item: DisplayMediaItem, itemIndex: string) {
 
   const dimensionsDiv = createSpanElement({class: 'item-details-dimensions'});
   const details = createSpanElement({class: 'item-details'}, [
-    createSpanElement({class: 'item-details-ext', html: filetype}),
+    createSpanElement({class: 'item-details-ext', html: item.extension}),
     dimensionsDiv,
   ]);
 
   let thumbnail = null;
-  switch (type) {
-    case MediaInfoKeyEnum.IMAGE:
+  switch (item.type) {
+    case ItemTypeEnum.IMAGE:
       dimensionsDiv.textContent = `${item.properties.width} x ${item.properties.height}`;
-      thumbnail = getImageThumbnail(src);
+      thumbnail = getImageThumbnail(item.src);
       break;
-    case MediaInfoKeyEnum.AUDIO:
+    case ItemTypeEnum.AUDIO:
       dimensionsDiv.textContent = item.properties.durationStr;
       thumbnail = getAudioThumbnail();
       break;
-    case MediaInfoKeyEnum.VIDEO:
+    case ItemTypeEnum.VIDEO:
       dimensionsDiv.textContent = item.properties.quality;
-      thumbnail = getVideoThumbnail(poster);
+      thumbnail = getVideoThumbnail(item.poster);
       break;
   }
 
@@ -95,14 +91,17 @@ function getGridItem(item: DisplayMediaItem, itemIndex: string) {
   return gridItem;
 }
 
-function getAccordionHeader(favicon: string, name: string, allCount: number) {
+function getAccordionHeader(favicon: string, name: string, allCount: number, unfilteredCount: number) {
+  const count = allCount === unfilteredCount
+    ? `(${allCount})`
+    : `(${allCount} / ${unfilteredCount})`;
   return createDivElement(
     {class: 'accordion-header'},
     createButtonElement({class: 'accordion-button'}, [
       createImgElement({src: favicon, class: 'favicon', alt: 'Favicon'}),
       createSpanElement({class: 'tab-title'}, [
         createSpanElement({class: 'title', html: name}),
-        createSpanElement({class: 'tab-media-count', html: `(${allCount})`}),
+        createSpanElement({class: 'tab-media-count', html: count}),
       ]),
       createSpanElement({class: 'tab-toggle'}),
     ]),
@@ -121,11 +120,11 @@ function getYtRestrictionInfo() {
   ]);
 }
 
-function getAccordionBody(items: DisplayMediaItem[], tabId: number, tabUuid: string, restricted: boolean) {
+function getAccordionBody(items: MediaItem[], tabId: number, tabUuid: string, restricted: boolean) {
   const body = createDivElement({class: 'accordion-body'});
   if (!restricted) {
     body.append(...items.map(item => {
-      return getGridItem(item, `${tabId}-${tabUuid}-${item.uuid}`);
+      return getGridItem(item);
     }));
   } else {
     body.appendChild(getYtRestrictionInfo());
@@ -135,37 +134,42 @@ function getAccordionBody(items: DisplayMediaItem[], tabId: number, tabUuid: str
   return body;
 }
 
-function getAccordionItem(mediaToDisplayItem: MediaToDisplayItem) {
-  const {title, uuid, id, favIconUrl, isRestricted} = tabsInfo[mediaToDisplayItem.tabUuid];
+function getAccordionItem(tabData: TabData) {
+  const {title, uuid, id, favIconUrl, isRestricted} = tabData;
   const expanded = isTabExpanded(uuid);
   const item = createDivElement({
     class: ['accordion-item', ...(expanded ? ['active'] : [])],
   });
   item.setAttribute('tab-uuid', uuid);
-  const header = getAccordionHeader(favIconUrl, title, mediaToDisplayItem.items.length);
-  const body = getAccordionBody(mediaToDisplayItem.items, id, uuid, isRestricted);
+
+  const type = getCurrentSection();
+  const mediaToDisplay = getAllMediaToDisplay(uuid);
+  const filteredMediaToDisplay = applyFilters(type, mediaToDisplay);
+
+  const header = getAccordionHeader(favIconUrl, title, filteredMediaToDisplay.length, mediaToDisplay.length);
+  const body = getAccordionBody(filteredMediaToDisplay, id, uuid, isRestricted);
   item.appendChild(header);
   item.appendChild(body);
   return item;
 }
 
-function getAccordionGroup(group: MediaToDisplay) {
+function getAccordionGroup(tabId: number) {
   const groupDiv = createDivElement({
     class: 'accordion-group',
     attributes: {
-      'data-tab-subgroup': group.tabId,
+      'data-tab-subgroup': tabId,
     },
   });
-  group.data.forEach((mediaToDisplayItem: MediaToDisplayItem) => {
-    groupDiv.appendChild(getAccordionItem(mediaToDisplayItem));
+  getTabsFromCollection(tabId).forEach((tabData: TabData) => {
+    groupDiv.appendChild(getAccordionItem(tabData));
   });
   return groupDiv;
 }
 
-export function updateAccordionData(mediaToDisplay: MediaToDisplay[]) {
+export function updateAccordionData() {
   const accordion = q('.accordion');
   accordion.innerHTML = '';
-  mediaToDisplay.forEach((group: MediaToDisplay) => {
-    accordion.appendChild(getAccordionGroup(group));
+  tabCollections.forEach(tabId => {
+    accordion.appendChild(getAccordionGroup(tabId));
   });
 }
