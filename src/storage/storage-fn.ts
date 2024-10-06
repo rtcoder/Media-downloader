@@ -1,4 +1,5 @@
 import {MediaInfoKeyEnum} from '../types/media-in-tabs.type';
+import {MixedObject} from '../types/mixed-object.type';
 import {getStorageValue} from '../utils/chrome-api';
 import {DEFAULT_SETTINGS, DefaultActionType, PreviousVersionType, ThemeType} from './storage-def';
 
@@ -41,5 +42,20 @@ export function getLastOpenSectionValue(callback: (value: MediaInfoKeyEnum) => v
       lastOpenSection = DEFAULT_SETTINGS.lastOpenSection;
     }
     callback(lastOpenSection);
+  });
+}
+
+export function getFiltersValue(callback: (value: MixedObject) => void) {
+  getStorageValue({filters: {}}, ({filters}) => {
+    if (!filters) {
+      filters = DEFAULT_SETTINGS.filters;
+    }
+    callback(filters);
+  });
+}
+
+export function getFiltersOpenValue(callback: (value: boolean) => void) {
+  getStorageValue({filtersOpen: false}, ({filtersOpen}) => {
+    callback(!!filtersOpen);
   });
 }

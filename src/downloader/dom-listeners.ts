@@ -64,7 +64,7 @@ function onClickItem(target: any) {
   let allAreUnchecked = true;
   const mediaToDisplay = getAllMediaToDisplay();
   let selectedCount = 0;
-  console.log(itemIndex, newValue);
+
   for (let i = 0; i < mediaToDisplay.length; i++) {
     const {data} = mediaToDisplay[i];
     for (let idx = 0; idx < data.length; idx++) {
@@ -108,6 +108,9 @@ export function selectSection(name: MediaInfoKey) {
     'selected',
     true,
   );
+  const filtersDiv=q('.filters');
+  filtersDiv.classList.remove(MediaInfoKeyEnum.IMAGE, MediaInfoKeyEnum.AUDIO, MediaInfoKeyEnum.VIDEO);
+  filtersDiv.classList.add(name);
 }
 
 export function setDomListeners() {

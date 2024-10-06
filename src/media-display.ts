@@ -1,4 +1,6 @@
 import {updateAccordionData} from './downloader/accordion';
+import {applyFilters} from './downloader/filters/filter-fn';
+import {isFiltered} from './downloader/filters/filters';
 import {mediaInTabs, tabExpanded} from './media-in-tabs';
 import {MediaToDisplay} from './types/media-display.type';
 import {MediaInfo, MediaInfoKey, MediaItem} from './types/media-in-tabs.type';
@@ -7,11 +9,11 @@ import {countAllMedia, getCurrentSection, mapMediaItemToDisplayMediaItem} from '
 
 
 export function getAllMediaToDisplay(): MediaToDisplay[] {
-  const currentSection = getCurrentSection() as MediaInfoKey;
+  const type = getCurrentSection() as MediaInfoKey;
 
   const mapFn = (media: MediaInfo) => {
-    return media[currentSection].map((item: MediaItem) => {
-      return mapMediaItemToDisplayMediaItem(item, currentSection);
+    return media[type].map((item: MediaItem) => {
+      return mapMediaItemToDisplayMediaItem(item, type);
     });
   };
 
@@ -29,10 +31,20 @@ export function getAllMediaToDisplay(): MediaToDisplay[] {
 
 export function displayMedia() {
   const mediaToDisplay = getAllMediaToDisplay();
-  console.log(mediaToDisplay);
+  const allMediaCount = countAllMedia(mediaToDisplay).toString();
+  let filteredMediaCount = allMediaCount;
+  let filteredMediaToDisplay: MediaToDisplay[];
+  const type = getCurrentSection();
+  if (isFiltered(type)) {
+    filteredMediaToDisplay = applyFilters(type, mediaToDisplay);
+    filteredMediaCount = countAllMedia(filteredMediaToDisplay).toString();
+  }
+  const mediaCount = allMediaCount === filteredMediaCount
+    ? allMediaCount
+    : `${filteredMediaCount} / ${allMediaCount}`;
   updateAccordionData(mediaToDisplay);
   const countAll = q('.count-all')!;
-  countAll.innerHTML = countAllMedia(mediaToDisplay).toString();
+  countAll.innerHTML = mediaCount;
 }
 
 export function setTabExpanded(tabUuid: string, value: boolean) {

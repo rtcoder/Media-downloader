@@ -76,11 +76,11 @@ function getGridItem(item: DisplayMediaItem, itemIndex: string) {
       thumbnail = getImageThumbnail(src);
       break;
     case MediaInfoKeyEnum.AUDIO:
-      dimensionsDiv.textContent = item.properties.duration;
+      dimensionsDiv.textContent = item.properties.durationStr;
       thumbnail = getAudioThumbnail();
       break;
     case MediaInfoKeyEnum.VIDEO:
-      dimensionsDiv.textContent = item.properties.duration;
+      dimensionsDiv.textContent = item.properties.quality;
       thumbnail = getVideoThumbnail(poster);
       break;
   }

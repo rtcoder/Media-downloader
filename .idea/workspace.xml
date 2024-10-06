@@ -7,8 +7,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Enhance media data extraction and sending logic&#10;&#10;Refactor media data extraction to include dimensions, quality, and duration for images, videos, and audios. Introduce a sendMedia function for unified message handling. Adjust mappers-fn.ts to support new media properties.">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Remove dual-range slider component&#10;&#10;Eliminate unused dual-range slider web component from `downloader.html` and the project. This cleanup enhances maintainability by removing redundant code and dependencies.">
+      <change afterPath="$PROJECT_DIR$/src/downloader/filters/filter-fn.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/common.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/filters.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/filters.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/background/background.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/background/background.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/background/background.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/background/background.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/content-script/send_media.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/send_media.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/options/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/options/main.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/options/main.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/options/main.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/theme.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/theme.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/theme.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/theme.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/accordion.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/accordion.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/filters/filters.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/filters/filters.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/message-listeners.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/message-listeners.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/send-media-listener.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/send-media-listener.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media-display.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/media-display.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storage/storage-def.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/storage-def.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storage/storage-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/storage-fn.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/chrome-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/chrome-api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changelog.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/downloader.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/downloader.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +100,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.laravel-idea.search-composer-json": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/dawidjez/projekty/Private/Media-downloader/css/downloader",
+    "last_opened_file_path": "/Users/dawidjez/projekty/Private/Media-downloader/src/downloader/filters",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -88,11 +115,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/downloader/filters" />
       <recent name="$PROJECT_DIR$/css/downloader" />
       <recent name="$PROJECT_DIR$/css/downloader/accordion" />
       <recent name="$PROJECT_DIR$/src/downloader" />
       <recent name="$PROJECT_DIR$/src/types" />
-      <recent name="$PROJECT_DIR$/src/storage" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/content-script" />
@@ -160,7 +187,7 @@
       <workItem from="1725103291997" duration="40986000" />
       <workItem from="1726726906800" duration="48446000" />
       <workItem from="1727376275897" duration="407000" />
-      <workItem from="1727376693272" duration="115323000" />
+      <workItem from="1727376693272" duration="129501000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -210,14 +237,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00027" summary="**Add alt attribute and filename support**&#10;&#10;Enhanced media elements to include `alt` attributes and updated download logic to utilize `filename`. Improved event handlers and streamlined related components for better maintainability.">
-      <option name="closed" value="true" />
-      <created>1726941605272</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1726941605272</updated>
     </task>
     <task id="LOCAL-00028" summary="**Add duration support for audio files**&#10;&#10;Added duration attribute to grid items and updated audio-thumbnail component to display formatted duration. Improved icon component with dynamic font-size handling for better flexibility.">
       <option name="closed" value="true" />
@@ -547,7 +566,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728149800289</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Remove dual-range slider component&#10;&#10;Eliminate unused dual-range slider web component from `downloader.html` and the project. This cleanup enhances maintainability by removing redundant code and dependencies.">
+      <option name="closed" value="true" />
+      <created>1728150005273</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1728150005274</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -576,7 +603,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add chrome API TypeScript definitions.&#10;&#10;Introduced TypeScript definitions for various Chrome APIs including accessibility features, actions, alarms, browser interaction, and bookmarks management. This will improve developer experience by providing proper type-checking, autocomplete, and better documentation when working with these APIs." />
     <MESSAGE value="Add tab event listeners and media handling enhancements.&#10;&#10;Implemented event listeners for tab updates, activations, creations, and replacements to dynamically manage side panel behaviors and update media handling. Refactored message handling to better differentiate between events, adding targeted functions for improved extension responsiveness. Updated the workspace configuration to reflect these changes." />
     <MESSAGE value="Add media and tab types declarations.&#10;&#10;Introduced explicit type definitions for media items, tabs, and media-in-tab structures to enhance type safety and code clarity. This includes interfaces for different media types and their associated tab data. Also, reorganized and renamed existing type definition files for better project structure." />
     <MESSAGE value="Add media and tab types declarations.&#10;&#10;Introduced explicit type definitions for media items, tabs, and media-in-tab structures to enhance type safety and code clarity. This includes interfaces for various media types and their associated tab data. Also, reorganized and renamed existing type definition files for better project structure." />
@@ -601,7 +627,8 @@
     <MESSAGE value="Import grid.css in accordion-body.css&#10;&#10;Moved grid.css import from main.css to accordion-body.css to ensure proper styling. This helps in maintaining modularity and ensuring each component imports only its necessary styles." />
     <MESSAGE value="Add thumbnail.css and update grid.css&#10;&#10;Separated thumbnail-specific styles into a new thumbnail.css file. Updated grid.css to import thumbnail.css, enhancing modularity and maintainability of the CSS." />
     <MESSAGE value="Enhance media data extraction and sending logic&#10;&#10;Refactor media data extraction to include dimensions, quality, and duration for images, videos, and audios. Introduce a sendMedia function for unified message handling. Adjust mappers-fn.ts to support new media properties." />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance media data extraction and sending logic&#10;&#10;Refactor media data extraction to include dimensions, quality, and duration for images, videos, and audios. Introduce a sendMedia function for unified message handling. Adjust mappers-fn.ts to support new media properties." />
+    <MESSAGE value="Remove dual-range slider component&#10;&#10;Eliminate unused dual-range slider web component from `downloader.html` and the project. This cleanup enhances maintainability by removing redundant code and dependencies." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove dual-range slider component&#10;&#10;Eliminate unused dual-range slider web component from `downloader.html` and the project. This cleanup enhances maintainability by removing redundant code and dependencies." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

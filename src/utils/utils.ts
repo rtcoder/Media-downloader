@@ -58,7 +58,7 @@ export function getUuid(val: string | number) {
   return getCrc32Hash(val.toString());
 }
 
-export function getCurrentSection() {
-  return q(`.section-buttons button.selected`)!
-    .getAttribute('data-section') || MediaInfoKeyEnum.IMAGE;
+export function getCurrentSection(): MediaInfoKey {
+  const key = q(`.section-buttons button.selected`)!.getAttribute('data-section') as MediaInfoKey;
+  return key || MediaInfoKeyEnum.IMAGE;
 }

@@ -42,7 +42,6 @@ async function tabActivatedListener(tabId: number) {
 export function setMessageListeners(): void {
   onMessage((message) => {
     const {eventName, data} = message;
-    console.log(eventName, data);
     switch (eventName) {
       case MessageEventNameEnum.TAB_UPDATED:
         tabUpdatedListener(data.tabId, data.changeInfo, data.tab);

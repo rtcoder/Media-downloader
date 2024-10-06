@@ -91,12 +91,13 @@ export async function sendMediaListener(data: FoundMedia) {
   const restricted = isRestrictedUrl(currentTab.url!);
 
   let existingIndexTabGroup = getExistingIndexTabGroup(currentTab.id!);
+  const existingIndex = getExistingTabIndexInGroup(tabUuid, existingIndexTabGroup);
+  const {media} = mediaInTabs[existingIndexTabGroup].elements[existingIndex];
+
   if (restricted) {
     displayMedia();
     return;
   }
-  const existingIndex = getExistingTabIndexInGroup(tabUuid, existingIndexTabGroup);
-  const {media} = mediaInTabs[existingIndexTabGroup].elements[existingIndex];
 
   const returnedMedia: MediaInfo = {
     image: data.image,
@@ -114,7 +115,6 @@ export async function sendMediaListener(data: FoundMedia) {
       ]);
     });
 
-  console.log({mediaInTabs})
   updateMediaCount();
   setTabExpanded(tabUuid, true);
   displayMedia();

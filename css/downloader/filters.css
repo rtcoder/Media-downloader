@@ -1,8 +1,64 @@
+body.light-theme {
+    --chipBg: rgba(0, 0, 0, 0.3);
+    --chipIconHover: rgb(213, 0, 0);
+}
+
+body.dark-theme {
+    --chipBg: rgba(0, 0, 0, 0.3);
+    --chipIconHover: rgb(213, 0, 0);
+}
+
 .filters {
     padding: 10px;
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.filters > .x-icon.open-filters {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.filters .filters-content:not([hidden]) + .open-filters {
+    display: none;
+}
+
+.filters .filters-content {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
+}
+
+.filters :is(.image-filters, .audio-filters, .video-filters) {
+    display: none;
+    flex-direction: column;
+}
+
+.filters.image .image-filters {
+    display: flex;
+}
+
+.filters.audio .audio-filters {
+    display: flex;
+}
+
+.filters.video .video-filters {
+    display: flex;
+}
+
+.filters .close-filters {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    background: var(--activeColor);
+    cursor: pointer;
+    user-select: none;
+    justify-content: center;
+    align-items: center;
 }
 
 .label-group {
@@ -19,4 +75,39 @@
 
 .group input {
     width: 100px;
+}
+
+.group input::-webkit-inner-spin-button {
+    display: none;
+}
+
+.label-group .chips {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.chips .chip {
+    padding: 5px 10px;
+    background-color: var(--chipBg);
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+    font-size: 12px;
+    user-select: none;
+    border: 1px solid #0078cc;
+}
+
+.chip .x-icon {
+    pointer-events: all;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.chip .x-icon:hover {
+    color: var(--chipIconHover);
 }
