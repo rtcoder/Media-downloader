@@ -6,13 +6,13 @@ import {mapToFullInfo} from './mappers-fn';
  function extractImageFromElement(element: Element) {
   if (element.tagName.toLowerCase() === 'img') {
     const src = getSrcFromElement(element);
-    return mapToFullInfo(src, element);
+    return mapToFullInfo(src);
   }
 
   if (element.tagName.toLowerCase() === 'a') {
     const href = (element as HTMLAnchorElement).href;
     if (isImageURL(href)) {
-      return mapToFullInfo(href, element);
+      return mapToFullInfo(href);
     }
   }
 
@@ -33,16 +33,16 @@ import {mapToFullInfo} from './mappers-fn';
     const src = sourceElement
       ? getSrcFromElement(sourceElement)
       : getSrcFromElement(element);
-    return mapToFullInfo(src, element, getPosterFromVideoElement(element));
+    return mapToFullInfo(src,  getPosterFromVideoElement(element));
   }
 
   if (element.tagName.toLowerCase() === 'a') {
     const href = (element as HTMLAnchorElement).href;
     if (isVideoURL(href)) {
-      return mapToFullInfo(href, element, null);
+      return mapToFullInfo(href, null);
     }
   }
-  return mapToFullInfo('', null, null);
+  return mapToFullInfo('',  null);
 }
 
  function extractAudioFromElement(element: Element) {
@@ -51,13 +51,13 @@ import {mapToFullInfo} from './mappers-fn';
     const src = sourceElement
       ? getSrcFromElement(sourceElement)
       : getSrcFromElement(element);
-    return mapToFullInfo(src, element);
+    return mapToFullInfo(src);
   }
 
   if (element.tagName.toLowerCase() === 'a') {
     const href = (element as HTMLAnchorElement).href;
     if (isAudioURL(href)) {
-      return mapToFullInfo(href, element);
+      return mapToFullInfo(href);
     }
   }
   return mapToFullInfo();
@@ -74,17 +74,6 @@ function getSrcFromElement(element: Element) {
     src = src.substring(0, hashIndex + 1);
   }
   return src;
-}
-
-export function getAltFromElement(element: Element) {
-  const alt = element.getAttribute('alt');
-  if (!alt) {
-    return null;
-  }
-  if (alt.length === 0) {
-    return null;
-  }
-  return alt;
 }
 
 function getPosterFromVideoElement(element: Element) {

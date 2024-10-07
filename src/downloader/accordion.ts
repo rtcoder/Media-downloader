@@ -56,7 +56,7 @@ function getGridItem(item: MediaItem) {
     createIconElement('download'),
   );
   const anchor = createElement('a', {
-    attributes: {href: item.src, download: item.alt || ''},
+    attributes: {href: item.src, download: ''},
   }, btn);
 
   const dimensionsDiv = createSpanElement({class: 'item-details-dimensions'});
@@ -123,7 +123,7 @@ function getYtRestrictionInfo() {
 function getAccordionBody(items: MediaItem[], tabId: number, tabUuid: string, restricted: boolean) {
   const body = createDivElement({class: 'accordion-body'});
   if (!restricted) {
-    body.append(...items.map(item => {
+    body.append(...items.sort((a, b) => a.order - b.order).map(item => {
       return getGridItem(item);
     }));
   } else {

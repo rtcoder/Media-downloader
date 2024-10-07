@@ -1,21 +1,11 @@
-import {NullableString} from '../types/common.type';
-import {MediaItem} from '../types/media-in-tabs.type';
+import {MediaItem, QuickMediaItem} from '../types/media-in-tabs.type';
 import {downloadUrl} from './chrome-api';
 
-export function downloadItem(itemInfo: { url: string; alt: NullableString }) {
-  downloadUrl(itemInfo.url, itemInfo.alt);
+export function downloadSelectedImages(items: MediaItem[]) {
+  items.filter(item => item.selected)
+    .forEach(item => downloadUrl(item.src));
 }
 
-export function downloadImages(items: MediaItem[]) {
-  const checkedImages = [];
-
-  for (let _idx = 0; _idx < items.length; _idx++) {
-    if (items[_idx].selected) {
-      checkedImages.push({
-        url: items[_idx].src,
-        alt: items[_idx].alt,
-      });
-    }
-  }
-  checkedImages.forEach(downloadItem);
+export function downloadImages(items: QuickMediaItem[]) {
+  items.forEach(item => downloadUrl(item.src));
 }

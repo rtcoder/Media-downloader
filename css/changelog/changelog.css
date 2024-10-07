@@ -3,13 +3,11 @@
 body.light-theme {
     --firstLineChangesColor: #2c3e50;
     --versionTitleColor: #e74c3c;
-
 }
 
 body.dark-theme {
     --firstLineChangesColor: #06a2d2;
     --versionTitleColor: #e74c3c;
-
 }
 
 body {
@@ -26,16 +24,51 @@ p {
     color: var(--fontColor);
 }
 
-ul {
+.changes {
     margin: 10px 0 20px 20px;
     padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
-li {
+.changes .item {
     margin: 5px 0;
     padding-left: 5px;
     font-size: 1rem;
     color: var(--fontColor2);
+    position: relative;
+    border-bottom: 2px dashed color-mix(in xyz, var(--firstLineChangesColor) 50%, rgba(0,0,0,0.4) 65%);
+}
+.changes .item:not(:has(.images)) {
+    border-bottom: none;
+}
+
+.changes .item:first-child {
+    font-weight: bold;
+    color: var(--firstLineChangesColor);
+}
+.changes .item::before {
+    content: '+';
+    position: absolute;
+    top: 0;
+    left: -10px;
+    color: var(--firstLineChangesColor);
+}
+
+.changes .images {
+    padding-block: 5px;
+    gap: 15px;
+    display: flex;
+}
+
+.images img {
+    max-height: 300px;
+    max-width: 300px;
+    width: auto;
+    height: 100%;
+    border: 1px solid var(--firstLineChangesColor);
+    border-radius: 5px;
 }
 
 a {
@@ -58,7 +91,3 @@ p.version-title {
     font-size: 1.2rem;
 }
 
-ul li:first-child {
-    font-weight: bold;
-    color: var(--firstLineChangesColor);
-}

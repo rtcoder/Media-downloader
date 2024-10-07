@@ -1,9 +1,6 @@
-import {tabsInfo} from '../media-in-tabs';
 import {ChromeTab} from '../types/chrome.type';
 import {MessageEventNameEnum} from '../types/message-event-name.enum';
 import {getTab, onMessage} from '../utils/chrome-api';
-import {getUuid} from '../utils/utils';
-import {isRestrictedUrl} from '../utils/yt-restriction';
 import {findMedia} from './find-media';
 import {sendMediaListener} from './send-media-listener';
 import {updateTabInfo} from './tab-info';
@@ -48,7 +45,7 @@ async function tabActivatedListener(tabId: number) {
 
 
 export function setMessageListeners(): void {
-  onMessage((message) => {
+  onMessage((message, sender, sendResponse) => {
     const {eventName, data} = message;
     switch (eventName) {
       case MessageEventNameEnum.TAB_UPDATED:
@@ -67,5 +64,6 @@ export function setMessageListeners(): void {
         sendMediaListener(data);
         break;
     }
+    sendResponse(null);
   });
 }

@@ -11,7 +11,7 @@ import {
   extractImagesFromTags,
   extractVideosFromTags,
 } from '../extractors-fn';
-import {mapToFinalResultArray} from '../mappers-fn';
+import {mapToFinalResultArray} from './send-media-mappers-fn';
 
 (() => {
 
@@ -55,31 +55,34 @@ import {mapToFinalResultArray} from '../mappers-fn';
       sendMedia([], [], [], tab, error);
       return;
     }
-    images.forEach(img => {
+    images.forEach((img, index) => {
       const imgEl = createImgElement();
       imgEl.addEventListener('load', () => {
         img.properties.width = imgEl.naturalWidth;
         img.properties.height = imgEl.naturalHeight;
+        img.order = index;
         imgEl.remove();
         sendMedia([img], [], [], tab);
       });
       imgEl.src = img.src;
     });
-    videos.forEach(video => {
-      const videoEl = createElement('video');
+    videos.forEach((video, index) => {
+      const videoEl = createElement('video') as HTMLVideoElement;
       videoEl.addEventListener('loadedmetadata', () => {
         video.properties.quality = getQualityLabel(videoEl.videoWidth);
+        video.order = index;
         videoEl.remove();
         sendMedia([], [], [video], tab);
       });
       videoEl.src = video.src;
     });
-    audios.forEach(audio => {
-      const audioEl = createElement('audio');
+    audios.forEach((audio, index) => {
+      const audioEl = createElement('audio') as HTMLAudioElement;
       audioEl.addEventListener('loadedmetadata', () => {
         const duration = formatTime(audioEl.duration);
         audio.properties.duration = audioEl.duration;
         audio.properties.durationStr = duration;
+        audio.order = index;
         audioEl.remove();
         sendMedia([], [audio], [], tab);
       });

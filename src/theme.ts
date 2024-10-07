@@ -5,10 +5,11 @@ import {MessageEventNameEnum} from './types/message-event-name.enum';
 import {onMessage} from './utils/chrome-api';
 
 getStorageThemeValue(applyTheme);
-onMessage((msg) => {
+onMessage((msg, sender, sendResponse) => {
   if (msg.eventName === MessageEventNameEnum.THEME_CHANGED) {
     applyTheme(msg.data.theme);
   }
+  sendResponse(null);
 });
 
 function getBrowserTheme() {

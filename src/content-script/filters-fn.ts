@@ -1,5 +1,5 @@
 import {NullableString} from '../types/common.type';
-import {MediaItem} from '../types/media-in-tabs.type';
+import {MediaItem, QuickMediaItem} from '../types/media-in-tabs.type';
 import {audioRegex, imageRegex, videoRegex} from './regex-pattern';
 
 export function isNotYouTubeLink({src}: { src: string }) {
@@ -25,8 +25,7 @@ export function isAudioURL(url: string) {
   return url.startsWith('data:audio') || audioRegex.test(url);
 }
 
-export function removeDuplicateOrEmpty(data: MediaItem[]): MediaItem[] {
-
+export function removeDuplicateOrEmpty<T extends { src: string }>(data: T[]): T[] {
   let result = [...new Map(data.map((item) => [item.src, item])).values()];
 
   result = result.filter(({src}: { src: string }) => !!src);

@@ -68,11 +68,8 @@ export async function getTab(tabId: number): NullableChromeTabAsync {
   }
 }
 
-export function downloadUrl(url: string, filename: NullableString = null) {
+export function downloadUrl(url: string) {
   const downloadOptions: chrome.downloads.DownloadOptions = {url};
-  if (filename) {
-    downloadOptions.filename = filename;
-  }
   chrome.downloads.download(downloadOptions);
 }
 
@@ -89,12 +86,20 @@ export function setStorageValue(obj: Partial<StorageDef>, callback?: Fn) {
 }
 
 export function sendMessage(eventName: MessageEventNameEnum, data: any = null, callback?: FnArgs) {
-  if (!callback) {
-    callback = (response) => {
-    };
-  }
+
+  const cb: FnArgs = (res) => {
+    if (chrome.runtime.lastError) {
+      // console.error('Error send msg:', chrome.runtime.lastError);
+      return null;
+    }
+    if (!callback) {
+      callback = (response) => {
+      };
+    }
+    callback(res);
+  };
   try {
-    chrome.runtime.sendMessage({eventName, data}, callback);
+    chrome.runtime.sendMessage({eventName, data}, cb);
   } catch {
     // do nothing
   }

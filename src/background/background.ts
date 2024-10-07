@@ -1,10 +1,13 @@
+import {findMediaQuickToDownload} from '../downloader/find-media';
 import {DefaultActionType} from '../storage/storage-def';
 import {getStorageDefaultActionValue, getStoragePreviousVersionValue} from '../storage/storage-fn';
 import {ChromeTab} from '../types/chrome.type';
+import {QuickMediaItem} from '../types/media-in-tabs.type';
 import {MessageEventNameEnum} from '../types/message-event-name.enum';
 import {
   contextMenuClicked,
   createContextMenu,
+  downloadUrl,
   getTab,
   getVersion,
   onActivateTab,
@@ -22,6 +25,7 @@ import {
   setSidePanelOptions,
   setStorageValue,
 } from '../utils/chrome-api';
+import {downloadImages} from '../utils/download-functions';
 
 function handleUpdate(details: chrome.runtime.InstalledDetails) {
   if (details.reason !== 'update') {
@@ -103,27 +107,41 @@ onInstalled(details => {
   updateSidePanelAndPopupBehavior();
 
   createContextMenu({
-    id: 'openMediaDownloader',
-    title: 'Open Media Downloader',
+    id: 'downloadAllMedia',
+    title: 'Download all media',
     contexts: ['page'],
+  });
+  createContextMenu({
+    id: 'quickDownloadImage',
+    title: 'Quick download',
+    contexts: ['image'],
   });
   handleUpdate(details);
 });
 
 contextMenuClicked((info, tab) => {
-  if (info.menuItemId === 'openMediaDownloader') {
-    openDownloader(tab);
+  if (info.menuItemId === 'downloadAllMedia') {
+    findMediaQuickToDownload(tab.id);
+    return;
+  }
+  if (info.menuItemId === 'quickDownloadImage' && info.srcUrl) {
+    downloadUrl(info.srcUrl);
   }
 });
-onMessage(async (message, sender, sendResponse) => {
+onMessage((message, sender, sendResponse) => {
   if (!sender.tab?.id) {
     sendResponse(null);
-    return true;
+    return;
   }
   if (message.eventName === MessageEventNameEnum.GET_TAB_INFO) {
-    const tab = await getTab(sender.tab.id);
-    sendResponse(tab);
+    getTab(sender.tab.id).then(sendResponse);
 
     return true;
+  }
+  if (message.eventName === MessageEventNameEnum.QUICK_SEND_MEDIA_FOR_DOWNLOAD) {
+    const media = message.data.media as QuickMediaItem[];
+    downloadImages(media);
+    sendResponse(null);
+    return;
   }
 });

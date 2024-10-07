@@ -1,6 +1,5 @@
-import {MixedObject} from '../types/mixed-object.type';
+import {Children, Props} from '../types/dom-functions.type';
 
-type Children = HTMLElement | HTMLElement[];
 
 export function setDisabled(selector: string, value: boolean) {
   (q(selector) as HTMLButtonElement).disabled = value;
@@ -48,27 +47,7 @@ export function hasClass(selector: Element | string, className: string): boolean
   return element.classList.contains(className);
 }
 
-/**
- * @typedef {Object} Props
- * @property {string|string[]} [class] - A string or an array of strings representing the class(es) to be added to the element.
- * @property {string} [html] - The HTML content to be set as the innerHTML of the element.
- * @property {{[key: string]: string|number}} [attributes] - An object representing additional attributes to set on the element.
- * @property {{[key: string]: string|number}} [data] - An object representing additional data attributes to set on the element.
- * @property {string} [type] - The type attribute to be set on the element (useful for elements like `input`).
- * @property {string} [title] - The title attribute to be set on the element.
- * @property {string} [alt] - The alt attribute to be set on the element.
- * @property {string} [src] - The src attribute to be set on the element.
- */
-
-/**
- * Creates a new DOM element with the specified tag name and properties.
- *
- * @param {keyof HTMLElementTagNameMap} tagName - The name of the tag for the element to be created (e.g., 'div', 'span').
- * @param {Props} [props] - An object containing properties to set on the element.
- * @param {Children} [children] - Children nodes to be appended to the created element.
- * @returns {HTMLElement} The newly created DOM element.
- */
-export function createElement(tagName: string, props: any = {}, children: Children = []) {
+export function createElement(tagName: string, props: Props = {}, children: Children = []): HTMLElement {
   const element = document.createElement(tagName) as any;
 
   if (props.class) {
@@ -110,6 +89,9 @@ export function createElement(tagName: string, props: any = {}, children: Childr
   if (props.src) {
     element.src = props.src;
   }
+  if (props.href) {
+    element.href = props.href;
+  }
   if (children) {
     if (!Array.isArray(children) && children instanceof HTMLElement) {
       children = [children];
@@ -120,47 +102,20 @@ export function createElement(tagName: string, props: any = {}, children: Childr
   return element;
 }
 
-/**
- * Creates a new DOM element with the specified tag name and properties.
- *
- * @param {Props} [props] - An object containing properties to set on the element.
- * @param {Children} [children] - Children nodes to be appended to the created element.
- * @returns {HTMLDivElement} The newly created DOM element.
- */
-export function createDivElement(props: any = {}, children: Children = []) {
+export function createDivElement(props: Props = {}, children: Children = []) {
   return createElement('div', props, children);
 }
 
-/**
- * Creates a new DOM element with the specified tag name and properties.
- *
- * @param {Props} [props] - An object containing properties to set on the element.
- * @param {Children} [children] - Children nodes to be appended to the created element.
- * @returns {HTMLSpanElement} The newly created DOM element.
- */
-export function createSpanElement(props: any = {}, children: Children = []) {
+export function createSpanElement(props: Props = {}, children: Children = []) {
   return createElement('span', props, children);
 }
 
-/**
- * Creates a new DOM element with the specified tag name and properties.
- *
- * @param {Props} [props] - An object containing properties to set on the element.
- * @param {Children} [children] - Children nodes to be appended to the created element.
- * @returns {HTMLButtonElement} The newly created DOM element.
- */
-export function createButtonElement(props: MixedObject = {}, children: Children = []) {
+export function createButtonElement(props: Props = {}, children: Children = []) {
   props.type = 'button';
   return createElement('button', props, children);
 }
 
-/**
- * Creates a new DOM element with the specified tag name and properties.
- *
- * @param {Props} [props] - An object containing properties to set on the element.
- * @returns {HTMLImageElement} The newly created DOM element.
- */
-export function createImgElement(props: any = {}): HTMLImageElement {
+export function createImgElement(props: Props = {}): HTMLImageElement {
   return createElement('img', props) as HTMLImageElement;
 }
 

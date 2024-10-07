@@ -1,9 +1,9 @@
-import {displayMedia, getAllMediaToDisplay} from '../media-display';
+import {displayMedia, getAllMediaToDisplay, isTabExpanded, setTabExpanded} from '../media-display';
 import {mediaInTabs} from '../media-in-tabs';
 import {ItemTypeEnum} from '../types/media-in-tabs.type';
 import {createTab, setStorageValue} from '../utils/chrome-api';
 import {hide, q, setDisabled, toggleClass} from '../utils/dom-functions';
-import {downloadImages} from '../utils/download-functions';
+import {downloadSelectedImages} from '../utils/download-functions';
 import {mediaTypes} from './media-types';
 
 
@@ -106,7 +106,7 @@ export function setDomListeners() {
     }
 
     if (target.closest('#download-btn')) {
-      downloadImages(getAllMediaToDisplay());
+      downloadSelectedImages(getAllMediaToDisplay());
       return;
     }
 
@@ -128,14 +128,22 @@ export function setDomListeners() {
 
     if (target.matches('.changelog-link')) {
       setStorageValue({showChangelogLink: false});
-      createTab({url: 'views/changelog.html'});
+      createTab({url: 'views/changelog/index.html'});
       hide(target);
       return;
     }
 
     if (target.closest('.accordion-header')) {
       const header = target.closest('.accordion-header');
-      toggleClass(header.closest('.accordion-item'), 'active');
+      const accordionItem = header.closest('.accordion-item');
+      const tabUuid = accordionItem.getAttribute('tab-uuid');
+      if (isTabExpanded(tabUuid)) {
+        setTabExpanded(tabUuid, false);
+        toggleClass(header.closest('.accordion-item'), 'active', false);
+      } else {
+        setTabExpanded(tabUuid, true);
+        toggleClass(header.closest('.accordion-item'), 'active', true);
+      }
     }
   });
 

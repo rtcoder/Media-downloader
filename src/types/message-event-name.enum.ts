@@ -4,6 +4,7 @@ export enum MessageEventNameEnum {
   TAB_UPDATED = 'tabUpdated',
   TAB_ACTIVATED = 'tabActivated',
   SEND_MEDIA = 'sendMedia',
+  QUICK_SEND_MEDIA_FOR_DOWNLOAD = 'quickSendMediaForDownload',
   GET_TAB_INFO = 'getTabInfo',
   THEME_CHANGED = 'themeChanged',
 }

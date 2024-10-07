@@ -1,5 +1,27 @@
+.filters .input-pair {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+
+.filters .input-pair label {
+    border: 1px solid var(--fontColor2);
+}
+
+.filters .input-pair .unit {
+    width: 30px;
+    text-align: center;
+}
+
+.filters .input-pair .title {
+    width: 40px;
+    user-select: none;
+}
+
 .filters .group input {
     width: 100px;
+    border: none;
 }
 
 .filters .group input::-webkit-inner-spin-button {
@@ -9,11 +31,11 @@
 .filters .group :is(input, select) {
     background: none;
     color: var(--fontColor);
+    border-radius: 0;
     padding: 5px;
-    border-radius: 30px;
-    border: 1px solid var(--fontColor2);
 }
 
 .filters .group select {
+    border: 1px solid var(--fontColor2);
     user-select: none;
 }

@@ -1,6 +1,7 @@
 .filters :is(.image-filters, .audio-filters, .video-filters) {
     display: none;
     flex-direction: column;
+    gap: 5px;
 }
 
 .filters.image .image-filters {

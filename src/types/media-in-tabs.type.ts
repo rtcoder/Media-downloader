@@ -9,6 +9,7 @@ export type MediaItemProperties = {
 }
 
 export type MediaItem = {
+  order: number;
   tabId: number;
   tabUuid: string;
   itemIndex: string;
@@ -16,10 +17,13 @@ export type MediaItem = {
   src: string;
   extension: NullableString;
   type: ItemTypeEnum;
-  alt: NullableString;
   selected: boolean;
   poster: NullableString;
   properties: MediaItemProperties;
+}
+
+export type QuickMediaItem = {
+  src: string;
 }
 
 export enum ItemTypeEnum {
