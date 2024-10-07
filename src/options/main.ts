@@ -1,5 +1,6 @@
 import {DEFAULT_SETTINGS, DEFAULT_SETTINGS_KEYS, StorageDef, StorageKey, StorageKeys} from '../storage/storage-def';
-import {getStorageValue, setStorageValue} from '../utils/chrome-api';
+import {MessageEventNameEnum} from '../types/message-event-name.enum';
+import {getStorageValue, sendMessage, setStorageValue} from '../utils/chrome-api';
 import {getInputValue, q, setInputValue} from '../utils/dom-functions';
 
 
@@ -21,7 +22,9 @@ function fillFormWithData(data: Partial<StorageDef>) {
 }
 
 function saveOptions() {
-  setStorageValue(composeDataToSave(), () => {
+  const data = composeDataToSave();
+  setStorageValue(data, () => {
+    sendMessage(MessageEventNameEnum.THEME_CHANGED, {theme: data.theme});
     const status = q('#status');
     status.style.display = 'block';
     setTimeout(() => {

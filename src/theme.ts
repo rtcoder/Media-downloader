@@ -1,8 +1,15 @@
 // Apply the saved theme or system theme when the extension loads
 import {ThemeType} from './storage/storage-def';
 import {getStorageThemeValue} from './storage/storage-fn';
+import {MessageEventNameEnum} from './types/message-event-name.enum';
+import {onMessage} from './utils/chrome-api';
 
 getStorageThemeValue(applyTheme);
+onMessage((msg) => {
+  if (msg.eventName === MessageEventNameEnum.THEME_CHANGED) {
+    applyTheme(msg.data.theme);
+  }
+});
 
 function getBrowserTheme() {
   const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;

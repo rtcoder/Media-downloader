@@ -5,6 +5,7 @@ export enum MessageEventNameEnum {
   TAB_ACTIVATED = 'tabActivated',
   SEND_MEDIA = 'sendMedia',
   GET_TAB_INFO = 'getTabInfo',
+  THEME_CHANGED = 'themeChanged',
 }
 
 export type EventMsg = {
