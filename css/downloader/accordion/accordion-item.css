@@ -2,13 +2,6 @@
 @import "accordion-body.css";
 
 .accordion-item {
-    border: 1px solid var(--accordionItemBorderColor);
-    border-left: none;
-    border-right: none;
     margin-bottom: 5px;
     overflow: hidden;
-}
-
-.accordion-item.no-border {
-    border: none;
 }

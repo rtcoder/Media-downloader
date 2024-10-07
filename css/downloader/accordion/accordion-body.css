@@ -9,6 +9,7 @@
     padding: 15px;
     background-color: var(--bgColor);
     display: none;
+    border-bottom: 1px solid var(--accordionItemBorderColor);
 }
 
 .accordion-item.active .accordion-body {

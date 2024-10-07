@@ -1,20 +1,24 @@
 .accordion-header {
     width: 100%;
-    background-color: var(--accordionHeaderBgColor);
     cursor: pointer;
-    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-left: 5px;
+}
+
+.accordion-item:first-child .accordion-header {
+    padding: 0;
 }
 
 .accordion-header button {
-    background: none;
+    background-color: var(--accordionHeaderBgColor);
     border: none;
+    border-top: 1px solid var(--accordionItemBorderColor);
     font-size: 13px;
     text-align: left;
     width: 100%;
-    padding: 0;
+    padding: 10px;
     cursor: pointer;
     align-items: center;
     display: grid;
