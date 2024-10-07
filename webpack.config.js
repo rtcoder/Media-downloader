@@ -5,7 +5,8 @@ module.exports = {
     entry: {
         'options/main': './src/options/main.ts',
         'downloader/main': './src/downloader/main.ts',
-        'content-script/send_media': './src/content-script/send_media.ts',
+        'content-script/send_media/send_media': './src/content-script/send_media/send_media.ts',
+        'content-script/quick_send_media/quick_send_media': './src/content-script/quick_send_media/quick_send_media.ts',
         'background/background': './src/background/background.ts',
         theme: './src/theme.ts',
         'popup-dimensions': './src/popup-dimensions.ts',

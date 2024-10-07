@@ -3,7 +3,7 @@ import {qAll} from '../utils/dom-functions';
 import {isAudioURL, isImageURL, isNotEmpty, isNotYouTubeLink, isVideoURL} from './filters-fn';
 import {mapToFullInfo} from './mappers-fn';
 
-async function extractImageFromElement(element: Element) {
+ function extractImageFromElement(element: Element) {
   if (element.tagName.toLowerCase() === 'img') {
     const src = getSrcFromElement(element);
     return mapToFullInfo(src, element);
@@ -27,7 +27,7 @@ async function extractImageFromElement(element: Element) {
   return mapToFullInfo();
 }
 
-async function extractVideoFromElement(element: Element) {
+ function extractVideoFromElement(element: Element) {
   if (element.tagName.toLowerCase() === 'video') {
     const sourceElement = element.querySelector('source');
     const src = sourceElement
@@ -45,7 +45,7 @@ async function extractVideoFromElement(element: Element) {
   return mapToFullInfo('', null, null);
 }
 
-async function extractAudioFromElement(element: Element) {
+ function extractAudioFromElement(element: Element) {
   if (element.tagName.toLowerCase() === 'audio') {
     const sourceElement = element.querySelector('source');
     const src = sourceElement
@@ -98,29 +98,27 @@ function getPosterFromVideoElement(element: Element) {
   return poster;
 }
 
-export async function extractDataFromTags(selectors: string, mapFn: (el: Element) => any) {
+export  function extractDataFromTags(selectors: string, mapFn: (el: Element) => any) {
   const elements = [...qAll(selectors)];
-  const promises = elements.map(mapFn);
-  const results = await Promise.all(promises);
-  return results
+  return elements.map(mapFn)
     .filter(isNotEmpty)
     .filter(isNotYouTubeLink);
 }
 
-export async function extractImagesFromTags() {
+export  function extractImagesFromTags() {
   return extractDataFromTags('img, a, [style]', extractImageFromElement);
 }
 
-export async function extractVideosFromTags() {
+export  function extractVideosFromTags() {
   return extractDataFromTags('video, a', extractVideoFromElement);
 }
 
-export async function extractAudiosFromTags() {
+export  function extractAudiosFromTags() {
   return extractDataFromTags('audio, a', extractAudioFromElement);
 }
 
 export function extractImagesFromStyles() {
-  return Promise.all((Array.from(document.styleSheets) as CSSStyleSheet[])
+  return (Array.from(document.styleSheets) as CSSStyleSheet[])
     .filter(styleSheet => styleSheet.hasOwnProperty('cssRules'))
     .map(({cssRules}) => Array.from(cssRules))
     .flat()
@@ -128,5 +126,5 @@ export function extractImagesFromStyles() {
     .map((cssRule: any) => extractURLFromStyle(cssRule.style.backgroundImage))
     .filter((url: NullableString) => !!url)
     .filter((url: string) => isImageURL(url))
-    .map((url: string) => mapToFullInfo(url)));
+    .map((url: string) => mapToFullInfo(url));
 }

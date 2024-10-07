@@ -1,17 +1,17 @@
-import {NullableChromeTab} from '../types/chrome.type';
-import {FoundMedia} from '../types/found-media.type';
-import {ItemTypeEnum, MediaItem} from '../types/media-in-tabs.type';
-import {MessageEventNameEnum} from '../types/message-event-name.enum';
-import {sendMessage} from '../utils/chrome-api';
-import {createElement, createImgElement} from '../utils/dom-functions';
-import {formatTime, getQualityLabel} from '../utils/utils';
+import {NullableChromeTab} from '../../types/chrome.type';
+import {FoundMedia} from '../../types/found-media.type';
+import {ItemTypeEnum, MediaItem} from '../../types/media-in-tabs.type';
+import {MessageEventNameEnum} from '../../types/message-event-name.enum';
+import {sendMessage} from '../../utils/chrome-api';
+import {createElement, createImgElement} from '../../utils/dom-functions';
+import {formatTime, getQualityLabel} from '../../utils/utils';
 import {
   extractAudiosFromTags,
   extractImagesFromStyles,
   extractImagesFromTags,
   extractVideosFromTags,
-} from './extractors-fn';
-import {mapToFinalResultArray} from './mappers-fn';
+} from '../extractors-fn';
+import {mapToFinalResultArray} from '../mappers-fn';
 
 (() => {
 
@@ -38,15 +38,15 @@ import {mapToFinalResultArray} from './mappers-fn';
     let audios: MediaItem[] = [];
 
     try {
-      const imagesFromTags = await extractImagesFromTags();
-      const imagesFromStyles = await extractImagesFromStyles();
-      images = mapToFinalResultArray([...imagesFromTags, ...imagesFromStyles], ItemTypeEnum.IMAGE);
+      const imagesFromTags = extractImagesFromTags();
+      const imagesFromStyles = extractImagesFromStyles();
+      images = await mapToFinalResultArray([...imagesFromTags, ...imagesFromStyles], ItemTypeEnum.IMAGE);
 
-      const videosFromTags = await extractVideosFromTags();
-      videos = mapToFinalResultArray(videosFromTags, ItemTypeEnum.VIDEO);
+      const videosFromTags = extractVideosFromTags();
+      videos = await mapToFinalResultArray(videosFromTags, ItemTypeEnum.VIDEO);
 
-      const audiosFromTags = await extractAudiosFromTags();
-      audios = mapToFinalResultArray(audiosFromTags, ItemTypeEnum.AUDIO);
+      const audiosFromTags = extractAudiosFromTags();
+      audios = await mapToFinalResultArray(audiosFromTags, ItemTypeEnum.AUDIO);
     } catch (err: any) {
       console.log({err});
       error = {...err};

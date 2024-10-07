@@ -13,16 +13,11 @@ export function relativeUrlToAbsolute(url: NullableString): NullableString {
   return url.startsWith('/') ? `${window.location.origin}${url}` : url;
 }
 
-export async function mapToFullInfo(
+export function mapToFullInfo(
   src: string = '',
   altOrElement: Element | NullableString = null,
   poster: NullableString | undefined = undefined,
 ) {
-  let extension: NullableString = null;
-  if (src.length) {
-    extension = await getFileType(src);
-  }
-
   let alt: NullableString = null;
   if (altOrElement !== null) {
     if (typeof altOrElement !== 'string') {
@@ -30,7 +25,7 @@ export async function mapToFullInfo(
     }
   }
 
-  const info: any = {src, alt, extension};
+  const info: any = {src, alt};
 
   if (poster !== undefined) {
     info.poster = poster;
@@ -39,17 +34,24 @@ export async function mapToFullInfo(
   return info;
 }
 
-export function mapToFinalResultArray(data: any[], type: ItemTypeEnum): MediaItem[] {
-  return removeDuplicateOrEmpty(data.map(item => mapToFinalResultItem(item, type)));
+export async function mapToFinalResultArray(data: any[], type: ItemTypeEnum): Promise<MediaItem[]> {
+  const promises = data.map(item => mapToFinalResultItem(item, type));
+  const results = await Promise.all(promises);
+  return removeDuplicateOrEmpty(results);
 }
 
-function mapToFinalResultItem(item: MixedObject, type: ItemTypeEnum): MediaItem {
+async function mapToFinalResultItem(item: MixedObject, type: ItemTypeEnum): Promise<MediaItem> {
+  const src = relativeUrlToAbsolute(item.src) || '';
+  let extension: NullableString = null;
+  if (src.length) {
+    extension = await getFileType(src);
+  }
   return {
     tabUuid: '',
     tabId: -1,
     itemIndex: '',
-    src: relativeUrlToAbsolute(item.src) || '',
-    extension: item.extension,
+    src,
+    extension,
     type,
     alt: item.alt,
     selected: false,
