@@ -37,9 +37,6 @@ function filterImages(items: MediaItem[]): MediaItem[] {
 function filterAudios(items: MediaItem[]) {
   const filters = getFilters();
   return items.filter(item => {
-    if (!!filters.videoQuality?.length && !filters.videoQuality.includes(item.properties.quality)) {
-      return false;
-    }
     return !(!!filters.audioType?.length && !filters.audioType.includes(item.extension));
   });
 }
