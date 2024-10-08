@@ -1,12 +1,9 @@
-import {NullableChromeTab} from './chrome.type';
 import {MediaItem, QuickMediaItem} from './media-in-tabs.type';
 
 export type FoundMedia = {
   error: any;
-  image: MediaItem[];
-  audio: MediaItem[];
-  video: MediaItem[];
-  tabInfo: NullableChromeTab;
+  media: MediaItem[];
+  jobHash: string;
 }
 
 export type FoundMediaQuick = {

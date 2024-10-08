@@ -1,10 +1,9 @@
-import {NullableChromeTab} from '../../types/chrome.type';
 import {FoundMedia} from '../../types/found-media.type';
 import {ItemTypeEnum, MediaItem} from '../../types/media-in-tabs.type';
 import {MessageEventNameEnum} from '../../types/message-event-name.enum';
 import {sendMessage} from '../../utils/chrome-api';
 import {createElement, createImgElement} from '../../utils/dom-functions';
-import {formatTime, getQualityLabel} from '../../utils/utils';
+import {formatTime, getQualityLabel, randomStr} from '../../utils/utils';
 import {
   extractAudiosFromTags,
   extractImagesFromStyles,
@@ -16,22 +15,19 @@ import {mapToFinalResultArray} from './send-media-mappers-fn';
 (() => {
 
   function sendMedia(
-    images: MediaItem[],
-    audios: MediaItem[],
-    videos: MediaItem[],
-    tab: NullableChromeTab,
+    media: MediaItem[],
+    jobHash: string,
     error: any = null,
   ) {
     sendMessage(MessageEventNameEnum.SEND_MEDIA, {
       error,
-      image: images,
-      audio: audios,
-      video: videos,
-      tabInfo: tab,
+      media,
+      jobHash,
     } as FoundMedia);
   }
 
-  async function gatherMedia(tab: NullableChromeTab) {
+  async function gatherMedia() {
+    const jobHash = randomStr();
     let error = null;
     let images: MediaItem[] = [];
     let videos: MediaItem[] = [];
@@ -52,7 +48,7 @@ import {mapToFinalResultArray} from './send-media-mappers-fn';
       error = {...err};
     }
     if (error) {
-      sendMedia([], [], [], tab, error);
+      sendMedia([],  jobHash, error);
       return;
     }
     images.forEach((img, index) => {
@@ -62,7 +58,7 @@ import {mapToFinalResultArray} from './send-media-mappers-fn';
         img.properties.height = imgEl.naturalHeight;
         img.order = index;
         imgEl.remove();
-        sendMedia([img], [], [], tab);
+        sendMedia([img], jobHash);
       });
       imgEl.src = img.src;
     });
@@ -72,7 +68,7 @@ import {mapToFinalResultArray} from './send-media-mappers-fn';
         video.properties.quality = getQualityLabel(videoEl.videoWidth);
         video.order = index;
         videoEl.remove();
-        sendMedia([], [], [video], tab);
+        sendMedia( [video], jobHash);
       });
       videoEl.src = video.src;
     });
@@ -84,15 +80,12 @@ import {mapToFinalResultArray} from './send-media-mappers-fn';
         audio.properties.durationStr = duration;
         audio.order = index;
         audioEl.remove();
-        sendMedia([], [audio], [], tab);
+        sendMedia( [audio], jobHash);
       });
       audioEl.src = audio.src;
     });
-
   }
 
-  sendMessage(MessageEventNameEnum.GET_TAB_INFO, {}, (tab: NullableChromeTab) => {
-    gatherMedia(tab);
-  });
+  gatherMedia();
 
 })();

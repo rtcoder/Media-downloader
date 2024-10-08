@@ -136,15 +136,19 @@ function getAccordionBody(items: MediaItem[], tabId: number, tabUuid: string, re
 
 function getAccordionItem(tabData: TabData) {
   const {title, uuid, id, favIconUrl, isRestricted} = tabData;
+  const type = getCurrentSection();
+  const mediaToDisplay = getAllMediaToDisplay(uuid);
+  const filteredMediaToDisplay = applyFilters(type, mediaToDisplay);
+
+  if (!filteredMediaToDisplay.length) {
+    return null;
+  }
+
   const expanded = isTabExpanded(uuid);
   const item = createDivElement({
     class: ['accordion-item', ...(expanded ? ['active'] : [])],
   });
   item.setAttribute('tab-uuid', uuid);
-
-  const type = getCurrentSection();
-  const mediaToDisplay = getAllMediaToDisplay(uuid);
-  const filteredMediaToDisplay = applyFilters(type, mediaToDisplay);
 
   const header = getAccordionHeader(favIconUrl, title, filteredMediaToDisplay.length, mediaToDisplay.length);
   const body = getAccordionBody(filteredMediaToDisplay, id, uuid, isRestricted);
@@ -160,9 +164,10 @@ function getAccordionGroup(tabId: number) {
       'data-tab-subgroup': tabId,
     },
   });
-  getTabsFromCollection(tabId).forEach((tabData: TabData) => {
-    groupDiv.appendChild(getAccordionItem(tabData));
-  });
+  getTabsFromCollection(tabId)
+    .map((tabData: TabData) => getAccordionItem(tabData))
+    .filter(item => item !== null)
+    .forEach((item: HTMLElement) => groupDiv.appendChild(item));
   return groupDiv;
 }
 

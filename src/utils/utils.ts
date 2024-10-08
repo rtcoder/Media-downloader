@@ -35,3 +35,13 @@ export function getCurrentSection(): ItemTypeEnum {
   const key = q(`.section-buttons button.selected`)!.getAttribute('data-section') as ItemTypeEnum;
   return key || ItemTypeEnum.IMAGE;
 }
+
+export function randomStr(length = 10): string {
+  const characters = 'abcdefghijklmnopqrstuvwxyz';
+  let result = '';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+};

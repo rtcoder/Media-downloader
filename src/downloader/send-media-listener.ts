@@ -9,6 +9,7 @@ import {isRestrictedUrl} from '../utils/yt-restriction';
 import {mediaTypes} from './media-types';
 import {updateTabInfo} from './tab-info';
 
+const tabJobMap: any = {};
 
 function updateMediaCount() {
   mediaTypes.forEach(type => {
@@ -23,10 +24,11 @@ export async function sendMediaListener(data: FoundMedia) {
     console.log(data);
     return;
   }
-  const currentTab = data.tabInfo || await getCurrentTab();
+  const currentTab = tabJobMap[data.jobHash] || await getCurrentTab();
   if (!currentTab) {
     return;
   }
+  tabJobMap[data.jobHash] = currentTab;
 
   updateTabInfo(currentTab);
   const tabUuid = getUuid(`${currentTab.id!}-${currentTab.url!}`);
@@ -42,11 +44,8 @@ export async function sendMediaListener(data: FoundMedia) {
     item.itemIndex = `${currentTab.id!}-${tabUuid}-${item.uuid}`;
     return item;
   };
-  const returnedMedia = [
-    ...data.image.map(mapMedia),
-    ...data.audio.map(mapMedia),
-    ...data.video.map(mapMedia),
-  ];
+  const returnedMedia = data.media.map(mapMedia);
+
   returnedMedia.forEach(newItem => {
     const found = mediaInTabs.find(item => item.itemIndex === newItem.itemIndex);
     if (!found) {

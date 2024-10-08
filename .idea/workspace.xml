@@ -7,48 +7,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Add theme change message handling&#10;&#10;Added a new message event type `THEME_CHANGED` and updated the options save function to send this message after changing the theme. This facilitates theme updates across different parts of the extension in real-time.">
-      <change afterPath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/content-script/quick_send_media/quick-send-media-mappers-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/content-script/quick_send_media/quick_send_media.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/content-script/send_media/send-media-mappers-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/dom-functions.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/changelog/index.html" afterDir="false" />
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Refactor media mapping and downloading functionality&#10;&#10;Consolidated and relocated mapper functions for better code organization. Enhanced media downloading capabilities, and removed unused `changelog.html` and related CSS elements. Improved consistency and reduced redundant code.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/changelog/changelog.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/changelog/changelog.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/filters/filter-form-elements.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/filters/filter-form-elements.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/filters/filters-sections.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/filters/filters-sections.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/background/background.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/background/background.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/background/background.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/background/background.bundle.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/options/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/options/main.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/options/main.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/options/main.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/theme.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/theme.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/theme.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/theme.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/background/background.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/background/background.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/extractors-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/extractors-fn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/filters-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/filters-fn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/mappers-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/mappers-fn.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/content-script/send_media/send_media.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/send_media/send_media.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/downloader/accordion.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/accordion.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/find-media.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/find-media.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/message-listeners.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/message-listeners.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/send-media-listener.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/send-media-listener.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/types/found-media.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/found-media.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/media-in-tabs.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/media-in-tabs.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/message-event-name.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/message-event-name.enum.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/chrome-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/chrome-api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/dom-functions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dom-functions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/download-functions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/download-functions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changelog.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/downloader.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/downloader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +168,7 @@
       <workItem from="1725103291997" duration="40986000" />
       <workItem from="1726726906800" duration="48446000" />
       <workItem from="1727376275897" duration="407000" />
-      <workItem from="1727376693272" duration="165512000" />
+      <workItem from="1727376693272" duration="170531000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -249,14 +218,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Remove all_urls permission and clean workspace tasks&#10;&#10;Removed the unnecessary &quot;&lt;all_urls&gt;&quot; permission from manifest.json to enhance security. Updated workspace.xml by cleaning up redundant entries and adjusting task metadata for better clarity.">
-      <option name="closed" value="true" />
-      <created>1726951271098</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1726951271098</updated>
     </task>
     <task id="LOCAL-00035" summary="Remove trailing space in manifest.json&#10;&#10;Fixed an issue with a trailing space in the host_permissions entry of manifest.json. This ensures the file adheres to proper formatting standards and avoids potential permission parsing errors.">
       <option name="closed" value="true" />
@@ -586,7 +547,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728321815420</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Refactor media mapping and downloading functionality&#10;&#10;Consolidated and relocated mapper functions for better code organization. Enhanced media downloading capabilities, and removed unused `changelog.html` and related CSS elements. Improved consistency and reduced redundant code.">
+      <option name="closed" value="true" />
+      <created>1728332376224</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1728332376224</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -615,8 +584,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update media selection and download handling&#10;&#10;Enhanced media selection logic and updated event handling for media items in the downloader. Added functionality for individual item downloads and improved checkbox state management to reflect correct selection status." />
-    <MESSAGE value="Remove unused functions and fix code formatting&#10;&#10;Deleted unused utility functions `_dispatchEvent` and `hasClass` from `utils.ts` and `dom-functions.ts`. Corrected a formatting issue in `main.ts` for better code readability and maintainability." />
     <MESSAGE value="Refactor event listeners and use utility functions&#10;&#10;Replaced direct Chrome API calls with utility functions for various browser events, improving code organization and readability. Simplified logic for handling tab updates, activations, and installations by using consistent callback methods from `chrome-api.ts`." />
     <MESSAGE value="Add YouTube download restriction handling&#10;&#10;Introduced `isRestrictedUrl` utility function and updated logic to handle YouTube download restrictions. Added relevant CSS and HTML updates to display a notification when such restrictions are detected." />
     <MESSAGE value="Refactor accordion and media download functionality&#10;&#10;Simplified accordion-toggling logic and improved CSS for accordion-item activation. Refactored media download handling by removing redundant code and enhancing header-body structure alignment." />
@@ -640,7 +607,9 @@
     <MESSAGE value="Remove send_media script bundle&#10;&#10;Deleted `send_media.bundle.js` and its source map from the distribution folder. This cleanup helps in maintaining code quality and reducing unnecessary files." />
     <MESSAGE value="Refactor media extraction and handling&#10;&#10;Refactored media extraction functions to synchronous operations for simplicity. Updated media mapping functions to handle asynchronous file type detection." />
     <MESSAGE value="Add theme change message handling&#10;&#10;Added a new message event type `THEME_CHANGED` and updated the options save function to send this message after changing the theme. This facilitates theme updates across different parts of the extension in real-time." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add theme change message handling&#10;&#10;Added a new message event type `THEME_CHANGED` and updated the options save function to send this message after changing the theme. This facilitates theme updates across different parts of the extension in real-time." />
+    <MESSAGE value="Delete changelog view and mapper functions&#10;&#10;Removed `changelog.html` and associated CSS. Migrated mapper functions to a new file to organize code better. This streamlined the media handling and downloading functionalities in the project." />
+    <MESSAGE value="Refactor media mapping and downloading functionality&#10;&#10;Consolidated and relocated mapper functions for better code organization. Enhanced media downloading capabilities, and removed unused `changelog.html` and related CSS elements. Improved consistency and reduced redundant code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor media mapping and downloading functionality&#10;&#10;Consolidated and relocated mapper functions for better code organization. Enhanced media downloading capabilities, and removed unused `changelog.html` and related CSS elements. Improved consistency and reduced redundant code." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
