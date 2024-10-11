@@ -15,16 +15,6 @@
     align-items: center;
 }
 
-.thumbnail :is(audio, video) {
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    user-select: none;
-    pointer-events: none;
-    width: 1px;
-    height: 1px;
-}
-
 .thumbnail img {
     width: 100%;
     height: 100%;

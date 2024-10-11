@@ -7,33 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Refactor media mapping and sending logic&#10;&#10;Consolidated media mapping functions for better organization and efficiency. Simplified sendMedia function and removed redundant tab parameter. Introduced jobHash for more reliable media processing.">
-      <change afterPath="$PROJECT_DIR$/src/downloader/accordion/accordion-group.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/downloader/accordion/accordion-item.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/downloader/accordion/grid-item-thumbnail.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/downloader/accordion/grid-item.ts" afterDir="false" />
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Simplify media processing and rendering logic&#10;&#10;Streamlined media mapping functions for better efficiency and clarity. Implemented new accordion structure for better user interaction and visual organization. Added duration and quality properties to video elements to improve metadata handling.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/accordion-header.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion-header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/accordion.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/audio.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/transparent.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/transparent.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/mappers-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/mappers-fn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/send_media/send-media-mappers-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/send_media/send-media-mappers-fn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/send_media/send_media.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/send_media/send_media.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/accordion.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/accordion/accordion.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/filters/filter-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/filters/filter-fn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/filters/filters.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/filters/filters.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/media-display.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/media-display.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/media-in-tabs.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/media-in-tabs.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/thumbnail.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/thumbnail.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +162,7 @@
       <workItem from="1727376275897" duration="407000" />
       <workItem from="1727376693272" duration="174349000" />
       <workItem from="1728483803021" duration="3283000" />
-      <workItem from="1728640028971" duration="15885000" />
+      <workItem from="1728640028971" duration="16151000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -236,14 +212,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Fix download errors in grid item component&#10;&#10;Updated `filename` and `src` attributes to use `data` properties for the grid-item component. Adjusted `downloadItem` function to correctly reference URL and filename. Incremented version to 2.0.1 and updated the changelog accordingly.">
-      <option name="closed" value="true" />
-      <created>1727013965635</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1727013965635</updated>
     </task>
     <task id="LOCAL-00038" summary="Add default action toggle and refactor settings page.&#10;&#10;Implemented ability to switch between opening a popup or side panel as the default action. Refactored the options page to include separate sections for theme and default action settings. Enhanced radio button styling and updated background script to handle new default action settings.">
       <option name="closed" value="true" />
@@ -573,7 +541,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728399496320</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Simplify media processing and rendering logic&#10;&#10;Streamlined media mapping functions for better efficiency and clarity. Implemented new accordion structure for better user interaction and visual organization. Added duration and quality properties to video elements to improve metadata handling.">
+      <option name="closed" value="true" />
+      <created>1728677977401</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1728677977401</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -602,7 +578,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add YouTube download restriction handling&#10;&#10;Introduced `isRestrictedUrl` utility function and updated logic to handle YouTube download restrictions. Added relevant CSS and HTML updates to display a notification when such restrictions are detected." />
     <MESSAGE value="Refactor accordion and media download functionality&#10;&#10;Simplified accordion-toggling logic and improved CSS for accordion-item activation. Refactored media download handling by removing redundant code and enhancing header-body structure alignment." />
     <MESSAGE value="Refactor media handling and messaging&#10;&#10;Removed redundant VideoItem type and replaced with MediaItem. Updated naming conventions for media types and integrated UUID for elements. Enhanced media messaging structure to streamline data handling and avoid errors." />
     <MESSAGE value="Refactor media handling and messaging&#10;&#10;Removed redundant MediaItem type and replaced it with MediaItem. Updated naming conventions for media types and integrated UUID for elements. Enhanced media messaging structure to streamline data handling and avoid errors." />
@@ -627,7 +602,8 @@
     <MESSAGE value="Delete changelog view and mapper functions&#10;&#10;Removed `changelog.html` and associated CSS. Migrated mapper functions to a new file to organize code better. This streamlined the media handling and downloading functionalities in the project." />
     <MESSAGE value="Refactor media mapping and downloading functionality&#10;&#10;Consolidated and relocated mapper functions for better code organization. Enhanced media downloading capabilities, and removed unused `changelog.html` and related CSS elements. Improved consistency and reduced redundant code." />
     <MESSAGE value="Refactor media mapping and sending logic&#10;&#10;Consolidated media mapping functions for better organization and efficiency. Simplified sendMedia function and removed redundant tab parameter. Introduced jobHash for more reliable media processing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor media mapping and sending logic&#10;&#10;Consolidated media mapping functions for better organization and efficiency. Simplified sendMedia function and removed redundant tab parameter. Introduced jobHash for more reliable media processing." />
+    <MESSAGE value="Simplify media processing and rendering logic&#10;&#10;Streamlined media mapping functions for better efficiency and clarity. Implemented new accordion structure for better user interaction and visual organization. Added duration and quality properties to video elements to improve metadata handling." />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplify media processing and rendering logic&#10;&#10;Streamlined media mapping functions for better efficiency and clarity. Implemented new accordion structure for better user interaction and visual organization. Added duration and quality properties to video elements to improve metadata handling." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
