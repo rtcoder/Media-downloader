@@ -1,3 +1,11 @@
+body.light-theme {
+    --accordionHeaderBgColor: #dadada;
+}
+
+body.dark-theme {
+    --accordionHeaderBgColor: #646464;
+}
+
 .accordion-header {
     width: 100%;
     cursor: pointer;

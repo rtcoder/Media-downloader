@@ -9,6 +9,7 @@ export type MediaItemProperties = {
 }
 
 export type MediaItem = {
+  display: boolean;
   order: number;
   tabId: number;
   tabUuid: string;

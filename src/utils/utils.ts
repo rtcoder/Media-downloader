@@ -1,4 +1,4 @@
-import {ItemTypeEnum} from '../types/media-in-tabs.type';
+import {ItemTypeEnum, MediaItem} from '../types/media-in-tabs.type';
 import {getCrc32Hash} from './crc32';
 import {q} from './dom-functions';
 
@@ -44,4 +44,8 @@ export function randomStr(length = 10): string {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return result;
-};
+}
+
+export function sortOrderAsc(a: MediaItem, b: MediaItem) {
+  return a.order - b.order;
+}

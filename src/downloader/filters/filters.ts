@@ -65,11 +65,10 @@ export function initFilters() {
 }
 
 function getChip(value: string) {
-  const chip = createDivElement({class: 'chip'}, [
+  return createDivElement({class: 'chip'}, [
     createSpanElement({html: value}),
     createIconElement('close'),
   ]);
-  return chip;
 }
 
 function filtersChanged() {

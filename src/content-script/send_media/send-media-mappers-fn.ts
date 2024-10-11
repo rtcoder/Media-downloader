@@ -18,7 +18,17 @@ async function mapToFinalResultItem(item: MixedObject, type: ItemTypeEnum): Prom
   if (src.length) {
     extension = await getFileType(src);
   }
+  let srcForUuid: string = '';
+
+  if (src.length) {
+    srcForUuid = src;
+    if (src.includes('?')) {
+      srcForUuid = src.split('?')[0];
+    }
+  }
+
   return {
+    display: true,
     order: 0,
     tabUuid: '',
     tabId: -1,
@@ -28,7 +38,7 @@ async function mapToFinalResultItem(item: MixedObject, type: ItemTypeEnum): Prom
     type,
     selected: false,
     poster: item.poster ? relativeUrlToAbsolute(item.poster) : null,
-    uuid: item.uuid || getUuid(item.src),
+    uuid: item.uuid || getUuid(srcForUuid),
     properties: {
       width: 0,
       height: 0,

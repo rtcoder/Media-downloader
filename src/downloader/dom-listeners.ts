@@ -4,6 +4,8 @@ import {ItemTypeEnum} from '../types/media-in-tabs.type';
 import {createTab, setStorageValue} from '../utils/chrome-api';
 import {hide, q, setDisabled, toggleClass} from '../utils/dom-functions';
 import {downloadSelectedImages} from '../utils/download-functions';
+import {getCurrentSection} from '../utils/utils';
+import {applyFilters} from './filters/filter-fn';
 import {mediaTypes} from './media-types';
 
 
@@ -12,14 +14,16 @@ function changeToggleAllCheckbox(e: any) {
 
   let allAreChecked = true;
   let allAreUnchecked = true;
+  const type = getCurrentSection() as ItemTypeEnum;
   const mediaToDisplay = getAllMediaToDisplay();
+  const filteredMediaToDisplay = applyFilters(type, mediaToDisplay);
   let selectedCount = 0;
 
   toggleClass('.grid-item', 'checked', checked);
 
-  for (let _idx = 0; _idx < mediaToDisplay.length; _idx++) {
-    mediaToDisplay[_idx].selected = checked;
-    if (mediaToDisplay[_idx].selected) {
+  for (let _idx = 0; _idx < filteredMediaToDisplay.length; _idx++) {
+    filteredMediaToDisplay[_idx].selected = checked;
+    if (filteredMediaToDisplay[_idx].selected) {
       allAreUnchecked = false;
       selectedCount++;
     } else {

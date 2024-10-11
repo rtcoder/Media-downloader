@@ -7,17 +7,7 @@ export function relativeUrlToAbsolute(url: NullableString): NullableString {
   return url.startsWith('/') ? `${window.location.origin}${url}` : url;
 }
 
-export function mapToFullInfo(
-  src: string = '',
-  altOrElement: Element | NullableString = null,
-  poster: NullableString | undefined = undefined,
-) {
-  const info: any = {src, poster: null};
-
-  if (poster !== undefined) {
-    info.poster = poster;
-  }
-
-  return info;
+export function mapToFullInfo(src: string = '', poster: NullableString = null) {
+  return {src, poster};
 }
 

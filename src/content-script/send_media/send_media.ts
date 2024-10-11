@@ -66,6 +66,9 @@ import {mapToFinalResultArray} from './send-media-mappers-fn';
       const videoEl = createElement('video') as HTMLVideoElement;
       videoEl.addEventListener('loadedmetadata', () => {
         video.properties.quality = getQualityLabel(videoEl.videoWidth);
+        const duration = formatTime(videoEl.duration);
+        video.properties.duration = videoEl.duration;
+        video.properties.durationStr = duration;
         video.order = index;
         videoEl.remove();
         sendMedia( [video], jobHash);

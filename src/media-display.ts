@@ -1,4 +1,4 @@
-import {updateAccordionData} from './downloader/accordion';
+import {updateAccordionData} from './downloader/accordion/accordion';
 import {mediaInTabs, tabExpanded} from './media-in-tabs';
 import {ItemTypeEnum, MediaItem} from './types/media-in-tabs.type';
 import {q} from './utils/dom-functions';
@@ -17,8 +17,9 @@ export function getAllMediaToDisplay(tabUuid?: string): MediaItem[] {
 
 export function displayMedia() {
   updateAccordionData();
+  const type = getCurrentSection();
   const countAll = q('.count-all')!;
-  countAll.innerHTML = mediaInTabs.length.toString();
+  countAll.innerHTML = mediaInTabs.filter(item => item.display && item.type === type).length.toString();
 }
 
 export function setTabExpanded(tabUuid: string, value: boolean) {
