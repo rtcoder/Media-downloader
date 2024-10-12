@@ -15,6 +15,11 @@ export function getAccordionGroup(tabId: number, groupDiv: HTMLElement) {
     const accordionItem = groupDiv.querySelector(`[tab-uuid="${tabData.uuid}"]`) as HTMLElement;
     groupDiv.appendChild(getAccordionItem(tabData, accordionItem));
   });
+  const firstVisibleItem = Array.from(groupDiv.querySelectorAll('.accordion-item'))
+    .find(item => !item.hasAttribute('hidden')) as HTMLElement;
+  if (firstVisibleItem) {
+    firstVisibleItem.classList.add('first-item');
+  }
 
   return groupDiv;
 }

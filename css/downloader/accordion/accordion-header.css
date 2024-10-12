@@ -15,7 +15,7 @@ body.dark-theme {
     padding-left: 5px;
 }
 
-.accordion-item:first-child .accordion-header {
+.accordion-item.first-item .accordion-header {
     padding: 0;
 }
 

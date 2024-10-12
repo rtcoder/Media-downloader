@@ -88,6 +88,7 @@ export function getAccordionItem(tabData: TabData, accordionItem: HTMLElement) {
     ? accordionItem
     : createDivElement({class: ['accordion-item', ...(expanded ? ['active'] : [])]});
   item.setAttribute('tab-uuid', uuid);
+  item.classList.remove('first-item');
 
   const header = getAccordionHeader(item, favIconUrl, title, filteredMediaToDisplay);
   const body = getAccordionBody(item, filteredMediaToDisplay, id, uuid, isRestricted);
