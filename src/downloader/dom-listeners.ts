@@ -43,12 +43,12 @@ function updateSelectedCountText(selectedCount: number) {
   setDisabled('#download-btn', !selectedCount);
 }
 
-export function setTopContainerHeightVar() {
+export function setTopContainerHeightVar(timeout = 0) {
   setTimeout(() => {
     const topContainer = q('.top');
     const topContainerHeight = topContainer.getBoundingClientRect().height;
     document.body.style.setProperty('--topContainerHeight', `${topContainerHeight}px`);
-  }, 500);
+  }, timeout);
 }
 
 export function selectSection(name: ItemTypeEnum) {
@@ -116,5 +116,5 @@ export function setDomListeners() {
     }
   });
 
-  setTopContainerHeightVar();
+  setTopContainerHeightVar(500);
 }

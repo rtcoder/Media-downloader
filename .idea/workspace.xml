@@ -7,7 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Remove unused functions and update DOM height handling&#10;&#10;Eliminated the `changeToggleAllCheckbox` function and streamlined selection handling in `onClickItem`. Introduced `setTopContainerHeightVar` to dynamically manage the top container height, improving layout consistency.">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Fix top container height calculation delay&#10;&#10;Added a timeout delay to the `setTopContainerHeightVar` function to ensure the DOM is fully loaded before calculating the height, improving layout consistency.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,7 +162,7 @@
       <workItem from="1727376275897" duration="407000" />
       <workItem from="1727376693272" duration="174349000" />
       <workItem from="1728483803021" duration="3283000" />
-      <workItem from="1728640028971" duration="23004000" />
+      <workItem from="1728640028971" duration="23097000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -211,14 +212,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Add chrome API TypeScript definitions.&#10;&#10;Introduced TypeScript definitions for various Chrome APIs including accessibility features, actions, alarms, browser interaction, and bookmarks management. This will improve developer experience by providing proper type-checking, autocomplete, and better documentation when working with these APIs.">
-      <option name="closed" value="true" />
-      <created>1727347268527</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1727347268527</updated>
     </task>
     <task id="LOCAL-00045" summary="Add tab event listeners and media handling enhancements.&#10;&#10;Implemented event listeners for tab updates, activations, creations, and replacements to dynamically manage side panel behaviors and update media handling. Refactored message handling to better differentiate between events, adding targeted functions for improved extension responsiveness. Updated the workspace configuration to reflect these changes.">
       <option name="closed" value="true" />
@@ -548,7 +541,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728766067625</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Fix top container height calculation delay&#10;&#10;Added a timeout delay to the `setTopContainerHeightVar` function to ensure the DOM is fully loaded before calculating the height, improving layout consistency.">
+      <option name="closed" value="true" />
+      <created>1728766677121</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1728766677121</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,7 +578,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor storage and update version handling&#10;&#10;Updated storage handling functions and added a utility for retrieving the extension version. Refactored form submission logic to improve code organization and maintainability." />
     <MESSAGE value="Refactor media retrieval and messaging logic&#10;&#10;Implemented separate modules for media retrieval, messaging listeners, and DOM event handling. Introduced a new utility function for tab information retrieval and refactored existing main logic for improved code clarity and separation of concerns." />
     <MESSAGE value="Update version to 2.0.4 and changelog&#10;&#10;Incremented version to 2.0.4 in manifest.json. Updated changelog.html to reflect fixed minor bugs in the new release. Adjusted workspace.xml to include relevant changes and tasks." />
     <MESSAGE value="Update downloader and media scripts for compatibility&#10;&#10;Fixed issues with media downloading functions and enhanced compatibility with updated Chrome security policies. Added more robust error handling within downloader scripts to ensure smoother operation." />
@@ -602,7 +602,8 @@
     <MESSAGE value="Activate filters icon on changes&#10;&#10;Updated CSS to apply active color to filters icon when filters are active. Added logic to update the icon state based on filter changes, improving user feedback and interaction clarity." />
     <MESSAGE value="Make accordion headers sticky&#10;&#10;Enhanced the user experience by making accordion headers sticky as the user scrolls. This ensures that headers remain visible for better navigation. Also, removed the overflow property from accordion items and introduced a new CSS variable for top container height." />
     <MESSAGE value="Remove unused functions and update DOM height handling&#10;&#10;Eliminated the `changeToggleAllCheckbox` function and streamlined selection handling in `onClickItem`. Introduced `setTopContainerHeightVar` to dynamically manage the top container height, improving layout consistency." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove unused functions and update DOM height handling&#10;&#10;Eliminated the `changeToggleAllCheckbox` function and streamlined selection handling in `onClickItem`. Introduced `setTopContainerHeightVar` to dynamically manage the top container height, improving layout consistency." />
+    <MESSAGE value="Fix top container height calculation delay&#10;&#10;Added a timeout delay to the `setTopContainerHeightVar` function to ensure the DOM is fully loaded before calculating the height, improving layout consistency." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix top container height calculation delay&#10;&#10;Added a timeout delay to the `setTopContainerHeightVar` function to ensure the DOM is fully loaded before calculating the height, improving layout consistency." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
