@@ -6,6 +6,7 @@ import {hide, q, setDisabled, toggleClass} from '../utils/dom-functions';
 import {downloadSelectedImages} from '../utils/download-functions';
 import {getCurrentSection} from '../utils/utils';
 import {applyFilters} from './filters/filter-fn';
+import {updateFiltersIconActive} from './filters/filters';
 import {mediaTypes} from './media-types';
 
 
@@ -100,6 +101,7 @@ export function selectSection(name: ItemTypeEnum) {
   const filtersDiv = q('.filters');
   filtersDiv.classList.remove(ItemTypeEnum.IMAGE, ItemTypeEnum.AUDIO, ItemTypeEnum.VIDEO);
   filtersDiv.classList.add(name);
+  updateFiltersIconActive();
 }
 
 export function setDomListeners() {

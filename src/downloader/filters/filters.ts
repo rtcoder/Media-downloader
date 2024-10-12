@@ -2,7 +2,16 @@ import {displayMedia} from '../../media-display';
 import {getFiltersOpenValue, getFiltersValue} from '../../storage/storage-fn';
 import {ItemTypeEnum} from '../../types/media-in-tabs.type';
 import {setStorageValue} from '../../utils/chrome-api';
-import {createDivElement, createIconElement, createSpanElement, hide, q, show} from '../../utils/dom-functions';
+import {
+  createDivElement,
+  createIconElement,
+  createSpanElement,
+  hide,
+  q,
+  show,
+  toggleClass,
+} from '../../utils/dom-functions';
+import {getCurrentSection} from '../../utils/utils';
 
 const FILTERS: any = {
   minWidth: null,
@@ -73,8 +82,11 @@ function getChip(value: string) {
 
 function filtersChanged() {
   setStorageValue({filters: FILTERS});
-  console.log({FILTERS});
+  updateFiltersIconActive();
   displayMedia();
+}
+export function updateFiltersIconActive(){
+  toggleClass('.open-filters', 'active-filters', isFiltered(getCurrentSection()));
 }
 
 function initFiltersListeners() {

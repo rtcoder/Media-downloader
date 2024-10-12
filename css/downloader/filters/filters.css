@@ -29,6 +29,10 @@ body.dark-theme {
     pointer-events: all;
 }
 
+.filters > .x-icon.open-filters.active-filters {
+    color: var(--activeColor);
+}
+
 .filters .filters-content:not([hidden]) + .open-filters {
     display: none;
 }
@@ -37,6 +41,7 @@ body.dark-theme {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 10px;
 }
 
 .filters .close-filters {
@@ -60,5 +65,5 @@ body.dark-theme {
 .label-group .group {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 5px;
 }

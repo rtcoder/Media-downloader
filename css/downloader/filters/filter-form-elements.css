@@ -14,7 +14,7 @@
     text-align: center;
 }
 
-.filters .input-pair .title {
+.filters :is(.input-pair, .group) .title {
     width: 40px;
     user-select: none;
 }
@@ -38,4 +38,5 @@
 .filters .group select {
     border: 1px solid var(--fontColor2);
     user-select: none;
+    min-width: 75px;
 }
