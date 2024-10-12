@@ -8,7 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Remove unused functions and update DOM height handling&#10;&#10;Eliminated the `changeToggleAllCheckbox` function and streamlined selection handling in `onClickItem`. Introduced `setTopContainerHeightVar` to dynamically manage the top container height, improving layout consistency.">
-      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/accordion.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +161,7 @@
       <workItem from="1727376275897" duration="407000" />
       <workItem from="1727376693272" duration="174349000" />
       <workItem from="1728483803021" duration="3283000" />
-      <workItem from="1728640028971" duration="22414000" />
+      <workItem from="1728640028971" duration="23004000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -211,14 +211,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00043" summary="    Add tab event listeners and support conditional media handling.&#10;&#10;Implemented event listeners for tab updates, activations, creations, and replacements to dynamically handle side panel behaviors and media updates. Refactored message handling to distinguish between different events and added relevant functions for each case, enhancing the extension's responsiveness to tab state changes.">
-      <option name="closed" value="true" />
-      <created>1727266564651</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1727266564651</updated>
     </task>
     <task id="LOCAL-00044" summary="Add chrome API TypeScript definitions.&#10;&#10;Introduced TypeScript definitions for various Chrome APIs including accessibility features, actions, alarms, browser interaction, and bookmarks management. This will improve developer experience by providing proper type-checking, autocomplete, and better documentation when working with these APIs.">
       <option name="closed" value="true" />
@@ -548,7 +540,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728765967163</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="Remove unused functions and update DOM height handling&#10;&#10;Eliminated the `changeToggleAllCheckbox` function and streamlined selection handling in `onClickItem`. Introduced `setTopContainerHeightVar` to dynamically manage the top container height, improving layout consistency.">
+      <option name="closed" value="true" />
+      <created>1728766067625</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1728766067625</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

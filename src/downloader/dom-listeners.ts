@@ -44,9 +44,11 @@ function updateSelectedCountText(selectedCount: number) {
 }
 
 export function setTopContainerHeightVar() {
-  const topContainer = q('.top');
-  const topContainerHeight = topContainer.getBoundingClientRect().height;
-  document.body.style.setProperty('--topContainerHeight', `${topContainerHeight}px`);
+  setTimeout(() => {
+    const topContainer = q('.top');
+    const topContainerHeight = topContainer.getBoundingClientRect().height;
+    document.body.style.setProperty('--topContainerHeight', `${topContainerHeight}px`);
+  }, 500);
 }
 
 export function selectSection(name: ItemTypeEnum) {
