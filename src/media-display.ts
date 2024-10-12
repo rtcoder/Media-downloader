@@ -1,14 +1,14 @@
 import {updateAccordionData} from './downloader/accordion/accordion';
 import {mediaInTabs, tabExpanded} from './media-in-tabs';
+import {NullableString} from './types/common.type';
 import {ItemTypeEnum, MediaItem} from './types/media-in-tabs.type';
-import {q} from './utils/dom-functions';
-import {getCurrentSection} from './utils/utils';
 
 
-export function getAllMediaToDisplay(tabUuid?: string): MediaItem[] {
-  const type = getCurrentSection() as ItemTypeEnum;
-
-  let data = mediaInTabs.filter(item => item.type === type);
+export function getAllMediaToDisplay(tabUuid?: NullableString, type?: ItemTypeEnum | null): MediaItem[] {
+  let data = mediaInTabs;
+  if (type) {
+    data = data.filter(item => item.type === type);
+  }
   if (tabUuid) {
     data = data.filter(mediaItem => mediaItem.tabUuid === tabUuid);
   }

@@ -21,6 +21,11 @@ function onClickItem(target: any) {
   }
   mediaInTabs[itemIndexInMedia].selected = newValue;
 
+
+  updateSelectedCountText();
+}
+
+function updateSelectedCountText() {
   let allAreUnchecked = true;
   const mediaToDisplay = getAllMediaToDisplay();
   let selectedCount = 0;
@@ -31,11 +36,6 @@ function onClickItem(target: any) {
       selectedCount++;
     }
   }
-
-  updateSelectedCountText(selectedCount);
-}
-
-function updateSelectedCountText(selectedCount: number) {
   q('#download-btn .selected-count')!.innerHTML = selectedCount > 0
     ? `(${selectedCount})`
     : '';
@@ -65,6 +65,7 @@ export function selectSection(name: ItemTypeEnum) {
   filtersDiv.classList.add(name);
   updateFiltersIconActive();
   setTopContainerHeightVar();
+  updateSelectedCountText();
 }
 
 export function setDomListeners() {

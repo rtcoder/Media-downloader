@@ -80,7 +80,7 @@ function getAccordionBody(accordionItem: HTMLElement, items: MediaItem[], tabId:
 export function getAccordionItem(tabData: TabData, accordionItem: HTMLElement) {
   const {title, uuid, id, favIconUrl, isRestricted} = tabData;
   const type = getCurrentSection();
-  const mediaToDisplay = getAllMediaToDisplay(uuid);
+  const mediaToDisplay = getAllMediaToDisplay(uuid, type);
   const filteredMediaToDisplay = applyFilters(type, mediaToDisplay);
 
   const expanded = isTabExpanded(uuid);
