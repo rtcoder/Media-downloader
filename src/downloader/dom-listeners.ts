@@ -4,44 +4,9 @@ import {ItemTypeEnum} from '../types/media-in-tabs.type';
 import {createTab, setStorageValue} from '../utils/chrome-api';
 import {hide, q, setDisabled, toggleClass} from '../utils/dom-functions';
 import {downloadSelectedImages} from '../utils/download-functions';
-import {getCurrentSection} from '../utils/utils';
-import {applyFilters} from './filters/filter-fn';
 import {updateFiltersIconActive} from './filters/filters';
 import {mediaTypes} from './media-types';
 
-
-function changeToggleAllCheckbox(e: any) {
-  const {checked} = e.target;
-
-  let allAreChecked = true;
-  let allAreUnchecked = true;
-  const type = getCurrentSection() as ItemTypeEnum;
-  const mediaToDisplay = getAllMediaToDisplay();
-  const filteredMediaToDisplay = applyFilters(type, mediaToDisplay);
-  let selectedCount = 0;
-
-  toggleClass('.grid-item', 'checked', checked);
-
-  for (let _idx = 0; _idx < filteredMediaToDisplay.length; _idx++) {
-    filteredMediaToDisplay[_idx].selected = checked;
-    if (filteredMediaToDisplay[_idx].selected) {
-      allAreUnchecked = false;
-      selectedCount++;
-    } else {
-      allAreChecked = false;
-    }
-  }
-
-  updateSelectedCountText(selectedCount);
-
-  const toggle_all_checkbox = q('#toggle_all_checkbox') as HTMLInputElement;
-  toggle_all_checkbox.indeterminate = !(allAreChecked || allAreUnchecked);
-  if (allAreChecked) {
-    toggle_all_checkbox.checked = true;
-  } else if (allAreUnchecked) {
-    toggle_all_checkbox.checked = false;
-  }
-}
 
 function onClickItem(target: any) {
   const gridItem = target.closest('.grid-item');
@@ -56,7 +21,6 @@ function onClickItem(target: any) {
   }
   mediaInTabs[itemIndexInMedia].selected = newValue;
 
-  let allAreChecked = true;
   let allAreUnchecked = true;
   const mediaToDisplay = getAllMediaToDisplay();
   let selectedCount = 0;
@@ -65,20 +29,10 @@ function onClickItem(target: any) {
     if (mediaToDisplay[_idx].selected) {
       allAreUnchecked = false;
       selectedCount++;
-    } else {
-      allAreChecked = false;
     }
   }
 
   updateSelectedCountText(selectedCount);
-
-  const toggle_all_checkbox = q('#toggle_all_checkbox') as HTMLInputElement;
-  toggle_all_checkbox.indeterminate = !(allAreChecked || allAreUnchecked);
-  if (allAreChecked) {
-    toggle_all_checkbox.checked = true;
-  } else if (allAreUnchecked) {
-    toggle_all_checkbox.checked = false;
-  }
 }
 
 function updateSelectedCountText(selectedCount: number) {
@@ -87,6 +41,12 @@ function updateSelectedCountText(selectedCount: number) {
     : '';
 
   setDisabled('#download-btn', !selectedCount);
+}
+
+export function setTopContainerHeightVar() {
+  const topContainer = q('.top');
+  const topContainerHeight = topContainer.getBoundingClientRect().height;
+  document.body.style.setProperty('--topContainerHeight', `${topContainerHeight}px`);
 }
 
 export function selectSection(name: ItemTypeEnum) {
@@ -102,6 +62,7 @@ export function selectSection(name: ItemTypeEnum) {
   filtersDiv.classList.remove(ItemTypeEnum.IMAGE, ItemTypeEnum.AUDIO, ItemTypeEnum.VIDEO);
   filtersDiv.classList.add(name);
   updateFiltersIconActive();
+  setTopContainerHeightVar();
 }
 
 export function setDomListeners() {
@@ -153,5 +114,5 @@ export function setDomListeners() {
     }
   });
 
-  q('#toggle_all_checkbox')!.addEventListener('change', changeToggleAllCheckbox);
+  setTopContainerHeightVar();
 }

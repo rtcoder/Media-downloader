@@ -12,6 +12,7 @@ import {
   toggleClass,
 } from '../../utils/dom-functions';
 import {getCurrentSection} from '../../utils/utils';
+import {setTopContainerHeightVar} from '../dom-listeners';
 
 const FILTERS: any = {
   minWidth: null,
@@ -131,11 +132,13 @@ function initFiltersListeners() {
     if (target.matches('.filters .x-icon.open-filters')) {
       show('.filters .filters-content');
       setStorageValue({filtersOpen: true});
+      setTopContainerHeightVar()
       return;
     }
     if (target.matches('.filters .close-filters')) {
       hide('.filters .filters-content');
       setStorageValue({filtersOpen: false});
+      setTopContainerHeightVar()
       return;
     }
     if (target.matches('.chip .x-icon')) {

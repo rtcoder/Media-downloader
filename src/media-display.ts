@@ -17,9 +17,6 @@ export function getAllMediaToDisplay(tabUuid?: string): MediaItem[] {
 
 export function displayMedia() {
   updateAccordionData();
-  const type = getCurrentSection();
-  const countAll = q('.count-all')!;
-  countAll.innerHTML = mediaInTabs.filter(item => item.display && item.type === type).length.toString();
 }
 
 export function setTabExpanded(tabUuid: string, value: boolean) {
