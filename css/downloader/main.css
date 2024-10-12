@@ -11,6 +11,7 @@ body {
     background-color: var(--bgColor);
     min-height: 150px;
     --imageSize: 120px;
+    --topContainerHeight: 110px;
 }
 
 main {
