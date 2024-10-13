@@ -1,5 +1,6 @@
 body.light-theme {
     --activeColor: #3498db;
+    --dangerColor: #d11f2f;
     --activeColorHover: #2980b9;
     --fontColor: #333;
     --fontColor2: #555;
@@ -12,6 +13,7 @@ body.light-theme {
 
 body.dark-theme {
     --activeColor: #1f64b2;
+    --dangerColor: #b21f2b;
     --activeColorHover: #5694be;
     --fontColor: #eee;
     --fontColor2: #ddd;

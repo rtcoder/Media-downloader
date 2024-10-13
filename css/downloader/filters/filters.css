@@ -22,11 +22,10 @@ body.dark-theme {
 }
 
 .filters > .x-icon.open-filters {
-    position: absolute;
-    top: 0;
-    right: 10px;
     cursor: pointer;
     pointer-events: all;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .filters > .x-icon.open-filters.active-filters {
@@ -39,21 +38,39 @@ body.dark-theme {
 
 .filters .filters-content {
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 10px;
 }
 
-.filters .close-filters {
+.filters .filters-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    font-variant: small-caps;
+}
+
+.filters-buttons :is(.close-filters, .reset-filters) {
     display: flex;
     flex-direction: row;
     gap: 5px;
-    background: var(--activeColor);
-    color: var(--closeFiltersColor);
     cursor: pointer;
     user-select: none;
     justify-content: center;
     align-items: center;
+    padding: 5px;
+}
+
+.filters-buttons .close-filters {
+    background: var(--activeColor);
+    color: var(--closeFiltersColor);
+}
+
+.filters-buttons .reset-filters {
+    background: var(--dangerColor);
+    color: var(--closeFiltersColor);
 }
 
 .label-group {

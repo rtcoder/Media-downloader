@@ -28,16 +28,14 @@ const FILTERS: any = {
 function collectFilterValues() {
   ['minWidth', 'maxWidth', 'minHeight', 'maxHeight'].forEach((key: string) => {
     const input = q(`input#${key}`) as HTMLInputElement;
-    const value = FILTERS[key];
-    if (value) {
-      input.value = value;
-    }
+    input.value = FILTERS[key];
   });
   ['imageType', 'videoQuality', 'videoType', 'audioType'].forEach((key: string) => {
     const select = q(`select#${key}`) as HTMLSelectElement;
     const values = FILTERS[key];
     const chips = select.closest('.label-group')!.querySelector('.chips')!;
 
+    chips.innerHTML = '';
     values.forEach((val: string) => {
       const chip = getChip(val);
       chips.appendChild(chip);
@@ -86,12 +84,30 @@ function filtersChanged() {
   updateFiltersIconActive();
   displayMedia();
 }
-export function updateFiltersIconActive(){
+
+export function updateFiltersIconActive() {
   toggleClass('.open-filters', 'active-filters', isFiltered(getCurrentSection()));
+}
+
+function resetFilters() {
+  const type = getCurrentSection();
+  const keys = {
+    [ItemTypeEnum.AUDIO]: ['audioType'],
+    [ItemTypeEnum.IMAGE]: ['minWidth', 'maxWidth', 'minHeight', 'maxHeight', 'imageType'],
+    [ItemTypeEnum.VIDEO]: ['videoQuality', 'videoType'],
+  };
+  keys[type].forEach(key => {
+    FILTERS[key] = Array.isArray(FILTERS[key])
+      ? []
+      : null;
+  });
+  filtersChanged();
+  collectFilterValues();
 }
 
 function initFiltersListeners() {
   const filtersDiv = q('.filters');
+
   filtersDiv.addEventListener('change', e => {
     const target: any = e.target;
     if (target.matches('select')) {
@@ -129,18 +145,26 @@ function initFiltersListeners() {
 
   filtersDiv.addEventListener('click', e => {
     const target: any = e.target;
+
     if (target.matches('.filters .x-icon.open-filters')) {
       show('.filters .filters-content');
       setStorageValue({filtersOpen: true});
-      setTopContainerHeightVar()
+      setTopContainerHeightVar();
       return;
     }
+
     if (target.matches('.filters .close-filters')) {
       hide('.filters .filters-content');
       setStorageValue({filtersOpen: false});
-      setTopContainerHeightVar()
+      setTopContainerHeightVar();
       return;
     }
+
+    if (target.matches('.filters .reset-filters')) {
+      resetFilters();
+      return;
+    }
+
     if (target.matches('.chip .x-icon')) {
       const chipValue = target.parentElement.querySelector('span').textContent;
       const filterKey = target.closest('.label-group').querySelector('select').id;
@@ -154,7 +178,6 @@ function initFiltersListeners() {
       return;
     }
   });
-
 }
 
 export function getFilters() {
