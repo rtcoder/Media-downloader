@@ -7,14 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Increase gap in filters and hide empty chips&#10;&#10;Adjusted the CSS gap property from 5px to 10px for better spacing in filter sections and label groups. Introduced a rule to hide chip containers when they are empty, improving overall layout cleanliness.">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Optimize image extraction and filtering logic&#10;&#10;Improved the background image extraction by refining CSS rule filtering and eliminating duplicates. Enhanced the main media type filters to increase accuracy and performance, resulting in a more efficient media sending process.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/content-script/extractors-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/extractors-fn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/send_media/send-media-mappers-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/send_media/send-media-mappers-fn.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content-script/filters-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/filters-fn.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +167,7 @@
       <workItem from="1727376275897" duration="407000" />
       <workItem from="1727376693272" duration="174349000" />
       <workItem from="1728483803021" duration="3283000" />
-      <workItem from="1728640028971" duration="32776000" />
+      <workItem from="1728640028971" duration="37052000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -217,14 +217,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Update media selection and download handling&#10;&#10;Enhanced media selection logic and updated event handling for media items in the downloader. Added functionality for individual item downloads and improved checkbox state management to reflect correct selection status.">
-      <option name="closed" value="true" />
-      <created>1727636732111</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1727636732111</updated>
     </task>
     <task id="LOCAL-00051" summary="Remove unused functions and fix code formatting&#10;&#10;Deleted unused utility functions `_dispatchEvent` and `hasClass` from `utils.ts` and `dom-functions.ts`. Corrected a formatting issue in `main.ts` for better code readability and maintainability.">
       <option name="closed" value="true" />
@@ -554,7 +546,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728837484396</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Optimize image extraction and filtering logic&#10;&#10;Improved the background image extraction by refining CSS rule filtering and eliminating duplicates. Enhanced the main media type filters to increase accuracy and performance, resulting in a more efficient media sending process.">
+      <option name="closed" value="true" />
+      <created>1728844581203</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1728844581203</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,7 +583,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Import grid.css in accordion-body.css&#10;&#10;Moved grid.css import from main.css to accordion-body.css to ensure proper styling. This helps in maintaining modularity and ensuring each component imports only its necessary styles." />
     <MESSAGE value="Add thumbnail.css and update grid.css&#10;&#10;Separated thumbnail-specific styles into a new thumbnail.css file. Updated grid.css to import thumbnail.css, enhancing modularity and maintainability of the CSS." />
     <MESSAGE value="Enhance media data extraction and sending logic&#10;&#10;Refactor media data extraction to include dimensions, quality, and duration for images, videos, and audios. Introduce a sendMedia function for unified message handling. Adjust mappers-fn.ts to support new media properties." />
     <MESSAGE value="Remove dual-range slider component&#10;&#10;Eliminate unused dual-range slider web component from `downloader.html` and the project. This cleanup enhances maintainability by removing redundant code and dependencies." />
@@ -608,7 +607,8 @@
     <MESSAGE value="Update media display filtering and selected count handling&#10;&#10;Passed an additional type parameter to `getAllMediaToDisplay` for accurate media filtering. Consolidated and improved selected count updates by simplifying function calls and adding a new helper function." />
     <MESSAGE value="Update version to 2.1.7 and changelog&#10;&#10;Incremented version to 2.1.7 in `manifest.json`. Updated changelog.html with the latest changes to layout and usability, filter icon color, and selected item handling." />
     <MESSAGE value="Increase gap in filters and hide empty chips&#10;&#10;Adjusted the CSS gap property from 5px to 10px for better spacing in filter sections and label groups. Introduced a rule to hide chip containers when they are empty, improving overall layout cleanliness." />
-    <option name="LAST_COMMIT_MESSAGE" value="Increase gap in filters and hide empty chips&#10;&#10;Adjusted the CSS gap property from 5px to 10px for better spacing in filter sections and label groups. Introduced a rule to hide chip containers when they are empty, improving overall layout cleanliness." />
+    <MESSAGE value="Optimize image extraction and filtering logic&#10;&#10;Improved the background image extraction by refining CSS rule filtering and eliminating duplicates. Enhanced the main media type filters to increase accuracy and performance, resulting in a more efficient media sending process." />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimize image extraction and filtering logic&#10;&#10;Improved the background image extraction by refining CSS rule filtering and eliminating duplicates. Enhanced the main media type filters to increase accuracy and performance, resulting in a more efficient media sending process." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

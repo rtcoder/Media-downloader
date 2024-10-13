@@ -1,5 +1,4 @@
 import {NullableString} from '../types/common.type';
-import {MediaItem, QuickMediaItem} from '../types/media-in-tabs.type';
 import {audioRegex, imageRegex, videoRegex} from './regex-pattern';
 
 export function isNotYouTubeLink({src}: { src: string }) {
@@ -14,15 +13,15 @@ export function isNotEmpty({src}: { src: NullableString }) {
 }
 
 export function isImageURL(url: string) {
-  return url.startsWith('data:image') || imageRegex.test(url);
+  return url.length && url.startsWith('data:image') || imageRegex.test(url);
 }
 
 export function isVideoURL(url: string) {
-  return url.startsWith('data:video') || videoRegex.test(url);
+  return url.length && url.startsWith('data:video') || videoRegex.test(url);
 }
 
 export function isAudioURL(url: string) {
-  return url.startsWith('data:audio') || audioRegex.test(url);
+  return url.length && url.startsWith('data:audio') || audioRegex.test(url);
 }
 
 export function removeDuplicateOrEmpty<T extends { src: string }>(data: T[]): T[] {

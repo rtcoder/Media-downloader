@@ -3,6 +3,22 @@ import {qAll} from '../utils/dom-functions';
 import {isAudioURL, isImageURL, isNotEmpty, isNotYouTubeLink, isVideoURL} from './filters-fn';
 import {mapToFullInfo} from './mappers-fn';
 
+const imageStyleProperties = [
+  'background',
+  'backgroundImage',
+  'mask',
+  'maskImage',
+  'borderImage',
+  'borderImageSource',
+  'listStyle',
+  'listStyleImage',
+  'cursor',
+  'clipPath',
+  'content',
+  'filter',
+  'shapeOutside',
+];
+
 function extractImageFromElement(element: Element) {
   if (element.tagName.toLowerCase() === 'img') {
     const src = getSrcFromElement(element);
@@ -16,23 +32,46 @@ function extractImageFromElement(element: Element) {
     }
   }
 
-  const backgroundImage = window.getComputedStyle(element).backgroundImage;
-  if (backgroundImage) {
-    const parsedURL = extractURLFromStyle(backgroundImage);
-    if (isImageURL(parsedURL)) {
-      return mapToFullInfo(parsedURL);
+  if (element.tagName.toLowerCase() === 'object') {
+    const data = (element as HTMLAnchorElement).getAttribute('data') || '';
+    if (isImageURL(data)) {
+      return mapToFullInfo(data);
     }
   }
 
-  return mapToFullInfo();
+  if (element.tagName.toLowerCase() === 'embed') {
+    const src = (element as HTMLAnchorElement).getAttribute('src') || '';
+    if (isImageURL(src)) {
+      return mapToFullInfo(src);
+    }
+  }
+
+  if (element.tagName.toLowerCase() === 'picture') {
+    const sourceElements = element.querySelectorAll('source');
+    if (sourceElements.length) {
+      return Array.from(sourceElements)
+        .map(el => mapToFullInfo(el.getAttribute('srcset') || ''));
+    }
+    return mapToFullInfo();
+  }
+
+  const style = window.getComputedStyle(element) as any;
+  return imageStyleProperties.map((key: string) => style[key])
+    .filter(isImageURL)
+    .map(url => mapToFullInfo(url));
 }
 
 function extractVideoFromElement(element: Element) {
   if (element.tagName.toLowerCase() === 'video') {
-    const sourceElement = element.querySelector('source');
-    const src = sourceElement
-      ? getSrcFromElement(sourceElement)
-      : getSrcFromElement(element);
+    const sourceElements = element.querySelectorAll('source');
+    if (sourceElements.length) {
+      return Array.from(sourceElements)
+        .map(el => {
+          const src = getSrcFromElement(el);
+          return mapToFullInfo(src, getPosterFromVideoElement(element));
+        });
+    }
+    const src = getSrcFromElement(element);
     return mapToFullInfo(src, getPosterFromVideoElement(element));
   }
 
@@ -40,6 +79,20 @@ function extractVideoFromElement(element: Element) {
     const href = (element as HTMLAnchorElement).href;
     if (isVideoURL(href)) {
       return mapToFullInfo(href, null);
+    }
+  }
+
+  if (element.tagName.toLowerCase() === 'object') {
+    const data = (element as HTMLAnchorElement).getAttribute('data') || '';
+    if (isVideoURL(data)) {
+      return mapToFullInfo(data);
+    }
+  }
+
+  if (element.tagName.toLowerCase() === 'embed') {
+    const src = (element as HTMLAnchorElement).getAttribute('src') || '';
+    if (isVideoURL(src)) {
+      return mapToFullInfo(src);
     }
   }
   return mapToFullInfo('', null);
@@ -58,6 +111,20 @@ function extractAudioFromElement(element: Element) {
     const href = (element as HTMLAnchorElement).href;
     if (isAudioURL(href)) {
       return mapToFullInfo(href);
+    }
+  }
+
+  if (element.tagName.toLowerCase() === 'object') {
+    const data = (element as HTMLAnchorElement).getAttribute('data') || '';
+    if (isAudioURL(data)) {
+      return mapToFullInfo(data);
+    }
+  }
+
+  if (element.tagName.toLowerCase() === 'embed') {
+    const src = (element as HTMLAnchorElement).getAttribute('src') || '';
+    if (isAudioURL(src)) {
+      return mapToFullInfo(src);
     }
   }
   return mapToFullInfo();
@@ -91,20 +158,21 @@ function getPosterFromVideoElement(element: Element) {
 export function extractDataFromTags(selectors: string, mapFn: (el: Element) => any) {
   const elements = [...qAll(selectors)];
   return elements.map(mapFn)
+    .flat()
     .filter(isNotEmpty)
     .filter(isNotYouTubeLink);
 }
 
 export function extractImagesFromTags() {
-  return extractDataFromTags('img, a, [style]', extractImageFromElement);
+  return extractDataFromTags('img, a, [style], picture, object, embed', extractImageFromElement);
 }
 
 export function extractVideosFromTags() {
-  return extractDataFromTags('video, a', extractVideoFromElement);
+  return extractDataFromTags('video, a, object, embed', extractVideoFromElement);
 }
 
 export function extractAudiosFromTags() {
-  return extractDataFromTags('audio, a', extractAudioFromElement);
+  return extractDataFromTags('audio, a, object, embed', extractAudioFromElement);
 }
 
 export function extractImagesFromStyles() {
@@ -136,7 +204,11 @@ export function extractImagesFromStyles() {
       const afterStyle = window.getComputedStyle(element, '::after');
 
       const images = [beforeStyle, afterStyle]
-        .map(style => [style.backgroundImage, style.background, style.maskImage, style.mask])
+        .map((style: any) => {
+          const arr: string[] = [];
+          imageStyleProperties.forEach(prop => arr.push(style[prop] as string));
+          return arr;
+        })
         .flat()
         .map(value => extractURLFromStyle(value))
         .filter(val => !!val)
