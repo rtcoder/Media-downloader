@@ -7,7 +7,9 @@ import {removeDuplicateOrEmpty} from '../filters-fn';
 import {relativeUrlToAbsolute} from '../mappers-fn';
 
 export async function mapToFinalResultArray(data: any[], type: ItemTypeEnum): Promise<MediaItem[]> {
-  const promises = data.map(item => mapToFinalResultItem(item, type));
+  const promises = data
+    .filter((item, index, array) => array.findIndex(it => it.src === item.src) === index)
+    .map(item => mapToFinalResultItem(item, type));
   const results = await Promise.all(promises);
   return removeDuplicateOrEmpty(results);
 }
