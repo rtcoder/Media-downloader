@@ -6,6 +6,10 @@
     flex-wrap: wrap;
 }
 
+.filters .label-group .chips:empty {
+    display: none;
+}
+
 .chips .chip {
     padding: 5px 10px;
     background-color: var(--chipBg);

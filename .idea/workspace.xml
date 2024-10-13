@@ -9,13 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Update version to 2.1.7 and changelog&#10;&#10;Incremented version to 2.1.7 in `manifest.json`. Updated changelog.html with the latest changes to layout and usability, filter icon color, and selected item handling.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/filters/filters-chips.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/filters/filters-chips.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/downloader/filters/filters-sections.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/filters/filters-sections.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/downloader/filters/filters.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/filters/filters.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/themes.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/themes.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/filters/filters.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/filters/filters.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/downloader.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/downloader.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +164,7 @@
       <workItem from="1727376275897" duration="407000" />
       <workItem from="1727376693272" duration="174349000" />
       <workItem from="1728483803021" duration="3283000" />
-      <workItem from="1728640028971" duration="26538000" />
+      <workItem from="1728640028971" duration="26862000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -218,14 +214,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00048" summary="typescript">
-      <option name="closed" value="true" />
-      <created>1727609631554</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1727609631554</updated>
     </task>
     <task id="LOCAL-00049" summary="Add background and content script bundles&#10;&#10;This commit includes the addition of the compiled background and content script bundles to the dist directory. The background script handles various browser events and updates, while the content script contains functions for extracting and processing media elements from web pages.">
       <option name="closed" value="true" />
@@ -555,7 +543,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728767742184</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="Update version to 2.1.7 and changelog&#10;&#10;Incremented version to 2.1.7 in `manifest.json`. Updated changelog.html with the latest changes to layout and usability, filter icon color, and selected item handling.">
+      <option name="closed" value="true" />
+      <created>1728837016293</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1728837016293</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
