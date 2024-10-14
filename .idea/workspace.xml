@@ -9,12 +9,15 @@
   <component name="ChangeListManager">
     <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Optimize image extraction and filtering logic&#10;&#10;Improved the background image extraction by refining CSS rule filtering and eliminating duplicates. Enhanced the main media type filters to increase accuracy and performance, resulting in a more efficient media sending process.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/extractors-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/extractors-fn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/filters-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content-script/filters-fn.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changelog/audio-filters.png" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog/images/2_1_0/audio-filters.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changelog/context-menu-download-all.png" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog/images/2_1_5/context-menu-download-all.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changelog/context-menu-option.png" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog/images/2_0_0/context-menu-option.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changelog/context-menu-quick-download.png" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog/images/2_1_5/context-menu-quick-download.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changelog/dark-light-panel.png" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog/images/2_0_0/dark-light-panel.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changelog/dark-light-popup.png" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog/images/2_0_0/dark-light-popup.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changelog/image-filters.png" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog/images/2_1_0/image-filters.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changelog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changelog/video-filters.png" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog/images/2_1_0/video-filters.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,11 +103,11 @@
       <recent name="$PROJECT_DIR$/src/content-script" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views/changelog/images/2_1_5" />
+      <recent name="$PROJECT_DIR$/views/changelog/images/2_1_0" />
+      <recent name="$PROJECT_DIR$/views/changelog/images/2_0_0" />
+      <recent name="$PROJECT_DIR$/views/changelog/images" />
       <recent name="$PROJECT_DIR$/src/downloader/accordion" />
-      <recent name="$PROJECT_DIR$/views/changelog" />
-      <recent name="$PROJECT_DIR$/src/content-script" />
-      <recent name="$PROJECT_DIR$/src/content-script/send_media" />
-      <recent name="$PROJECT_DIR$/css/downloader/filters" />
     </key>
   </component>
   <component name="RunManager" selected="npm.build">
@@ -167,7 +170,7 @@
       <workItem from="1727376275897" duration="407000" />
       <workItem from="1727376693272" duration="174349000" />
       <workItem from="1728483803021" duration="3283000" />
-      <workItem from="1728640028971" duration="37052000" />
+      <workItem from="1728640028971" duration="38348000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -217,14 +220,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Remove unused functions and fix code formatting&#10;&#10;Deleted unused utility functions `_dispatchEvent` and `hasClass` from `utils.ts` and `dom-functions.ts`. Corrected a formatting issue in `main.ts` for better code readability and maintainability.">
-      <option name="closed" value="true" />
-      <created>1727636794128</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1727636794128</updated>
     </task>
     <task id="LOCAL-00052" summary="Refactor event listeners and use utility functions&#10;&#10;Replaced direct Chrome API calls with utility functions for various browser events, improving code organization and readability. Simplified logic for handling tab updates, activations, and installations by using consistent callback methods from `chrome-api.ts`.">
       <option name="closed" value="true" />
@@ -554,7 +549,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728844581203</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="Optimize image extraction and filtering logic&#10;&#10;Improved the background image extraction by refining CSS rule filtering and eliminating duplicates. Enhanced the main media type filters to increase accuracy and performance, resulting in a more efficient media sending process.">
+      <option name="closed" value="true" />
+      <created>1728849329553</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1728849329553</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
