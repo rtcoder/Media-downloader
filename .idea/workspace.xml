@@ -7,214 +7,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Relocate changelog images to organized directories&#10;&#10;Moved various changelog images into versioned directories for better structure and easier maintenance. Updated image paths in the changelog HTML to reflect the new locations while preserving existing functionality.">
-      <change afterPath="$PROJECT_DIR$/extension/css/changelog/changelog.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/checkbox.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/common.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-body.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-header.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/grid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/thumbnail.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/changelog-link.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/download-button.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/filters/filter-form-elements.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/filters/filters-chips.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/filters/filters-sections.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/filters/filters.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/section-buttons.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/top-container.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/downloader/yt-info.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/fonts.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/options/options.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/radio.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/css/themes.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/dist/background/background.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/dist/background/background.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/dist/content-script/quick_send_media/quick_send_media.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/dist/content-script/quick_send_media/quick_send_media.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/dist/content-script/send_media/send_media.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/dist/content-script/send_media/send_media.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/dist/downloader/main.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/dist/downloader/main.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/dist/options/main.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/dist/options/main.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/dist/popup-dimensions.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/dist/theme.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/images/icon128.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/images/icon16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/images/icon48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/images/transparent.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/releases/media-downloader-2.1.8.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/background/background.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/content-script/extractors-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/content-script/file-type-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/content-script/filters-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/content-script/mappers-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/content-script/quick_send_media/quick-send-media-mappers-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/content-script/quick_send_media/quick_send_media.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/content-script/regex-pattern.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/content-script/send_media/send-media-mappers-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/content-script/send_media/send_media.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/downloader/accordion/accordion-group.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/downloader/accordion/accordion-item.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/downloader/accordion/accordion.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/downloader/accordion/grid-item-thumbnail.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/downloader/accordion/grid-item.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/downloader/dom-listeners.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/downloader/filters/filter-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/downloader/filters/filters.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/downloader/find-media.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/downloader/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/downloader/media-types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/downloader/message-listeners.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/downloader/send-media-listener.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/downloader/tab-info.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/media-display.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/media-in-tabs.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/options/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/popup-dimensions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/storage/storage-def.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/storage/storage-fn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/theme.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/types/chrome.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/types/common.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/types/dom-functions.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/types/found-media.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/types/media-in-tabs.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/types/message-event-name.enum.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/types/mixed-object.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/types/tab-data.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/utils/chrome-api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/utils/crc32.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/utils/dom-functions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/utils/download-functions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/utils/utils.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/src/utils/yt-restriction.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/views/changelog/images/2_0_0/context-menu-option.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/views/changelog/images/2_0_0/dark-light-panel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/views/changelog/images/2_0_0/dark-light-popup.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/views/changelog/images/2_1_0/audio-filters.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/views/changelog/images/2_1_0/image-filters.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/views/changelog/images/2_1_0/video-filters.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/views/changelog/images/2_1_5/context-menu-download-all.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/views/changelog/images/2_1_5/context-menu-quick-download.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/views/changelog/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/views/downloader.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/views/options.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extension/webpack.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/landing/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/landing/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Removed unused CSS files and cleaned up unused styles across the project.">
+      <change afterPath="$PROJECT_DIR$/landing/images/logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/changelog/changelog.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/checkbox.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/common.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/accordion-body.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/accordion-header.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/accordion-item.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/accordion.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/thumbnail.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/changelog-link.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/download-button.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/filters/filter-form-elements.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/filters/filters-chips.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/filters/filters-sections.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/filters/filters.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/section-buttons.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/top-container.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/downloader/yt-info.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/fonts.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/options/options.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/radio.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/themes.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/background/background.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/background/background.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/options/main.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/options/main.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/extension/dist/popup-dimensions.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/theme.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/extension/dist/theme.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/theme.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icon128.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icon16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/icon48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/transparent.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/background/background.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/extractors-fn.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/file-type-fn.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/filters-fn.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/mappers-fn.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/quick_send_media/quick-send-media-mappers-fn.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/quick_send_media/quick_send_media.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/regex-pattern.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/send_media/send-media-mappers-fn.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content-script/send_media/send_media.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/accordion/accordion-group.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/accordion/accordion-item.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/accordion/accordion.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/accordion/grid-item-thumbnail.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/accordion/grid-item.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/filters/filter-fn.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/filters/filters.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/find-media.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/media-types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/message-listeners.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/send-media-listener.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/downloader/tab-info.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/media-display.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/media-in-tabs.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/options/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/popup-dimensions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/storage/storage-def.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/storage/storage-fn.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/chrome.type.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/common.type.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/dom-functions.type.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/found-media.type.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/media-in-tabs.type.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/message-event-name.enum.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/mixed-object.type.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/tab-data.type.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/chrome-api.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/crc32.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/dom-functions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/download-functions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/utils.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/yt-restriction.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changelog/images/2_0_0/context-menu-option.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changelog/images/2_0_0/dark-light-panel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changelog/images/2_0_0/dark-light-popup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changelog/images/2_1_0/audio-filters.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changelog/images/2_1_0/image-filters.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changelog/images/2_1_0/video-filters.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changelog/images/2_1_5/context-menu-download-all.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changelog/images/2_1_5/context-menu-quick-download.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changelog/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/downloader.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/options.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/changelog/changelog.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/changelog/changelog.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/checkbox.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/checkbox.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/common.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-body.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-body.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-header.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-item.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-item.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/accordion/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/accordion/thumbnail.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/thumbnail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/changelog-link.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/changelog-link.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/download-button.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/download-button.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/filters/filter-form-elements.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/filters/filter-form-elements.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/filters/filters-chips.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/filters/filters-chips.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/filters/filters-sections.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/filters/filters-sections.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/filters/filters.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/filters/filters.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/section-buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/section-buttons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/top-container.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/top-container.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/downloader/yt-info.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/yt-info.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/fonts.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/fonts.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/options/options.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/options/options.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/radio.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/radio.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/css/themes.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/themes.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/dist/downloader/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/extension/dist/downloader/main.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/dist/downloader/main.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/extension/dist/downloader/main.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/src/downloader/dom-listeners.ts" beforeDir="false" afterPath="$PROJECT_DIR$/extension/src/downloader/dom-listeners.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/landing/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/landing/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/landing/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/landing/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -305,27 +128,28 @@
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "master",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/rtcoder/projekty/Private/Media-downloader",
+    "last_opened_file_path": "/Users/rtcoder/projekty/Private/Media-downloader/landing/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.build (1).executor": "Run",
     "npm.build.executor": "Run",
     "npm.start.executor": "Run",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "/Users/rtcoder/projekty/Private/Media-downloader/node_modules/typescript/lib",
+    "ts.external.directory.path": "/Users/rtcoder/projekty/Private/Media-downloader/extension/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/landing/images" />
       <recent name="$PROJECT_DIR$/src/downloader/accordion" />
       <recent name="$PROJECT_DIR$/src/types" />
       <recent name="$PROJECT_DIR$/src/content-script/quick_send_media" />
       <recent name="$PROJECT_DIR$/src/content-script/send_media" />
-      <recent name="$PROJECT_DIR$/src/content-script" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/views/changelog/images/2_1_5" />
@@ -335,7 +159,17 @@
       <recent name="$PROJECT_DIR$/src/downloader/accordion" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.build (1)">
+    <configuration name="build (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/extension/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -358,6 +192,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build (1)" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
       </list>
@@ -397,7 +232,7 @@
       <workItem from="1727376693272" duration="174349000" />
       <workItem from="1728483803021" duration="3283000" />
       <workItem from="1728640028971" duration="39669000" />
-      <workItem from="1778962091979" duration="5674000" />
+      <workItem from="1778962091979" duration="12464000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -447,14 +282,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Add YouTube download restriction handling&#10;&#10;Introduced `isRestrictedUrl` utility function and updated logic to handle YouTube download restrictions. Added relevant CSS and HTML updates to display a notification when such restrictions are detected.">
-      <option name="closed" value="true" />
-      <created>1727640022670</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1727640022670</updated>
     </task>
     <task id="LOCAL-00054" summary="Refactor accordion and media download functionality&#10;&#10;Simplified accordion-toggling logic and improved CSS for accordion-item activation. Refactored media download handling by removing redundant code and enhancing header-body structure alignment.">
       <option name="closed" value="true" />
@@ -784,7 +611,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728897377304</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="Removed unused CSS files and cleaned up unused styles across the project.">
+      <option name="closed" value="true" />
+      <created>1779016454302</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1779016454302</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -813,7 +648,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Remove dual-range slider component&#10;&#10;Eliminate unused dual-range slider web component from `downloader.html` and the project. This cleanup enhances maintainability by removing redundant code and dependencies." />
     <MESSAGE value="Refactor media filters and update version to 2.1.0&#10;&#10;Simplify and enhance filtering options for media types by reorganizing the HTML structure and adding chips for better user interaction. Additionally, implement filter data storage and" />
     <MESSAGE value="Refactor media filters and update version to 2.1.0&#10;&#10;Simplify and enhance filtering options for media types by reorganizing the HTML structure and adding chips for better user interaction. Additionally, implement filter data storage and fix some minor issues in `send-media-listener.ts`." />
     <MESSAGE value="Refactor media filters and update version to 2.1.0&#10;&#10;Simplify and enhance filtering options for media types by reorganizing the CSS structure and adding chips for better user interaction. Additionally, improve maintainability by splitting CSS files and updating paths accordingly." />
@@ -838,7 +672,8 @@
     <MESSAGE value="Optimize image extraction and filtering logic&#10;&#10;Improved the background image extraction by refining CSS rule filtering and eliminating duplicates. Enhanced the main media type filters to increase accuracy and performance, resulting in a more efficient media sending process." />
     <MESSAGE value="Optimize image extraction and filtering logic&#10;&#10;Improved the background image extraction by refining CSS rule filtering and eliminating duplicates. Enhanced the main media type filters to increase accuracy and performance, resulting in a more efficient media sending process" />
     <MESSAGE value="Relocate changelog images to organized directories&#10;&#10;Moved various changelog images into versioned directories for better structure and easier maintenance. Updated image paths in the changelog HTML to reflect the new locations while preserving existing functionality." />
-    <option name="LAST_COMMIT_MESSAGE" value="Relocate changelog images to organized directories&#10;&#10;Moved various changelog images into versioned directories for better structure and easier maintenance. Updated image paths in the changelog HTML to reflect the new locations while preserving existing functionality." />
+    <MESSAGE value="Removed unused CSS files and cleaned up unused styles across the project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unused CSS files and cleaned up unused styles across the project." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

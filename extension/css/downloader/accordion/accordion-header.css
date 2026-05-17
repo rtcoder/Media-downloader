@@ -1,85 +1,86 @@
 body.light-theme {
-    --accordionHeaderBgColor: #dadada;
+  --accordionHeaderBgColor: #dadada;
 }
 
 body.dark-theme {
-    --accordionHeaderBgColor: #646464;
+  --accordionHeaderBgColor: #646464;
 }
 
 .accordion-header {
-    width: 100%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: var(--topContainerHeight);
-    z-index: 2;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: var(--topContainerHeight);
+  z-index: 2;
 }
 
 .accordion-item.first-item .accordion-header {
-    padding: 0;
+  padding: 0;
 }
 
 .accordion-header button {
-    background-color: var(--surfaceColor);
-    border: none;
-    border-top: 1px solid var(--accordionItemBorderColor);
-    font-size: 13px;
-    text-align: left;
-    width: 100%;
-    padding: 9px 12px;
-    cursor: pointer;
-    align-items: center;
-    display: grid;
-    grid-template-columns: 20px calc(100% - 50px) 20px;
-    height: auto;
-    user-select: none;
+  background-color: var(--surfaceColor);
+  border: none;
+  border-top: 1px solid var(--accordionItemBorderColor);
+  border-bottom: 1px solid var(--accordionItemBorderColor);
+  font-size: 13px;
+  text-align: left;
+  width: 100%;
+  padding: 9px 12px;
+  cursor: pointer;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 20px calc(100% - 50px) 20px;
+  height: auto;
+  user-select: none;
 }
 
 .accordion-header button .tab-toggle {
-    display: block;
-    width: 10px;
-    height: 10px;
-    position: relative;
+  display: block;
+  width: 10px;
+  height: 10px;
+  position: relative;
 }
 
 .accordion-header button .tab-toggle::after {
-    content: '';
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid var(--fontColor);
-    border-bottom: 2px solid var(--fontColor);
-    transform: rotate(45deg);
-    margin-left: 10px;
-    transition: transform 0.3s ease;
-    position: absolute;
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--fontColor);
+  border-bottom: 2px solid var(--fontColor);
+  transform: rotate(45deg);
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+  position: absolute;
 }
 
 .accordion-header .favicon {
-    width: 16px;
-    height: 16px;
-    margin-right: 10px;
-    pointer-events: none;
-    user-select: none;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  pointer-events: none;
+  user-select: none;
 }
 
 .accordion-item.active .accordion-header button .tab-toggle::after {
-    transform: rotate(-135deg);
+  transform: rotate(-135deg);
 }
 
 .accordion-header button .tab-title {
-    color: var(--fontColor);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  color: var(--fontColor);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .accordion-header button .tab-title .tab-media-count {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .accordion-header button .tab-media-count:empty {
-    display: none;
+  display: none;
 }

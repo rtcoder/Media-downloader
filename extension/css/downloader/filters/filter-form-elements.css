@@ -1,49 +1,51 @@
 .filters .input-pair {
-    display: grid;
-    grid-template-columns: 52px minmax(0, 1fr);
-    gap: 5px;
-    align-items: center;
-    width: 100%;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 5px;
+  align-items: center;
+  width: 100%;
 }
 
 .filters .input-pair label {
-    border: 1px solid var(--fontColor2);
-    border-radius: 6px;
-    overflow: hidden;
-    background: var(--surfaceMutedColor);
+  border: 1px solid var(--fontColor2);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--surfaceMutedColor);
+  width: fit-content;
 }
 
 .filters .input-pair .unit {
-    width: 30px;
-    text-align: center;
+  width: 30px;
+  text-align: center;
 }
 
 .filters :is(.input-pair, .group) .title {
-    width: 52px;
-    user-select: none;
-    color: var(--fontColor2);
+  width: 52px;
+  user-select: none;
+  color: var(--fontColor2);
 }
 
 .filters .group input {
-    width: 88px;
-    border: none;
+  width: 88px;
+  border: none;
+  outline: none;
 }
 
 .filters .group input::-webkit-inner-spin-button {
-    display: none;
+  display: none;
 }
 
 .filters .group :is(input, select) {
-    background: none;
-    color: var(--fontColor);
-    border-radius: 0;
-    padding: 5px;
+  background: none;
+  color: var(--fontColor);
+  border-radius: 0;
+  padding: 5px;
 }
 
 .filters .group select {
-    border: 1px solid var(--fontColor2);
-    user-select: none;
-    min-width: 110px;
-    border-radius: 6px;
-    background: var(--surfaceMutedColor);
+  border: 1px solid var(--fontColor2);
+  user-select: none;
+  min-width: 110px;
+  border-radius: 6px;
+  background: var(--surfaceMutedColor);
 }

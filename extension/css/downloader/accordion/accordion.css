@@ -1,19 +1,19 @@
 @import "accordion-item.css";
 
 body.light-theme {
-    --accordionItemBorderColor: #ccc;
+  --accordionItemBorderColor: #ccc;
 }
 
 body.dark-theme {
-    --accordionItemBorderColor: #7f7f7f;
+  --accordionItemBorderColor: #333;
 }
 
 .accordion {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .accordion .accordion-group {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }

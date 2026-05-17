@@ -1,26 +1,27 @@
 .grid-item .thumbnail {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .thumbnail .x-icon {
-    width: 100%;
-    height: 100%;
-    object-fit: scale-down;
-    pointer-events: none;
-    user-select: none;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: scale-down;
-    pointer-events: none;
-    user-select: none;
-    background-position: center center;
-    background-image: url(/images/transparent.png);
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  pointer-events: none;
+  user-select: none;
+  background-position: center center;
+  background-image: url(/images/transparent.png);
 }

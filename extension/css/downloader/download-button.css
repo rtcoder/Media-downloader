@@ -1,51 +1,52 @@
 .download {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 150px;
-    gap: 8px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  background: var(--surfaceColor);
+  border-top: 1px solid var(--panelBorderColor);
+  box-shadow: 0 -2px 10px var(--panelShadowColor);
+  z-index: 1;
+
+  & #download-btn {
+    display: flex;
     align-items: center;
-    padding: 8px 10px;
-    background: var(--surfaceColor);
-    border-top: 1px solid var(--panelBorderColor);
-    box-shadow: 0 -2px 10px var(--panelShadowColor);
+    justify-content: center;
+    background: var(--activeColor);
+    color: var(--sectionButtonActiveIconColor);
+    gap: 5px;
+    min-height: 38px;
 
-    & #download-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--activeColor);
-        color: var(--sectionButtonActiveIconColor);
-        gap: 5px;
-        min-height: 38px;
-
-        &:not([disabled]):hover {
-            background-color: var(--activeColorHover);
-        }
+    &:not([disabled]):hover {
+      background-color: var(--activeColorHover);
     }
+  }
 }
 
 .selection-summary {
-    min-width: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .selection-label {
-    min-width: 88px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: var(--fontColor2);
+  min-width: 88px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--fontColor2);
 }
 
 .clear-selection {
-    width: auto;
-    min-height: 30px;
-    padding: 5px 10px;
-    background: var(--mutedControlColor);
-    color: var(--fontColor);
-    border: 1px solid var(--panelBorderColor);
+  width: auto;
+  min-height: 30px;
+  padding: 5px 10px;
+  background: var(--mutedControlColor);
+  color: var(--fontColor);
+  border: 1px solid var(--panelBorderColor);
 }

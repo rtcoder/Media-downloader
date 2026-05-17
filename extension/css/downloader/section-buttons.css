@@ -1,53 +1,53 @@
 .section-buttons {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    width: 100%;
-    gap: 6px;
-    padding: 3px;
-    border: 1px solid var(--panelBorderColor);
-    border-radius: 8px;
-    background: var(--surfaceMutedColor);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  gap: 6px;
+  padding: 3px;
+  border: 1px solid var(--panelBorderColor);
+  border-radius: 8px;
+  background: var(--surfaceMutedColor);
 }
 
 .section-buttons button {
-    background: transparent;
-    min-height: 38px;
-    outline: none;
-    color: var(--sectionButtonIconColor);
-    cursor: pointer;
-    display: grid;
-    grid-template-columns: 22px minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 8px;
-    border-radius: 6px;
-    text-align: left;
+  background: transparent;
+  min-height: 38px;
+  outline: none;
+  color: var(--sectionButtonIconColor);
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  text-align: left;
 }
 
 .section-buttons button .x-icon {
-    font-size: 19px;
+  font-size: 19px;
 }
 
 .section-buttons button .section-label {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .section-buttons button .items-count {
-    min-width: 22px;
-    padding: 1px 6px;
-    border-radius: 999px;
-    background: var(--surfaceColor);
-    color: var(--fontColor);
-    font-size: 11px;
-    text-align: center;
-    user-select: none;
-    pointer-events: none;
+  min-width: 22px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--surfaceColor);
+  color: var(--fontColor);
+  font-size: 11px;
+  text-align: center;
+  user-select: none;
+  pointer-events: none;
 }
 
 .section-buttons button.selected {
-    background: var(--activeColor);
-    color: var(--sectionButtonActiveIconColor);
-    box-shadow: 0 1px 4px var(--panelShadowColor);
+  background: var(--activeColor);
+  color: var(--sectionButtonActiveIconColor);
+  box-shadow: 0 1px 4px var(--panelShadowColor);
 }

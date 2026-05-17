@@ -1,27 +1,27 @@
 @import "grid.css";
 
 .accordion-body {
-    width: 100%;
-    grid-template-columns: repeat(auto-fill, minmax(var(--imageSize), 1fr));
-    grid-template-rows: auto;
-    gap: 10px;
-    position: relative;
-    padding: 12px;
-    background-color: var(--bgColor);
-    display: none;
-    border-bottom: 1px solid var(--accordionItemBorderColor);
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(var(--imageSize), 1fr));
+  grid-template-rows: auto;
+  gap: 10px;
+  position: relative;
+  padding: 12px;
+  background-color: var(--bgColor);
+  display: none;
+  border-bottom: 1px solid var(--accordionItemBorderColor);
 }
 
 .accordion-item.active .accordion-body {
-    display: grid;
+  display: grid;
 }
 
 .accordion-body.restricted {
-    grid-template-columns: 100%;
+  grid-template-columns: 100%;
 }
 
 .accordion-body .grid-item {
-    margin-bottom: 0;
-    display: flex;
-    align-items: center;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
 }

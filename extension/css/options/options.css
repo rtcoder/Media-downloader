@@ -2,70 +2,70 @@
 
 
 body {
-    color: var(--fontColor);
-    background-color: var(--bgColor);
-    line-height: 1.6;
+  color: var(--fontColor);
+  background-color: var(--bgColor);
+  line-height: 1.6;
 }
 
 label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
 }
 
 button {
-    padding: 10px;
-    font-size: 14px;
-    cursor: pointer;
-    border: none;
-    border-radius: 6px;
-    background: var(--activeColor);
-    color: var(--sectionButtonActiveIconColor);
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background: var(--activeColor);
+  color: var(--sectionButtonActiveIconColor);
 }
 
 main {
-    max-width: 720px;
-    padding: 20px;
-    margin: 0 auto;
+  max-width: 720px;
+  padding: 20px;
+  margin: 0 auto;
 }
 
 h2 {
-    margin-bottom: 12px;
-    font-size: 1.05rem;
+  margin-bottom: 12px;
+  font-size: 1.05rem;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
 }
 
 #status {
-    display: none;
+  display: none;
 }
 
 .content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
 }
 
 .settings-section {
-    padding: 16px;
-    border: 1px solid var(--panelBorderColor);
-    border-radius: 8px;
-    background: var(--surfaceColor);
-    box-shadow: 0 2px 8px var(--panelShadowColor);
+  padding: 16px;
+  border: 1px solid var(--panelBorderColor);
+  border-radius: 8px;
+  background: var(--surfaceColor);
+  box-shadow: 0 2px 8px var(--panelShadowColor);
 }
 
 .settings-section label {
-    justify-content: flex-start;
-    min-height: 38px;
-    padding: 8px 10px;
-    border: 1px solid var(--panelBorderColor);
-    border-radius: 6px;
-    background: var(--surfaceMutedColor);
+  justify-content: flex-start;
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid var(--panelBorderColor);
+  border-radius: 6px;
+  background: var(--surfaceMutedColor);
 }
