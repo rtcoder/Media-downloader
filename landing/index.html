@@ -4,19 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Media Downloader - Chrome Extension</title>
-  <meta name="description" content="Media Downloader helps you find, filter, and download images, video, and audio from web pages.">
+  <meta name="description"
+        content="Media Downloader helps you find, filter, and download images, video, and audio from web pages.">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 <header class="site-header">
   <a class="brand" href="#top" aria-label="Media Downloader">
-    <img src="../extension/images/icon48.png" alt="">
+    <img src="./images/logo.png" alt="">
     <span>Media Downloader</span>
   </a>
   <nav aria-label="Main navigation">
     <a href="#features">Features</a>
     <a href="#screens">Preview</a>
-    <a href="#install">Install</a>
+    <a href="#themes">Themes</a>
   </nav>
 </header>
 
@@ -26,10 +27,16 @@
       <p class="eyebrow">Chrome extension for images, video, and audio</p>
       <h1 id="hero-title">Media Downloader</h1>
       <p class="hero-copy">
-        Browse media found on a page, filter by format, size, and quality, then download individual files or selected batches.
+        Browse media found on a page, filter by format, size, and quality, then download individual files or selected
+        batches.
       </p>
       <div class="hero-actions">
-        <a class="primary-action" href="#install">Download package</a>
+        <a class="primary-action store-action"
+           href="https://chromewebstore.google.com/detail/media-downloader/aklijicmhlmfioogfbemefilfdffijcl"
+           target="_blank" rel="noopener">
+          <img src="./images/chrome-web-store.png" alt="">
+          <span>Chrome Web Store</span>
+        </a>
         <a class="secondary-action" href="#screens">View interface</a>
       </div>
     </div>
@@ -59,7 +66,8 @@
       <article>
         <span class="feature-icon">filter_list</span>
         <h3>Filters without dead options</h3>
-        <p>Format and quality lists are built from detected media, so you do not waste time on choices that return nothing.</p>
+        <p>Format and quality lists are built from detected media, so you do not waste time on choices that return
+          nothing.</p>
       </article>
       <article>
         <span class="feature-icon">select_all</span>
@@ -84,18 +92,50 @@
       <p class="eyebrow">Extension preview</p>
       <h2>A panel designed for scanning media lists</h2>
       <p>
-        The updated layout keeps media sections and filters at the top, results in the center, and the main download action always within reach.
+        The updated layout keeps media sections and filters at the top, results in the center, and the main download
+        action always within reach.
       </p>
     </div>
     <div class="screen-pair">
       <figure>
-        <img src="../extension/views/changelog/images/2_0_0/dark-light-popup.png" alt="Media Downloader popup in light and dark themes">
+        <img src="./images/popup-light.png" alt="Media Downloader popup in light theme">
         <figcaption>Popup for quick browsing.</figcaption>
       </figure>
       <figure>
-        <img src="../extension/views/changelog/images/2_0_0/dark-light-panel.png" alt="Media Downloader side panel">
+        <img src="./images/panel-dark.png" alt="Media Downloader side panel in dark theme">
         <figcaption>Side panel for longer sessions.</figcaption>
       </figure>
+    </div>
+  </section>
+
+  <section class="theme-section" id="themes">
+    <div class="theme-copy">
+      <p class="eyebrow">Light and dark theme</p>
+      <h2>Compare both modes in one view</h2>
+      <p>
+        Drag across the interface to see how the downloader adapts between a bright workspace and a darker browser
+        setup.
+      </p>
+    </div>
+    <div class="theme-compare" style="--split: 50%;">
+      <img class="theme-image theme-image-dark" src="./images/popup-dark.png"
+           alt="Media Downloader popup in dark theme">
+      <div class="theme-image-light-wrap">
+        <img class="theme-image theme-image-light" src="./images/popup-light.png"
+             alt="Media Downloader popup in light theme">
+      </div>
+      <div class="theme-label theme-label-dark">Dark</div>
+      <div class="theme-label theme-label-light">Light</div>
+      <div class="theme-divider" aria-hidden="true"></div>
+      <input
+          class="theme-slider"
+          type="range"
+          min="0"
+          max="100"
+          value="50"
+          aria-label="Compare light and dark theme"
+          oninput="this.parentElement.style.setProperty('--split', `${this.value}%`)"
+      >
     </div>
   </section>
 
@@ -106,15 +146,15 @@
     </div>
     <div class="filter-screens">
       <figure>
-        <img src="../extension/views/changelog/images/2_1_0/image-filters.png" alt="Image filters">
+        <img src="./images/image-filters.png" alt="Image filters">
         <figcaption>Image size and format.</figcaption>
       </figure>
       <figure>
-        <img src="../extension/views/changelog/images/2_1_0/video-filters.png" alt="Video filters">
+        <img src="./images/video-filters.png" alt="Video filters">
         <figcaption>Video format and quality.</figcaption>
       </figure>
       <figure>
-        <img src="../extension/views/changelog/images/2_1_0/audio-filters.png" alt="Audio filters">
+        <img src="./images/audio-filters.png" alt="Audio filters">
         <figcaption>Audio format.</figcaption>
       </figure>
     </div>
@@ -122,28 +162,19 @@
 
   <section class="context-section">
     <div class="context-media">
-      <img src="../extension/views/changelog/images/2_1_5/context-menu-download-all.png" alt="Download all media option in the context menu">
-      <img src="../extension/views/changelog/images/2_1_5/context-menu-quick-download.png" alt="Quick download option in the context menu">
+      <img src="./images/context-menu-download-all.png" alt="Download all media option in the context menu">
+      <img src="./images/context-menu-quick-download.png" alt="Quick download option in the context menu">
     </div>
     <div class="context-copy">
       <p class="eyebrow">Context menu</p>
       <h2>Download without opening the panel</h2>
       <p>
-        When you need a fast action, use the context menu to download all media from a page or quickly save a single image.
+        When you need a fast action, use the context menu to download all media from a page or quickly save a single
+        image.
       </p>
     </div>
   </section>
 
-  <section class="install-section" id="install">
-    <div class="install-copy">
-      <p class="eyebrow">Release 2.1.8</p>
-      <h2>Ready to package and publish</h2>
-      <p>
-        The Chrome Web Store package should include `manifest.json` at the root of the archive, along with the `css`, `dist`, `images`, and `views` folders.
-      </p>
-    </div>
-    <a class="primary-action" href="../extension/releases/media-downloader-2.1.8.zip">Download ZIP</a>
-  </section>
 </main>
 
 <footer>

@@ -7,35 +7,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Removed unused CSS files and cleaned up unused styles across the project.">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Updated source map for main.bundle.js in downloader">
+      <change afterPath="$PROJECT_DIR$/landing/images/audio-filters.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/landing/images/chrome-web-store.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/landing/images/context-menu-download-all.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/landing/images/context-menu-quick-download.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/landing/images/image-filters.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/landing/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/landing/images/panel-dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/landing/images/panel-light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/landing/images/popup-dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/landing/images/popup-light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/landing/images/video-filters.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/changelog/changelog.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/changelog/changelog.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/checkbox.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/checkbox.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/common.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-body.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-body.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-header.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-item.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion-item.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/accordion.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/accordion/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/accordion/thumbnail.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/accordion/thumbnail.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/changelog-link.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/changelog-link.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/download-button.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/download-button.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/filters/filter-form-elements.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/filters/filter-form-elements.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/filters/filters-chips.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/filters/filters-chips.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/filters/filters-sections.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/filters/filters-sections.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/filters/filters.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/filters/filters.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/section-buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/section-buttons.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/top-container.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/top-container.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/downloader/yt-info.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/downloader/yt-info.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/fonts.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/fonts.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/options/options.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/options/options.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/radio.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/radio.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/css/themes.css" beforeDir="false" afterPath="$PROJECT_DIR$/extension/css/themes.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/dist/downloader/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/extension/dist/downloader/main.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/dist/downloader/main.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/extension/dist/downloader/main.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/src/downloader/dom-listeners.ts" beforeDir="false" afterPath="$PROJECT_DIR$/extension/src/downloader/dom-listeners.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/landing/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/landing/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/landing/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/landing/styles.css" afterDir="false" />
     </list>
@@ -232,7 +216,7 @@
       <workItem from="1727376693272" duration="174349000" />
       <workItem from="1728483803021" duration="3283000" />
       <workItem from="1728640028971" duration="39669000" />
-      <workItem from="1778962091979" duration="12464000" />
+      <workItem from="1778962091979" duration="16160000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -282,30 +266,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Refactor accordion and media download functionality&#10;&#10;Simplified accordion-toggling logic and improved CSS for accordion-item activation. Refactored media download handling by removing redundant code and enhancing header-body structure alignment.">
-      <option name="closed" value="true" />
-      <created>1727640894304</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1727640894304</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Refactor media handling and messaging&#10;&#10;Removed redundant VideoItem type and replaced with MediaItem. Updated naming conventions for media types and integrated UUID for elements. Enhanced media messaging structure to streamline data handling and avoid errors.">
-      <option name="closed" value="true" />
-      <created>1727707995917</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1727707995917</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Refactor media handling and messaging&#10;&#10;Removed redundant MediaItem type and replaced it with MediaItem. Updated naming conventions for media types and integrated UUID for elements. Enhanced media messaging structure to streamline data handling and avoid errors.">
-      <option name="closed" value="true" />
-      <created>1727805505844</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1727805505844</updated>
     </task>
     <task id="LOCAL-00057" summary="Remove chrome casting definitions&#10;&#10;Deleted `chrome-cast-index.d.ts` which contained type definitions for Google Cast API. This file was redundant and potentially causing conflicts with other type declarations, simplifying type management across the project.">
       <option name="closed" value="true" />
@@ -619,7 +579,31 @@
       <option name="project" value="LOCAL" />
       <updated>1779016454302</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Aligned indentation across CSS files for consistency.">
+      <option name="closed" value="true" />
+      <created>1779030452982</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1779030452982</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Added shift-click support to select multiple items in the downloader grid.">
+      <option name="closed" value="true" />
+      <created>1779030467928</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1779030467928</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Updated source map for main.bundle.js in downloader">
+      <option name="closed" value="true" />
+      <created>1779030475364</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1779030475364</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,10 +632,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor media filters and update version to 2.1.0&#10;&#10;Simplify and enhance filtering options for media types by reorganizing the HTML structure and adding chips for better user interaction. Additionally, implement filter data storage and" />
-    <MESSAGE value="Refactor media filters and update version to 2.1.0&#10;&#10;Simplify and enhance filtering options for media types by reorganizing the HTML structure and adding chips for better user interaction. Additionally, implement filter data storage and fix some minor issues in `send-media-listener.ts`." />
-    <MESSAGE value="Refactor media filters and update version to 2.1.0&#10;&#10;Simplify and enhance filtering options for media types by reorganizing the CSS structure and adding chips for better user interaction. Additionally, improve maintainability by splitting CSS files and updating paths accordingly." />
-    <MESSAGE value="Refactor media handling and improve filtering logic&#10;&#10;Consolidate media types and streamline processing methods, removing obsolete code. Enhance CSS for filter chips and other UI elements for better consistency and user experience." />
     <MESSAGE value="Refactor accordion CSS for improved layout and consistency&#10;&#10;Updated the accordion-header and accordion-body styles for better padding and border management. Removed redundant border styling from the accordion-item, simplifying the CSS and ensuring a more consistent UI appearance." />
     <MESSAGE value="Remove send_media script bundle&#10;&#10;Deleted `send_media.bundle.js` and its source map from the distribution folder. This cleanup helps in maintaining code quality and reducing unnecessary files." />
     <MESSAGE value="Refactor media extraction and handling&#10;&#10;Refactored media extraction functions to synchronous operations for simplicity. Updated media mapping functions to handle asynchronous file type detection." />
@@ -673,7 +653,11 @@
     <MESSAGE value="Optimize image extraction and filtering logic&#10;&#10;Improved the background image extraction by refining CSS rule filtering and eliminating duplicates. Enhanced the main media type filters to increase accuracy and performance, resulting in a more efficient media sending process" />
     <MESSAGE value="Relocate changelog images to organized directories&#10;&#10;Moved various changelog images into versioned directories for better structure and easier maintenance. Updated image paths in the changelog HTML to reflect the new locations while preserving existing functionality." />
     <MESSAGE value="Removed unused CSS files and cleaned up unused styles across the project." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unused CSS files and cleaned up unused styles across the project." />
+    <MESSAGE value="Aligned indentation across CSS files for consistency." />
+    <MESSAGE value="Updated source map for main.bundle.js" />
+    <MESSAGE value="Added shift-click support to select multiple items in the downloader grid." />
+    <MESSAGE value="Updated source map for main.bundle.js in downloader" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated source map for main.bundle.js in downloader" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
