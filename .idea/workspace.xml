@@ -7,7 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Updated README with detailed setup instructions, features, and previews. Added .idea/db-forest-config.xml for project configuration.">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Updated `docs/index.html` with SEO metadata and social sharing options for better visibility.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
     </list>
@@ -205,7 +205,7 @@
       <workItem from="1728483803021" duration="3283000" />
       <workItem from="1728640028971" duration="39669000" />
       <workItem from="1778962091979" duration="19228000" />
-      <workItem from="1779038710793" duration="1010000" />
+      <workItem from="1779038710793" duration="1285000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -255,14 +255,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Update downloader and media scripts for compatibility&#10;&#10;Fixed issues with media downloading functions and enhanced compatibility with updated Chrome security policies. Added more robust error handling within downloader scripts to ensure smoother operation.">
-      <option name="closed" value="true" />
-      <created>1728033049148</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1728033049148</updated>
     </task>
     <task id="LOCAL-00063" summary="Update downloader and media scripts for compatibility&#10;&#10;Fixed issues with media downloading functions and enhanced compatibility with updated Chrome security policies. Added more robust error handling within downloader scripts to ensure smoother operation.">
       <option name="closed" value="true" />
@@ -592,7 +584,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779038897711</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="Updated `docs/index.html` with SEO metadata and social sharing options for better visibility.">
+      <option name="closed" value="true" />
+      <created>1779039797067</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1779039797067</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -621,7 +621,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor media mapping and sending logic&#10;&#10;Consolidated media mapping functions for better organization and efficiency. Simplified sendMedia function and removed redundant tab parameter. Introduced jobHash for more reliable media processing." />
     <MESSAGE value="Simplify media processing and rendering logic&#10;&#10;Streamlined media mapping functions for better efficiency and clarity. Implemented new accordion structure for better user interaction and visual organization. Added duration and quality properties to video elements to improve metadata handling." />
     <MESSAGE value="Simplify media processing and rendering logic&#10;&#10;Streamlined media mapping functions for better efficiency and clarity. Implemented a new accordion structure for improved user interaction and visual organization. Added duration and quality properties to video elements to enhance metadata handling." />
     <MESSAGE value="Activate filters icon on changes&#10;&#10;Updated CSS to apply active color to filters icon when filters are active. Added logic to update the icon state based on filter changes, improving user feedback and interaction clarity." />
@@ -646,7 +645,8 @@
     <MESSAGE value="Updated documentation images for UI and feature previews" />
     <MESSAGE value="Cleaned up workspace tasks and adjusted changelist comments for clarity." />
     <MESSAGE value="Updated README with detailed setup instructions, features, and previews. Added .idea/db-forest-config.xml for project configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated README with detailed setup instructions, features, and previews. Added .idea/db-forest-config.xml for project configuration." />
+    <MESSAGE value="Updated `docs/index.html` with SEO metadata and social sharing options for better visibility." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated `docs/index.html` with SEO metadata and social sharing options for better visibility." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
