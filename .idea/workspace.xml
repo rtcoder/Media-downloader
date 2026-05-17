@@ -7,11 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Cleaned up workspace tasks and adjusted changelist comments for clarity.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Updated README with detailed setup instructions, features, and previews. Added .idea/db-forest-config.xml for project configuration.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/releases/media-downloader-2.1.8.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +205,7 @@
       <workItem from="1728483803021" duration="3283000" />
       <workItem from="1728640028971" duration="39669000" />
       <workItem from="1778962091979" duration="19228000" />
-      <workItem from="1779038710793" duration="151000" />
+      <workItem from="1779038710793" duration="1010000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -257,14 +255,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Update downloader and media scripts for compatibility&#10;&#10;Fixed issues with media downloading functions and enhanced compatibility with updated Chrome security policies. Added more robust error handling within downloader scripts to ensure smoother operation.">
-      <option name="closed" value="true" />
-      <created>1727986618547</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1727986618547</updated>
     </task>
     <task id="LOCAL-00062" summary="Update downloader and media scripts for compatibility&#10;&#10;Fixed issues with media downloading functions and enhanced compatibility with updated Chrome security policies. Added more robust error handling within downloader scripts to ensure smoother operation.">
       <option name="closed" value="true" />
@@ -594,7 +584,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779037372148</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="Updated README with detailed setup instructions, features, and previews. Added .idea/db-forest-config.xml for project configuration.">
+      <option name="closed" value="true" />
+      <created>1779038897711</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1779038897711</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -623,7 +621,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor media mapping and downloading functionality&#10;&#10;Consolidated and relocated mapper functions for better code organization. Enhanced media downloading capabilities, and removed unused `changelog.html` and related CSS elements. Improved consistency and reduced redundant code." />
     <MESSAGE value="Refactor media mapping and sending logic&#10;&#10;Consolidated media mapping functions for better organization and efficiency. Simplified sendMedia function and removed redundant tab parameter. Introduced jobHash for more reliable media processing." />
     <MESSAGE value="Simplify media processing and rendering logic&#10;&#10;Streamlined media mapping functions for better efficiency and clarity. Implemented new accordion structure for better user interaction and visual organization. Added duration and quality properties to video elements to improve metadata handling." />
     <MESSAGE value="Simplify media processing and rendering logic&#10;&#10;Streamlined media mapping functions for better efficiency and clarity. Implemented a new accordion structure for improved user interaction and visual organization. Added duration and quality properties to video elements to enhance metadata handling." />
@@ -648,7 +645,8 @@
     <MESSAGE value="Moved landing assets to `docs` folder for improved structure and accessibility." />
     <MESSAGE value="Updated documentation images for UI and feature previews" />
     <MESSAGE value="Cleaned up workspace tasks and adjusted changelist comments for clarity." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up workspace tasks and adjusted changelist comments for clarity." />
+    <MESSAGE value="Updated README with detailed setup instructions, features, and previews. Added .idea/db-forest-config.xml for project configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated README with detailed setup instructions, features, and previews. Added .idea/db-forest-config.xml for project configuration." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
