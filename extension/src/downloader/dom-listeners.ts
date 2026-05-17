@@ -7,21 +7,66 @@ import {downloadSelectedImages} from '../utils/download-functions';
 import {updateFiltersIconActive} from './filters/filters';
 import {mediaTypes} from './media-types';
 
+let lastClickedItemIndex: string | null = null;
 
-function onClickItem(target: any) {
-  const gridItem = target.closest('.grid-item');
-  const itemIndex = gridItem.getAttribute('data-item-idx');
-  const isChecked = gridItem.classList.contains('checked');
-  const newValue = !isChecked;
-  toggleClass(gridItem, 'checked');
-
+function setMediaItemSelected(itemIndex: string, selected: boolean) {
   const itemIndexInMedia = mediaInTabs.findIndex(obj => obj.itemIndex === itemIndex);
   if (itemIndexInMedia === -1) {
     return;
   }
-  mediaInTabs[itemIndexInMedia].selected = newValue;
 
+  mediaInTabs[itemIndexInMedia].selected = selected;
+}
 
+function setGridItemSelected(gridItem: HTMLElement, selected: boolean) {
+  const itemIndex = gridItem.getAttribute('data-item-idx');
+  if (!itemIndex) {
+    return;
+  }
+
+  toggleClass(gridItem, 'checked', selected);
+  setMediaItemSelected(itemIndex, selected);
+}
+
+function getVisibleGridItems(): HTMLElement[] {
+  return Array.from(document.querySelectorAll('.grid-item:not([hidden])')) as HTMLElement[];
+}
+
+function selectItemRange(fromItemIndex: string, toGridItem: HTMLElement): boolean {
+  const visibleGridItems = getVisibleGridItems();
+  const fromIndex = visibleGridItems.findIndex(item => item.getAttribute('data-item-idx') === fromItemIndex);
+  const toIndex = visibleGridItems.indexOf(toGridItem);
+
+  if (fromIndex === -1 || toIndex === -1) {
+    return false;
+  }
+
+  const startIndex = Math.min(fromIndex, toIndex);
+  const endIndex = Math.max(fromIndex, toIndex);
+  visibleGridItems
+    .slice(startIndex, endIndex + 1)
+    .forEach(item => setGridItemSelected(item, true));
+
+  return true;
+}
+
+function onClickItem(target: any, shiftKey = false) {
+  const gridItem = target.closest('.grid-item') as HTMLElement;
+  const itemIndex = gridItem.getAttribute('data-item-idx');
+  if (!itemIndex) {
+    return;
+  }
+
+  const rangeSelected = shiftKey && lastClickedItemIndex
+    ? selectItemRange(lastClickedItemIndex, gridItem)
+    : false;
+
+  if (!rangeSelected) {
+    const newValue = !gridItem.classList.contains('checked');
+    setGridItemSelected(gridItem, newValue);
+  }
+
+  lastClickedItemIndex = itemIndex;
   updateSelectedCountText();
 }
 
@@ -48,6 +93,7 @@ function clearSelection() {
     item.selected = false;
   });
   toggleClass('.grid-item.checked', 'checked', false);
+  lastClickedItemIndex = null;
   updateSelectedCountText();
 }
 
@@ -97,12 +143,13 @@ export function setDomListeners() {
 
     if (target.closest('.section-buttons button')) {
       selectSection(target.closest('.section-buttons button').getAttribute('data-section'));
+      lastClickedItemIndex = null;
       displayMedia();
       return;
     }
 
-    if (target.matches('.thumbnail')) {
-      onClickItem(target);
+    if (target.closest('.grid-item')) {
+      onClickItem(target, e.shiftKey);
       return;
     }
 
