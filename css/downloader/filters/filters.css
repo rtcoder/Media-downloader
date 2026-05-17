@@ -15,24 +15,38 @@ body.dark-theme {
 }
 
 .filters {
-    padding: 10px;
+    padding: 0 10px 8px;
     display: flex;
     flex-direction: column;
     position: relative;
 }
 
-.filters > .x-icon.open-filters {
+.filters > .open-filters {
+    align-self: flex-end;
+    width: 38px;
+    min-height: 32px;
+    padding: 4px;
+    background: var(--surfaceMutedColor);
+    color: var(--fontColor);
+    border: 1px solid var(--panelBorderColor);
     cursor: pointer;
     pointer-events: all;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
 }
 
-.filters > .x-icon.open-filters.active-filters {
+.filters > .open-filters.active-filters {
     color: var(--activeColor);
+    border-color: var(--activeColor);
+    background: var(--surfaceColor);
 }
 
-.filters .filters-content:not([hidden]) + .open-filters {
+.filters .filters-content:not([hidden]) ~ .open-filters {
+    display: none;
+}
+
+.filters .filters-content:not([hidden]) ~ .active-filter-strip {
     display: none;
 }
 
@@ -41,18 +55,26 @@ body.dark-theme {
     align-items: flex-start;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    padding: 10px;
+    border: 1px solid var(--panelBorderColor);
+    border-radius: 8px;
+    background: var(--surfaceColor);
+    box-shadow: 0 2px 8px var(--panelShadowColor);
 }
 
 .filters .filters-buttons {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     flex-direction: row;
+    gap: 8px;
     font-variant: small-caps;
 }
 
 .filters-buttons :is(.close-filters, .reset-filters) {
+    width: auto;
+    min-height: 30px;
     display: flex;
     flex-direction: row;
     gap: 5px;
@@ -60,7 +82,8 @@ body.dark-theme {
     user-select: none;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    padding: 5px 10px;
+    border-radius: 6px;
 }
 
 .filters-buttons .close-filters {
@@ -69,8 +92,29 @@ body.dark-theme {
 }
 
 .filters-buttons .reset-filters {
-    background: var(--dangerColor);
-    color: var(--closeFiltersColor);
+    background: var(--mutedControlColor);
+    color: var(--fontColor);
+    border: 1px solid var(--panelBorderColor);
+}
+
+.active-filter-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 44px 8px 0;
+}
+
+.active-filter-chip {
+    max-width: 160px;
+    padding: 3px 8px;
+    border: 1px solid var(--activeColor);
+    border-radius: 999px;
+    background: var(--chipBg);
+    color: var(--fontColor);
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .label-group {
@@ -83,4 +127,5 @@ body.dark-theme {
     display: flex;
     flex-direction: row;
     gap: 5px;
+    align-items: center;
 }

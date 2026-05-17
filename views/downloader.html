@@ -11,17 +11,20 @@
 
   <div class="top">
     <div id="top-container">
-      <div class="section-buttons">
-        <button class="selected" data-section="image">
+      <div class="section-buttons" aria-label="Media type">
+        <button class="selected" data-section="image" title="Images">
           <span class="x-icon">imagesmode</span>
+          <span class="section-label">Images</span>
           <span class="items-count">0</span>
         </button>
-        <button data-section="video">
+        <button data-section="video" title="Video">
           <span class="x-icon">videocam</span>
+          <span class="section-label">Video</span>
           <span class="items-count">0</span>
         </button>
-        <button data-section="audio">
+        <button data-section="audio" title="Audio">
           <span class="x-icon">music_note</span>
+          <span class="section-label">Audio</span>
           <span class="items-count">0</span>
         </button>
       </div>
@@ -134,19 +137,32 @@
         </div>
 
         <div class="filters-buttons">
-          <div class="close-filters">close filters</div>
-          <div class="reset-filters">reset filters</div>
+          <button type="button" class="close-filters">
+            <span class="x-icon">expand_less</span>
+            <span>Close</span>
+          </button>
+          <button type="button" class="reset-filters">
+            <span class="x-icon">restart_alt</span>
+            <span>Reset</span>
+          </button>
         </div>
       </div>
-      <span class="x-icon open-filters">filter_list</span>
+      <div class="active-filter-strip" hidden></div>
+      <button type="button" class="open-filters" title="Filters">
+        <span class="x-icon">filter_list</span>
+      </button>
     </div>
   </div>
   <div class="accordion"></div>
 
   <div class="download">
+    <div class="selection-summary">
+      <span class="selection-label">No selection</span>
+      <button type="button" class="clear-selection" disabled>Clear</button>
+    </div>
     <button disabled id="download-btn" type="button">
       <span class="x-icon">download</span>
-      <span>Download&nbsp;<span class="selected-count"></span></span>
+      <span>Download</span>
     </button>
   </div>
 </main>
@@ -157,4 +173,3 @@
 
 </body>
 </html>
-

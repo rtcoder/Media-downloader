@@ -31,20 +31,32 @@ export function getGridItem(body: HTMLElement, item: MediaItem) {
   const dimensionsDiv = createSpanElement({class: 'item-details-dimensions'});
   const extension = createSpanElement({class: 'item-details-ext', html: item.extension});
   const duration = createSpanElement({class: 'item-details-duration'});
+  const extensionLabel = item.extension?.toUpperCase() || 'Media';
+  const mediaTitle = createSpanElement({class: 'media-title', html: extensionLabel});
+  const mediaMeta = createSpanElement({class: 'media-meta'});
 
   let thumbnail = null;
   switch (item.type) {
     case ItemTypeEnum.IMAGE:
       dimensionsDiv.textContent = `${item.properties.width} x ${item.properties.height}`;
+      mediaMeta.textContent = dimensionsDiv.textContent;
       thumbnail = getImageThumbnail(item.src);
       break;
     case ItemTypeEnum.AUDIO:
       duration.textContent = item.properties.durationStr;
+      mediaTitle.textContent = 'Audio';
+      mediaMeta.textContent = [extensionLabel, item.properties.durationStr]
+        .filter(Boolean)
+        .join(' · ');
       thumbnail = getAudioThumbnail();
       break;
     case ItemTypeEnum.VIDEO:
       duration.textContent = item.properties.durationStr;
       dimensionsDiv.textContent = item.properties.quality;
+      mediaTitle.textContent = 'Video';
+      mediaMeta.textContent = [extensionLabel, item.properties.quality, item.properties.durationStr]
+        .filter(Boolean)
+        .join(' · ');
       thumbnail = getVideoThumbnail(item.poster);
       break;
   }
@@ -57,6 +69,10 @@ export function getGridItem(body: HTMLElement, item: MediaItem) {
   if (thumbnail) {
     gridItem.appendChild(thumbnail);
   }
+  gridItem.appendChild(createDivElement({class: 'media-copy'}, [
+    mediaTitle,
+    mediaMeta,
+  ]));
 
   return gridItem;
 }

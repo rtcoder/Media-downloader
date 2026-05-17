@@ -10,14 +10,14 @@ body {
     color: var(--fontColor);
     background-color: var(--bgColor);
     min-height: 150px;
-    --imageSize: 120px;
+    --imageSize: 112px;
     --topContainerHeight: 110px;
 }
 
 main {
     display: flex;
     flex-direction: column;
-    padding-bottom: 50px;
+    padding-bottom: 62px;
 }
 
 .accent {
@@ -40,10 +40,11 @@ label {
 
 button {
     width: 100%;
-    height: 25px;
+    min-height: 32px;
     border: none;
-    padding: 3px 10px;
+    padding: 6px 10px;
     font-size: 12px;
+    border-radius: 6px;
 }
 
 button img {

@@ -9,7 +9,38 @@
   <component name="ChangeListManager">
     <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Relocate changelog images to organized directories&#10;&#10;Moved various changelog images into versioned directories for better structure and easier maintenance. Updated image paths in the changelog HTML to reflect the new locations while preserving existing functionality.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/accordion-body.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion-body.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/accordion-header.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/accordion-header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/accordion/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/accordion/grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/download-button.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/download-button.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/filters/filter-form-elements.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/filters/filter-form-elements.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/filters/filters.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/filters/filters.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/section-buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/section-buttons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/downloader/top-container.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/downloader/top-container.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/options/options.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/options/options.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/themes.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/themes.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/background/background.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/background/background.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/background/background.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/background/background.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/quick_send_media/quick_send_media.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/content-script/send_media/send_media.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/downloader/main.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/downloader/main.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/options/main.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/options/main.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/popup-dimensions.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/theme.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/theme.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/accordion/grid-item.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/accordion/grid-item.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/dom-listeners.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/filters/filter-fn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/filters/filter-fn.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/filters/filters.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/filters/filters.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/downloader/send-media-listener.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/downloader/send-media-listener.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/chrome-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/chrome-api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/changelog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelog/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/downloader.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/downloader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/options.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/options.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +54,10 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="98" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -41,6 +76,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "rtcoder"
+  }
+}]]></component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
       <filtered-out-file-type name="LOCAL_BRANCH" />
@@ -49,10 +90,20 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:rtcoder/Media-downloader.git",
+    "accountId": "61a30a26-a398-4b5d-b7a3-35d90f6a3695"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/opt/homebrew/Cellar/php/8.2.7_2/bin/php" />
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -60,32 +111,40 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="1otW6F491LYms36WQVXNY5iTmdR" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.laravel-idea.search-composer-json&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/dawidjez/projekty/Private/Media-downloader/src/downloader/accordion&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/dawidjez/projekty/Private/Media-downloader/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.laravel-idea.search-composer-json": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/rtcoder/projekty/Private/Media-downloader",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.start.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/Users/rtcoder/projekty/Private/Media-downloader/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/downloader/accordion" />
@@ -102,7 +161,7 @@
       <recent name="$PROJECT_DIR$/src/downloader/accordion" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.start">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -125,15 +184,16 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-php-predefined-ba97393d7c68-6f8e3395a2b4-com.jetbrains.php.sharedIndexes-PS-233.14015.96" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-PS-261.23567.149" />
+        <option value="bundled-php-predefined-a98d8de5180a-022fa7b8ab75-com.jetbrains.php.sharedIndexes-PS-261.23567.149" />
       </set>
     </attachedChunks>
   </component>
@@ -163,6 +223,7 @@
       <workItem from="1727376693272" duration="174349000" />
       <workItem from="1728483803021" duration="3283000" />
       <workItem from="1728640028971" duration="39669000" />
+      <workItem from="1778962091979" duration="3180000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>

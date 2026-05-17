@@ -26,21 +26,29 @@ function onClickItem(target: any) {
 }
 
 function updateSelectedCountText() {
-  let allAreUnchecked = true;
   const mediaToDisplay = getAllMediaToDisplay();
   let selectedCount = 0;
 
   for (let _idx = 0; _idx < mediaToDisplay.length; _idx++) {
     if (mediaToDisplay[_idx].selected) {
-      allAreUnchecked = false;
       selectedCount++;
     }
   }
-  q('#download-btn .selected-count')!.innerHTML = selectedCount > 0
-    ? `(${selectedCount})`
-    : '';
-
+  const summary = q('.selection-label');
+  const clearButton = q('.clear-selection') as HTMLButtonElement;
+  summary.innerHTML = selectedCount > 0
+    ? `${selectedCount} selected`
+    : 'No selection';
+  clearButton.disabled = !selectedCount;
   setDisabled('#download-btn', !selectedCount);
+}
+
+function clearSelection() {
+  getAllMediaToDisplay().forEach(item => {
+    item.selected = false;
+  });
+  toggleClass('.grid-item.checked', 'checked', false);
+  updateSelectedCountText();
 }
 
 export function setTopContainerHeightVar(timeout = 0) {
@@ -63,6 +71,8 @@ export function selectSection(name: ItemTypeEnum) {
   const filtersDiv = q('.filters');
   filtersDiv.classList.remove(ItemTypeEnum.IMAGE, ItemTypeEnum.AUDIO, ItemTypeEnum.VIDEO);
   filtersDiv.classList.add(name);
+  document.body.classList.remove('media-mode-image', 'media-mode-audio', 'media-mode-video');
+  document.body.classList.add(`media-mode-${name}`);
   updateFiltersIconActive();
   setTopContainerHeightVar();
   updateSelectedCountText();
@@ -77,6 +87,11 @@ export function setDomListeners() {
 
     if (target.closest('#download-btn')) {
       downloadSelectedImages(getAllMediaToDisplay());
+      return;
+    }
+
+    if (target.closest('.clear-selection')) {
+      clearSelection();
       return;
     }
 

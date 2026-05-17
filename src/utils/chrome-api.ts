@@ -20,9 +20,33 @@ import {
 import {Fn, FnArgs, NullableNumber, NullableString} from '../types/common.type';
 import {MessageEventNameEnum} from '../types/message-event-name.enum';
 
+function isAccessibleTabUrl(url?: string) {
+  if (!url) {
+    return false;
+  }
+
+  const restrictedPrefixes = [
+    'about:',
+    'brave://',
+    'chrome://',
+    'chrome-extension://',
+    'chrome-search://',
+    'chrome-untrusted://',
+    'devtools://',
+    'edge://',
+    'opera://',
+    'vivaldi://',
+    'view-source:',
+  ];
+
+  return !restrictedPrefixes.some(prefix => url.startsWith(prefix))
+    && !url.startsWith('https://chromewebstore.google.com');
+}
+
 export async function executeContentScript(scriptUrl: string, tabId: NullableNumber = null) {
+  let tab = null;
   if (!tabId) {
-    const tab = await getCurrentTab();
+    tab = await getCurrentTab();
     if (!tab || !tab.id) {
       return;
     }
@@ -30,11 +54,21 @@ export async function executeContentScript(scriptUrl: string, tabId: NullableNum
       return;
     }
     tabId = tab.id!;
+  } else {
+    tab = await getTab(tabId);
+    if (!tab) {
+      return;
+    }
   }
-  await chrome.scripting.executeScript({
-    target: {tabId, allFrames: true},
-    files: [scriptUrl],
-  });
+
+  try {
+    await chrome.scripting.executeScript({
+      target: {tabId, allFrames: true},
+      files: [scriptUrl],
+    });
+  } catch {
+    // Some browser pages cannot be scripted even when tab metadata is available.
+  }
 }
 
 export async function getCurrentTab() {
@@ -42,7 +76,7 @@ export async function getCurrentTab() {
     let queryOptions = {active: true, lastFocusedWindow: true};
     let [tab] = await chrome.tabs.query(queryOptions);
 
-    if (!tab?.url || tab?.url?.startsWith('chrome://') || tab?.url?.startsWith('https://chromewebstore.google.com')) {
+    if (!isAccessibleTabUrl(tab?.url)) {
       return null;
     }
 
@@ -59,7 +93,7 @@ export async function getTab(tabId: number): NullableChromeTabAsync {
       console.error('Error get tab by ID:', chrome.runtime.lastError);
       return null;
     }
-    if (!tab?.url || tab?.url?.startsWith('chrome://') || tab?.url?.startsWith('https://chromewebstore.google.com')) {
+    if (!isAccessibleTabUrl(tab?.url)) {
       return null;
     }
     return tab;

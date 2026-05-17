@@ -12,10 +12,9 @@ body.dark-theme {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 5px;
     position: sticky;
     top: var(--topContainerHeight);
-    z-index: 1;
+    z-index: 2;
 }
 
 .accordion-item.first-item .accordion-header {
@@ -23,13 +22,13 @@ body.dark-theme {
 }
 
 .accordion-header button {
-    background-color: var(--accordionHeaderBgColor);
+    background-color: var(--surfaceColor);
     border: none;
     border-top: 1px solid var(--accordionItemBorderColor);
     font-size: 13px;
     text-align: left;
     width: 100%;
-    padding: 10px;
+    padding: 9px 12px;
     cursor: pointer;
     align-items: center;
     display: grid;
@@ -72,6 +71,9 @@ body.dark-theme {
 
 .accordion-header button .tab-title {
     color: var(--fontColor);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .accordion-header button .tab-title .tab-media-count {

@@ -1,12 +1,16 @@
 .filters .input-pair {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
     gap: 5px;
     align-items: center;
+    width: 100%;
 }
 
 .filters .input-pair label {
     border: 1px solid var(--fontColor2);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--surfaceMutedColor);
 }
 
 .filters .input-pair .unit {
@@ -15,12 +19,13 @@
 }
 
 .filters :is(.input-pair, .group) .title {
-    width: 40px;
+    width: 52px;
     user-select: none;
+    color: var(--fontColor2);
 }
 
 .filters .group input {
-    width: 100px;
+    width: 88px;
     border: none;
 }
 
@@ -38,5 +43,7 @@
 .filters .group select {
     border: 1px solid var(--fontColor2);
     user-select: none;
-    min-width: 75px;
+    min-width: 110px;
+    border-radius: 6px;
+    background: var(--surfaceMutedColor);
 }

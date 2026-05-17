@@ -43,7 +43,9 @@ function filterImages(items: MediaItem[]): MediaItem[] {
       item.display = false;
     }
 
-    if (!!filters.imageType?.length && !filters.imageType.includes(item.extension)) {
+    const selectedImageTypes = filters.imageType
+      ?.flatMap((type: string) => type.split(','));
+    if (!!selectedImageTypes?.length && !selectedImageTypes.includes(item.extension)) {
       item.display = false;
     }
 

@@ -6,6 +6,7 @@ import {getCurrentTab} from '../utils/chrome-api';
 import {q} from '../utils/dom-functions';
 import {getUuid} from '../utils/utils';
 import {isRestrictedUrl} from '../utils/yt-restriction';
+import {updateDynamicFilterOptions} from './filters/filters';
 import {mediaTypes} from './media-types';
 import {updateTabInfo} from './tab-info';
 
@@ -54,6 +55,6 @@ export async function sendMediaListener(data: FoundMedia) {
   });
 
   updateMediaCount();
+  updateDynamicFilterOptions();
   displayMedia();
 }
-
