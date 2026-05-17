@@ -29,9 +29,8 @@
     {
       "resources": [
         "/css/*",
-        "/icons/*",
         "/images/*",
-        "/views/changelog.html",
+        "/views/changelog/index.html",
         "/views/options.html"
       ],
       "matches": [
