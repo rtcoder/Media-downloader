@@ -7,9 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Updated documentation images for UI and feature previews">
+    <list default="true" id="cb8b6bfd-0cb1-4209-9abe-b1e2931de965" name="Default Changelist" comment="Cleaned up workspace tasks and adjusted changelist comments for clarity.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extension/src/downloader/dom-listeners.ts" beforeDir="false" afterPath="$PROJECT_DIR$/extension/src/downloader/dom-listeners.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/releases/media-downloader-2.1.8.zip" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +27,7 @@
     <execution />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="98" />
+    <option name="cachedIndexableFilesCount" value="115" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -45,12 +47,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "rtcoder"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;rtcoder&quot;
   }
-}]]></component>
+}</component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
       <filtered-out-file-type name="LOCAL_BRANCH" />
@@ -59,12 +61,12 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:rtcoder/Media-downloader.git",
-    "accountId": "61a30a26-a398-4b5d-b7a3-35d90f6a3695"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:rtcoder/Media-downloader.git&quot;,
+    &quot;accountId&quot;: &quot;61a30a26-a398-4b5d-b7a3-35d90f6a3695&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -111,7 +113,7 @@
     "npm.start.executor": "Run",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "/Users/rtcoder/projekty/Private/Media-downloader/extension/node_modules/typescript/lib",
+    "ts.external.directory.path": "/Users/rtcoder/Applications/PhpStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -204,7 +206,8 @@
       <workItem from="1727376693272" duration="174349000" />
       <workItem from="1728483803021" duration="3283000" />
       <workItem from="1728640028971" duration="39669000" />
-      <workItem from="1778962091979" duration="19198000" />
+      <workItem from="1778962091979" duration="19228000" />
+      <workItem from="1779038710793" duration="151000" />
     </task>
     <task id="LOCAL-00001" summary="new extension">
       <created>1614452617804</created>
@@ -254,14 +257,6 @@
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1635974603613</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Update version to 2.0.4 and changelog&#10;&#10;Incremented version to 2.0.4 in manifest.json. Updated changelog.html to reflect fixed minor bugs in the new release. Adjusted workspace.xml to include relevant changes and tasks.">
-      <option name="closed" value="true" />
-      <created>1727886014268</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1727886014268</updated>
     </task>
     <task id="LOCAL-00061" summary="Update downloader and media scripts for compatibility&#10;&#10;Fixed issues with media downloading functions and enhanced compatibility with updated Chrome security policies. Added more robust error handling within downloader scripts to ensure smoother operation.">
       <option name="closed" value="true" />
@@ -591,7 +586,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779036632388</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="Cleaned up workspace tasks and adjusted changelist comments for clarity.">
+      <option name="closed" value="true" />
+      <created>1779037372148</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1779037372148</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,7 +623,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Delete changelog view and mapper functions&#10;&#10;Removed `changelog.html` and associated CSS. Migrated mapper functions to a new file to organize code better. This streamlined the media handling and downloading functionalities in the project." />
     <MESSAGE value="Refactor media mapping and downloading functionality&#10;&#10;Consolidated and relocated mapper functions for better code organization. Enhanced media downloading capabilities, and removed unused `changelog.html` and related CSS elements. Improved consistency and reduced redundant code." />
     <MESSAGE value="Refactor media mapping and sending logic&#10;&#10;Consolidated media mapping functions for better organization and efficiency. Simplified sendMedia function and removed redundant tab parameter. Introduced jobHash for more reliable media processing." />
     <MESSAGE value="Simplify media processing and rendering logic&#10;&#10;Streamlined media mapping functions for better efficiency and clarity. Implemented new accordion structure for better user interaction and visual organization. Added duration and quality properties to video elements to improve metadata handling." />
@@ -645,7 +647,8 @@
     <MESSAGE value="Migrated landing assets and styles to the `dosc` directory to support restructuring efforts." />
     <MESSAGE value="Moved landing assets to `docs` folder for improved structure and accessibility." />
     <MESSAGE value="Updated documentation images for UI and feature previews" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated documentation images for UI and feature previews" />
+    <MESSAGE value="Cleaned up workspace tasks and adjusted changelist comments for clarity." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up workspace tasks and adjusted changelist comments for clarity." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
