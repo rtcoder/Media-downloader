@@ -10,6 +10,8 @@ import {
   extractImagesFromTags,
   extractVideosFromTags,
 } from '../extractors-fn';
+import {findLinkedMedia} from '../linked-media-scanner';
+import {findLoadedMediaResources} from '../performance-media-scanner';
 import {mapToFinalResultArray} from './send-media-mappers-fn';
 
 (() => {
@@ -36,13 +38,20 @@ import {mapToFinalResultArray} from './send-media-mappers-fn';
     try {
       const imagesFromTags = extractImagesFromTags();
       const imagesFromStyles = extractImagesFromStyles();
-      images = await mapToFinalResultArray([...imagesFromTags, ...imagesFromStyles], ItemTypeEnum.IMAGE);
-
       const videosFromTags = extractVideosFromTags();
-      videos = await mapToFinalResultArray(videosFromTags, ItemTypeEnum.VIDEO);
-
       const audiosFromTags = extractAudiosFromTags();
-      audios = await mapToFinalResultArray(audiosFromTags, ItemTypeEnum.AUDIO);
+
+      const discoveredLinkedMedia = [
+        ...findLoadedMediaResources(),
+        ...await findLinkedMedia(),
+      ];
+      const linkedImages = discoveredLinkedMedia.filter(item => item.type === ItemTypeEnum.IMAGE);
+      const linkedVideos = discoveredLinkedMedia.filter(item => item.type === ItemTypeEnum.VIDEO);
+      const linkedAudios = discoveredLinkedMedia.filter(item => item.type === ItemTypeEnum.AUDIO);
+
+      images = await mapToFinalResultArray([...imagesFromTags, ...imagesFromStyles, ...linkedImages], ItemTypeEnum.IMAGE);
+      videos = await mapToFinalResultArray([...videosFromTags, ...linkedVideos], ItemTypeEnum.VIDEO);
+      audios = await mapToFinalResultArray([...audiosFromTags, ...linkedAudios], ItemTypeEnum.AUDIO);
     } catch (err: any) {
       console.log({err});
       error = {...err};
@@ -60,6 +69,11 @@ import {mapToFinalResultArray} from './send-media-mappers-fn';
         imgEl.remove();
         sendMedia([img], jobHash);
       });
+      imgEl.addEventListener('error', () => {
+        img.order = index;
+        imgEl.remove();
+        sendMedia([img], jobHash);
+      });
       imgEl.src = img.src;
     });
     videos.forEach((video, index) => {
@@ -73,6 +87,11 @@ import {mapToFinalResultArray} from './send-media-mappers-fn';
         videoEl.remove();
         sendMedia( [video], jobHash);
       });
+      videoEl.addEventListener('error', () => {
+        video.order = index;
+        videoEl.remove();
+        sendMedia([video], jobHash);
+      });
       videoEl.src = video.src;
     });
     audios.forEach((audio, index) => {
@@ -84,6 +103,11 @@ import {mapToFinalResultArray} from './send-media-mappers-fn';
         audio.order = index;
         audioEl.remove();
         sendMedia( [audio], jobHash);
+      });
+      audioEl.addEventListener('error', () => {
+        audio.order = index;
+        audioEl.remove();
+        sendMedia([audio], jobHash);
       });
       audioEl.src = audio.src;
     });

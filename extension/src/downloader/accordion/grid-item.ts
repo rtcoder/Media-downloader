@@ -34,6 +34,9 @@ export function getGridItem(body: HTMLElement, item: MediaItem) {
   const extensionLabel = item.extension?.toUpperCase() || 'Media';
   const mediaTitle = createSpanElement({class: 'media-title', html: extensionLabel});
   const mediaMeta = createSpanElement({class: 'media-meta'});
+  const linkedBadge = item.sourceKind === 'linked'
+    ? createSpanElement({class: 'media-source-badge', html: 'Linked'})
+    : null;
 
   let thumbnail = null;
   switch (item.type) {
@@ -65,14 +68,24 @@ export function getGridItem(body: HTMLElement, item: MediaItem) {
   gridItem.appendChild(extension);
   gridItem.appendChild(dimensionsDiv);
   gridItem.appendChild(duration);
+  if (linkedBadge) {
+    gridItem.appendChild(linkedBadge);
+  }
 
   if (thumbnail) {
     gridItem.appendChild(thumbnail);
   }
-  gridItem.appendChild(createDivElement({class: 'media-copy'}, [
-    mediaTitle,
-    mediaMeta,
-  ]));
+  const mediaCopyChildren = linkedBadge
+    ? [
+      mediaTitle,
+      createSpanElement({class: 'media-meta-row'}, [
+        createSpanElement({class: 'media-source-badge', html: 'Linked'}),
+        mediaMeta,
+      ]),
+    ]
+    : [mediaTitle, mediaMeta];
+
+  gridItem.appendChild(createDivElement({class: 'media-copy'}, mediaCopyChildren));
 
   return gridItem;
 }

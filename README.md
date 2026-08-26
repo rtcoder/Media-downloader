@@ -1,6 +1,6 @@
 # Media Downloader
 
-Media Downloader is a Chrome extension for finding, filtering, and downloading media assets from web pages. It collects images, video, and audio detected on the current page, groups results by browser tab, and gives you a focused popup or side panel for reviewing files before downloading them.
+Media Downloader is a Chrome extension for finding, filtering, and downloading media assets from web pages. It collects embedded and linked images, video, and audio detected from the current page, groups results by browser tab, and gives you a focused popup or side panel for reviewing files before downloading them.
 
 <p align="center">
   <img src="docs/images/logo.png" alt="Media Downloader logo" width="96">
@@ -25,7 +25,8 @@ Media Downloader is a Chrome extension for finding, filtering, and downloading m
 
 ## Features
 
-- Browse images, video, and audio found on the current page.
+- Browse embedded images, video, and audio found on the current page.
+- Detect many directly linked media files and CORS-readable linked pages with standard media metadata.
 - Use the extension as a compact popup or a persistent Chrome side panel.
 - Filter images by width, height, and file type.
 - Filter videos by format and detected quality.
@@ -96,7 +97,7 @@ Chrome Web Store packages must contain `manifest.json` at the root of the ZIP fi
 ```bash
 cd extension
 npm run build
-zip -r releases/media-downloader-2.1.8.zip manifest.json css dist images views
+zip -r releases/media-downloader-2.2.0.zip manifest.json css dist images views
 ```
 
 ## Project Structure
@@ -123,4 +124,4 @@ Chromium-based browsers may support many of the same APIs, but behavior can diff
 
 ## Store Policy Notes
 
-Media Downloader does not bypass DRM, paywalls, authentication, or browser restrictions. Some websites and stores restrict downloading media from specific platforms, including YouTube. The extension follows browser API permissions and skips pages that cannot be scripted, such as browser internal pages and extension store pages.
+Media Downloader does not bypass DRM, paywalls, authentication, private file permissions, or browser restrictions. Some websites intentionally hide, stream, or protect media in ways that browser extensions cannot expose as a single downloadable file. Some websites and stores restrict downloading media from specific platforms, including YouTube. The extension follows browser API permissions and skips pages that cannot be scripted, such as browser internal pages and extension store pages.
