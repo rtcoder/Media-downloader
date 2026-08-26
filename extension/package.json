@@ -1,19 +1,22 @@
 {
   "name": "media-downloader",
-  "version": "2.1.8",
+  "version": "2.2.0",
   "description": "",
   "main": "downloader.js",
   "scripts": {
     "build": "webpack --mode production",
-    "start": "webpack --watch"
+    "start": "webpack --watch",
+    "test": "vitest --environment jsdom run"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/chrome": "^0.0.272",
+    "jsdom": "^30.0.1",
     "ts-loader": "^9.5.1",
     "typescript": "^5.6.2",
+    "vitest": "^4.1.11",
     "webpack": "5.104.1",
     "webpack-cli": "^5.1.4"
   }

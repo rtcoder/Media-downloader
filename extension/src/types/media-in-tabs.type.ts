@@ -8,6 +8,8 @@ export type MediaItemProperties = {
   durationStr: string;
 }
 
+export type MediaItemSourceKind = 'embedded' | 'linked';
+
 export type MediaItem = {
   display: boolean;
   order: number;
@@ -20,6 +22,9 @@ export type MediaItem = {
   type: ItemTypeEnum;
   selected: boolean;
   poster: NullableString;
+  sourceKind?: MediaItemSourceKind;
+  sourceUrl?: string;
+  label?: string;
   properties: MediaItemProperties;
 }
 

@@ -40,6 +40,9 @@ async function mapToFinalResultItem(item: MixedObject, type: ItemTypeEnum): Prom
     type,
     selected: false,
     poster: item.poster ? relativeUrlToAbsolute(item.poster) : null,
+    sourceKind: item.sourceKind,
+    sourceUrl: item.sourceUrl,
+    label: item.label,
     uuid: item.uuid || getUuid(srcForUuid),
     properties: {
       width: 0,
