@@ -3,3 +3,4 @@ node_modules/
 *.crx
 *.pem
 *.zip
+/docs/superpowers
